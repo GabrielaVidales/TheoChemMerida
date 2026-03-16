@@ -2,39 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="img/logo_ch.jpg">
+    <link rel="icon" href="../img/logo.jpg">
     <title>TheoChemMerida</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="../css/styles.css" />
 
 </head>
 <body>
 
-<header class="navbar" id="navbar">
-  <div class="logo">
-    <!-- Logo clicable -> Home -->
-    <a href="#home" class="logo-link" aria-label="Go to Home">
-      <img src="img/logo.jpg" alt="TheoChemMerida Logo" />
-    </a>
-  </div>
-
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#people">People</a>
-    <a href="#publications">Publications</a>
-    <a href="#products">Products</a>
-    <a href="#events">Events</a>
-    <a class="btn" href="#contact">Contact</a>
-  </nav>
-</header>
-
+<div id="navbar-container"></div>
+<script src="../js/incluide.js"></script>
 <section class="hero" id="home">
     <div class="carousel">
-        <div class="slide active" style="background-image:url('img/slide1.jpg')"></div>
-        <div class="slide" style="background-image:url('img/home/slide2.jpeg')"></div>
-        <div class="slide" style="background-image:url('img/home/slide3.jpeg')"></div>
-        <div class="slide" style="background-image:url('img/home/slide4.jpg')"></div>
-        <div class="slide" style="background-image:url('img/home/slide5.jpg')"></div>
+        <div class="slide active" style="background-image:url('../img/home/slide1.jpg')"></div>
+        <div class="slide" style="background-image:url('../img/home/slide2.png')"></div>
+        <div class="slide" style="background-image:url('../img/home/slide3.jpeg')"></div>
+        <div class="slide" style="background-image:url('../img/home/slide4.jpg')"></div>
+        <div class="slide" style="background-image:url('../img/home/slide5.jpg')"></div>
 
         <!-- Flechas -->
         <button class="carousel-arrow prev" type="button" aria-label="Previous slide">&#10094;</button>
@@ -62,7 +46,7 @@
 
 <section class="content" id="content">
     <h2>Welcome to the TheoChemMerida Research Group!</h2>
-    <p>The TheoChemMerida Research Group is part of the Applied Physics Department at the Centro de Investigación y de Estudios Avanzados (CINVESTAV), Unidad Mérida. The group is led by Dr. Gabriel Merino and Dr. Filiberto Ortiz Chi, and focuses on the use of modern computational chemistry tools to understand and predict the properties of novel organic and inorganic molecular systems.</p>
+    <p>TeoChemMerida Research Group is part of the Applied Physics Department at the Centro de Investigación y de Estudios Avanzados (CINVESTAV), Unidad Mérida. The group is led by Dr. Gabriel Merino and Dr. Filiberto Ortiz Chi, and focuses on the use of modern computational chemistry tools to understand and predict the properties of novel organic and inorganic molecular systems.</p>
     <p>Our research interests include planar hypercoordinate carbon molecules, systems containing multiple bonds, endohedral complexes, dimetallocenes, complex materials, and molecules under extreme conditions such as high pressure. A central objective of our work is to gain fundamental insight into the structure, bonding, and electron delocalization of these systems.</p>
     <p>We are always looking for motivated and enthusiastic researchers to join our group. If you are interested in graduate or postdoctoral studies in theoretical or experimental chemistry, please feel free to contact us for further information.</p>
 </section>
@@ -73,7 +57,7 @@
   <div class="areas-grid">
 
     <div class="area-card">
-      <img src="img\Aromaticity.png" alt="Aromaticity and Chemical Bonding">
+      <img src="../img/Aromaticity.png" alt="Aromaticity and Chemical Bonding">
       <h3>Aromaticity and Chemical Bonding</h3>
       <p>
         Study of aromaticity, electron delocalization, and unconventional
@@ -82,7 +66,7 @@
     </div>
 
     <div class="area-card">
-      <img src="img/Computational.png" alt="Computational Chemistry">
+      <img src="../img/Computational.png" alt="Computational Chemistry">
       <h3>Computational &amp; Theoretical Chemistry</h3>
       <p>
         Quantum chemical modeling of molecular structure, stability,
@@ -91,7 +75,7 @@
     </div>
 
     <div class="area-card">
-      <img src="img/Boro.gif" alt="Reaction Mechanisms">
+      <img src="../img/Boro.gif" alt="Reaction Mechanisms">
       <h3>Reaction Mechanisms &amp; Boron Chemistry</h3>
       <p>
         Investigation of chemical reaction pathways, boron-containing compounds,
@@ -100,7 +84,7 @@
     </div>
 
     <div class="area-card">
-      <img src="img/Automated.png" alt="Automated Workflows">
+      <img src="../img/Automated.png" alt="Automated Workflows">
       <h3>Automated Workflows &amp; Data-Driven Chemistry</h3>
       <p>
         Development of automated computational workflows and data-assisted
@@ -109,7 +93,7 @@
     </div>
 
     <div class="area-card">
-      <img src="img/Materials.png" alt="Materials Chemistry">
+      <img src="../img/Materials.png" alt="Materials Chemistry">
       <h3>Materials &amp; Molecular Systems</h3>
       <p>
         Theoretical study of molecular materials, organometallic complexes,
@@ -118,7 +102,7 @@
     </div>
 
     <div class="area-card">
-      <img src="img/Extrem.png" alt="Extreme Conditions Chemistry">
+      <img src="../img/Extrem.png" alt="Extreme Conditions Chemistry">
       <h3>Chemistry Under Extreme Conditions</h3>
       <p>
         Exploration of molecular behavior under high pressure and other
@@ -129,303 +113,11 @@
   </div>
 </section>
 
-<section class="people" id="people">
-  <h2 class="section-title">People</h2>
-
-  <div class="people-block">
-    <h3>Principal Investigators</h3>
-
-    <div class="people-grid pi-grid">
-      <article class="person-card pi-card pi-card--fx">
-        <img src="img/people/gabriel-merino.jpg" alt="Dr. Gabriel Merino" loading="lazy" />
-        <div class="person-body">
-          <h4>Dr. Gabriel Merino</h4>
-          <p class="person-role">
-            Principal Investigator · Professor, Cinvestav · SNII Level III
-          </p>
-
-          <p class="person-line">
-            Group leader in computational & theoretical chemistry, with strong international impact and editorial leadership.
-          </p>
-
-          <details class="person-details details-float">
-            <summary class="viewmore-btn">View profile</summary>
-
-            <div class="person-details-content">
-              <p><strong>Research interests</strong></p>
-              <ul>
-                <li>Computational & theoretical chemistry</li>
-                <li>Unconventional bonding and electronic structure</li>
-                <li>Molecular systems under extreme conditions</li>
-              </ul>
-
-              <p><strong>Selected recognition</strong></p>
-              <ul>
-                <li>Weizmann Award – Best PhD Thesis in Exact Sciences (2004)</li>
-                <li>Mexican Academy of Sciences Award – Exact Sciences (2012)</li>
-                <li>Andrés Manuel del Río Award – Sociedad Química de México (2017)</li>
-                <li>Walter Kohn Prize – ICTP (2018)</li>
-                <li>Moshinsky Medal – UNAM (2019)</li>
-                <li>Fellow of the Royal Society of Chemistry (2020)</li>
-              </ul>
-
-              <p><strong>Editorial activities</strong></p>
-              <ul>
-                <li>Associate Editor – <em>Chemical Science</em> (RSC)</li>
-                <li>Member of Editorial/Advisory Boards (RSC, Wiley, MDPI)</li>
-              </ul>
-              <a 
-                class="profile-page-link" 
-                href="https://www.cinvestav.mx/investigacion/directorio-de-investigacion/jos233-gabriel-merino-hern225ndez" 
-                target="_blank" rel="noopener noreferrer" style="display: block; text-align: right;">Open here full page</a>
-          </details>
-          <div class="person-links">
-              <a class="pill pill-rg" href="https://scholar.google.com/citations?user=YYYY" target="_blank" rel="noopener">Scholar</a>
-              <a class="pill pill-orcid" href="https://orcid.org/0000-0000-0000-0001" target="_blank" rel="noopener">ORCID</a>
-              <a class="pill pill-rg" href="https://www.researchgate.net/profile/YYYY" target="_blank" rel="noopener">RG</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="person-card pi-card pi-card--fx">
-        <img src="img/people/filiberto-ortiz.jpg" alt="Dr. Filiberto Ortiz-Chi" loading="lazy" />
-        <div class="person-body">
-          <h4>Dr. Filiberto Ortiz-Chi</h4>
-          <p class="person-role">
-            Principal Investigator · Professor, Cinvestav · SNII Level II
-          </p>
-          <p class="person-line">
-            Computational physics researcher focused on predictive materials design for energy applications.
-          </p>
-
-
-          <details class="person-details details-float">
-            <summary class="viewmore-btn">View profile</summary>
-
-            <div class="person-details-content">
-              <p><strong>Background</strong></p>
-              <ul>
-                <li>B.Sc. in Physical Engineering, Universidad Autónoma de Yucatán (UADY)</li>
-                <li>M.Sc. in Applied Physics, Cinvestav-Mérida</li>
-                <li>Ph.D. in Theoretical Physics, Cinvestav-Mérida</li>
-              </ul>
-
-              <p><strong>Research lines</strong></p>
-              <ul>
-                <li>Computational design and prediction of materials for energy</li>
-                <li>Surface and interface physicochemistry</li>
-                <li>1D/3D materials and nanomaterials for functional applications</li>
-                <li>Global optimization for clusters and molecular systems</li>
-              </ul>
-
-              <p><strong>Output & teaching</strong></p>
-              <ul>
-                <li>47 JCR-indexed articles</li>
-                <li>1250+ citations (Scopus) · h-index: 18</li>
-                <li>140+ courses taught (B.Sc., M.Sc., Ph.D.)</li>
-              </ul>
-
-              <a 
-                class="profile-page-link" 
-                href="https://www.cinvestav.mx/investigacion/directorio-de-investigacion/filiberto-ortiz-chi" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                style="display: block; text-align: right;"
-              >
-                Open here full page
-              </a>
-            </div>
-          </details>
-            <div class="person-links">
-              <a class="pill pill-rg" href="https://scholar.google.com/citations?user=YYYY" target="_blank" rel="noopener">Scholar</a>
-              <a class="pill pill-orcid" href="https://orcid.org/0000-0000-0000-0001" target="_blank" rel="noopener">ORCID</a>
-              <a class="pill pill-rg" href="https://www.researchgate.net/profile/YYYY" target="_blank" rel="noopener">RG</a>
-            </div>
-        </div>
-      </article>
-
-    </div>
-  </div>
-
-  <div class="people-block">
-    <h3>Postdoctoral Researchers</h3>
-
-    <div class="people-grid">
-      <article class="person-card">
-        <img src="img/people/postdoc1.jpg" alt="Dr. Postdoc One" loading="lazy" />
-        <div class="person-body">
-          <h4>Dr. Postdoc One</h4>
-          <p class="person-role">Postdoctoral Researcher</p>
-          <p class="person-line">Computational chemistry · bonding · aromaticity.</p>
-
-          <div class="person-links">
-            <a class="pill pill-rg" href="https://scholar.google.com/citations?user=XXXX" target="_blank" rel="noopener">Scholar</a>
-            <a class="pill pill-orcid" href="https://orcid.org/0000-0000-0000-0000" target="_blank" rel="noopener">ORCID</a>
-            <a class="pill" href="mailto:postdoc1@cinvestav.mx">Email</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="person-card">
-        <img src="img/people/postdoc2.jpg" alt="Dr. Postdoc Two" loading="lazy" />
-        <div class="person-body">
-          <h4>Dr. Postdoc Two</h4>
-          <p class="person-role">Postdoctoral Researcher</p>
-          <p class="person-line">Materials modeling · PES exploration · kinetics.</p>
-
-          <div class="person-links">
-            <a class="pill pill-rg" href="https://scholar.google.com/citations?user=YYYY" target="_blank" rel="noopener">Scholar</a>
-            <a class="pill pill-orcid" href="https://orcid.org/0000-0000-0000-0001" target="_blank" rel="noopener">ORCID</a>
-            <a class="pill pill-rg" href="https://www.researchgate.net/profile/YYYY" target="_blank" rel="noopener">RG</a>
-          </div>
-        </div>
-      </article>
-    </div>
-  </div>
-  </div>
-
-  <div class="people-block">
-    <h3>PhD Students</h3>
-
-    <div class="people-grid">
-      <!-- Tarjetas aquí -->
-    </div>
-  </div>
-
-  <div class="people-block">
-    <h3>Master’s Students</h3>
-
-    <div class="people-grid">
-      <!-- Tarjetas aquí -->
-    </div>
-  </div>
-
-  <div class="people-block">
-    <h3>Undergraduate Students</h3>
-
-    <div class="people-grid">
-      <!-- Tarjetas aquí -->
-    </div>
-  </div>
-</section>
-
-<section class="content placeholder" id="publications">
-  <h2 class="section-title">Publications</h2>
-  <p>(Section under construction)</p>
-</section>
-
-<section class="content placeholder" id="products">
-  <h2 class="section-title">Products</h2>
-  <p>(Section under construction)</p>
-</section>
-
-<section class="content placeholder" id="events">
-  <h2 class="section-title">Events</h2>
-  <p>(Section under construction)</p>
-</section>
-
-
-<section id="contact" class="contact">
-  <div class="contact-wrap">
-
-    <div class="contact-header">
-      <h2 class="section-title">Contact</h2>
-
-      <div class="contact-photo">
-        <img src="img/contact.jpeg" alt="Group photo" />
-      </div>
-
-      <h2 class="contact-name gradient-title">TheoChemMerida Research Group</h2>
-
-      <p class="contact-affil">
-        Applied Physics Department at the Centro de Investigación y de Estudios Avanzados (CINVESTAV), Unidad Mérida.
-      </p>
-
-      <p class="contact-affil">
-        Km. 6 Antigua carretera a Progreso Apdo. Postal 73, Cordemex, 97310.
-      </p>
-
-      <p class="contact-affil">
-        Mérida, Yucatán, México
-      </p>
-
-      <div class="contact-links">
-        <a class="contact-link"
-           href="mailto:gabriel.merino2@gmail.com?subject=Contact%20from%20your%20website&body=Hello%2C%0D%0A%0D%0AI%20am%20writing%20after%20visiting%20your%20website.%0D%0A%0D%0ABest%20regards%2C%0D%0A">
-          <span class="contact-label">Email:</span> gabriel.merino2@gmail.com
-        </a>
-
-        <a class="contact-link">
-          <span class="contact-label">Lab's Phone:</span> (52) 999 942 94 00 Ext. 2576
-        </a>
-      </div>
-    </div>
-
-    <p class="contact-invite">
-      <em>We look forward to building research, innovation, and knowledge together!</em>
-    </p>
-
-    <!-- Mapa -->
-    <div class="contact-map">
-      <iframe
-        title="Map"
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.5781795818735!2d-89.6289685!3d21.0215404!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f567429bfffffff%3A0xf515d74b0203f700!2sCinvestav%20M%C3%A9rida!5e0!3m2!1sen!2smx!4v1769739999999"
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        allowfullscreen>
-      </iframe>
-    </div>
-
-  </div>
-</section>
-
 <button id="scrollTopBtn" aria-label="Scroll to top">
   ↑
 </button>
 
-<footer class="footer">
-    <div class="footer-container">
-
-        <div class="footer-left">
-            <h3>Departamento de Física Aplicada</h3>
-            <p>
-                Centro de Investigación y de Estudios Avanzados<br>
-                Unidad Mérida<br>
-                Km. 6 Antigua carretera a Progreso<br>
-                Apdo. Postal 73, Cordemex, 97310, Mérida, Yuc., México
-            </p>
-        </div>
-
-        <div class="footer-right">
-            <p>
-                <strong>Lab's Phone:</strong><br>
-                (52) 999 942 94 00 Ext. 2576
-            </p>
-            <p>
-                <strong>E-mail:</strong><br>
-                <a href="mailto:gabriel.merino2@gmail.com?subject=Contact%20from%20your%20website&body=Hello%2C%0D%0A%0D%0AI%20am%20writing%20after%20visiting%20your%20website.%0D%0A%0D%0ABest%20regards%2C%0D%0A">
-                  gabriel.merino2@gmail.com</a>
-                </a>
-            </p>
-            <p>
-                <strong>Twitter:</strong><br>
-                <a href="https://twitter.com/theochemmerida" target="_blank">@theochemmerida</a>
-            </p>
-            <p class="webmaster">
-                <strong>Webmaster:</strong><br>
-                Gerardo Hernández-Juárez<br>
-                <a href="https://www.linkedin.com/in/gabriela-vidales/" target="_blank">Gabriela Vidales-Ayala</a>
-            </p>
-        </div>
-
-        <!-- Créditos -->
-        <div class="footer-credits">
-            <p>© 2025 TheoChemMerida. All rights reserved.</p>
-        </div>
-
-    </div>
-</footer>
-
-<script src="script.js"></script>
+<div id="site-footer"></div>
+<script src="/js/script.js"></script>
 </body>
 </html>
