@@ -1,4 +1,4 @@
-fetch('../navbars/navbar.html')
+fetch('../../navbars/navbar.html')
   .then(r => r.text())
   .then(html => {
     const mount = document.getElementById("navbar-container");

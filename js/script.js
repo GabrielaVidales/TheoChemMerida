@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // =========================
 const footerMount = document.getElementById('site-footer');
 if (footerMount) {
-  fetch('../others/footer.html')
+  fetch('../../others/footer.html')
     .then(r => r.text())
     .then(html => { footerMount.innerHTML = html; })
     .catch(() => { /* silencioso */ });
