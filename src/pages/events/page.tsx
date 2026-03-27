@@ -21,7 +21,7 @@ function EventsPage() {
                                 <div className='flex flex-col gap-2'>
                                     <span className='text-center text-xl font-semibold'>{c.name}</span>
                                     <div className={cn(
-                                        'w-auto h-30 border-2 border-gray-300 px-4 py-2 flex justify-center rounded-2xl',
+                                        'w-auto h-30 border-2 bg-background border-gray-300 px-4 py-2 flex justify-center rounded-2xl',
                                         'transition-all duration-200 cursor-pointer',
                                         'hover:scale-105 hover:border-indigo-600 hover:shadow-xl',
                                     )}

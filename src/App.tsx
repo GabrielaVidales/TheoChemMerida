@@ -2,7 +2,7 @@ import { Route, Routes, useLocation } from "react-router"
 import HomePage from "./pages/page"
 import PeoplePage from "./pages/people/page"
 import ProjectsPage from "./pages/projects/page"
-import MainLayout from "./pages/layout"
+import MainLayout, { AltLayout } from "./pages/layout"
 import ProfilePage from "./pages/people/profile/page"
 import ResearchPage from "./pages/research/page"
 import { routes } from "./routes/routes"
@@ -24,6 +24,8 @@ export function App() {
         <Routes>
             <Route element={<MainLayout />}>
                 <Route path="/" element={<HomePage />} />
+            </Route>
+            <Route element={<AltLayout />}>
                 <Route path={routes.people.index} element={<PeoplePage />} />
                 <Route path={routes.people.profile.url} element={<ProfilePage />} />
                 <Route path={routes.research} element={<ResearchPage />} />

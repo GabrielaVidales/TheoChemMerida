@@ -31,100 +31,23 @@ import _5 from '@/assets/img/slide5.jpg'
 import MaskedImage from '@/components/masked-image'
 import mask from '@/assets/mask3.png'
 import field from '@/assets/field.png'
+import HeroSection from './hero-section'
 
 function HomePage() {
     return (
         <>
             <div className='space-y-10'>
-                {/* <section className='max-w-6xl mx-auto space-y-5'>
-                    <Carousel
-                        opts={{
-                            loop: true,
-                            active: true,
-                            duration: 50,
-                        }}
-                        plugins={[
-                            Autoplay({
-                                delay: 5000,
-                                stopOnInteraction: false,
-                            }),
-                        ]}
-                    >
-                        <CarouselContent>
-                            {[_1, _2, _3, _4, _5,].map((v, i) => (
-                                <CarouselItem key={i} >
-                                    <div className="w-full h-100 overflow-hidden rounded-xl">
-                                        <img
-                                            src={v}
-                                            className="w-full h-full object-cover"
-                                        />
-                                    </div>
-                                </CarouselItem>
-                            ))}
-                        </CarouselContent>
-                        <CarouselPrevious />
-                        <CarouselNext />
-                    </Carousel>
-                </section> */}
+                <HeroSection />
 
-                <div className='bg-slate-900 overflow-hidden' style={{
-                    backgroundImage: `url(${field})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    backgroundAttachment: 'fixed',
-                }}>
-                    <section className='max-w-[100vw] mx-auto'>
-                        <div className='grid grid-cols-1 lg:grid-cols-12 items-center gap-0'>
-
-                            <div className='lg:col-span-6 w-full h-full relative group'>
-                                <div className="absolute inset-0 bg-indigo-600/10 mix-blend-overlay z-20 pointer-events-none" />
-                                <MaskedImage
-                                    src={_2}
-                                    maskSrc={mask}
-                                    className='h-full w-full'
-                                />
-                            </div>
-
-                            <div className='lg:col-span-6 px-8 sm:px-16 py-20 space-y-8'>
-                                <div className="space-y-2">
-                                    <h2 className="text-indigo-500 font-black uppercase tracking-[0.4em] text-xs">
-                                        Cinvestav Unidad Mérida
-                                    </h2>
-                                    <PageTitle
-                                        title='Theoretical Chemistry Merida'
-                                        className='text-neutral-100 text-5xl tracking-tighter'
-                                    />
-                                </div>
-
-                                <div className="space-y-6 text-lg text-neutral-300 leading-relaxed font-medium">
-                                    <p>
-                                        The <span className="text-white font-extrabold italic">TheoChemMerida</span> Research Group is part of the Applied Physics
-                                        Department at CINVESTAV. Led by <span className="text-white font-extrabold">Dr. Gabriel Merino</span> and <span className="text-white font-extrabold">Dr. Filiberto Ortiz Chi</span>,
-                                        we specialize in modern computational tools to predict the properties of novel molecular systems.
-                                    </p>
-
-                                    <div className="relative p-6 border-l-4 border-indigo-600 bg-white/10 backdrop-blur-sm rounded-r-xl">
-                                        <p className="text-base italic text-neutral-200">
-                                            "We are always looking for motivated researchers. If you are interested in graduate or postdoctoral
-                                            studies, contact us to join our frontier research projects."
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div className="flex flex-wrap gap-4 pt-6">
-                                    <Button size="lg" variant='secondary' className="rounded-full px-10 font-bold">
-                                        Our Members
-                                    </Button>
-                                    <Button size="lg" variant='secondary' className="rounded-full px-10 font-bold">
-                                        Research Portal
-                                    </Button>
-                                </div>
-                            </div>
-
-                        </div>
-                    </section>
-                </div>
-
+                <section className='mx-auto max-w-6xl p-4 sm:p-10 space-y-10'>
+                    <iframe
+                        title="Map"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.5781795818735!2d-89.6289685!3d21.0215404!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f567429bfffffff%3A0xf515d74b0203f700!2sCinvestav%20M%C3%A9rida!5e0!3m2!1sen!2smx!4v1769739999999"
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                        allowFullScreen
+                    />
+                </section>
 
                 <section className='mx-auto max-w-6xl p-4 sm:p-10 space-y-10'>
                     <PageTitle title='Research Areas' />

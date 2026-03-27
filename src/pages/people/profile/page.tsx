@@ -39,7 +39,6 @@ import {
 } from "@/components/ui/card"
 import { PhotoProvider, PhotoView } from 'react-photo-view'
 import 'react-photo-view/dist/react-photo-view.css';
-
 const SwirlOrnament = ({ className }) => (
     <svg viewBox="0 0 100 100" fill="currentColor" className={className}>
         <path d="M10,50 Q25,25 50,50 T90,50" stroke="currentColor" fill="none" strokeWidth="2" />
@@ -54,12 +53,26 @@ const MemberProfile = ({ member }: { member: People }) => {
 
             <section className="relative grid grid-cols-1 md:grid-cols-12 gap-8 items-center pt-10">
                 <div className="md:col-span-4 flex justify-center">
-                    <Avatar className='size-64 shadow-md'>
-                        <AvatarImage
-                            src={member.profilePic}
-                            alt={member.name}
-                        />
-                    </Avatar>
+                    <PhotoProvider
+                        overlayRender={() => {
+                            return (
+                                <div className="absolute bottom-0 left-0 w-full p-6 bg-black/60 backdrop-blur-md text-white z-10">
+                                    <h3 className="text-xl font-bold">{member.name}</h3>
+                                    <p className="text-sm opacity-80">{member.role}</p>
+                                </div>
+                            );
+                        }}
+                    >
+                        <PhotoView src={member.profilePic}>
+                            <Avatar className="size-64 shadow-md cursor-pointer hover:opacity-90 transition-opacity">
+                                <AvatarImage
+                                    src={member.profilePic}
+                                    alt={member.name}
+                                    className="object-cover"
+                                />
+                            </Avatar>
+                        </PhotoView>
+                    </PhotoProvider>
                 </div>
 
                 <div className="md:col-span-8 space-y-4 text-center md:text-left">
@@ -85,7 +98,6 @@ const MemberProfile = ({ member }: { member: People }) => {
                                 />LinkedIn
                             </a>
                         )}
-
                         {member.researchGate && (
                             <a href={member.researchGate} target="_blank" className="flex items-center gap-2 text-sm text-stone-500 hover:text-green-600 transition-colors">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none">

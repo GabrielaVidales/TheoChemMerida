@@ -162,15 +162,15 @@ export const people: People[] = [
     },
     {
         name: 'Alan Israel Quintal Flores',
-        description: 'Maurizio A. Pantoja Hernández is a chemist specializing in computational chemistry and machine learning, currently a postdoctoral researcher at Cinvestav Mérida.',
-        bio: "My name is Maurizio Alejandro Pantoja Hernández. I completed my undergraduate studies in Chemical Engineering in 2014 at Universidad Veracruzana, Xalapa Campus. The following year, I began my Master's studies in Bioorganic Chemistry, also at Universidad Veracruzana, where I worked on the computational analysis of intermolecular interactions between ionic liquids and phenolic compound extractants, under the supervision of Prof. Myrna Matus. After earning my Master's degree in early 2018, I worked as a research assistant to Prof. Myrna Matus until mid-2019. I began my phD studies in Chemistry in September 2019, at Universidad Autónoma Metropolitana, Iztapalapa Unit, in Mexico City. I worked with Prof. José L. Gázquez on developing chemical reactivity descriptors for interacting species, within the theoretical framework of the Density Functional Theory. I earned my phD degree in December 2023 and began my first postdoctoral fellowship in January 2024 at Universidad Veracruzana. During this fellowship, I studied the oxidative desulfurization of oil using molecular chemical reactivity descriptors. In February 2025, I started my current postdoctoral fellowship at Cinvestav-Mérida, where I am working on developing a machine learning interatomic potential for exploring the potential energy surface of boron clusters.",
+        description: 'Postdoc at Cinvestav and researcher in Computational Chemical Kinetics. Lead developer of Eyringpy and SurfinPES.',
+        bio: "Dr. Alan Israel Quintal Flores, a specialist in Computational Chemical Kinetics, is a co-author of the Eyringpy program and the lead author of SurfinPES. He is currently a postdoctoral researcher at Cinvestav Mérida, where he integrates scientific research with programming to develop computational tools for the scientific community.",
         role: 'postdoctoral_researcher',
         researchLine: [
-            'Cinética Química Computacional y Tunelamiento Cuántico',
+            'Computational Chemical Kinetics and Quantum Tunneling',
         ],
         currentProjects: [
-            'Automatización y implementación de modelos de tunelamiento multidimensional en el programa Eyringpy.',
-            'Desarrollo de la interfaz gráfica de SurfinPES y Eyringpy.',
+            'Automation and implementation of multidimensional tunneling models in Eyringpy.',
+            'GUI development for SurfinPES and Eyringpy.',
         ],
         linkedin: 'https://www.linkedin.com/in/alan-q-673b07143/',
         profilePic: alanQuintal

@@ -1,8 +1,26 @@
+import { useIsMobile } from "@/hooks/use-mobile"
 import { Separator } from "./ui/separator"
+import logo from '@/assets/TheoChemMeridaLogo.png'
 
 export const Footer = () => {
+    const mobile = useIsMobile()
+
     return (
         <footer className="relative bg-slate-900 text-white mt-40">
+            <div
+                className="absolute inset-0 pointer-events-none opacity-[0.04]"
+                style={{
+                    backgroundImage: `linear-gradient(#38bdf8 ${mobile ? 2 : 4}px, transparent ${mobile ? 2 : 4}px), linear-gradient(90deg, #38bdf8 ${mobile ? 2 : 4}px, transparent ${mobile ? 2 : 4}px)`,
+                    backgroundSize: mobile ? "24px 24px" : "48px 48px",
+                    backgroundAttachment: 'fixed',
+
+                    maskImage: "linear-gradient(to bottom, transparent, black 15%), linear-gradient(to top, transparent, black 20%)",
+                    WebkitMaskImage: "linear-gradient(to bottom, transparent, black 15%), linear-gradient(to top, transparent, black 15%)",
+                    maskComposite: "intersect",
+                    WebkitMaskComposite: "source-in",
+                }}
+            />
+
             <div className="absolute top-1 left-0 w-full overflow-hidden leading-0 -translate-y-full">
                 <svg
                     viewBox="0 0 1440 120"
@@ -26,13 +44,21 @@ export const Footer = () => {
                 </svg>
             </div>
 
+            <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-175 h-full rounded-full bg-cyan-500/10 blur-[120px]" />
+                <div className="absolute bottom-0 right-0 w-100 h-full rounded-full bg-indigo-600/10 blur-[100px]" />
+            </div>
+
             <div className="relative z-10 max-w-5xl mx-auto px-6">
-                <h2 className="text-2xl font-bold mb-4">TheoChemMerida</h2>
+                <img
+                    src={logo}
+                    alt="TheoChemMerida"
+                    className="h-20 my-8"
+                />
                 <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
 
                     <div className="flex flex-col gap-4">
-                        <h3 className="text-sm font-bold uppercase tracking-wider text-gray-200">Mérida, México</h3>
-                        <strong className="not-italic text-base leading-tight text-gray-400">
+                        <strong className="text-sm font-bold uppercase tracking-wider text-gray-200 not-italic leading-tight">
                             Centro de Investigación y de Estudios Avanzados<br />
                             Unidad Mérida<br />
                         </strong>
@@ -71,11 +97,15 @@ export const Footer = () => {
                             <h3 className="text-sm font-bold uppercase tracking-wider text-gray-200">Network & Resources</h3>
                             <div className="space-y-3 mb-5">
                                 <a href="https://twitter.com/theochemmerida" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-sm text-gray-400 hover:text-blue-400 transition w-45 font-semibold border-2 border-gray-600 hover:border-blue-400 py-1 px-3 rounded-2xl">
-                                    <svg className="size-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.84 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" /></svg>
+                                    <svg className="size-4" viewBox="0 0 1200 1227" xmlns="http://www.w3.org/2000/svg" fill="currentColor" stroke="currentColor" aria-hidden="true" >
+                                        <path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z"></path>
+                                    </svg>
                                     @theochemmerida
                                 </a>
                                 <a href="http://scholar.google.com/citations?user=qRD50m4AAAAJ&hl=es" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-sm text-gray-400 hover:text-blue-400 transition w-45 font-semibold border-2 border-gray-600 hover:border-blue-400 py-1 px-3 rounded-2xl">
-                                    <svg className="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18 18.247 18.477 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
+                                    <svg className="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                                        <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18 18.247 18.477 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                                    </svg>
                                     Google Scholar
                                 </a>
                             </div>
