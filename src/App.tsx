@@ -8,6 +8,7 @@ import ResearchPage from "./pages/research/page"
 import { routes } from "./routes/routes"
 import EventsPage from "./pages/events/page"
 import { useEffect } from "react"
+import ContactPage from "./pages/contact/page"
 
 export function App() {
     const { pathname } = useLocation()
@@ -31,7 +32,7 @@ export function App() {
                 <Route path={routes.research} element={<ResearchPage />} />
                 <Route path={routes.projects} element={<ProjectsPage />} />
                 <Route path={routes.events} element={<EventsPage />} />
-                {/* <Route path={routes.contact} element={<ContactPage />} /> */}
+                <Route path={'/contact'} element={<ContactPage />} />
             </Route>
         </Routes>
     )

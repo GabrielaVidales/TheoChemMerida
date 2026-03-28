@@ -2,12 +2,12 @@ import filiPic from '@/assets/members/Fili.jpg'
 import merinoPic from '@/assets/members/merino.jpg'
 import maurizio from '@/assets/members/Mauricio Pantoja_.jpg'
 import fernandoMur from '@/assets/members/Fer Murillo_.jpg'
-import alanQuintal from '@/assets/members/Alan Quintal.jpeg'
+import alanQuintal from '@/assets/members/Alan Quintal.jpg'
 import lissNoriega from '@/assets/members/liss Noriega_.jpg'
 import fernandoVill from '@/assets/members/Fer Villarino_.jpg'
-import elier from '@/assets/members/elierAbreu.jpg'
-import rafael from '@/assets/members/rafaelFlores.jpg'
-import aura from '@/assets/members/aura_gomez.jpeg'
+import elier from '@/assets/members/Elier Abreu.jpg'
+import rafael from '@/assets/members/Rafa Flores.jpg'
+import aura from '@/assets/members/Aura.jpg'
 import aura1 from '@/assets/members/gallery/aura1.jpeg'
 import aura2 from '@/assets/members/gallery/aura2.jpeg'
 import aura3 from '@/assets/members/gallery/aura3.jpeg'
@@ -146,8 +146,8 @@ export const people: People[] = [
     },
     {
         name: 'Fernando Murillo Cordova',
-        description: 'Maurizio A. Pantoja Hernández is a chemist specializing in computational chemistry and machine learning, currently a postdoctoral researcher at Cinvestav Mérida.',
-        bio: "My name is Maurizio Alejandro Pantoja Hernández. I completed my undergraduate studies in Chemical Engineering in 2014 at Universidad Veracruzana, Xalapa Campus. The following year, I began my Master's studies in Bioorganic Chemistry, also at Universidad Veracruzana, where I worked on the computational analysis of intermolecular interactions between ionic liquids and phenolic compound extractants, under the supervision of Prof. Myrna Matus. After earning my Master's degree in early 2018, I worked as a research assistant to Prof. Myrna Matus until mid-2019. I began my phD studies in Chemistry in September 2019, at Universidad Autónoma Metropolitana, Iztapalapa Unit, in Mexico City. I worked with Prof. José L. Gázquez on developing chemical reactivity descriptors for interacting species, within the theoretical framework of the Density Functional Theory. I earned my phD degree in December 2023 and began my first postdoctoral fellowship in January 2024 at Universidad Veracruzana. During this fellowship, I studied the oxidative desulfurization of oil using molecular chemical reactivity descriptors. In February 2025, I started my current postdoctoral fellowship at Cinvestav-Mérida, where I am working on developing a machine learning interatomic potential for exploring the potential energy surface of boron clusters.",
+        description: 'Postdoctoral researcher specializing in computational and theoretical chemistry, with a focus on reaction mechanisms, boron chemistry, and CO₂ capture.',
+        bio: "In 2020, Fernando Murillo received his PhD in Material Sciences from Universidad Juárez Autónoma de Tabasco in Mexico, working on reaction mechanisms involved in carbon dioxide capture. Currently, he is a postdoctoral researcher at Cinvestav Mérida under the supervision of Gabriel Merino. His research interests include boron chemistry, gold catalysis in organic reactions, and aromaticity.",
         role: 'postdoctoral_researcher',
         researchLine: [
             'Reaction Mechanisms, Boron Chemistry, and CO2 Capture',
@@ -177,8 +177,8 @@ export const people: People[] = [
     },
     {
         name: 'Lisset Noriega de los Santos',
-        description: 'Maurizio A. Pantoja Hernández is a chemist specializing in computational chemistry and machine learning, currently a postdoctoral researcher at Cinvestav Mérida.',
-        bio: "My name is Maurizio Alejandro Pantoja Hernández. I completed my undergraduate studies in Chemical Engineering in 2014 at Universidad Veracruzana, Xalapa Campus. The following year, I began my Master's studies in Bioorganic Chemistry, also at Universidad Veracruzana, where I worked on the computational analysis of intermolecular interactions between ionic liquids and phenolic compound extractants, under the supervision of Prof. Myrna Matus. After earning my Master's degree in early 2018, I worked as a research assistant to Prof. Myrna Matus until mid-2019. I began my phD studies in Chemistry in September 2019, at Universidad Autónoma Metropolitana, Iztapalapa Unit, in Mexico City. I worked with Prof. José L. Gázquez on developing chemical reactivity descriptors for interacting species, within the theoretical framework of the Density Functional Theory. I earned my phD degree in December 2023 and began my first postdoctoral fellowship in January 2024 at Universidad Veracruzana. During this fellowship, I studied the oxidative desulfurization of oil using molecular chemical reactivity descriptors. In February 2025, I started my current postdoctoral fellowship at Cinvestav-Mérida, where I am working on developing a machine learning interatomic potential for exploring the potential energy surface of boron clusters.",
+        description: 'Postdoctoral researcher specializing in computational astrochemistry, focusing on DFT-based spectroscopic analysis and molecular evolution in the interstellar medium.',
+        bio: "egresada del Programa de Ciencias Químicas en el área de Fisicoquímica de la BUAP. Durante mis estudios de maestría y doctorado, enfoqué mi investigación en la aplicación de la teoría del funcional de la densidad (DFT) para el análisis de propiedades espectroscópicas de sistemas moleculares. Actualmente, realizo una estancia posdoctoral en el Departamento de Física Aplicada del CINVESTAV-Mérida, donde he expandido mi enfoque hacia la astroquímica computacional. Mi investigación se centra en la generación de isómeros y su identificación espectroscópica en el medio interestelar, así como en el estudio de mecanismos de reacción fundamentales para la evolución molecular en el espacio.",
         role: 'postdoctoral_researcher',
         researchLine: [
             'Astroquímica Computacional',
@@ -196,7 +196,7 @@ export const people: People[] = [
     },
     {
         name: 'Fernando José Martínez Villarino',
-        description: 'Maurizio A. Pantoja Hernández is a chemist specializing in computational chemistry and machine learning, currently a postdoctoral researcher at Cinvestav Mérida.',
+        description: 'PhD student specializing in computational chemistry, focused on aromaticity and the development of tools for electronic structure analysis.',
         bio: "I am a researcher in training with experience in the field of computational and theoretical chemistry, currently pursuing graduate studies. My academic work focuses on the development and application of computational tools for analyzing the electronic and magnetic properties of cyclic molecular systems, with the aim of exploring aromaticity indicators based on magnetic, geometric, and energetic criteria.\nThe central premise of my doctoral thesis is to develop a Python-based code capable of extracting comprehensive information on the electronic delocalization of cyclic systems from a simple molecular file coordinates.\nIn addition, I serve as the high-performance computing (HPC) server administrator at Cinvestav - Mérida, where my responsibilities include installing and compiling complex scientific packages, optimizing large-scale calculations in Linux-based systems, and performing preventive maintenance on the cluster's hardware.",
         researchLine: "Aromaticity is a fundamental concept in theoretical and computational chemistry that describes the stability and electronic properties of conjugated cyclic systems. It is reflected in magnetic, energetic and structural characteristics that distinguish these compounds from non-aromatic analogues. The study of aromaticity provides insight into electronic delocalization, helps interpret spectroscopic and energetic properties, and establishes quantitative criteria!",
         currentProjects: "I am currently working on projects focused on the study of aromaticity in cyclic molecular systems through computational chemistry methods. My main role involves developing Python-based tools that automate the analysis of electronic and magnetic properties from molecular coordinate files.",
@@ -206,7 +206,7 @@ export const people: People[] = [
     },
     {
         name: 'Elier Enrique Abreu Martínez',
-        description: 'Maurizio A. Pantoja Hernández is a chemist specializing in computational chemistry and machine learning, currently a postdoctoral researcher at Cinvestav Mérida.',
+        description: 'PhD student in physical chemistry specializing in QSAR/QSPR modeling and automated workflows for predictive analysis.',
         bio: "I’m a PhD student in Physical Chemistry. I like to think of myself as a curious, observant and calm person — a bit reserved at first, but genuine and talkative once there’s trust. Outside of work I enjoy relaxed plans: a good coffee, a day by the sea, or a bike ride. I value authentic collaboration, everyday humor, and science driven by purpose.",
         researchLine: "Development of automated KNIME workflows for building and validating QSAR/QSPR predictive models.",
         currentProjects: "My main project focuses on developing an automated KNIME workflow for building and validating QSAR/QSPR models, including deep neural network-based modeling methods. So far, we have completed the workflow for qualitative SAR/SPR analysis, with the implementation of predictive models still pending.\nIn addition, I have contributed with this workflow to a project creating a database of biased agonists for the mu-opioid receptor. At the same time, we are working on developing new metrics to detect non-structural factors causing bi-activity disruptions, which helps improve the understanding and robustness of predictive models.",
@@ -218,7 +218,7 @@ export const people: People[] = [
     },
     {
         name: 'Rafael Flores Larrañaga',
-        description: 'Maurizio A. Pantoja Hernández is a chemist specializing in computational chemistry and machine learning, currently a postdoctoral researcher at Cinvestav Mérida.',
+        description: 'PhD student in physical chemistry specializing in computational astrochemistry, focused on sulfur-containing molecules and their structural, electronic, and spectroscopic properties.',
         bio: "Rafael Flores Larrañaga is a biologist and theoretical–computational chemist from the Benemérita Universidad Autónoma de Puebla (BUAP), where he earned his Bachelor’s degree in Biology and his Master’s degree in Chemical Sciences (Physical Chemistry). He is currently pursuing his Ph.D. in Physical Chemistry at BUAP, focusing on the study of sulfur-containing molecules with astrochemical relevance. His research explores the structural, electronic, and spectroscopic properties of sulfur compounds (such as dithiols and disulfides) using ab initio methods. Through this work, he investigates their conformational flexibility, bonding characteristics, and potential role in interstellar environments, aiming to provide accurate molecular data to support future astronomical detections.",
         researchLine: "My research focuses on the theoretical and computational study of sulfur-containing molecules with astrochemical relevance. Using ab initio and density functional theory methods, I investigate their structure, stability, conformational behavior, bonding properties, and spectroscopic characteristics to understand their formation and role in interstellar environments.",
         currentProjects: "My research focuses on the theoretical and computational study of sulfur-containing molecules with astrochemical relevance. I am currently investigating CH4S2 and C2H6S2 isomeric families to understand their structure, stability, bonding, and spectroscopic properties using high-level ab initio methods.",
@@ -248,7 +248,7 @@ export const people: People[] = [
     },
     {
         name: 'Diego Román Montalvo',
-        description: 'Maurizio A. Pantoja Hernández is a chemist specializing in computational chemistry and machine learning, currently a postdoctoral researcher at Cinvestav Mérida.',
+        description: 'PhD student in chemical engineering specializing in computational chemistry, focused on green solvents and planar hypercoordinated systems.',
         bio: "My name is Diego Román, I am a chemical engineer who recently begun a PhD at CINVESTAV, Mérida. My main area of research has been the study, with computational chemistry methods, of green solvents.",
         researchLine: "Study of planar hypercoordinated systems",
         currentProjects: "Automatic identification of planar pentacoordinated and tetracoordinated systems with a carbon center.",
@@ -268,8 +268,9 @@ export const people: People[] = [
     },
     {
         name: 'José Daniel Villanueva Hernández',
-        description: 'Maurizio A. Pantoja Hernández is a chemist specializing in computational chemistry and machine learning, currently a postdoctoral researcher at Cinvestav Mérida.',
-        bio: "My name is Maurizio Alejandro Pantoja Hernández. I completed my undergraduate studies in Chemical Engineering in 2014 at Universidad Veracruzana, Xalapa Campus. The following year, I began my Master's studies in Bioorganic Chemistry, also at Universidad Veracruzana, where I worked on the computational analysis of intermolecular interactions between ionic liquids and phenolic compound extractants, under the supervision of Prof. Myrna Matus. After earning my Master's degree in early 2018, I worked as a research assistant to Prof. Myrna Matus until mid-2019. I began my phD studies in Chemistry in September 2019, at Universidad Autónoma Metropolitana, Iztapalapa Unit, in Mexico City. I worked with Prof. José L. Gázquez on developing chemical reactivity descriptors for interacting species, within the theoretical framework of the Density Functional Theory. I earned my phD degree in December 2023 and began my first postdoctoral fellowship in January 2024 at Universidad Veracruzana. During this fellowship, I studied the oxidative desulfurization of oil using molecular chemical reactivity descriptors. In February 2025, I started my current postdoctoral fellowship at Cinvestav-Mérida, where I am working on developing a machine learning interatomic potential for exploring the potential energy surface of boron clusters.",
+        description: 'Master’s student specializing in computational chemistry and machine learning, focused on computer-assisted structure elucidation and spectroscopic data analysis.'
+        ,
+        bio: "Bachelor degree in Chemical Engineering. He likes organic chemistry, building stuff with Python and eat sunflower seeds.",
         role: 'masters_student_cinvestav',
         researchLine: [
             'Computer-assisted structure elucidation (CASE).',
@@ -283,8 +284,8 @@ export const people: People[] = [
     },
     {
         name: 'Daniela Alvarado González',
-        description: 'Maurizio A. Pantoja Hernández is a chemist specializing in computational chemistry and machine learning, currently a postdoctoral researcher at Cinvestav Mérida.',
-        bio: "My name is Maurizio Alejandro Pantoja Hernández. I completed my undergraduate studies in Chemical Engineering in 2014 at Universidad Veracruzana, Xalapa Campus. The following year, I began my Master's studies in Bioorganic Chemistry, also at Universidad Veracruzana, where I worked on the computational analysis of intermolecular interactions between ionic liquids and phenolic compound extractants, under the supervision of Prof. Myrna Matus. After earning my Master's degree in early 2018, I worked as a research assistant to Prof. Myrna Matus until mid-2019. I began my phD studies in Chemistry in September 2019, at Universidad Autónoma Metropolitana, Iztapalapa Unit, in Mexico City. I worked with Prof. José L. Gázquez on developing chemical reactivity descriptors for interacting species, within the theoretical framework of the Density Functional Theory. I earned my phD degree in December 2023 and began my first postdoctoral fellowship in January 2024 at Universidad Veracruzana. During this fellowship, I studied the oxidative desulfurization of oil using molecular chemical reactivity descriptors. In February 2025, I started my current postdoctoral fellowship at Cinvestav-Mérida, where I am working on developing a machine learning interatomic potential for exploring the potential energy surface of boron clusters.",
+        description: 'Master’s student in physical chemistry focused on computational methods, scientific software, and data analysis for chemical problem solving.',
+        bio: "Hi, I'm Daniela Alvarado-González, a chemist and master's student in Physical Chemistry at Cinvestav Mérida. I'm interested in the use of scientific software and data analysis, as well as their application to the interpretation of chemical problems. I'm a curious and enthusiastic person, driven by a passion for discovering nwe knowledge and contributing to a better world",
         role: 'masters_student_cinvestav',
         researchLine: [
             'EyringPy',
@@ -296,8 +297,8 @@ export const people: People[] = [
     },
     {
         name: 'Maximiliano Yáñez López',
-        description: 'Maurizio A. Pantoja Hernández is a chemist specializing in computational chemistry and machine learning, currently a postdoctoral researcher at Cinvestav Mérida.',
-        bio: "My name is Maurizio Alejandro Pantoja Hernández. I completed my undergraduate studies in Chemical Engineering in 2014 at Universidad Veracruzana, Xalapa Campus. The following year, I began my Master's studies in Bioorganic Chemistry, also at Universidad Veracruzana, where I worked on the computational analysis of intermolecular interactions between ionic liquids and phenolic compound extractants, under the supervision of Prof. Myrna Matus. After earning my Master's degree in early 2018, I worked as a research assistant to Prof. Myrna Matus until mid-2019. I began my phD studies in Chemistry in September 2019, at Universidad Autónoma Metropolitana, Iztapalapa Unit, in Mexico City. I worked with Prof. José L. Gázquez on developing chemical reactivity descriptors for interacting species, within the theoretical framework of the Density Functional Theory. I earned my phD degree in December 2023 and began my first postdoctoral fellowship in January 2024 at Universidad Veracruzana. During this fellowship, I studied the oxidative desulfurization of oil using molecular chemical reactivity descriptors. In February 2025, I started my current postdoctoral fellowship at Cinvestav-Mérida, where I am working on developing a machine learning interatomic potential for exploring the potential energy surface of boron clusters.",
+        description: 'Master’s student specializing in computational materials science, focused on stacking phenomena in two-dimensional materials and ab initio property analysis.',
+        bio: "Ingeniero Químico en Materiales egresado de la Universidad Autónoma de Querétaro",
         role: 'masters_student_cinvestav',
         researchLine: [
             'Estudios sobre apilamientos en materiales bidimensionales',
@@ -310,7 +311,7 @@ export const people: People[] = [
     },
     {
         name: 'José Emmanuel Soberanis Cáceres',
-        description: 'Maurizio A. Pantoja Hernández is a chemist specializing in computational chemistry and machine learning, currently a postdoctoral researcher at Cinvestav Mérida.',
+        description: 'Undergraduate research intern specializing in scientific software development, focused on graphical user interfaces for computational chemistry tools.',
         bio: `My name is José Emmanuel Soberanis Cáceres, and I'm a Physics Engineering student at the Faculty of Engineering, Universidad Autónoma de Yucatán (UADY). I'm passionate about programming and enjoy learning new tools and concepts related to software development and architecture. I'm motivated by understanding the "why" behind things and analyzing how they work, because this allows me to acquire more solid, rather than superficial, knowledge. This way of learning has greatly helped me in my academic development and in the projects I carry out at Cinvestav.\nI also really enjoy communicating ideas: I like to present and explain complex topics in simple terms and share what I learn. I believe that clarity in conveying knowledge is a powerful way to connect with others and continue learning.`,
         researchLine: 'My work focuses on the development and adaptation of graphical user interfaces (GUIs) for scientific software, with the goal of improving their accessibility and ease of use. I collaborate both on the creation of interfaces for tools that originally operate from Command-Line Interface, and on the updating and redesign of applications previously developed in interactive environments. These implementations aim to optimize the user experience and expand the reach of the software developed by the Merino Lab (Theoretical Physical Chemistry Group) at Cinvestav Mérida.',
         currentProjects: '-> Project: Implementation of a Graphical User Interface (GUI) for the program Eyringpy.\nThe project aims to facilitate the use and understanding of the computational chemistry tool Eyringpy, developed at the Merino Lab (Theoretical Physical Chemistry Group), through a more accessible and visual platform that optimizes user interaction. My role in the project is to design and implement the graphical interface, ensuring that its structure and functionality make interacting with the program simpler and more intuitive.\n-> Project: Implementation of a Graphical User Interface (GUI) for the program SurfinPES.\nThe project aims to facilitate the use and understanding of the computational chemistry tool SurfinPES, developed at the Merino Lab (Theoretical Physical Chemistry Group), through a more accessible and visual platform that optimizes user interaction. My role in the project is to design and implement the graphical interface, ensuring that its structure and functionality make interacting with the program simpler and more intuitive.\n-> Project: Adapting the new version of the scientific software SmilX to a graphical user interface (GUI).\nThe project aims to adapt a program previously developed for an interactive environment to a platform with a more structured and accessible graphical interface, facilitating user interaction and improving the presentation of its tools. My role in the project involves participating in the redesign and implementation of this new version of the program SmilX, contributing to optimizing its functionality and user experience.',
@@ -320,7 +321,7 @@ export const people: People[] = [
     },
     {
         name: 'Aileen Montserrat García Cano',
-        description: 'Maurizio A. Pantoja Hernández is a chemist specializing in computational chemistry and machine learning, currently a postdoctoral researcher at Cinvestav Mérida.',
+        description: 'Undergraduate research intern specializing in scientific programming and computational chemistry, focused on algorithm development and data processing tools.',
         bio: "My name is Aileen Montserrat García Cano, and I am a Physics Engineering student at the Autonomous University of Yucatán (UADY). I have a deep interest in scientific programming, data analysis, and the experimental exploration of systems in chemistry and physics. I am enthusiastic about theoretical modeling, laboratory research, and the application of computational tools to address complex scientific problems.\nMy perspective is based on recognizing science as a fundamental tool for addressing social challenges, driving meaningful and transformative change through scientific knowledge and innovation. Therefore, I see scientific programming and the development of new materials through computational modeling and calculations as key pathways to expand the boundaries of knowledge and generate innovative solutions.",
         researchLine: 'Participation in the development of a module for the AEGON library, as well as in the update of other existing modules. I collaborate in the development and optimization of algorithms applied to various research areas.\nThis work enables the collection and conversion of data from different computational chemistry programs (including ORCA, Gaussian, GULP, and VASP) into specific formats, as well as the integration of multiple libraries for diverse purposes—all aimed at strengthening and expanding new scientific research.',
         currentProjects: 'Development of crossover-based genetic algorithms for the prediction of new entities.\nThe primary objective of the project is the development and updating of modules for the AEGON library (Python), to which I actively contribute. These modules are aimed at the reading and writing of molecular geometries and trajectories from files generated by various computational chemistry programs, as well as at the implementation of a crossover-based genetic algorithm for the optimization of molecular cluster geometries.\nThese tools enable the extraction and manipulation of critical data for applications in computational physical chemistry, the training of interatomic potentials using machine learning techniques, and, more generally, for research focused on the design and prediction of new molecular entities.',
@@ -330,7 +331,7 @@ export const people: People[] = [
     },
     {
         name: 'Gabriela Yasmin Vidales Ayala',
-        description: 'Physics Engineering student at UADY and research intern at TheoChem Mérida. Expert in AI, full-stack development, and computational modeling, with international certifications from IBM, Huawei, and MIT.',
+        description: 'Undergraduate research intern specializing in computational science and artificial intelligence, focused on scientific software development and molecular modeling.',
         bio: "Gabriela Vidales is a Physics Engineering student at the Autonomous University of Yucatan (UADY) with a distinguished track record in scientific research, artificial intelligence, and technological development. A recipient of the 2024 State Youth Prize in Technological Innovation, she has been selected for prestigious international programs such as the 'Dra. Bessie Lawrence' scholarship at the Weizmann Institute of Science (Israel, 2025) and the National Youth Science Camp (USA, 2022). Currently, she serves as a CONACYT research assistant at the TheoChem group (CINVESTAV) and is the founder and president of the first IEEE Women in Engineering (WIE) affinity group at UADY, actively promoting STEM leadership and scientific outreach.",
         researchLine: [
             "Computational Materials Science and Molecular Modeling",

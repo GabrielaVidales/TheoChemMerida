@@ -2,11 +2,12 @@ import { useIsMobile } from "@/hooks/use-mobile"
 import { Separator } from "./ui/separator"
 import logo from '@/assets/TheoChemMeridaLogo.png'
 
+
 export const Footer = () => {
     const mobile = useIsMobile()
 
     return (
-        <footer className="relative bg-slate-900 text-white mt-40">
+        <footer className="relative w-full bg-slate-900 text-white max-sm:overflow-hidden">
             <div
                 className="absolute inset-0 pointer-events-none opacity-[0.04]"
                 style={{
@@ -45,15 +46,15 @@ export const Footer = () => {
             </div>
 
             <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-175 h-full rounded-full bg-cyan-500/10 blur-[120px]" />
+                <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 max-w-6xl h-full rounded-full bg-cyan-500/10 blur-[120px]" />
                 <div className="absolute bottom-0 right-0 w-100 h-full rounded-full bg-indigo-600/10 blur-[100px]" />
             </div>
 
-            <div className="relative z-10 max-w-5xl mx-auto px-6">
+            <div className="relative z-10 max-w-5xl mx-auto px-6 pt-8">
                 <img
                     src={logo}
                     alt="TheoChemMerida"
-                    className="h-20 my-8"
+                    className="h-20 mb-8"
                 />
                 <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
 

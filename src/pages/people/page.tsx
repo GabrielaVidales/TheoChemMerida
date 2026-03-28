@@ -7,8 +7,19 @@ import { ExternalLink, Plus, User2 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Separator } from '@/components/ui/separator'
 import { routes } from '@/routes/routes'
+import { useIsMobile } from '@/hooks/use-mobile'
+
+const SECTIONS = [
+    { key: 'leader', label: 'Principal Investigators', accent: '#0ea5e9' },
+    { key: 'postdoctoral_researcher', label: 'Postdoctoral Researchers', accent: '#8b5cf6' },
+    { key: 'phd_student_cinvestav', label: 'PhD Students', accent: '#10b981' },
+    { key: 'masters_student_cinvestav', label: 'Masters Students', accent: '#f59e0b' },
+    { key: 'undergraduate_research_intern', label: 'Undergraduate Students', accent: '#f43f5e' },
+] as const
 
 function PeoplePage() {
+    const mobile = useIsMobile()
+
     const principalInvestigators = people.filter(p => p.role === 'leader')
     const postdoc = people.filter(p => p.role === 'postdoctoral_researcher')
     const phd = people.filter(p => p.role === 'phd_student_cinvestav')
@@ -17,105 +28,78 @@ function PeoplePage() {
 
 
     return (
-        <div className='mx-auto space-y-10 py-10'>
-            <div className='max-w-4xl mx-auto px-5 relative'>
-                <PageTitle title='Members' />
+        <div className='mx-auto space-y-10'>
+            <section className="relative min-h-60 w-full flex flex-col justify-center overflow-hidden bg-slate-900 text-white font-['DM_Sans',sans-serif] shadow-xl shadow-foreground/30">
+                <div
+                    className="absolute inset-0 pointer-events-none opacity-[0.04]"
+                    style={{
+                        backgroundImage: `linear-gradient(#38bdf8 ${mobile ? 2 : 4}px, transparent ${mobile ? 2 : 4}px), linear-gradient(90deg, #38bdf8 ${mobile ? 2 : 4}px, transparent ${mobile ? 2 : 4}px)`,
+                        backgroundSize: mobile ? "24px 24px" : "48px 48px",
+                        backgroundAttachment: 'fixed',
+                        maskImage: "linear-gradient(to bottom, transparent, black 15%), linear-gradient(to top, transparent, black 20%)",
+                        WebkitMaskImage: "linear-gradient(to bottom, transparent, black 15%), linear-gradient(to top, transparent, black 15%)",
+                        maskComposite: "intersect",
+                        WebkitMaskComposite: "source-in",
+                    }}
+                />
+
+                <div className='max-w-4xl mx-auto w-full'>
+                    <h2
+                        className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tight leading-tight"
+                        style={{ fontFamily: "'Space Grotesk', 'DM Sans', sans-serif" }}
+                    >
+                        Our People
+                    </h2>
+                </div>
+
+                <div className="absolute inset-0 pointer-events-none">
+                    <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-175 max-w-6xl h-175 rounded-full bg-cyan-500/10 blur-[120px]" />
+                </div>
+            </section>
+
+
+            <div className="max-w-5xl mx-auto px-6 md:px-12 py-16 space-y-24">
+                {SECTIONS.map(({ key, label, accent }) => {
+                    const members = people.filter(p => p.role === key)
+                    if (!members.length) return null
+
+                    return (
+                        <section key={key} id={key}>
+
+                            {/* Título de sección con acento de color */}
+                            <div className="flex items-center gap-4 mb-10">
+                                <div className="w-1 h-8 rounded-full shrink-0" style={{ backgroundColor: accent }} />
+                                <h2
+                                    className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight"
+                                    style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                                >
+                                    {label}
+                                </h2>
+                                <div className="flex-1 h-px bg-slate-100" />
+                                <span
+                                    className="text-xs font-bold px-2.5 py-1 rounded-full shrink-0"
+                                    style={{ color: accent, backgroundColor: accent + '15' }}
+                                >
+                                    {members.length}
+                                </span>
+                            </div>
+
+                            <div className={cn(
+                                'grid gap-5',
+                                key === 'leader'
+                                    ? 'grid-cols-2 sm:grid-cols-4'
+                                    : 'grid-cols-2 sm:grid-cols-3 md:grid-cols-6',
+                            )}>
+                                {key === 'leader' && <div className="hidden sm:block" />}
+                                {members.map(p => (
+                                    <MemberCard key={p.name} member={p} />
+                                ))}
+                                {key === 'leader' && <div className="hidden sm:block" />}
+                            </div>
+                        </section>
+                    )
+                })}
             </div>
-
-            <section className='max-w-4xl mx-auto px-5 relative'>
-                <div className='space-y-2 mb-5'>
-                    <h2 className={cn(
-                        'text-lg font-semibold text-center uppercase',
-                        'sm:text-xl md:text-2xl'
-                    )}>
-                        Principal Investigators</h2>
-                    <div className='bg-primary h-0.5 w-25 mx-auto' />
-                </div>
-
-                <div className={cn(
-                    'grid grid-cols-2 gap-5 py-5',
-                    'sm:grid-cols-4 sm:gap-10',
-                )}>
-                    <div className='hidden sm:block' />
-                    {principalInvestigators.map(p => <MemberCard key={p.name} member={p} />)}
-                </div>
-            </section>
-
-            <section className='max-w-4xl mx-auto px-5 relative'>
-                <div className='space-y-2 mb-5'>
-                    <h2 className={cn(
-                        'text-lg font-semibold text-center uppercase',
-                        'sm:text-xl md:text-2xl'
-                    )}>
-                        Postdoctoral Researchers
-                    </h2>
-                    <div className='bg-primary h-0.5 w-25 mx-auto' />
-                </div>
-
-                <div className={cn(
-                    'grid grid-cols-2 gap-5 py-5',
-                    'sm:grid-cols-4 sm:gap-10',
-                )}>
-                    {postdoc.map(p => <MemberCard key={p.name} member={p} />)}
-                </div>
-            </section>
-
-            <section className='max-w-4xl mx-auto px-5 relative'>
-                <div className='space-y-2 mb-5'>
-                    <h2 className={cn(
-                        'text-lg font-semibold text-center uppercase',
-                        'sm:text-xl md:text-2xl'
-                    )}>
-                        PhD Students
-                    </h2>
-                    <div className='bg-primary h-0.5 w-25 mx-auto' />
-                </div>
-
-                <div className={cn(
-                    'grid grid-cols-2 gap-5 py-5',
-                    'sm:grid-cols-4 sm:gap-10',
-                )}>
-                    {phd.map(p => <MemberCard key={p.name} member={p} />)}
-                </div>
-            </section>
-
-            <section className='max-w-4xl mx-auto px-5 relative'>
-                <div className='space-y-2 mb-5'>
-                    <h2 className={cn(
-                        'text-lg font-semibold text-center uppercase',
-                        'sm:text-xl md:text-2xl'
-                    )}>
-                        Masters Students
-                    </h2>
-                    <div className='bg-primary h-0.5 w-25 mx-auto' />
-                </div>
-
-                <div className={cn(
-                    'grid grid-cols-2 gap-5 py-5',
-                    'sm:grid-cols-4 sm:gap-10',
-                )}>
-                    {masters.map(p => <MemberCard key={p.name} member={p} />)}
-                </div>
-            </section>
-
-            <section className='max-w-4xl mx-auto px-5 relative'>
-                <div className='space-y-2 mb-5'>
-                    <h2 className={cn(
-                        'text-lg font-semibold text-center uppercase',
-                        'sm:text-xl md:text-2xl'
-                    )}>
-                        Undergraduate Students
-                    </h2>
-                    <div className='bg-primary h-0.5 w-25 mx-auto' />
-                </div>
-
-                <div className={cn(
-                    'grid grid-cols-2 gap-5 py-5',
-                    'sm:grid-cols-4 sm:gap-10',
-                )}>
-                    {licencituras.map(p => <MemberCard key={p.name} member={p} />)}
-                </div>
-            </section>
         </div>
     )
 }
@@ -128,14 +112,12 @@ type MemberCardProps = {
 }
 
 function MemberCard({ member }: MemberCardProps) {
-    const navigate = useNavigate()
-
     const memberUrl = routes.people.profile.build({ slug: slugify(member.name) })
 
     return (
         <div className='group'>
             <div className={cn(
-                'mb-4 rounded-lg overflow-hidden border-2 border-primary/20',
+                'mb-4 rounded-lg overflow-hidden',
                 'transition-all duration-200 group-hover:scale-105 group-hover:shadow-lg',
             )}>
                 <Link to={memberUrl || '#'} className="relative block cursor-pointer">
@@ -147,7 +129,7 @@ function MemberCard({ member }: MemberCardProps) {
                         <p className="text-white text-xs font-bold uppercase tracking-widest translate-y-5 group-hover/img:translate-y-0 transition-transform duration-300">
                             View Profile
                         </p>
-                        <User2 className='text-white opacity-0 group-hover/img:opacity-100 transition-all duration-600'/>
+                        <User2 className='text-white opacity-0 group-hover/img:opacity-100 transition-all duration-600' />
                     </div>
                     <img
                         src={member.profilePic || 'https://avatar.vercel.sh/shadcn1'}
@@ -155,62 +137,23 @@ function MemberCard({ member }: MemberCardProps) {
                         className={cn(
                             'relative aspect-square w-full object-cover',
                             'ease-in-out bg-slate-100/10',
-                            'sm:aspect-3/4',
+                            'sm:aspect-4/5',
                         )}
                     />
                 </Link>
             </div>
             <div className='px-2'>
-                <p className='text-sm sm:text-base text-center text-foreground font-medium items-start'>
+                <p className='text-sm sm:text-sm  text-foreground font-semibold items-start'>
                     {member.name}
                 </p>
-                <p className='text-sm sm:text-base text-center text-muted-foreground'>
+                <p className='text-sm sm:text-sm  text-muted-foreground'>
                     {roles[member.role].description}
                 </p>
             </div>
         </div>
     )
-
-    return (
-        <Card
-            className={cn(
-                'relative mx-auto w-full max-w-sm shadow-lg overflow-hidden pt-0 pb-3 gap-0',
-                'group hover:shadow-accent-foreground/20 transition-shadow',
-                'hover:-translate-y-1 transition-transform duration-300'
-            )}
-        >
-            <div className="absolute inset-0 aspect-square" />
-            <Link to={memberUrl || '#'} className='cursor-pointer'>
-                <img
-                    src={member.profilePic || 'https://avatar.vercel.sh/shadcn1'}
-                    alt="Event cover"
-                    className={cn(
-                        'relative aspect-square w-full object-cover',
-                        'transition-transform duration-500 group-hover:scale-105',
-                        'ease-in-out bg-slate-100/10',
-                    )}
-                />
-            </Link>
-            <Separator />
-            <CardHeader className='py-3'>
-                <CardTitle>{member.name}</CardTitle>
-            </CardHeader>
-            <CardFooter className='justify-center mt-auto'>
-                <Button className="group flex items-center gap-0" onClick={() => navigate(memberUrl)}>
-                    <span className={cn(
-                        "overflow-hidden whitespace-nowrap",
-                        "w-0 group-hover:w-22",
-                        "transition-all duration-300",
-                    )}>
-                        Read Full Bio
-                    </span>
-
-                    <div className="relative w-4 h-4 shrink-0">
-                        <Plus className="absolute inset-0 transition-all duration-200 group-hover:opacity-0 group-hover:scale-75" />
-                        <ExternalLink className="absolute inset-0 opacity-0 scale-75 transition-all duration-200 group-hover:opacity-100 group-hover:scale-100" />
-                    </div>
-                </Button>
-            </CardFooter>
-        </Card>
-    )
 }
+
+
+
+

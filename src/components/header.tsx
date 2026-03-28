@@ -2,10 +2,12 @@ import theochemlogo from '@/assets/TheoChemMeridaLogo.png'
 import { useScroll } from '@/hooks/use-scroll';
 import { cn } from '@/lib/utils';
 import { routes } from '@/routes/routes';
-import { useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { Button } from './ui/button';
 import { Menu } from 'lucide-react';
+import { Popover, PopoverContent, PopoverHeader, PopoverTrigger, } from "@/components/ui/popover"
+import { Item, ItemContent, ItemTitle, } from "@/components/ui/item"
+
 
 const navLinks: { label: string, url: string }[] = [
     {
@@ -27,6 +29,10 @@ const navLinks: { label: string, url: string }[] = [
     {
         label: 'Events',
         url: routes.events
+    },
+    {
+        label: 'Contact Us',
+        url: '/contact'
     },
 ]
 
@@ -75,13 +81,13 @@ export const Header = ({
                                 <>
                                     <span className={cn(
                                         isActive ?
-                                            'text-[#6854ff]' :
-                                            'group-hover:text-[#6854ff] transition-colors'
+                                            'text-indigo-400' :
+                                            'group-hover:text-indigo-400 transition-colors'
                                     )}>
                                         {link.label}
                                     </span>
                                     <div className={cn(
-                                        'h-1 rounded-full mt-auto bg-[#6854ff] origin-center scale-x-0',
+                                        'h-1 rounded-full mt-auto bg-indigo-500 origin-center scale-x-0',
                                         isActive ?
                                             'scale-x-100' :
                                             'group-hover:scale-x-100 transition-transform',
@@ -95,15 +101,39 @@ export const Header = ({
                 <div className={cn(
                     'lg:hidden ml-auto'
                 )}>
-                    <Button size='icon-lg' variant='ghost' className={cn(
-                        'bg-background/20 hover:bg-background/10 active:bg-background/25',
-                        'text-white/80 hover:text-white/50 active:text-white'
+                    <Popover>
+                        <PopoverTrigger asChild>
+                            <Button size='icon-lg' variant='ghost' className={cn(
+                                !enableScroll || scroll ?
+                                    'text-black/80 hover:text-black/50 active:text-black' :
+                                    'text-white/80 hover:text-white/50 active:text-white',
 
-                    )}>
-                        <Menu />
-                    </Button>
+                                !enableScroll || scroll ?
+                                    'bg-black/10 hover:bg-black/5 active:bg-black/15' :
+                                    'bg-background/20 hover:bg-background/10 active:bg-background/25'
+                            )}>
+                                <Menu className='stroke-3' />
+                            </Button>
+                        </PopoverTrigger>
+                        <PopoverContent className='p-0 max-w-50'>
+                            <PopoverHeader>
+                                {navLinks.map((link, index) =>
+                                    <Item key={index} asChild variant='muted' className='py-3 px-5'>
+                                        <Link
+                                            to={link.url}
+                                            onClick={() => document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }))}
+                                        >
+                                            <ItemContent>
+                                                <ItemTitle className='text-base'>{link.label}</ItemTitle>
+                                            </ItemContent>
+                                        </Link>
+                                    </Item>
+                                )}
+                            </PopoverHeader>
+                        </PopoverContent>
+                    </Popover>
                 </div>
             </div>
-        </header>
+        </header >
     )
 }

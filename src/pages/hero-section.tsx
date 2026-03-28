@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, FlaskConical, Atom } from "lucide-react";
-import image from '@/assets/img/slide1.jpg'
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import image from '@/assets/img/Sin título.png'
+import mask from '@/assets/mask3.png'
 import { useIsMobile } from "@/hooks/use-mobile";
 
 function Particle({ style }: { style: React.CSSProperties }) {
@@ -18,7 +18,20 @@ function Particle({ style }: { style: React.CSSProperties }) {
 export default function HeroSection() {
     const mobile = useIsMobile()
 
-    const particles = Array.from({ length: 18 }, (_, i) => ({
+    const maskStyles = {
+        WebkitMaskImage: `url(${mask})`,
+        maskImage: `url(${mask})`,
+        maskMode: 'luminance',
+        WebkitMaskSize: 'contain',
+        maskSize: 'contain',
+        WebkitMaskPosition: 'center',
+        maskPosition: 'center',
+        WebkitMaskRepeat: 'no-repeat',
+        maskRepeat: 'no-repeat',
+        filter: 'drop-shadow(0 20px 40px rgba(6,182,212,0.15)) drop-shadow(0 8px 16px rgba(0,0,0,0.4))',
+    }
+
+    const particles = Array.from({ length: 18 }, () => ({
         width: `${Math.random() * 10 + 4}px`,
         height: `${Math.random() * 10 + 4}px`,
         top: `${Math.random() * 100}%`,
@@ -28,26 +41,30 @@ export default function HeroSection() {
     }));
 
     return (
-        <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-[#050d1a] text-white font-['DM_Sans',sans-serif]">
+        <section className="relative min-h-screen w-full flex flex-col justify-center overflow-hidden bg-slate-900 text-white font-['DM_Sans',sans-serif]">
             <div
                 className="absolute inset-0 pointer-events-none opacity-[0.04]"
                 style={{
-                    backgroundImage: `linear-gradient(#38bdf8 ${mobile?2:4}px, transparent ${mobile?2:4}px), linear-gradient(90deg, #38bdf8 ${mobile?2:4}px, transparent ${mobile?2:4}px)`,
+                    backgroundImage: `linear-gradient(#38bdf8 ${mobile ? 2 : 4}px, transparent ${mobile ? 2 : 4}px), linear-gradient(90deg, #38bdf8 ${mobile ? 2 : 4}px, transparent ${mobile ? 2 : 4}px)`,
                     backgroundSize: mobile ? "24px 24px" : "48px 48px",
+                    backgroundAttachment: 'fixed',
+                    maskImage: "linear-gradient(to bottom, transparent, black 15%), linear-gradient(to top, transparent, black 20%)",
+                    WebkitMaskImage: "linear-gradient(to bottom, transparent, black 15%), linear-gradient(to top, transparent, black 15%)",
+                    maskComposite: "intersect",
+                    WebkitMaskComposite: "source-in",
                 }}
             />
 
             <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-175 h-175 rounded-full bg-cyan-500/10 blur-[120px]" />
-                <div className="absolute bottom-0 right-0 w-100 h-100 rounded-full bg-indigo-600/10 blur-[100px]" />
+                <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-100 max-w-6xl h-100 rounded-full bg-cyan-500/10 blur-[120px]" />
             </div>
 
             {particles.map((p, i) => (
                 <Particle key={i} style={p} />
             ))}
 
-            <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 py-24 flex flex-col lg:flex-row items-center gap-12 lg:gap-0">
-                <div className="flex-1 flex flex-col gap-8 lg:pr-8">
+            <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 py-32 flex flex-col lg:flex-row items-center gap-10 lg:gap-6">
+                <div className=" flex-1 flex flex-col gap-8 lg:pr-8">
                     <div
                         className="flex items-center gap-2"
                         style={{ animation: "fadeUp 0.6s ease both" }}
@@ -62,7 +79,7 @@ export default function HeroSection() {
                     </div>
 
                     <h1
-                        className="text-4xl md:text-7xl font-black leading-[1.05] tracking-tight max-w-3xl"
+                        className="text-4xl md:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tight max-w-3xl"
                         style={{ animation: "fadeUp 0.6s 0.1s ease both", fontFamily: "'Space Grotesk', 'DM Sans', sans-serif" }}
                     >
                         Theoretical Chemistry and{" "}
@@ -103,30 +120,28 @@ export default function HeroSection() {
                     </div>
                 </div>
 
-                <div
-                    className="shrink-0 w-full max-w-sm lg:w-115 xl:w-125 flex items-center justify-center relative"
-                    style={{ animation: "fadeIn 1.2s 0.3s ease both" }}
-                >
+                <div className=" flex-[0.7] lg:border-l-8 space-y-5">
                     <div
-                        className="relative w-72 h-72 md:w-96 md:h-96 xl:w-110 xl:h-110"
-                        style={{ animation: "float 6s ease-in-out infinite" }}
+                        className="relative max-w-xl lg:w-full bg-white/10 p-4 pr-6"
+                        style={maskStyles}
                     >
-                        <Avatar className="w-full h-full shadow-md cursor-pointer hover:opacity-90 transition-opacity">
-                            <AvatarImage
-                                src={image}
-                                alt={'TheoChemMerida'}
-                                className="object-cover"
-                            />
-                        </Avatar>
+                        <img
+                            src={image}
+                            alt="Molecular structure"
+                            className="relative w-full h-full object-contain drop-shadow-2xl"
+                            style={maskStyles}
+                        />
+                    </div>
+
+                    <div className="text-center tracking-wider text-neutral-300">
+                        TheoChemMerida Research Group
                     </div>
                 </div>
             </div>
 
-
-
             <div className="absolute right-10 top-1/2 -translate-y-1/2 opacity-10 hidden xl:block">
                 <div
-                    className="w-115 h-115 rounded-full border border-cyan-400"
+                    className="w-50 h-50 rounded-full border border-cyan-400"
                     style={{ animation: "spin 30s linear infinite" }}
                 />
                 <div
