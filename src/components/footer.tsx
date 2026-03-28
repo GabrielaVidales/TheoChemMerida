@@ -7,7 +7,7 @@ export const Footer = () => {
     const mobile = useIsMobile()
 
     return (
-        <footer className="relative w-full bg-slate-900 text-white max-sm:overflow-hidden">
+        <footer className="relative w-full bg-slate-900 text-white max-sm:overflow-hidden sm:mt-20">
             <div
                 className="absolute inset-0 pointer-events-none opacity-[0.04]"
                 style={{
