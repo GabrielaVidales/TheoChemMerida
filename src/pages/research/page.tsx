@@ -18,7 +18,6 @@ import {
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { AnimatePresence, motion } from 'motion/react'
 
-
 export default function ResearchPage() {
     const mobile = useIsMobile()
 
@@ -252,7 +251,8 @@ function YearSelector({ entriesByYear, selectedYear, setSelectedYear, isOpen, se
         const active = selectedYear === Number(year)
 
         return (
-            <button
+            <Button
+                variant='ghost'
                 onClick={() => setSelectedYear(Number(year))}
                 className={`
                     flex items-center justify-between w-full px-3 py-2 rounded-lg text-left transition
@@ -269,64 +269,40 @@ function YearSelector({ entriesByYear, selectedYear, setSelectedYear, isOpen, se
                 `}>
                     {data.journal.length}
                 </span>
-            </button>
+            </Button>
         )
     }
 
     return (
-        <aside className="hidden lg:block flex-1 shrink-0 sticky top-6">
+        <aside className="hidden lg:block flex-1 shrink-0">
             <div className="overflow-hidden border rounded-xl bg-white shadow-sm">
 
-                {/* HEADER */}
                 <div className="px-4 py-3 border-b text-sm font-semibold text-slate-600">
                     Browse by year
                 </div>
 
-                {/* LIST */}
                 <div className="p-2">
 
-                    {/* ALWAYS VISIBLE */}
                     {recent.map(([year, data]) => (
                         <YearButton key={year} year={year} data={data} />
                     ))}
 
-                    {/* ANIMATED CONTAINER */}
-                    <div className="relative overflow-hidden">
-                        <AnimatePresence initial={false}>
-                            {isOpen && (
-                                <motion.div
-                                    key="older"
-                                    layout
-                                    initial={{ opacity: 0, y: -6 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: -6 }}
-                                    transition={{
-                                        duration: 0.25,
-                                        ease: [0.4, 0, 0.2, 1]
-                                    }}
-                                >
-                                    {older.map(([year, data]) => (
-                                        <YearButton key={year} year={year} data={data} />
-                                    ))}
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
-                    </div>
+                    <Collapsible className="rounded-md">
 
-                    {/* TOGGLE */}
-                    <button
-                        onClick={() => setIsOpen(!isOpen)}
-                        className="w-full flex items-center justify-between px-3 py-2 mt-1 text-xs font-semibold uppercase tracking-widest text-slate-400 hover:text-slate-600 hover:bg-slate-50 rounded-lg transition"
-                    >
-                        {isOpen ? 'Show less' : 'Older years'}
+                        <CollapsibleContent className="flex flex-col items-start text-sm">
+                            {older.map(([year, data]) => (
+                                <YearButton key={year} year={year} data={data} />
+                            ))}
+                        </CollapsibleContent>
 
-                        <motion.div
-                            animate={{ rotate: isOpen ? 180 : 0 }}
-                            transition={{ duration: 0.25 }}
-                        >
-                            <ChevronUp />
-                        </motion.div>
-                    </button>
+                        <CollapsibleTrigger asChild>
+                            <Button variant="ghost" className="group w-full uppercase tracking-widest text-xs font-semibold text-slate-400! hover:text-slate-600!">
+                                <span className='hidden group-data-[state=open]:block'>Show more</span>
+                                <span className='group-data-[state=open]:hidden'>Show less</span>
+                                <ChevronDown className="ml-auto group-data-[state=open]:rotate-180" />
+                            </Button>
+                        </CollapsibleTrigger>
+                    </Collapsible>
                 </div>
             </div>
         </aside>
