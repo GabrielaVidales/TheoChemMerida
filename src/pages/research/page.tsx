@@ -1,5 +1,5 @@
 import { publications, type Paper } from '@/data/publications'
-import { CalendarSearch, ChevronsUpDown, ExternalLink, SearchCode, ChevronDown } from 'lucide-react';
+import { CalendarSearch, ChevronsUpDown, ExternalLink, SearchCode, ChevronDown, ChevronUp } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { JournalAccordeon } from './journal-accordeon';
 import {
@@ -16,6 +16,7 @@ import {
     CollapsibleTrigger,
 } from "@/components/ui/collapsible"
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { AnimatePresence, motion } from 'motion/react'
 
 
 export default function ResearchPage() {
@@ -75,19 +76,6 @@ export default function ResearchPage() {
                     <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-175 max-w-6xl h-175 rounded-full bg-cyan-500/10 blur-[120px]" />
                 </div>
             </section>
-
-            <Select>
-  <SelectTrigger className="w-[180px]">
-    <SelectValue placeholder="Theme" />
-  </SelectTrigger>
-  <SelectContent>
-    <SelectGroup>
-      <SelectItem value="light">Light</SelectItem>
-      <SelectItem value="dark">Dark</SelectItem>
-      <SelectItem value="system">System</SelectItem>
-    </SelectGroup>
-  </SelectContent>
-</Select>
 
             <div className="max-w-6xl mx-auto px-6 md:px-12 py-12 space-y-12">
 
@@ -256,125 +244,91 @@ const EmptyYearSelection = () => (
         </p>
     </div>
 )
-
-function YearSelector({ entriesByYear, selectedYear, setSelectedYear, isOpen, setIsOpen }: {
-    entriesByYear: [string, any][]
-    selectedYear: number | null
-    setSelectedYear: (y: number) => void
-    isOpen: boolean
-    setIsOpen: (v: boolean) => void
-}) {
-    const [mobileOpen, setMobileOpen] = useState(false)
+function YearSelector({ entriesByYear, selectedYear, setSelectedYear, isOpen, setIsOpen }) {
     const recent = entriesByYear.filter(([y]) => Number(y) >= 2020)
     const older = entriesByYear.filter(([y]) => Number(y) < 2020)
 
-    const YearButton = ({ year, data }: { year: string; data: any }) => {
+    const YearButton = ({ year, data }) => {
         const active = selectedYear === Number(year)
+
         return (
-            <Button
-                variant="ghost"
-                onClick={() => {
-                    setSelectedYear(Number(year))
-                    setMobileOpen(false)
-                }}
-                className={cn(
-                    "flex items-center justify-between w-full px-3 py-2 rounded-lg text-left h-auto",
-                    active ? 'bg-indigo-100 hover:bg-indigo-100' : 'hover:bg-slate-100'
-                )}
-                style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+            <button
+                onClick={() => setSelectedYear(Number(year))}
+                className={`
+                    flex items-center justify-between w-full px-3 py-2 rounded-lg text-left transition
+                    ${active ? 'bg-indigo-100' : 'hover:bg-slate-100'}
+                `}
             >
-                <span className={cn("text-sm font-bold", active ? 'text-indigo-600' : 'text-neutral-700')}>
+                <span className={`text-sm font-bold ${active ? 'text-indigo-600' : 'text-neutral-700'}`}>
                     {year === '2006' ? '2006 and before' : year}
                 </span>
-                <span className={cn(
-                    "text-xs font-semibold px-2 py-0.5 rounded-full",
-                    active ? 'text-white bg-indigo-600' : 'text-neutral-500 bg-neutral-200'
-                )}>
+
+                <span className={`
+                    text-xs font-semibold px-2 py-0.5 rounded-full
+                    ${active ? 'text-white bg-indigo-600' : 'text-neutral-500 bg-neutral-200'}
+                `}>
                     {data.journal.length}
                 </span>
-            </Button>
+            </button>
         )
     }
 
-    const ListContent = () => (
-        <CardContent className="p-2">
-            {recent.map(([year, data]) => <YearButton key={year} year={year} data={data} />)}
-            <Collapsible open={isOpen} onOpenChange={setIsOpen}>
-                <CollapsibleContent>
-                    {older.map(([year, data]) => <YearButton key={year} year={year} data={data} />)}
-                </CollapsibleContent>
-                <div className="flex items-center justify-between gap-4 px-4">
-                    <h4 className="text-sm font-semibold text-slate-500">See more...</h4>
-                    <CollapsibleTrigger asChild>
-                        <Button variant="ghost" size="icon" className="size-8">
-                            <ChevronsUpDown />
-                        </Button>
-                    </CollapsibleTrigger>
-                </div>
-            </Collapsible>
-        </CardContent>
-    )
-
     return (
-        <>
-            <div className="lg:hidden w-full mb-6">
-                <button
-                    onClick={() => setMobileOpen(v => !v)}
-                    className="w-full flex items-center justify-between px-4 py-3 bg-white border border-slate-200 rounded-xl shadow-sm text-sm font-bold text-slate-700"
-                    style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-                >
-                    <div className="flex items-center gap-2">
-                        <CalendarSearch size={14} className="text-indigo-500" />
-                        <span>{selectedYear ? `Year ${selectedYear}` : 'Browse by year'}</span>
-                    </div>
-                    <ChevronDown
-                        size={16}
-                        className={cn("text-slate-400 transition-transform duration-200", mobileOpen && "rotate-180")}
-                    />
-                </button>
+        <aside className="hidden lg:block flex-1 shrink-0 sticky top-6">
+            <div className="overflow-hidden border rounded-xl bg-white shadow-sm">
 
-                <div className="mt-1 bg-white border border-slate-200 rounded-xl shadow-lg overflow-hidden">
-                    <Select>
-                        <SelectTrigger>
-                            <SelectValue placeholder="Select year" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectGroup>
-
-                                {entriesByYear.map(([year, data]) =>
-                                    <SelectItem key={year} value={year}>
-                                        {year}
-                                    </SelectItem>
-                                )}
-                            </SelectGroup>
-                        </SelectContent>
-                    </Select>
+                {/* HEADER */}
+                <div className="px-4 py-3 border-b text-sm font-semibold text-slate-600">
+                    Browse by year
                 </div>
 
+                {/* LIST */}
+                <div className="p-2">
 
-                {mobileOpen && (
-                    <div className="mt-1 bg-white border border-slate-200 rounded-xl shadow-lg overflow-hidden">
+                    {/* ALWAYS VISIBLE */}
+                    {recent.map(([year, data]) => (
+                        <YearButton key={year} year={year} data={data} />
+                    ))}
 
-
-
-                        <Card className="overflow-hidden py-0 border-none shadow-none">
-                            <ListContent />
-                        </Card>
+                    {/* ANIMATED CONTAINER */}
+                    <div className="relative overflow-hidden">
+                        <AnimatePresence initial={false}>
+                            {isOpen && (
+                                <motion.div
+                                    key="older"
+                                    layout
+                                    initial={{ opacity: 0, y: -6 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -6 }}
+                                    transition={{
+                                        duration: 0.25,
+                                        ease: [0.4, 0, 0.2, 1]
+                                    }}
+                                >
+                                    {older.map(([year, data]) => (
+                                        <YearButton key={year} year={year} data={data} />
+                                    ))}
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
                     </div>
-                )}
-            </div>
 
-            <aside className="hidden lg:block flex-1 shrink-0 sticky top-6">
-                <Card className="overflow-hidden py-0">
-                    <CardHeader className="px-4 py-3 border-b border-slate-100">
-                        <CardTitle className="flex items-center gap-2 text-sm font-semibold text-slate-600">
-                            <CalendarSearch size={14} className="text-indigo-500" />
-                            Browse by year
-                        </CardTitle>
-                    </CardHeader>
-                    <ListContent />
-                </Card>
-            </aside>
-        </>
+                    {/* TOGGLE */}
+                    <button
+                        onClick={() => setIsOpen(!isOpen)}
+                        className="w-full flex items-center justify-between px-3 py-2 mt-1 text-xs font-semibold uppercase tracking-widest text-slate-400 hover:text-slate-600 hover:bg-slate-50 rounded-lg transition"
+                    >
+                        {isOpen ? 'Show less' : 'Older years'}
+
+                        <motion.div
+                            animate={{ rotate: isOpen ? 180 : 0 }}
+                            transition={{ duration: 0.25 }}
+                        >
+                            <ChevronUp />
+                        </motion.div>
+                    </button>
+                </div>
+            </div>
+        </aside>
     )
 }

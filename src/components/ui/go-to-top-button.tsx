@@ -1,27 +1,38 @@
 import { cn } from '@/lib/utils'
-import { ArrowUp } from 'lucide-react'
+import { ChevronUp } from 'lucide-react'
 import React from 'react'
+import { Button } from './button'
+import { useScroll } from '@/hooks/use-scroll'
 
-type TopButtonProps = {
+function TopButton({ className }: React.HTMLAttributes<HTMLButtonElement>) {
+    const scroll = useScroll(100)
 
-}
+    const handleClick = () => {
+        window.scrollTo({
+            behavior: 'smooth',
+            top: 0,
+            left: 0,
+        })
+    }
 
-function TopButton({ className, onClick }: React.HTMLAttributes<HTMLButtonElement>) {
     return (
-        <div className="fixed bottom-5 right-5 md:bottom-10 md:right-10 z-9999">
-            <button
+        <div className={cn(
+            "fixed bottom-5 right-5 md:bottom-10 md:right-10 z-9999 isolate",
+            'transition-all duration-300',
+            scroll ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none',
+        )}>
+            <Button
+                size='icon-lg'
+                variant='default'
+                onClick={handleClick}
                 className={cn(
-                    'relative cursor-pointer rounded-lg size-15 text-white transition-all duration-75',
-                    'flex justify-center items-center shadow-xl shadow-black/20',
-                    'bg-sky-800 hover:bg-sky-700 active:bg-sky-900',
-                    'active:translate-y-2',
-                    'before:content-[""] before:absolute before:inset-0 before:rounded-lg',
-                    'before:bg-sky-950 before:translate-y-2 before:-z-10',
-                    'active:before:translate-y-0'
+                    'size-15 rounded-full border border-input shadow-lg',
+                    'bg-neutral-100 hover:bg-neutral-200 active:bg-neutral-100 active:translate-y-2',
+                    className
                 )}
             >
-                <ArrowUp className="stroke-3 size-8" />
-            </button>
+                <ChevronUp className="stroke-3 size-8 text-neutral-600" />
+            </Button>
         </div>
     )
 }
