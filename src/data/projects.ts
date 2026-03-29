@@ -28,7 +28,7 @@ export const softwareProjects: SoftwareProject[] = [
         name: 'SmilX',
         description: 'SmilX is a software to explore the chemical space of isomers with the SMILES language using the grammar constraint.',
         banner: smilesLogo,
-        projectUrl: 'https://github.com/LuisOrz/SmilX',
+        projectUrl: 'https://smilx-isogenerator.streamlit.app/',
         tags: ['Python',],
     },
     {
@@ -43,6 +43,6 @@ export const softwareProjects: SoftwareProject[] = [
         tags: ['Python',],
         description: 'ELAYA SMILES is a web-based platform designed for the conversion of linear molecular representations (SMILES) into optimized three-dimensional structures.',
         banner: elaya,
-        projectUrl: 'https://github.com/GabrielaVidales/ELAYA_SMILES'
+        projectUrl: 'https://elaya-smiles.onrender.com/'
     },
 ]

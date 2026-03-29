@@ -1,22 +1,12 @@
 import { publications, type Paper } from '@/data/publications'
-import { CalendarSearch, ChevronsUpDown, ExternalLink, SearchCode, ChevronDown, ChevronUp } from 'lucide-react';
+import { ExternalLink, SearchCode, ChevronDown } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { JournalAccordeon } from './journal-accordeon';
-import {
-    Pagination, PaginationContent, PaginationEllipsis,
-    PaginationItem, PaginationLink, PaginationNext, PaginationPrevious,
-} from "@/components/ui/pagination"
-import { cn } from '@/lib/utils';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useIsMobile } from '@/hooks/use-mobile';
-import {
-    Collapsible,
-    CollapsibleContent,
-    CollapsibleTrigger,
-} from "@/components/ui/collapsible"
-import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { AnimatePresence, motion } from 'motion/react'
+import { Collapsible, CollapsibleContent, CollapsibleTrigger, } from "@/components/ui/collapsible"
+import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious, } from "@/components/ui/pagination"
+
 
 export default function ResearchPage() {
     const mobile = useIsMobile()
@@ -28,7 +18,7 @@ export default function ResearchPage() {
 
     return (
         <div className="min-h-screen">
-            <section className="relative min-h-60 w-full overflow-hidden bg-indigo-950 text-white">
+            <section className="relative min-h-60 w-full overflow-hidden bg-slate-900 text-white">
                 <div
                     className="absolute inset-0 pointer-events-none opacity-[0.04]"
                     style={{
@@ -49,7 +39,7 @@ export default function ResearchPage() {
                     >
                         Publications
                     </h1>
-                    <p className="mt-4  text-base max-w-lg leading-relaxed border-l-2 border-indigo-400 pl-4">
+                    <p className="mt-4 text-lg max-w-lg leading-relaxed border-l-2 border-indigo-400 pl-4">
                         Peer-reviewed research in theoretical chemistry, molecular design, and electron delocalization.
                     </p>
 
@@ -297,8 +287,8 @@ function YearSelector({ entriesByYear, selectedYear, setSelectedYear, isOpen, se
 
                         <CollapsibleTrigger asChild>
                             <Button variant="ghost" className="group w-full uppercase tracking-widest text-xs font-semibold text-slate-400! hover:text-slate-600!">
-                                <span className='hidden group-data-[state=open]:block'>Show more</span>
-                                <span className='group-data-[state=open]:hidden'>Show less</span>
+                                <span className='hidden group-data-[state=open]:block'>Show less</span>
+                                <span className='group-data-[state=open]:hidden'>Show more</span>
                                 <ChevronDown className="ml-auto group-data-[state=open]:rotate-180" />
                             </Button>
                         </CollapsibleTrigger>

@@ -114,22 +114,17 @@ export function ContactSection() {
             />
 
             <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-12">
-
-                {/* Header de sección */}
-                <div className="mb-14">
-                    <div className="flex items-center gap-3 mb-4">
-                        <div className="w-8 h-px bg-cyan-500/50" />
-                        <span className="text-cyan-500/70 text-xs tracking-[0.25em] uppercase font-medium">
-                            Contact
-                        </span>
-                    </div>
-                    <h2
-                        className="text-4xl md:text-5xl font-black tracking-tight leading-tight"
-                        style={{ fontFamily: "'Space Grotesk', 'DM Sans', sans-serif" }}
+                <div className="max-w-6xl mx-auto px-6 md:px-12 py-14">
+                    <span className="text-sm tracking-[0.25em] uppercase font-medium">
+                        Contact
+                    </span>
+                    <h1
+                        className="text-3xl md:text-5xl font-black tracking-tight leading-none"
+                        style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                     >
                         TheoChemMerida Research Group
-                    </h2>
-                    <p className="mt-3 text-lg">
+                    </h1>
+                    <p className="mt-4 text-lg max-w-2xl leading-relaxed border-l-2 border-indigo-400 pl-4">
                         We welcome collaborations, inquiries, and interest from prospective students and researchers.
                     </p>
                 </div>

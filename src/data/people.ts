@@ -178,7 +178,7 @@ export const people: People[] = [
     {
         name: 'Lisset Noriega de los Santos',
         description: 'Postdoctoral researcher specializing in computational astrochemistry, focusing on DFT-based spectroscopic analysis and molecular evolution in the interstellar medium.',
-        bio: "egresada del Programa de Ciencias Químicas en el área de Fisicoquímica de la BUAP. Durante mis estudios de maestría y doctorado, enfoqué mi investigación en la aplicación de la teoría del funcional de la densidad (DFT) para el análisis de propiedades espectroscópicas de sistemas moleculares. Actualmente, realizo una estancia posdoctoral en el Departamento de Física Aplicada del CINVESTAV-Mérida, donde he expandido mi enfoque hacia la astroquímica computacional. Mi investigación se centra en la generación de isómeros y su identificación espectroscópica en el medio interestelar, así como en el estudio de mecanismos de reacción fundamentales para la evolución molecular en el espacio.",
+        bio: "Egresada del Programa de Ciencias Químicas en el área de Fisicoquímica de la BUAP. Durante mis estudios de maestría y doctorado, enfoqué mi investigación en la aplicación de la teoría del funcional de la densidad (DFT) para el análisis de propiedades espectroscópicas de sistemas moleculares. Actualmente, realizo una estancia posdoctoral en el Departamento de Física Aplicada del CINVESTAV-Mérida, donde he expandido mi enfoque hacia la astroquímica computacional. Mi investigación se centra en la generación de isómeros y su identificación espectroscópica en el medio interestelar, así como en el estudio de mecanismos de reacción fundamentales para la evolución molecular en el espacio.",
         role: 'postdoctoral_researcher',
         researchLine: [
             'Astroquímica Computacional',
@@ -196,12 +196,13 @@ export const people: People[] = [
     },
     {
         name: 'Fernando José Martínez Villarino',
-        description: 'PhD student specializing in computational chemistry, focused on aromaticity and the development of tools for electronic structure analysis.',
-        bio: "I am a researcher in training with experience in the field of computational and theoretical chemistry, currently pursuing graduate studies. My academic work focuses on the development and application of computational tools for analyzing the electronic and magnetic properties of cyclic molecular systems, with the aim of exploring aromaticity indicators based on magnetic, geometric, and energetic criteria.\nThe central premise of my doctoral thesis is to develop a Python-based code capable of extracting comprehensive information on the electronic delocalization of cyclic systems from a simple molecular file coordinates.\nIn addition, I serve as the high-performance computing (HPC) server administrator at Cinvestav - Mérida, where my responsibilities include installing and compiling complex scientific packages, optimizing large-scale calculations in Linux-based systems, and performing preventive maintenance on the cluster's hardware.",
-        researchLine: "Aromaticity is a fundamental concept in theoretical and computational chemistry that describes the stability and electronic properties of conjugated cyclic systems. It is reflected in magnetic, energetic and structural characteristics that distinguish these compounds from non-aromatic analogues. The study of aromaticity provides insight into electronic delocalization, helps interpret spectroscopic and energetic properties, and establishes quantitative criteria!",
+        description: 'PhD student focused on the study of aromaticity and the development of computational methods and software to analyze electronic delocalization in molecular systems.',
+        bio: "I am a researcher in training with experience in the field of computational and theoretical chemistry, currently pursuing graduate studies. My academic work focuses on the development and application of computational tools for analyzing the electronic and magnetic properties of cyclic molecular systems, with the aim of exploring aromaticity indicators based on magnetic, geometric, and electric criteria.\nThe central premise of my doctoral thesis is to develop a Python-based code capable of extracting comprehensive information on the electronic delocalization of cyclic systems from a simple molecular file coordinates.\nIn addition, I serve as the high-performance computing (HPC) server administrator at Cinvestav - Mérida, where my responsibilities include installing and compiling complex scientific packages, optimizing large-scale calculations in Linux-based systems, and performing preventive maintenance on the cluster's hardware.",
+        researchLine: "Aromaticity is a fundamental concept in theoretical and computational chemistry that describes the stability and electronic properties of conjugated cyclic systems. It is reflected in magnetic, geometric and electronic characteristics that distinguish these compounds from non-aromatic analogues. The study of aromaticity using geometric, magnetic and electronic criteria provides insight into electronic delocalization, helps interpret spectroscopic properties, and establishes quantitative criteria.",
         currentProjects: "I am currently working on projects focused on the study of aromaticity in cyclic molecular systems through computational chemistry methods. My main role involves developing Python-based tools that automate the analysis of electronic and magnetic properties from molecular coordinate files.",
         role: 'phd_student_cinvestav',
         linkedin: 'https://www.linkedin.com/in/fernando-jos%C3%A9-mart%C3%ADnez-villarino-2922b7163/',
+        orcid: 'https://orcid.org/0009-0008-7178-3651',
         profilePic: fernandoVill
     },
     {
@@ -298,13 +299,13 @@ export const people: People[] = [
     {
         name: 'Maximiliano Yáñez López',
         description: 'Master’s student specializing in computational materials science, focused on stacking phenomena in two-dimensional materials and ab initio property analysis.',
-        bio: "Ingeniero Químico en Materiales egresado de la Universidad Autónoma de Querétaro",
+        bio: "Materials Chemical Engineer from Universidad Autónoma de Querétaro, currently pursuing a Master's degree in Physical Chemistry at Cinvestav, Mérida.",
         role: 'masters_student_cinvestav',
         researchLine: [
-            'Estudios sobre apilamientos en materiales bidimensionales',
+            'Stacking studies on two-dimensional materials.'
         ],
         currentProjects: [
-            'Estudio computacional de apilamientos en bicapas hexagonales de los grupos 14 y 15 generados con JAM. Objetivo principal: Estudio de apilamientos no reportados de plumbeno y bismuteno. Cálculos Ab initio para estudio de propiedades.',
+            'Computational studies of bilayer stacking in hexagonal and rectangular two-dimensional materials.'
         ],
         linkedin: 'www.linkedin.com/in/maximiliano-yañez-lopez-563696291',
         profilePic: maxi

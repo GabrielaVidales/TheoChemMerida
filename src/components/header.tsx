@@ -23,17 +23,17 @@ const navLinks: { label: string, url: string }[] = [
         url: routes.research
     },
     {
-        label: 'Projects',
+        label: 'Software',
         url: routes.projects
     },
     {
         label: 'Events',
         url: routes.events
     },
-    {
-        label: 'Contact Us',
-        url: '/contact'
-    },
+    // {
+    //     label: 'Contact Us',
+    //     url: '/contact'
+    // },
 ]
 
 

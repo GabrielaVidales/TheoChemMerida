@@ -20,16 +20,9 @@ const SECTIONS = [
 function PeoplePage() {
     const mobile = useIsMobile()
 
-    const principalInvestigators = people.filter(p => p.role === 'leader')
-    const postdoc = people.filter(p => p.role === 'postdoctoral_researcher')
-    const phd = people.filter(p => p.role === 'phd_student_cinvestav')
-    const masters = people.filter(p => p.role === 'masters_student_cinvestav')
-    const licencituras = people.filter(p => p.role === 'undergraduate_research_intern')
-
-
     return (
-        <div className='mx-auto space-y-10'>
-            <section className="relative min-h-60 w-full flex flex-col justify-center overflow-hidden bg-slate-900 text-white font-['DM_Sans',sans-serif] shadow-xl shadow-foreground/30">
+        <div>
+            <section className="relative min-h-60 w-full overflow-hidden bg-slate-900 text-white">
                 <div
                     className="absolute inset-0 pointer-events-none opacity-[0.04]"
                     style={{
@@ -43,20 +36,22 @@ function PeoplePage() {
                     }}
                 />
 
-                <div className='max-w-4xl mx-auto w-full'>
-                    <h2
-                        className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tight leading-tight"
-                        style={{ fontFamily: "'Space Grotesk', 'DM Sans', sans-serif" }}
+                <div className="max-w-6xl mx-auto px-6 md:px-12 py-14">
+                    <h1
+                        className="text-5xl md:text-6xl font-black tracking-tight  leading-none"
+                        style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                     >
-                        Our People
-                    </h2>
+                        Group Members
+                    </h1>
+                    <p className="mt-4 text-lg max-w-2xl leading-relaxed border-l-2 border-indigo-400 pl-4">
+                        Meet the researchers, students, and collaborators who contribute to our work in chemical kinetics, materials science, and computational modeling.
+                    </p>
                 </div>
 
                 <div className="absolute inset-0 pointer-events-none">
                     <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-175 max-w-6xl h-175 rounded-full bg-cyan-500/10 blur-[120px]" />
                 </div>
             </section>
-
 
             <div className="max-w-5xl mx-auto px-6 md:px-12 py-16 space-y-24">
                 {SECTIONS.map(({ key, label, accent }) => {
@@ -66,7 +61,6 @@ function PeoplePage() {
                     return (
                         <section key={key} id={key}>
 
-                            {/* Título de sección con acento de color */}
                             <div className="flex items-center gap-4 mb-10">
                                 <div className="w-1 h-8 rounded-full shrink-0" style={{ backgroundColor: accent }} />
                                 <h2

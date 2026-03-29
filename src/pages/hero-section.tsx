@@ -4,6 +4,8 @@ import { ArrowRight, FlaskConical, Atom } from "lucide-react";
 import image from '@/assets/img/Sin título.png'
 import mask from '@/assets/mask3.png'
 import { useIsMobile } from "@/hooks/use-mobile";
+import { Link } from "react-router";
+import { routes } from "@/routes/routes";
 
 function Particle({ style }: { style: React.CSSProperties }) {
     return (
@@ -103,20 +105,24 @@ export default function HeroSection() {
                         className="flex flex-wrap gap-3 pt-2"
                         style={{ animation: "fadeUp 0.6s 0.3s ease both" }}
                     >
-                        <Button
-                            size="lg"
-                            className="bg-cyan-500 hover:bg-cyan-400 text-[#050d1a] font-bold px-7 rounded-full transition-all duration-300 shadow-[0_0_24px_rgba(6,182,212,0.4)] hover:shadow-[0_0_36px_rgba(6,182,212,0.6)] group"
-                        >
-                            Our Research
-                            <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
-                        </Button>
-                        <Button
-                            size="lg"
-                            variant="outline"
-                            className="border-slate-600 text-slate-300 hover:border-cyan-500 hover:text-cyan-400 bg-transparent rounded-full px-7 transition-all duration-300"
-                        >
-                            Publications
-                        </Button>
+                        <Link to={routes.people.index}>
+                            <Button
+                                size="lg"
+                                className="bg-cyan-500 hover:bg-cyan-400 text-[#050d1a] font-bold px-7 rounded-full transition-all duration-300 shadow-[0_0_24px_rgba(6,182,212,0.4)] hover:shadow-[0_0_36px_rgba(6,182,212,0.6)] group"
+                            >
+                                Our Members
+                                <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
+                            </Button>
+                        </Link>
+                        <Link to={routes.research}>
+                            <Button
+                                size="lg"
+                                variant="outline"
+                                className="border-slate-600 text-slate-300 hover:border-cyan-500 hover:text-cyan-400 bg-transparent rounded-full px-7 transition-all duration-300"
+                            >
+                                Publications
+                            </Button>
+                        </Link>
                     </div>
                 </div>
 

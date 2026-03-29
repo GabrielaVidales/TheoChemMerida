@@ -1,13 +1,14 @@
 import { useIsMobile } from "@/hooks/use-mobile"
 import { Separator } from "./ui/separator"
 import logo from '@/assets/TheoChemMeridaLogo.png'
+import { cn } from "@/lib/utils"
 
 
 export const Footer = () => {
     const mobile = useIsMobile()
 
     return (
-        <footer className="relative w-full bg-slate-900 text-white max-sm:overflow-hidden sm:mt-20">
+        <footer className="relative w-full bg-slate-900 text-white max-sm:overflow-hidden">
             <div
                 className="absolute inset-0 pointer-events-none opacity-[0.04]"
                 style={{
@@ -22,7 +23,7 @@ export const Footer = () => {
                 }}
             />
 
-            <div className="absolute top-1 left-0 w-full overflow-hidden leading-0 -translate-y-full">
+            {/* <div className="absolute top-1 left-0 w-full overflow-hidden leading-0 -translate-y-full">
                 <svg
                     viewBox="0 0 1440 120"
                     className="w-full h-20 block sm:hidden"
@@ -43,7 +44,7 @@ export const Footer = () => {
                         fill="#0f172b"
                     />
                 </svg>
-            </div>
+            </div> */}
 
             <div className="absolute inset-0 pointer-events-none">
                 <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 max-w-6xl h-full rounded-full bg-cyan-500/10 blur-[120px]" />
@@ -72,8 +73,8 @@ export const Footer = () => {
 
                     <div className="flex flex-col gap-4">
                         <h3 className="text-sm font-bold uppercase tracking-wider text-gray-200">Contact information</h3>
-                        <div className="space-y-3 text-sm text-gray-400">
-                            <div className="flex flex-col">
+                        <div className="space-y-5 text-sm text-gray-400">
+                            <div className="flex flex-col space-y-1">
                                 <div className="flex gap-2 items-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-mail"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10" /><path d="M3 7l9 6l9 -6" /></svg>
                                     <span className="font-semibold text-gray-200">Email:</span>
@@ -82,7 +83,7 @@ export const Footer = () => {
                                 <a href="mailto:gmerino@cinvestav.mx" className="hover:text-blue-400 transition font-semibold w-fit">gmerino@cinvestav.mx</a>
                                 <a href="mailto:gabriel.merino2@gmail.com" className="hover:text-blue-400 transition font-semibold w-fit">gabriel.merino2@gmail.com</a>
                             </div>
-                            <div className="flex flex-col">
+                            <div className="flex flex-col space-y-1">
                                 <div className="flex gap-2 items-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-phone"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" /></svg>
                                     <span className="font-semibold text-gray-200">Phones:</span>
@@ -96,7 +97,7 @@ export const Footer = () => {
                     <div className="flex flex-col space-y-5">
                         <div className='space-y-3'>
                             <h3 className="text-sm font-bold uppercase tracking-wider text-gray-200">Network & Resources</h3>
-                            <div className="space-y-3 mb-5">
+                            <div className="space-y-3">
                                 <a href="https://twitter.com/theochemmerida" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-sm text-gray-400 hover:text-blue-400 transition w-45 font-semibold border-2 border-gray-600 hover:border-blue-400 py-1 px-3 rounded-2xl">
                                     <svg className="size-4" viewBox="0 0 1200 1227" xmlns="http://www.w3.org/2000/svg" fill="currentColor" stroke="currentColor" aria-hidden="true" >
                                         <path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z"></path>
@@ -112,9 +113,23 @@ export const Footer = () => {
                             </div>
                         </div>
 
-                        <div className='space-y-1'>
-                            <h3 className="text-sm font-bold uppercase tracking-wider text-gray-200">Webmaster</h3>
-                            <p className="text-sm leading-relaxed text-gray-400"> Eduardo Escalante Pacheco</p>
+                        <div className='space-y-[0.5]'>
+                            <h3 className="text-sm font-bold uppercase tracking-wider text-gray-200">Webmasters</h3>
+                            {[
+                                'Eduardo Escalante Pacheco',
+                                'Gabriela Yasmin Vidales Ayala',
+                                'Gerardo Hernández Juárez',
+                            ].map((name, index) => (
+                                <p
+                                    key={index}
+                                    className={cn(
+                                        "text-sm leading-relaxed text-gray-400 cursor-pointer",
+                                        "hover:underline hover:underline-offset-4 hover:text-gray-200"
+                                    )}
+                                >
+                                    {name}
+                                </p>
+                            ))}
                         </div>
                     </div>
                 </div>
