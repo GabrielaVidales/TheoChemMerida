@@ -28,6 +28,10 @@ import aaron from '@/assets/members/aaron.dzul.png'
 import bojorquez from '@/assets/members/eduardo-bojorquez.png'
 import dorian from '@/assets/members/dorian-galindo.png'
 import brishel from '@/assets/members/brishel-acosta.png'
+import jessica from '@/assets/members/Jessica Arcudia.jpg'
+import invin from '@/assets/members/Irvin Tamayo.jpeg'
+import miguel from '@/assets/members/Miguel.jpg'
+import gabyCastillo from '@/assets/members/Gaby Castillo_.jpg'
 
 
 // #region Type definitions
@@ -143,6 +147,39 @@ export const people: People[] = [
         ],
         researchGate: 'https://www.researchgate.net/profile/Maurizio-Pantoja-Hernandez',
         profilePic: maurizio
+    },
+    {
+        name: 'Jessica Arcudia',
+        description: 'Computational materials scientist focused on 2D materials and stacking configurations.',
+        bio: "Jessica Arcudia is a computational materials scientist specializing in electronic structure simulations and the design of two-dimensional materials and their stacking configurations. She obtained her B.Sc. in Engineering Physics from the Universidad Autónoma de Yucatán, followed by her M.Sc. and Ph.D. in Physical Chemistry from Cinvestav Mérida under the supervision of Prof. Gabriel Merino.\n\nHer research focuses on layered materials and their stacking configurations.During her Ph.D., she developed the JAM(Joining and Arrangement of Multilayers) language to systematically represent and generate these structures, for which she received several national awards.\n\nShe worked as a postdoctoral researcher at the University of Texas at Dallas under the supervision of Prof.Andrés Cisneros, where her research involved Covalent Organic Frameworks(COFs) and the improvement of the Gaussian Electrostatic Model(GEM) force field.Jessica is a member of the Mexican National System of Researchers(SNII, Candidate level) and is currently a postdoctoral researcher at Cinvestav Mérida, where she focuses on extending the JAM language to more complex materials, including COFs and MOFs.",
+        role: 'postdoctoral_researcher',
+        researchLine: [
+            'Computational modeling and design of two-dimensional materials and their stacking configurations.',
+        ],
+        currentProjects: [
+            'Computational design of two-dimensional materials and their stacking configurations using the JAM language',
+            'Electronic structure and stability of layered materials.',
+            'Modeling of layered systems, including COFs and MOFs.',
+        ],
+        linkedin: 'https://www.linkedin.com/in/jessica-arcudia-8a15b92a4/',
+        researchGate: 'https://www.researchgate.net/profile/Jessica-Arcudia-2',
+        orcid: 'https://orcid.org/0000-0003-4783-3627',
+        profilePic: jessica
+    },
+    {
+        name: 'Gabriela Castillo Toraya',
+        description: 'Ph.D. student in computational chemistry focused on electronic structure and novel bonding motifs.',
+        role: 'postdoctoral_researcher',
+        bio: "Gabriela Castillo Toraya is a Ph.D. student at the Center for Research and Advanced Studies of the National Polytechnic Institute (Cinvestav). Her research focuses on computational chemistry and electronic structure, particularly in the study of unconventional bonding and planar hypercoordinate atoms.",
+        researchLine: [
+            'Computational investigation of planar hypercoordinate atoms and novel bonding patterns using high-level ab initio methods.'
+        ],
+        currentProjects: [
+            'Study of planar tetracoordinate oxygen and fluorine systems, including stability, electronic structure, and bonding analysis.',
+            'Exploration of planar hypercoordinate motifs in main-group elements through computational design and analysis.'
+        ],
+        researchGate:'https://www.researchgate.net/profile/Gabriela-Castillo-Toraya',
+        profilePic: gabyCastillo
     },
     {
         name: 'Fernando Murillo Cordova',
@@ -358,6 +395,32 @@ export const people: People[] = [
         bio: "My name is Maurizio Alejandro Pantoja Hernández. I completed my undergraduate studies in Chemical Engineering in 2014 at Universidad Veracruzana, Xalapa Campus. The following year, I began my Master's studies in Bioorganic Chemistry, also at Universidad Veracruzana, where I worked on the computational analysis of intermolecular interactions between ionic liquids and phenolic compound extractants, under the supervision of Prof. Myrna Matus. After earning my Master's degree in early 2018, I worked as a research assistant to Prof. Myrna Matus until mid-2019. I began my phD studies in Chemistry in September 2019, at Universidad Autónoma Metropolitana, Iztapalapa Unit, in Mexico City. I worked with Prof. José L. Gázquez on developing chemical reactivity descriptors for interacting species, within the theoretical framework of the Density Functional Theory. I earned my phD degree in December 2023 and began my first postdoctoral fellowship in January 2024 at Universidad Veracruzana. During this fellowship, I studied the oxidative desulfurization of oil using molecular chemical reactivity descriptors. In February 2025, I started my current postdoctoral fellowship at Cinvestav-Mérida, where I am working on developing a machine learning interatomic potential for exploring the potential energy surface of boron clusters.",
         role: 'undergraduate_research_intern',
         profilePic: escalante
+    },
+    {
+        name: 'Irvin de Jesús Tamayo Castillo',
+        description: 'Undergraduate researcher in theoretical physics with a focus on computational chemistry and materials science.',
+        bio: "Irvin de Jesús Tamayo Castillo is an undergraduate student in Engineering Physics at the Universidad Autónoma de Yucatán (UADY). His academic interests focus on theoretical physics, with research experience in computational chemistry and materials science.",
+        researchLine: [
+            'Research on molecular isomers in astrophysical environments, including property identification, optimization, and classification to determine potential candidates for detection using astronomical observations.'
+        ],
+        currentProjects: [
+            'Research internship under the supervision of Dr. Lisset Noriega on molecular isomers in the universe, focusing on their characterization, optimization, and identification as potential candidates for detection through professional telescopes.'
+        ],
+        role: 'undergraduate_research_intern',
+        profilePic: invin
+    },
+    {
+        name: 'Miguel Fernández Montilla Molina',
+        description: 'Undergraduate researcher focused on computational physics and machine learning for materials modeling.',
+        bio: "Miguel Fernández Montilla Molina is an undergraduate student in Engineering Physics at the Universidad Autónoma de Yucatán (UADY). He is currently undertaking a research internship at Cinvestav Mérida, with interests in data analysis, theoretical physics, and computational physics.",
+        researchLine: [
+            'Training machine learning-based interatomic potentials for boron clusters.'
+        ],
+        currentProjects: [
+            'Generation of datasets of structures, energies, and forces to train interatomic potentials using NequIP, aiming to reproduce the potential energy surface and efficiently analyze stability, dynamics, and connections between minima in boron clusters.',
+        ],
+        role: 'undergraduate_research_intern',
+        profilePic: miguel
     },
     {
         name: 'Aaron Yosafat Dzul Esquivel',
