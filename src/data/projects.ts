@@ -1,6 +1,6 @@
 import smilesLogo from '@/assets/smilx.png'
 import eyringpy from '@/assets/eyringpy.png'
-import elaya from '@/assets/elaya.png'
+import elaya from '@/assets/elayalogo.jpg'
 import glomos from '@/assets/glomos.png'
 
 

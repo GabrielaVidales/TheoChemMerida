@@ -26,12 +26,13 @@ import gabriela from '@/assets/members/gabrielaVid.jpeg'
 import escalante from '@/assets/members/Escalante_.jpg'
 import aaron from '@/assets/members/aaron.dzul.png'
 import bojorquez from '@/assets/members/eduardo-bojorquez.png'
-import dorian from '@/assets/members/dorian-galindo.png'
+import dorian from '@/assets/members/dorian.jpg'
 import brishel from '@/assets/members/brishel-acosta.png'
 import jessica from '@/assets/members/Jessica Arcudia.jpg'
 import invin from '@/assets/members/Irvin Tamayo.jpeg'
 import miguel from '@/assets/members/Miguel.jpg'
 import gabyCastillo from '@/assets/members/Gaby Castillo_.jpg'
+import sebastian from '@/assets/members/Sebastian Hernandez.jpg'
 
 
 // #region Type definitions
@@ -178,7 +179,7 @@ export const people: People[] = [
             'Study of planar tetracoordinate oxygen and fluorine systems, including stability, electronic structure, and bonding analysis.',
             'Exploration of planar hypercoordinate motifs in main-group elements through computational design and analysis.'
         ],
-        researchGate:'https://www.researchgate.net/profile/Gabriela-Castillo-Toraya',
+        researchGate: 'https://www.researchgate.net/profile/Gabriela-Castillo-Toraya',
         profilePic: gabyCastillo
     },
     {
@@ -369,21 +370,44 @@ export const people: People[] = [
     },
     {
         name: 'Gabriela Yasmin Vidales Ayala',
-        description: 'Undergraduate research intern specializing in computational science and artificial intelligence, focused on scientific software development and molecular modeling.',
-        bio: "Gabriela Vidales is a Physics Engineering student at the Autonomous University of Yucatan (UADY) with a distinguished track record in scientific research, artificial intelligence, and technological development. A recipient of the 2024 State Youth Prize in Technological Innovation, she has been selected for prestigious international programs such as the 'Dra. Bessie Lawrence' scholarship at the Weizmann Institute of Science (Israel, 2025) and the National Youth Science Camp (USA, 2022). Currently, she serves as a CONACYT research assistant at the TheoChem group (CINVESTAV) and is the founder and president of the first IEEE Women in Engineering (WIE) affinity group at UADY, actively promoting STEM leadership and scientific outreach.",
+        description: 'Physics Engineering Student committed to improving the quality of life through the integration of science, education, and technology.',
+        bio: `Gabriela Vidales is a Physics Engineering student at the Autonomous University of Yucatán (UADY). Her work focuses on the development of scientific web platforms, computational tools, and digital infrastructure for computational chemistry applications.
+
+She has contributed to the development of user-oriented web interfaces, scientific documentation platforms, and digital research environments, enabling accessible interaction with complex computational workflows.
+
+Gabriela holds professional certifications in AI, data science, and software development, including HCIA-AI (Huawei), IBM Data Analyst, IBM Data Engineering Foundations, IBM Full Stack Software Developer, and Genomic Big Data Science (Johns Hopkins University). She has also completed specialized training in AI, bioinformatics, and scientific computing.
+
+She was awarded the 2024 State Youth Prize in Technological Innovation, selected as ISSI “Dr. Bessie Lawrence” Fellow (Weizmann Institute of Science, 2025), and represented Mexico in the Huawei Seeds for the Future – Tech4Good program (2024). She was also Top 10 worldwide in the CanSat World Competition 2025 as Team Leader.`,
         researchLine: [
             "Computational Materials Science and Molecular Modeling",
             "Artificial Intelligence and Machine Learning in Biomedicine",
             "Scientific Web Platform Development and HPC Tools",
             "Physical Chemistry of Surfaces and Interfaces",
-            "Robotics and Autonomous Systems for Scientific Applications"
+            "Robotics and Autonomous Systems for Scientific Applications",
+
+            "Scientific web platform development",
+            "Computational tools for chemistry applications",
+            "High-performance computing (HPC) tools and automation",
+            "Digital infrastructure for scientific research",
         ],
         currentProjects: [
-            "ELAYA SMILES: Development of a web platform for SMILES-to-3D molecular conversion and optimization",
-            "LibPyQueing.py: Authoring Python modules for parallelized HPC execution in computational chemistry",
-            "WATOC 2028: Webmaster Team Leader for the World Association of Theoretical and Computational Chemists congress",
-            "SOLIDS & SMILX: Design and development of interactive platforms for crystal structure prediction and SMILES standardization",
-            "TheoChem Digital Infrastructure: Lead maintainer of the group's official scientific web presence"
+            `ELAYA SMILES
+Full-stack development of a web platform for molecular visualization and user interaction based on SMILES.`,
+
+            `SMILX (TokenSMILES Framework)
+Co-developer of the web interface for grammar-constrained molecular isomer exploration using SMILES.`,
+
+            `SOLIDS – Interactive User Guide
+Development of an interactive web-based user guide with search, dynamic navigation, and responsive design.`,
+
+            `TheoChem Group Website
+Team Leader in the development of the new version, coordinating structure, content, and implementation, with front-end contribution.`,
+
+            `WATOC 2028 Congress Website
+Webmaster Team Leader, coordinating the development and deployment of the official conference platform.`,
+
+            `HPC Python Tools
+Development of Python tools for automation and parallel computational workflows.`
         ],
         linkedin: 'https://www.linkedin.com/in/gabriela-vidales/',
         role: 'undergraduate_research_intern',
@@ -391,9 +415,19 @@ export const people: People[] = [
     },
     {
         name: 'Eduardo Escalante Pacheco',
-        description: 'Maurizio A. Pantoja Hernández is a chemist specializing in computational chemistry and machine learning, currently a postdoctoral researcher at Cinvestav Mérida.',
-        bio: "My name is Maurizio Alejandro Pantoja Hernández. I completed my undergraduate studies in Chemical Engineering in 2014 at Universidad Veracruzana, Xalapa Campus. The following year, I began my Master's studies in Bioorganic Chemistry, also at Universidad Veracruzana, where I worked on the computational analysis of intermolecular interactions between ionic liquids and phenolic compound extractants, under the supervision of Prof. Myrna Matus. After earning my Master's degree in early 2018, I worked as a research assistant to Prof. Myrna Matus until mid-2019. I began my phD studies in Chemistry in September 2019, at Universidad Autónoma Metropolitana, Iztapalapa Unit, in Mexico City. I worked with Prof. José L. Gázquez on developing chemical reactivity descriptors for interacting species, within the theoretical framework of the Density Functional Theory. I earned my phD degree in December 2023 and began my first postdoctoral fellowship in January 2024 at Universidad Veracruzana. During this fellowship, I studied the oxidative desulfurization of oil using molecular chemical reactivity descriptors. In February 2025, I started my current postdoctoral fellowship at Cinvestav-Mérida, where I am working on developing a machine learning interatomic potential for exploring the potential energy surface of boron clusters.",
+        description: 'Computer Systems Engineering student specializing in cybersecurity, with interests in web infrastructure and full-stack development.',
+        bio: "Eduardo Escalante Pacheco (August 2000) is a Computer Systems Engineering student at the Instituto Tecnológico Superior Progreso (TecNM), specializing in Cybersecurity. \n\nHe was selected by the Secretariat of Science, Humanities, Technology and Innovation (SECIHTI) to participate in an international mobility program, completing an academic STEM program at Ontario Tech University in the summer of 2025. A self-taught programmer, he developed an early interest in technology, which evolved into a strong passion for software development. \n\nHis hobbies include independent game development using Unity, 3D modeling with Blender, and the creation of simulations in 3D environments.",
+        researchLine: [
+            'Configuration and maintenance of servers and web infrastructure',
+            'Database administration (SQL/NoSQL) and web server management (Nginx)',
+            'Full-stack web development using modern backend and frontend technologies',
+        ],
+        currentProjects: [
+            'Development of the website for the 14th Triennial Congress of the World Association of Theoretical and Computational Chemists (WATOC 2028)',
+            'Development and maintenance of the TheoChemMerida research group website',
+        ],
         role: 'undergraduate_research_intern',
+        linkedin: 'https://www.linkedin.com/in/edescal/',
         profilePic: escalante
     },
     {
@@ -408,6 +442,21 @@ export const people: People[] = [
         ],
         role: 'undergraduate_research_intern',
         profilePic: invin
+    },
+    {
+        name: 'Sebastian Hernández Gutiérrez',
+        description: 'Undergraduate researcher in theoretical physics with a focus on computational chemistry and materials science.',
+        bio: "Sebastian Hernández Gutiérrez is a residency student in Cinvestav Mérida. His current work focuses on scientific programming in areas such as molecular symmetry analysis and molecular reaction mapping.",
+        researchLine: [
+            'Molecular symmetry analysis',
+            'Molecular reaction mapping',
+        ],
+        currentProjects: [
+            'Python package for molecular symmetry analysis, including structure symmetrization in ASE objects: code design and implementation',
+            'Molecular reaction mapping software, for generation of reaction pathways: code design and implementation',
+        ],
+        role: 'undergraduate_research_intern',
+        profilePic: sebastian
     },
     {
         name: 'Miguel Fernández Montilla Molina',
@@ -439,7 +488,13 @@ export const people: People[] = [
     {
         name: 'Dorian Fernando Galindo Salinas',
         description: 'Maurizio A. Pantoja Hernández is a chemist specializing in computational chemistry and machine learning, currently a postdoctoral researcher at Cinvestav Mérida.',
-        bio: "My name is Maurizio Alejandro Pantoja Hernández. I completed my undergraduate studies in Chemical Engineering in 2014 at Universidad Veracruzana, Xalapa Campus. The following year, I began my Master's studies in Bioorganic Chemistry, also at Universidad Veracruzana, where I worked on the computational analysis of intermolecular interactions between ionic liquids and phenolic compound extractants, under the supervision of Prof. Myrna Matus. After earning my Master's degree in early 2018, I worked as a research assistant to Prof. Myrna Matus until mid-2019. I began my phD studies in Chemistry in September 2019, at Universidad Autónoma Metropolitana, Iztapalapa Unit, in Mexico City. I worked with Prof. José L. Gázquez on developing chemical reactivity descriptors for interacting species, within the theoretical framework of the Density Functional Theory. I earned my phD degree in December 2023 and began my first postdoctoral fellowship in January 2024 at Universidad Veracruzana. During this fellowship, I studied the oxidative desulfurization of oil using molecular chemical reactivity descriptors. In February 2025, I started my current postdoctoral fellowship at Cinvestav-Mérida, where I am working on developing a machine learning interatomic potential for exploring the potential energy surface of boron clusters.",
+        bio: "Futuro Ingeniero en Sistemas Computacionales, que ha participado en varios proyectos reconocidos en la institución donde se forma, y que actualmente tiene la labor de realizar un Bastión para la protección de las HPC's del CINVESTAV.",
+        researchLine: [
+            "Actualmente estoy con la tarea de realizar un Bastión (Servidor Jump-Host) para la protección de las HPC's Kukulcán e Itzel del CINVESTAV Mérida, siendo que voy aprendiendo muchas cosas sobre la marcha en cuestión de seguridad de la información y de redes.",
+        ],
+        currentProjects: [
+            "Bastión Kinich (Jump-Host), es un proyecto para la creación de un servidor que pueda servir como primer línea de defensa para prevenir ciberataques en contra de las HPC's Kukulcán e Itzel.",
+        ],
         role: 'undergraduate_research_intern',
         profilePic: dorian
     },
