@@ -24,8 +24,8 @@ import emma from '@/assets/members/Emmanuel Soberanis.jpg'
 import aileen from '@/assets/members/Aileen.jpg'
 import gabriela from '@/assets/members/gabrielaVid.jpeg'
 import escalante from '@/assets/members/Escalante_.jpg'
-import aaron from '@/assets/members/aaron.dzul.png'
-import bojorquez from '@/assets/members/eduardo-bojorquez.png'
+import aaron from '@/assets/members/Aaron_Dzul.jpeg'
+import bojorquez from '@/assets/members/Carlos Eduardo Bojórquez Ruiz.jpg'
 import dorian from '@/assets/members/dorian.jpg'
 import brishel from '@/assets/members/brishel-acosta.png'
 import jessica from '@/assets/members/Jessica Arcudia.jpg'
@@ -379,12 +379,6 @@ Gabriela holds professional certifications in AI, data science, and software dev
 
 She was awarded the 2024 State Youth Prize in Technological Innovation, selected as ISSI “Dr. Bessie Lawrence” Fellow (Weizmann Institute of Science, 2025), and represented Mexico in the Huawei Seeds for the Future – Tech4Good program (2024). She was also Top 10 worldwide in the CanSat World Competition 2025 as Team Leader.`,
         researchLine: [
-            "Computational Materials Science and Molecular Modeling",
-            "Artificial Intelligence and Machine Learning in Biomedicine",
-            "Scientific Web Platform Development and HPC Tools",
-            "Physical Chemistry of Surfaces and Interfaces",
-            "Robotics and Autonomous Systems for Scientific Applications",
-
             "Scientific web platform development",
             "Computational tools for chemistry applications",
             "High-performance computing (HPC) tools and automation",
@@ -472,39 +466,52 @@ Development of Python tools for automation and parallel computational workflows.
         profilePic: miguel
     },
     {
-        name: 'Aaron Yosafat Dzul Esquivel',
-        description: 'Maurizio A. Pantoja Hernández is a chemist specializing in computational chemistry and machine learning, currently a postdoctoral researcher at Cinvestav Mérida.',
-        bio: "My name is Maurizio Alejandro Pantoja Hernández. I completed my undergraduate studies in Chemical Engineering in 2014 at Universidad Veracruzana, Xalapa Campus. The following year, I began my Master's studies in Bioorganic Chemistry, also at Universidad Veracruzana, where I worked on the computational analysis of intermolecular interactions between ionic liquids and phenolic compound extractants, under the supervision of Prof. Myrna Matus. After earning my Master's degree in early 2018, I worked as a research assistant to Prof. Myrna Matus until mid-2019. I began my phD studies in Chemistry in September 2019, at Universidad Autónoma Metropolitana, Iztapalapa Unit, in Mexico City. I worked with Prof. José L. Gázquez on developing chemical reactivity descriptors for interacting species, within the theoretical framework of the Density Functional Theory. I earned my phD degree in December 2023 and began my first postdoctoral fellowship in January 2024 at Universidad Veracruzana. During this fellowship, I studied the oxidative desulfurization of oil using molecular chemical reactivity descriptors. In February 2025, I started my current postdoctoral fellowship at Cinvestav-Mérida, where I am working on developing a machine learning interatomic potential for exploring the potential energy surface of boron clusters.",
-        role: 'undergraduate_research_intern',
-        profilePic: aaron
-    },
-    {
         name: 'Carlos Eduardo Bojórquez Ruiz',
-        description: 'Maurizio A. Pantoja Hernández is a chemist specializing in computational chemistry and machine learning, currently a postdoctoral researcher at Cinvestav Mérida.',
-        bio: "My name is Maurizio Alejandro Pantoja Hernández. I completed my undergraduate studies in Chemical Engineering in 2014 at Universidad Veracruzana, Xalapa Campus. The following year, I began my Master's studies in Bioorganic Chemistry, also at Universidad Veracruzana, where I worked on the computational analysis of intermolecular interactions between ionic liquids and phenolic compound extractants, under the supervision of Prof. Myrna Matus. After earning my Master's degree in early 2018, I worked as a research assistant to Prof. Myrna Matus until mid-2019. I began my phD studies in Chemistry in September 2019, at Universidad Autónoma Metropolitana, Iztapalapa Unit, in Mexico City. I worked with Prof. José L. Gázquez on developing chemical reactivity descriptors for interacting species, within the theoretical framework of the Density Functional Theory. I earned my phD degree in December 2023 and began my first postdoctoral fellowship in January 2024 at Universidad Veracruzana. During this fellowship, I studied the oxidative desulfurization of oil using molecular chemical reactivity descriptors. In February 2025, I started my current postdoctoral fellowship at Cinvestav-Mérida, where I am working on developing a machine learning interatomic potential for exploring the potential energy surface of boron clusters.",
+        description: 'Computer Systems Engineering student focused on full-stack web development and cybersecurity.',
+        bio: "I am currently a Computer Systems Engineering student at Instituto Tecnológico Superior Campus Progreso, primarily focused on full-stack web development. I am interested in understanding how systems work at a deeper level, which has also led me to develop a strong interest in cybersecurity. I enjoy self-directed learning, experimenting, and solving problems in a practical way. I consider myself curious, analytical, and persistent when facing challenges. I aim to continue developing my technical skills while contributing to projects that allow me to grow and refine my knowledge.",
+        researchLine: [
+            'Applied Physics Area - WATOC 2028',
+        ],
+        currentProjects: [
+            'WATOC 2028 (Developer)',
+        ],
         role: 'undergraduate_research_intern',
         profilePic: bojorquez
     },
     {
-        name: 'Dorian Fernando Galindo Salinas',
-        description: 'Maurizio A. Pantoja Hernández is a chemist specializing in computational chemistry and machine learning, currently a postdoctoral researcher at Cinvestav Mérida.',
-        bio: "Futuro Ingeniero en Sistemas Computacionales, que ha participado en varios proyectos reconocidos en la institución donde se forma, y que actualmente tiene la labor de realizar un Bastión para la protección de las HPC's del CINVESTAV.",
+        name: 'Aaron Yosafat Dzul Esquivel',
+        description: 'Systems Engineering student with experience in web development, database management, and technology infrastructure solutions.',
+        bio: "I am a Systems Engineering student currently completing my social service at CINVESTAV. I have skills in web development using technologies such as Python, JavaScript, CSS, HTML, and Shopify, as well as experience managing databases such as PostgreSQL and MariaDB. Additionally, I have worked with frameworks and tools such as Tailwind, Bootstrap, and Flask. I am particularly interested in web development, where I developed a Shopify website for Grupo AEMA, strengthening my experience through real-world projects.",
         researchLine: [
-            "Actualmente estoy con la tarea de realizar un Bastión (Servidor Jump-Host) para la protección de las HPC's Kukulcán e Itzel del CINVESTAV Mérida, siendo que voy aprendiendo muchas cosas sobre la marcha en cuestión de seguridad de la información y de redes.",
+            'My current work focuses on technological support applied to the Applied Physics area, including web development, database administration, and the implementation of infrastructure and cybersecurity solutions. One of my main contributions is the development of a bastion host within the CINVESTAV network, aimed at strengthening security and access control to critical infrastructure such as a supercomputer.'
         ],
         currentProjects: [
-            "Bastión Kinich (Jump-Host), es un proyecto para la creación de un servidor que pueda servir como primer línea de defensa para prevenir ciberataques en contra de las HPC's Kukulcán e Itzel.",
+            'I am currently collaborating on the development of a static website for a group within the Department of Applied Physics, focused on the dissemination of academic and scientific information, where I contributed to both design and development. Although this project is currently paused, I continue working on the development of a bastion host within the CINVESTAV network to reinforce security and controlled access to a supercomputer.'
+        ],
+        role: 'undergraduate_research_intern',
+        linkedin: 'https://www.linkedin.com/in/dzul-esquivel-aaron-yosafat-9733a4364/',
+        profilePic: aaron
+    },
+    {
+        name: 'Dorian Fernando Galindo Salinas',
+        description: 'Computer Systems Engineering student focused on cybersecurity and infrastructure, with experience in bastion host implementation.',
+        bio: "Computer Systems Engineering student who has participated in several recognized projects within his institution and is currently responsible for developing a bastion host to protect the HPC systems at CINVESTAV.",
+        researchLine: [
+            "I am currently working on the development of a bastion host to protect the Kukulcán and Itzel HPC systems at CINVESTAV Mérida, while continuously learning about information security and networking throughout the process."
+        ],
+        currentProjects: [
+            "Kinich Bastion Host is a project focused on creating a server that acts as the first line of defense to prevent cyberattacks against the Kukulcán and Itzel HPC systems."
         ],
         role: 'undergraduate_research_intern',
         profilePic: dorian
-    },
-    {
-        name: 'Claudino Brishel López Acosta',
-        description: 'Maurizio A. Pantoja Hernández is a chemist specializing in computational chemistry and machine learning, currently a postdoctoral researcher at Cinvestav Mérida.',
-        bio: "My name is Maurizio Alejandro Pantoja Hernández. I completed my undergraduate studies in Chemical Engineering in 2014 at Universidad Veracruzana, Xalapa Campus. The following year, I began my Master's studies in Bioorganic Chemistry, also at Universidad Veracruzana, where I worked on the computational analysis of intermolecular interactions between ionic liquids and phenolic compound extractants, under the supervision of Prof. Myrna Matus. After earning my Master's degree in early 2018, I worked as a research assistant to Prof. Myrna Matus until mid-2019. I began my phD studies in Chemistry in September 2019, at Universidad Autónoma Metropolitana, Iztapalapa Unit, in Mexico City. I worked with Prof. José L. Gázquez on developing chemical reactivity descriptors for interacting species, within the theoretical framework of the Density Functional Theory. I earned my phD degree in December 2023 and began my first postdoctoral fellowship in January 2024 at Universidad Veracruzana. During this fellowship, I studied the oxidative desulfurization of oil using molecular chemical reactivity descriptors. In February 2025, I started my current postdoctoral fellowship at Cinvestav-Mérida, where I am working on developing a machine learning interatomic potential for exploring the potential energy surface of boron clusters.",
-        role: 'undergraduate_research_intern',
-        profilePic: brishel
-    },
+    }
+    // {
+    //     name: 'Claudino Brishel López Acosta',
+    //     description: 'Maurizio A. Pantoja Hernández is a chemist specializing in computational chemistry and machine learning, currently a postdoctoral researcher at Cinvestav Mérida.',
+    //     bio: "My name is Maurizio Alejandro Pantoja Hernández. I completed my undergraduate studies in Chemical Engineering in 2014 at Universidad Veracruzana, Xalapa Campus. The following year, I began my Master's studies in Bioorganic Chemistry, also at Universidad Veracruzana, where I worked on the computational analysis of intermolecular interactions between ionic liquids and phenolic compound extractants, under the supervision of Prof. Myrna Matus. After earning my Master's degree in early 2018, I worked as a research assistant to Prof. Myrna Matus until mid-2019. I began my phD studies in Chemistry in September 2019, at Universidad Autónoma Metropolitana, Iztapalapa Unit, in Mexico City. I worked with Prof. José L. Gázquez on developing chemical reactivity descriptors for interacting species, within the theoretical framework of the Density Functional Theory. I earned my phD degree in December 2023 and began my first postdoctoral fellowship in January 2024 at Universidad Veracruzana. During this fellowship, I studied the oxidative desulfurization of oil using molecular chemical reactivity descriptors. In February 2025, I started my current postdoctoral fellowship at Cinvestav-Mérida, where I am working on developing a machine learning interatomic potential for exploring the potential energy surface of boron clusters.",
+    //     role: 'undergraduate_research_intern',
+    //     profilePic: brishel
+    // },
 ]
 
 export function slugify(text: string): string {
