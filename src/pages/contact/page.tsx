@@ -8,7 +8,7 @@ function ContactPage() {
     return (
         <>
             <PaperSection
-                className="max-w-5xl mx-auto py-14 space-y-3"
+                className="max-w-5xl mx-auto py-14 space-y-3 max-md:px-5"
                 containerCN='border-b-2 shadow-md'
             >
                 <span className="text-sm tracking-[0.25em] font-medium">

@@ -1,6 +1,6 @@
-import watoc2028 from '@/assets/events/watoc2028logo.png'
-import aroma2018 from '@/assets/events/aromaticity2018.png'
-import aroma2025 from '@/assets/events/aromaticity2025.png'
+import watoc2028 from '@/assets/events/watoc2028.png'
+import aroma2018 from '@/assets/events/aromaticity2018group.png'
+import aroma2025 from '@/assets/events/aroma2025.png'
 
 export const events = [
     {

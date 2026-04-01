@@ -1,22 +1,18 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi, } from "@/components/ui/carousel";
-import { ArrowRight, ChevronLeft, ChevronRight, ZoomIn, ZoomOut, RotateCcw, RotateCw } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router";
 import { routes } from "@/routes/routes";
 import group from '@/assets/img/theochemreunited.jpeg'
 import whiteboard from '@/assets/img/slide1.jpg'
-import SLIDE2 from '@/assets/img/slide2.webp'
-import SLIDE3 from '@/assets/img/slide3.jpeg'
+import SLIDE2 from '@/assets/img/slide2.jpg'
 import { cn } from "@/lib/utils";
-import { PhotoProvider, PhotoView } from "react-photo-view";
-import { Separator } from "@/components/ui/separator";
 import PaperSection from "@/components/paper-section";
 
 
 const slides = [
     {
-        // src: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=1400&q=80",
         src: whiteboard,
         caption: "Electron Delocalization Studies",
     },
@@ -26,10 +22,6 @@ const slides = [
     },
     {
         src: SLIDE2,
-        caption: "Quantum Chemical Modeling",
-    },
-    {
-        src: SLIDE3,
         caption: "Quantum Chemical Modeling",
     },
 ];
@@ -71,62 +63,32 @@ export default function HeroSection() {
             )}>
 
                 <div className="relative w-full shadow-2xl shadow-slate-200/80">
-                    <PhotoProvider
-                        photoClassName="p-0 sm:p-4 md:p-8"
-                        toolbarRender={({ onScale, scale, onRotate, rotate }) => {
-                            return (
-                                <div className='flex gap-3 justify-around w-full'>
-                                    <ZoomIn
-                                        className='cursor-pointer opacity-60 hover:opacity-100'
-                                        onClick={() => onScale(scale + 0.5)}
-                                    />
-                                    <ZoomOut
-                                        className='cursor-pointer opacity-60 hover:opacity-100'
-                                        onClick={() => onScale(scale - 0.5)}
-
-                                    />
-                                    <Separator orientation='vertical' className='mx-2' />
-                                    <RotateCcw
-                                        className='cursor-pointer opacity-60 hover:opacity-100'
-                                        onClick={() => onRotate(rotate - 90)}
-                                    />
-                                    <RotateCw
-                                        className='cursor-pointer opacity-60 hover:opacity-100'
-                                        onClick={() => onRotate(rotate + 90)}
-                                    />
-                                </div>
-                            );
+                    <Carousel
+                        className='w-full'
+                        setApi={setApi}
+                        opts={{
+                            loop: true,
+                            duration: 50
                         }}
                     >
-                        <Carousel
-                            className='w-full'
-                            setApi={setApi}
-                            opts={{
-                                loop: true,
-                                duration: 50
-                            }}
-                        >
-                            <CarouselContent>
-                                {slides.map((slide, i) => (
-                                    <CarouselItem key={i}>
-                                        <PhotoView src={slide.src}>
-                                            <div className="relative w-full h-100 sm:h-140">
-                                                <img
-                                                    src={slide.src}
-                                                    alt={slide.caption}
-                                                    className="absolute inset-0 w-full h-full object-cover"
-                                                />
-                                                <div className="absolute inset-0 bg-linear-to-t from-slate-900/60 via-slate-900/20 to-slate-900/10" />
-                                                <div className="absolute inset-0 bg-linear-to-r from-slate-900/60 via-slate-900/20 to-transparent" />
-                                            </div>
-                                        </PhotoView>
-                                    </CarouselItem>
-                                ))}
-                            </CarouselContent>
-                        </Carousel>
-                    </PhotoProvider>
+                        <CarouselContent>
+                            {slides.map((slide, i) => (
+                                <CarouselItem key={i}>
+                                    <div className="relative w-full h-100 sm:h-140">
+                                        <img
+                                            src={slide.src}
+                                            alt={slide.caption}
+                                            className="absolute inset-0 w-full h-full object-cover"
+                                        />
+                                        <div className="absolute inset-0 bg-linear-to-t from-slate-900/60 via-slate-900/20 to-slate-900/10" />
+                                        <div className="absolute inset-0 bg-linear-to-r from-slate-900/60 via-slate-900/20 to-transparent" />
+                                    </div>
+                                </CarouselItem>
+                            ))}
+                        </CarouselContent>
+                    </Carousel>
 
-                    <div className="absolute max-w-7xl mx-auto inset-0 z-10 flex flex-col gap-5 justify-center p-6 sm:p-12 pb-10 sm:pb-14 sm:pl-20 pointer-events-none">
+                    <div className="absolute max-w-7xl mx-auto inset-0 z-10 flex flex-col gap-5 justify-center p-6 sm:p-12 pb-10 sm:pb-14 sm:pl-20">
                         <p className={cn(
                             "text-white font-semibold tracking-[0.2em]",
                             'text-xs sm:text-sm md:text-xl',
@@ -176,13 +138,6 @@ export default function HeroSection() {
                         </div>
                     </div>
 
-                    {/* <div className="absolute max-w-6xl mx-auto inset-0 z-10 flex flex-col justify-end p-6 md:p-12 pb-10 md:pb-14 pointer-events-none">
-                        <span className="mt-4 inline-flex self-start items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-white/80 text-xs px-3 py-1.5 rounded-full pointer-events-auto">
-                            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-                            {slides[current]?.caption}
-                        </span>
-                    </div> */}
-
                     <button
                         onClick={() => api?.scrollPrev()}
                         aria-label="Previous"
@@ -214,29 +169,14 @@ export default function HeroSection() {
                                 key={i}
                                 onClick={() => api?.scrollTo(i)}
                                 className={`h-1.5 rounded-full transition-all duration-300 ${i === current
-                                    ? "w-6 bg-cyan-400"
-                                    : "w-1.5 bg-white/40 hover:bg-white/70"
+                                    ? "w-6 bg-neutral-100"
+                                    : "w-1.5 bg-white/50 hover:bg-white/70"
                                     }`}
                                 aria-label={`Slide ${i + 1}`}
                             />
                         ))}
                     </div>
                 </div>
-
-
-                {/* <div className="px-6 py-6 max-w-7xl mx-auto border-t border-slate-100 flex flex-wrap gap-4">
-                    {[
-                        { label: "Active Projects", value: "12+" },
-                        { label: "Publications", value: "80+" },
-                        { label: "Research Members", value: "18" },
-                        { label: "Years of Research", value: "15+" },
-                    ].map((s) => (
-                        <div key={s.label} className="flex flex-col gap-0.5">
-                            <p className="text-2xl font-black text-slate-700" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{s.value}</p>
-                            <p className="text-xs font-semibold text-slate-600 uppercase tracking-widest mt-0.5">{s.label}</p>
-                        </div>
-                    ))}
-                </div> */}
             </div>
         </PaperSection>
     );

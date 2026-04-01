@@ -55,7 +55,7 @@ function EventsPage() {
             <section className='max-w-5xl mx-auto flex flex-col gap-4 py-10 px-4'>
                 {events.map((c, index) => (
                     <div key={index} className={cn(
-                        'flex flex-col md:flex-row items-center gap-4 border border-border rounded-2xl p-4 bg-background',
+                        'flex flex-col md:flex-row items-center gap-8 border border-border rounded-2xl p-8 bg-background',
                         'transition-all duration-200  hover:shadow-lg group'
                     )}>
                         <Link to={c.href} className={cn(
@@ -64,7 +64,7 @@ function EventsPage() {
                             'flex-1',
                             'transition-all duration-200 border group-hover:border-indigo-500'
                         )}>
-                            <img src={c.img} alt={c.name} className='h-full w-full object-contain' />
+                            <img src={c.img} alt={c.name} className='h-full w-full object-cover' />
                         </Link>
                         <div className={cn(
                             'flex flex-col gap-3',
