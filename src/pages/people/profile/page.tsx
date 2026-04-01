@@ -58,7 +58,7 @@ const MemberProfile = ({ member }: { member: People }) => {
                             return (
                                 <div className="absolute bottom-0 left-0 w-full p-6 bg-black/60 backdrop-blur-md text-white z-10">
                                     <h3 className="text-xl font-bold">{member.name}</h3>
-                                    <p className="text-sm opacity-80">{member.role}</p>
+                                    <p className="text-sm opacity-80">{roles[member.role].description}</p>
                                 </div>
                             );
                         }}

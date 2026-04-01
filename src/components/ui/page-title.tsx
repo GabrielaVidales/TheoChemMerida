@@ -1,30 +1,42 @@
 import { cn } from '@/lib/utils'
-import { ChevronFirst, ChevronLast, ChevronRight, ChevronsRight } from 'lucide-react'
 import type { ReactNode } from 'react'
 import { motion } from 'motion/react'
 
 type Props = {
     title: string
+    subtitle: string
+    subtitleClassName?: string
     icon?: ReactNode
 }
 
-function PageTitle({ title, className, icon: Icon }: Props & React.HtmlHTMLAttributes<HTMLDivElement>) {
+function PageTitle({ title, subtitle, className, subtitleClassName }: Props & React.HtmlHTMLAttributes<HTMLDivElement>) {
+
     return (
-        <motion.div
-            initial={{ x: -20, opacity: 0 }}
-            animate={{ x: 0, opacity: 1, transition: { delay: 0.3, duration: 0.3 } }}
+        <div className={cn(
+            className
+        )}>
+            <motion.h1
+                className="text-4xl md:text-6xl font-bold tracking-tight  leading-none"
+                style={{ fontFamily: "'Space Grotesk', sans-serif" }}
 
-            className={cn(
-                className,
-                'flex gap-2 flex-row items-start',
-            )}
-        >
-
-            {Icon ? Icon : <ChevronsRight className='size-8 sm:size-10 shrink-0 animate-[wiggleX_3s_ease-in-out_infinite]' />}
-            <h1 className='text-2xl sm:text-4xl font-bold'>
+                initial={{ opacity: 0, translateX: -25, }}
+                animate={{ opacity: 1, translateX: 0, }}
+                transition={{ duration: 1, delay: 0.05, ease: 'anticipate' }}
+            >
                 {title}
-            </h1>
-        </motion.div>
+            </motion.h1>
+            <motion.p
+                className={cn(
+                    "mt-4 text-base md:text-lg leading-relaxed border-l-3 border-indigo-400 pl-4 ",
+                    subtitleClassName
+                )}
+                initial={{ opacity: 0, translateX: 50, }}
+                animate={{ opacity: 1, translateX: 0, }}
+                transition={{ duration: 1, delay: 0.1, ease: 'anticipate' }}
+            >
+                {subtitle}
+            </motion.p>
+        </div>
     )
 }
 

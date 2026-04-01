@@ -5,6 +5,7 @@ import { JournalAccordeon } from './journal-accordeon';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { YearPageSection } from './year-page-section';
 import { YearSelector } from './year-selector';
+import PageTitle from '@/components/ui/page-title';
 
 
 export default function ResearchPage() {
@@ -30,15 +31,10 @@ export default function ResearchPage() {
                 />
 
                 <div className="max-w-6xl mx-auto px-6 md:px-12 py-14">
-                    <h1
-                        className="text-5xl md:text-6xl font-black tracking-tight  leading-none"
-                        style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-                    >
-                        Publications
-                    </h1>
-                    <p className="mt-4 text-lg max-w-lg leading-relaxed border-l-2 border-indigo-400 pl-4">
-                        Peer-reviewed research in theoretical chemistry, molecular design, and electron delocalization.
-                    </p>
+                    <PageTitle 
+                        title='Publications'
+                        subtitle='Peer-reviewed research in theoretical chemistry, molecular design, and electron delocalization.'
+                    />
 
                     <div className="mt-8 flex flex-wrap gap-6">
                         {[
@@ -48,7 +44,7 @@ export default function ResearchPage() {
                         ].map(s => (
                             <div key={s.label}>
                                 <p className="text-2xl font-black text-slate-300" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{s.value}</p>
-                                <p className="text-xs text-slate-400 uppercase tracking-widest mt-0.5">{s.label}</p>
+                                <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest mt-0.5">{s.label}</p>
                             </div>
                         ))}
                     </div>

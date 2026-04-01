@@ -1,13 +1,12 @@
-import PageTitle from '../../components/ui/page-title'
-import { Card, CardFooter, CardHeader, CardTitle, } from "@/components/ui/card"
 import { people, roles, slugify, type People } from '@/data/people'
-import { Link, useNavigate } from 'react-router'
-import { Button } from '@/components/ui/button'
-import { ExternalLink, Plus, User2 } from 'lucide-react'
+import { Link } from 'react-router'
 import { cn } from '@/lib/utils'
-import { Separator } from '@/components/ui/separator'
 import { routes } from '@/routes/routes'
 import { useIsMobile } from '@/hooks/use-mobile'
+import { User2 } from 'lucide-react'
+import { motion } from 'motion/react'
+import PageTitle from '@/components/ui/page-title'
+import PaperSection from '@/components/paper-section'
 
 const SECTIONS = [
     { key: 'leader', label: 'Principal Investigators', accent: '#0ea5e9' },
@@ -15,13 +14,28 @@ const SECTIONS = [
     { key: 'phd_student_cinvestav', label: 'PhD Students', accent: '#10b981' },
     { key: 'masters_student_cinvestav', label: 'Masters Students', accent: '#f59e0b' },
     { key: 'undergraduate_research_intern', label: 'Undergraduate Students', accent: '#f43f5e' },
+    { key: 'social_service_or_internship', label: 'Social Service/Internship Students', accent: '#0ea5e9' },
 ] as const
 
 function PeoplePage() {
-    const mobile = useIsMobile()
-
     return (
         <div>
+
+            <PaperSection
+                className='p-4 sm:p-10 space-y-10'
+                containerCN='shadow-md'
+                variant='dark'
+                glow
+            >
+                <PageTitle
+                    title='Group Members'
+                    subtitle='Meet the researchers, students, and collaborators who contribute to our work in chemical kinetics, materials science, and computational modeling.'
+                    className='text-neutral-100 max-w-5xl mx-auto'
+                />
+            </PaperSection>
+
+
+            {/* 
             <section className="relative min-h-60 w-full overflow-hidden bg-slate-900 text-white">
                 <div
                     className="absolute inset-0 pointer-events-none opacity-[0.04]"
@@ -37,21 +51,30 @@ function PeoplePage() {
                 />
 
                 <div className="max-w-6xl mx-auto px-6 md:px-12 py-14">
-                    <h1
+                    <motion.h1
                         className="text-5xl md:text-6xl font-black tracking-tight  leading-none"
                         style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+
+                        initial={{ opacity: 0, translateX: -25, }}
+                        animate={{ opacity: 1, translateX: 0, }}
+                        transition={{ duration: 1, delay: 0.05, ease: 'anticipate' }}
                     >
                         Group Members
-                    </h1>
-                    <p className="mt-4 text-lg max-w-2xl leading-relaxed border-l-2 border-indigo-400 pl-4">
+                    </motion.h1>
+                    <motion.p
+                        className="mt-4 text-lg max-w-2xl leading-relaxed border-l-2 border-indigo-400 pl-4"
+                        initial={{ opacity: 0, translateX: 50, }}
+                        animate={{ opacity: 1, translateX: 0, }}
+                        transition={{ duration: 1, delay: 0.1, ease: 'anticipate' }}
+                    >
                         Meet the researchers, students, and collaborators who contribute to our work in chemical kinetics, materials science, and computational modeling.
-                    </p>
+                    </motion.p>
                 </div>
 
                 <div className="absolute inset-0 pointer-events-none">
                     <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-175 max-w-6xl h-175 rounded-full bg-cyan-500/10 blur-[120px]" />
                 </div>
-            </section>
+            </section> */}
 
             <div className="max-w-5xl mx-auto px-6 md:px-12 py-16 space-y-24">
                 {SECTIONS.map(({ key, label, accent }) => {

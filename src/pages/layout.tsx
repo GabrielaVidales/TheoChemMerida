@@ -6,7 +6,11 @@ import { Outlet } from 'react-router'
 function MainLayout() {
     return (
         <>
-            <Header variant='fixed' enableScroll scrollThreshold={100} />
+            <Header 
+            // variant='fixed'
+            //  enableScroll 
+            //  scrollThreshold={100}
+             />
             <main>
                 <Outlet />
             </main>

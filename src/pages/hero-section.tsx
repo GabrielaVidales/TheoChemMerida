@@ -1,167 +1,243 @@
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { ArrowRight, FlaskConical, Atom } from "lucide-react";
-import image from '@/assets/img/Sin título.png'
-import mask from '@/assets/mask3.png'
-import { useIsMobile } from "@/hooks/use-mobile";
+import { Carousel, CarouselContent, CarouselItem, type CarouselApi, } from "@/components/ui/carousel";
+import { ArrowRight, ChevronLeft, ChevronRight, ZoomIn, ZoomOut, RotateCcw, RotateCw } from "lucide-react";
 import { Link } from "react-router";
 import { routes } from "@/routes/routes";
+import group from '@/assets/img/theochemreunited.jpeg'
+import whiteboard from '@/assets/img/slide1.jpg'
+import SLIDE2 from '@/assets/img/slide2.webp'
+import SLIDE3 from '@/assets/img/slide3.jpeg'
+import { cn } from "@/lib/utils";
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import { Separator } from "@/components/ui/separator";
+import PaperSection from "@/components/paper-section";
 
-function Particle({ style }: { style: React.CSSProperties }) {
-    return (
-        <span
-            className="absolute rounded-full bg-cyan-400/30 animate-pulse pointer-events-none"
-            style={style}
-        />
-    );
-}
+
+const slides = [
+    {
+        // src: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=1400&q=80",
+        src: whiteboard,
+        caption: "Electron Delocalization Studies",
+    },
+    {
+        src: group,
+        caption: "Molecular Orbital Calculations",
+    },
+    {
+        src: SLIDE2,
+        caption: "Quantum Chemical Modeling",
+    },
+    {
+        src: SLIDE3,
+        caption: "Quantum Chemical Modeling",
+    },
+];
 
 
 export default function HeroSection() {
-    const mobile = useIsMobile()
+    const [api, setApi] = useState<CarouselApi>();
+    const [current, setCurrent] = useState(0);
+    const [count, setCount] = useState(0);
 
-    const maskStyles = {
-        WebkitMaskImage: `url(${mask})`,
-        maskImage: `url(${mask})`,
-        maskMode: 'luminance',
-        WebkitMaskSize: 'contain',
-        maskSize: 'contain',
-        WebkitMaskPosition: 'center',
-        maskPosition: 'center',
-        WebkitMaskRepeat: 'no-repeat',
-        maskRepeat: 'no-repeat',
-        filter: 'drop-shadow(0 20px 40px rgba(6,182,212,0.15)) drop-shadow(0 8px 16px rgba(0,0,0,0.4))',
-    }
+    useEffect(() => {
+        if (!api) return;
+        setCount(api.scrollSnapList().length);
+        setCurrent(api.selectedScrollSnap());
 
-    const particles = Array.from({ length: 18 }, () => ({
-        width: `${Math.random() * 10 + 4}px`,
-        height: `${Math.random() * 10 + 4}px`,
-        top: `${Math.random() * 100}%`,
-        left: `${Math.random() * 100}%`,
-        animationDelay: `${Math.random() * 3}s`,
-        animationDuration: `${Math.random() * 3 + 2}s`,
-    }));
+        api.on("select", () => {
+            setCurrent(api.selectedScrollSnap());
+        });
+    }, [api]);
+
+    useEffect(() => {
+        if (!api) return;
+        const timer = setInterval(() => api.scrollNext(), 7000);
+        return () => clearInterval(timer);
+    }, [api]);
 
     return (
-        <section className="relative min-h-screen w-full flex flex-col justify-center overflow-hidden bg-slate-900 text-white font-['DM_Sans',sans-serif]">
-            <div
-                className="absolute inset-0 pointer-events-none opacity-[0.04]"
-                style={{
-                    backgroundImage: `linear-gradient(#38bdf8 ${mobile ? 2 : 4}px, transparent ${mobile ? 2 : 4}px), linear-gradient(90deg, #38bdf8 ${mobile ? 2 : 4}px, transparent ${mobile ? 2 : 4}px)`,
-                    backgroundSize: mobile ? "24px 24px" : "48px 48px",
-                    backgroundAttachment: 'fixed',
-                    maskImage: "linear-gradient(to bottom, transparent, black 15%), linear-gradient(to top, transparent, black 20%)",
-                    WebkitMaskImage: "linear-gradient(to bottom, transparent, black 15%), linear-gradient(to top, transparent, black 15%)",
-                    maskComposite: "intersect",
-                    WebkitMaskComposite: "source-in",
-                }}
-            />
+        <PaperSection
+            className="relative w-full overflow-hidden"
+            containerCN="border-b-2 shadow-md"
+            style={{ fontFamily: "'DM Sans', sans-serif" }}
+        >
+            <div className="absolute -top-32 -left-32 w-120 h-120 rounded-full bg-cyan-100 blur-[120px] pointer-events-none opacity-60" />
+            <div className="absolute bottom-0 right-0 w-80 h-80 rounded-full bg-indigo-100 blur-[100px] pointer-events-none opacity-50" />
 
-            <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-100 max-w-6xl h-100 rounded-full bg-cyan-500/10 blur-[120px]" />
-            </div>
+            <div className={cn(
+                "relative z-10 flex flex-col gap-0",
+                'px-0  pt-0 pb-0'
+            )}>
 
-            {particles.map((p, i) => (
-                <Particle key={i} style={p} />
-            ))}
+                <div className="relative w-full shadow-2xl shadow-slate-200/80">
+                    <PhotoProvider
+                        photoClassName="p-0 sm:p-4 md:p-8"
+                        toolbarRender={({ onScale, scale, onRotate, rotate }) => {
+                            return (
+                                <div className='flex gap-3 justify-around w-full'>
+                                    <ZoomIn
+                                        className='cursor-pointer opacity-60 hover:opacity-100'
+                                        onClick={() => onScale(scale + 0.5)}
+                                    />
+                                    <ZoomOut
+                                        className='cursor-pointer opacity-60 hover:opacity-100'
+                                        onClick={() => onScale(scale - 0.5)}
 
-            <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 py-32 flex flex-col lg:flex-row items-center gap-10 lg:gap-6">
-                <div className=" flex-1 flex flex-col gap-8 lg:pr-8">
-                    <div
-                        className="flex items-center gap-2"
-                        style={{ animation: "fadeUp 0.6s ease both" }}
+                                    />
+                                    <Separator orientation='vertical' className='mx-2' />
+                                    <RotateCcw
+                                        className='cursor-pointer opacity-60 hover:opacity-100'
+                                        onClick={() => onRotate(rotate - 90)}
+                                    />
+                                    <RotateCw
+                                        className='cursor-pointer opacity-60 hover:opacity-100'
+                                        onClick={() => onRotate(rotate + 90)}
+                                    />
+                                </div>
+                            );
+                        }}
                     >
-                        <Badge
-                            variant="outline"
-                            className="border-cyan-500/50 text-cyan-400 bg-cyan-500/10 px-3 py-1 text-xs tracking-widest uppercase font-semibold"
+                        <Carousel
+                            className='w-full'
+                            setApi={setApi}
+                            opts={{
+                                loop: true,
+                                duration: 50
+                            }}
                         >
-                            <FlaskConical size={12} className="mr-1.5" />
-                            TheoChemMerida
-                        </Badge>
-                    </div>
+                            <CarouselContent>
+                                {slides.map((slide, i) => (
+                                    <CarouselItem key={i}>
+                                        <PhotoView src={slide.src}>
+                                            <div className="relative w-full h-100 sm:h-140">
+                                                <img
+                                                    src={slide.src}
+                                                    alt={slide.caption}
+                                                    className="absolute inset-0 w-full h-full object-cover"
+                                                />
+                                                <div className="absolute inset-0 bg-linear-to-t from-slate-900/60 via-slate-900/20 to-slate-900/10" />
+                                                <div className="absolute inset-0 bg-linear-to-r from-slate-900/60 via-slate-900/20 to-transparent" />
+                                            </div>
+                                        </PhotoView>
+                                    </CarouselItem>
+                                ))}
+                            </CarouselContent>
+                        </Carousel>
+                    </PhotoProvider>
 
-                    <h1
-                        className="text-4xl md:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tight max-w-3xl"
-                        style={{ animation: "fadeUp 0.6s 0.1s ease both", fontFamily: "'Space Grotesk', 'DM Sans', sans-serif" }}
-                    >
-                        Theoretical Chemistry and{" "}
-                        <span className="relative inline-block">
-                            <span className="bg-linear-to-r from-cyan-400 via-sky-300 to-indigo-400 bg-clip-text text-transparent">
-                                Molecular Design
+                    <div className="absolute max-w-7xl mx-auto inset-0 z-10 flex flex-col gap-5 justify-center p-6 sm:p-12 pb-10 sm:pb-14 sm:pl-20 pointer-events-none">
+                        <p className={cn(
+                            "text-white font-semibold tracking-[0.2em]",
+                            'text-xs sm:text-sm md:text-xl',
+                            'text-shadow-md text-shadow-accent-foreground/50'
+
+                        )}>
+                            TheoChemMerida Research Group
+                        </p>
+                        <h1
+                            className={cn(
+                                "leading-[1.05] tracking-tight text-white font-extrabold",
+                                'text-3xl md:text-5xl md:tracking-normal',
+                                'text-shadow-lg text-shadow-accent-foreground/50'
+                            )}
+                        >
+                            Theoretical Chemistry
+                            <br />
+                            <span className="text-white font-semibold leading-[1.05] tracking-tight">
+                                &amp; Molecular Design
                             </span>
-                            <span className="absolute -bottom-1 left-0 w-full h-0.75 bg-linear-to-r from-cyan-400 to-indigo-400 rounded-full" />
+                        </h1>
+
+                        <p className="text-slate-200 text-base md:text-lg max-w-lg leading-relaxed">
+                            Research focused on understanding structure, bonding,
+                            and electron delocalization in complex molecular systems.
+                        </p>
+
+                        <div className="flex flex-wrap items-center gap-3 shrink-0">
+                            <Link to={routes.people.index}>
+                                <Button
+                                    size="lg"
+                                    className="text-white font-semibold rounded-full transition-all duration-300 group shadow-md"
+                                >
+                                    Our Members
+                                    <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
+                                </Button>
+                            </Link>
+                            <Link to={routes.research}>
+                                <Button
+                                    size="lg"
+                                    variant="secondary"
+                                    className="border-slate-300 text-slate-600 hover:border-indigo-500 hover:text-indigo-500 rounded-full transition-all duration-300"
+                                >
+                                    Publications
+                                </Button>
+                            </Link>
+                        </div>
+                    </div>
+
+                    {/* <div className="absolute max-w-6xl mx-auto inset-0 z-10 flex flex-col justify-end p-6 md:p-12 pb-10 md:pb-14 pointer-events-none">
+                        <span className="mt-4 inline-flex self-start items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-white/80 text-xs px-3 py-1.5 rounded-full pointer-events-auto">
+                            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+                            {slides[current]?.caption}
                         </span>
-                    </h1>
+                    </div> */}
 
-                    <p
-                        className="text-slate-400 text-lg md:text-xl max-w-xl leading-relaxed"
-                        style={{ animation: "fadeUp 0.6s 0.2s ease both" }}
+                    <button
+                        onClick={() => api?.scrollPrev()}
+                        aria-label="Previous"
+                        className={cn(
+                            "absolute left-4 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full",
+                            "bg-white/15 hover:bg-white/30 backdrop-blur border border-white/20",
+                            "flex items-center justify-center text-white transition-all",
+                            "max-sm:hidden"
+                        )}
                     >
-                        Research focused on understanding structure, bonding,
-                        and electron delocalization in complex systems.
-                    </p>
+                        <ChevronLeft size={18} />
+                    </button>
+                    <button
+                        onClick={() => api?.scrollNext()}
+                        aria-label="Next"
+                        className={cn(
+                            "absolute right-4 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full",
+                            "bg-white/15 hover:bg-white/30 backdrop-blur border border-white/20",
+                            "flex items-center justify-center text-white transition-all",
+                            "max-sm:hidden"
+                        )}
+                    >
+                        <ChevronRight size={18} />
+                    </button>
 
-                    <div
-                        className="flex flex-wrap gap-3 pt-2"
-                        style={{ animation: "fadeUp 0.6s 0.3s ease both" }}
-                    >
-                        <Link to={routes.people.index}>
-                            <Button
-                                size="lg"
-                                className="bg-cyan-500 hover:bg-cyan-400 text-[#050d1a] font-bold px-7 rounded-full transition-all duration-300 shadow-[0_0_24px_rgba(6,182,212,0.4)] hover:shadow-[0_0_36px_rgba(6,182,212,0.6)] group"
-                            >
-                                Our Members
-                                <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
-                            </Button>
-                        </Link>
-                        <Link to={routes.research}>
-                            <Button
-                                size="lg"
-                                variant="outline"
-                                className="border-slate-600 text-slate-300 hover:border-cyan-500 hover:text-cyan-400 bg-transparent rounded-full px-7 transition-all duration-300"
-                            >
-                                Publications
-                            </Button>
-                        </Link>
+                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+                        {Array.from({ length: count }).map((_, i) => (
+                            <button
+                                key={i}
+                                onClick={() => api?.scrollTo(i)}
+                                className={`h-1.5 rounded-full transition-all duration-300 ${i === current
+                                    ? "w-6 bg-cyan-400"
+                                    : "w-1.5 bg-white/40 hover:bg-white/70"
+                                    }`}
+                                aria-label={`Slide ${i + 1}`}
+                            />
+                        ))}
                     </div>
                 </div>
 
-                <div className=" flex-[0.7] lg:border-l-8 space-y-5">
-                    <div
-                        className="relative max-w-xl lg:w-full bg-white/10 p-4 pr-6"
-                        style={maskStyles}
-                    >
-                        <img
-                            src={image}
-                            alt="Molecular structure"
-                            className="relative w-full h-full object-contain drop-shadow-2xl"
-                            style={maskStyles}
-                        />
-                    </div>
 
-                    <div className="text-center tracking-wider text-neutral-300">
-                        TheoChemMerida Research Group
-                    </div>
-                </div>
+                {/* <div className="px-6 py-6 max-w-7xl mx-auto border-t border-slate-100 flex flex-wrap gap-4">
+                    {[
+                        { label: "Active Projects", value: "12+" },
+                        { label: "Publications", value: "80+" },
+                        { label: "Research Members", value: "18" },
+                        { label: "Years of Research", value: "15+" },
+                    ].map((s) => (
+                        <div key={s.label} className="flex flex-col gap-0.5">
+                            <p className="text-2xl font-black text-slate-700" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{s.value}</p>
+                            <p className="text-xs font-semibold text-slate-600 uppercase tracking-widest mt-0.5">{s.label}</p>
+                        </div>
+                    ))}
+                </div> */}
             </div>
-
-            <div className="absolute right-10 top-1/2 -translate-y-1/2 opacity-10 hidden xl:block">
-                <div
-                    className="w-50 h-50 rounded-full border border-cyan-400"
-                    style={{ animation: "spin 30s linear infinite" }}
-                />
-                <div
-                    className="absolute inset-8 rounded-full border border-indigo-400"
-                    style={{ animation: "spin 20s linear infinite reverse" }}
-                />
-                <div className="absolute inset-16 rounded-full border border-cyan-300" />
-                <Atom
-                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-cyan-300"
-                    size={64}
-                    strokeWidth={0.8}
-                />
-            </div>
-
-        </section>
+        </PaperSection>
     );
 }

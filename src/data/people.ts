@@ -27,7 +27,7 @@ import escalante from '@/assets/members/Escalante_.jpg'
 import aaron from '@/assets/members/Aaron_Dzul.jpeg'
 import bojorquez from '@/assets/members/Carlos Eduardo Bojórquez Ruiz.jpg'
 import dorian from '@/assets/members/dorian.jpg'
-import brishel from '@/assets/members/brishel-acosta.png'
+import brishel from '@/assets/members/brishel acosta.jpeg'
 import jessica from '@/assets/members/Jessica Arcudia.jpg'
 import invin from '@/assets/members/Irvin Tamayo.jpeg'
 import miguel from '@/assets/members/Miguel.jpg'
@@ -199,9 +199,9 @@ export const people: People[] = [
         profilePic: fernandoMur
     },
     {
-        name: 'Alan Israel Quintal Flores',
+        name: 'Alan Quintal',
         description: 'Postdoc at Cinvestav and researcher in Computational Chemical Kinetics. Lead developer of Eyringpy and SurfinPES.',
-        bio: "Dr. Alan Israel Quintal Flores, a specialist in Computational Chemical Kinetics, is a co-author of the Eyringpy program and the lead author of SurfinPES. He is currently a postdoctoral researcher at Cinvestav Mérida, where he integrates scientific research with programming to develop computational tools for the scientific community.",
+        bio: "Dr. Alan Quintal, a specialist in Computational Chemical Kinetics, is a co-author of the Eyringpy program and the lead author of SurfinPES. He is currently a postdoctoral researcher at Cinvestav Mérida, where he integrates scientific research with programming to develop computational tools for the scientific community.",
         role: 'postdoctoral_researcher',
         researchLine: [
             'Computational Chemical Kinetics and Quantum Tunneling',
@@ -420,7 +420,7 @@ Development of Python tools for automation and parallel computational workflows.
             'Development of the website for the 14th Triennial Congress of the World Association of Theoretical and Computational Chemists (WATOC 2028)',
             'Development and maintenance of the TheoChemMerida research group website',
         ],
-        role: 'undergraduate_research_intern',
+        role: 'social_service_or_internship',
         linkedin: 'https://www.linkedin.com/in/edescal/',
         profilePic: escalante
     },
@@ -449,20 +449,21 @@ Development of Python tools for automation and parallel computational workflows.
             'Python package for molecular symmetry analysis, including structure symmetrization in ASE objects: code design and implementation',
             'Molecular reaction mapping software, for generation of reaction pathways: code design and implementation',
         ],
-        role: 'undergraduate_research_intern',
+        role: 'social_service_or_internship',
         profilePic: sebastian
     },
     {
         name: 'Miguel Fernández Montilla Molina',
         description: 'Undergraduate researcher focused on computational physics and machine learning for materials modeling.',
-        bio: "Miguel Fernández Montilla Molina is an undergraduate student in Engineering Physics at the Universidad Autónoma de Yucatán (UADY). He is currently undertaking a research internship at Cinvestav Mérida, with interests in data analysis, theoretical physics, and computational physics.",
+        bio: "Bachelor’s student in Engineering Physics at UADY. Currently undertaking a research stay at CINVESTAV Mérida under the supervision of Dr. Maurizio Alejandro Pantoja Hernández and Dr. Filiberto Ortiz Chi. Interested in theoretical physics and computational physics.",
         researchLine: [
-            'Training machine learning-based interatomic potentials for boron clusters.'
+            'Computational physics, with a focus on training machine-learning interatomic potentials for boron clusters.'
         ],
         currentProjects: [
-            'Generation of datasets of structures, energies, and forces to train interatomic potentials using NequIP, aiming to reproduce the potential energy surface and efficiently analyze stability, dynamics, and connections between minima in boron clusters.',
+            'Training of an interatomic potential for boron clusters using machine learning. Computational study of boron clusters using ab initio methods and machine learning. I generate datasets of structures, energies, and forces to train interatomic potentials with NequIP that can reproduce the system’s potential energy surface, enabling more efficient analysis of stability, dynamics, and connections between minima in boron clusters.',
         ],
         role: 'undergraduate_research_intern',
+        linkedin:'linkedin.com/in/miguel-fernández-montilla-5a377b241',
         profilePic: miguel
     },
     {
@@ -475,7 +476,7 @@ Development of Python tools for automation and parallel computational workflows.
         currentProjects: [
             'WATOC 2028 (Developer)',
         ],
-        role: 'undergraduate_research_intern',
+        role: 'social_service_or_internship',
         profilePic: bojorquez
     },
     {
@@ -488,7 +489,7 @@ Development of Python tools for automation and parallel computational workflows.
         currentProjects: [
             'I am currently collaborating on the development of a static website for a group within the Department of Applied Physics, focused on the dissemination of academic and scientific information, where I contributed to both design and development. Although this project is currently paused, I continue working on the development of a bastion host within the CINVESTAV network to reinforce security and controlled access to a supercomputer.'
         ],
-        role: 'undergraduate_research_intern',
+        role: 'social_service_or_internship',
         linkedin: 'https://www.linkedin.com/in/dzul-esquivel-aaron-yosafat-9733a4364/',
         profilePic: aaron
     },
@@ -502,16 +503,23 @@ Development of Python tools for automation and parallel computational workflows.
         currentProjects: [
             "Kinich Bastion Host is a project focused on creating a server that acts as the first line of defense to prevent cyberattacks against the Kukulcán and Itzel HPC systems."
         ],
-        role: 'undergraduate_research_intern',
+        role: 'social_service_or_internship',
         profilePic: dorian
-    }
-    // {
-    //     name: 'Claudino Brishel López Acosta',
-    //     description: 'Maurizio A. Pantoja Hernández is a chemist specializing in computational chemistry and machine learning, currently a postdoctoral researcher at Cinvestav Mérida.',
-    //     bio: "My name is Maurizio Alejandro Pantoja Hernández. I completed my undergraduate studies in Chemical Engineering in 2014 at Universidad Veracruzana, Xalapa Campus. The following year, I began my Master's studies in Bioorganic Chemistry, also at Universidad Veracruzana, where I worked on the computational analysis of intermolecular interactions between ionic liquids and phenolic compound extractants, under the supervision of Prof. Myrna Matus. After earning my Master's degree in early 2018, I worked as a research assistant to Prof. Myrna Matus until mid-2019. I began my phD studies in Chemistry in September 2019, at Universidad Autónoma Metropolitana, Iztapalapa Unit, in Mexico City. I worked with Prof. José L. Gázquez on developing chemical reactivity descriptors for interacting species, within the theoretical framework of the Density Functional Theory. I earned my phD degree in December 2023 and began my first postdoctoral fellowship in January 2024 at Universidad Veracruzana. During this fellowship, I studied the oxidative desulfurization of oil using molecular chemical reactivity descriptors. In February 2025, I started my current postdoctoral fellowship at Cinvestav-Mérida, where I am working on developing a machine learning interatomic potential for exploring the potential energy surface of boron clusters.",
-    //     role: 'undergraduate_research_intern',
-    //     profilePic: brishel
-    // },
+    },
+    {
+        name: 'Claudino Brishel López Acosta',
+        description: 'Maurizio A. Pantoja Hernández is a chemist specializing in computational chemistry and machine learning, currently a postdoctoral researcher at Cinvestav Mérida.',
+        bio: "3 years of experience in software development, specializing in cybersecurity. I enjoy finding solutions to complex problems through innovation. I stand out for my ability to work under pressure and optimize processes, focusing on results and continuous learning.",
+        researchLine: [
+            'Developing augmented reality software solutions while strengthening cybersecurity protocols.',
+        ],
+        currentProjects: [
+            'WATOC 2028 (Developer)',
+        ],
+        role: 'social_service_or_internship',
+        linkedin: 'www.linkedin.com/in/brishel-acosta-75a41a283',
+        profilePic: brishel
+    },
 ]
 
 export function slugify(text: string): string {
