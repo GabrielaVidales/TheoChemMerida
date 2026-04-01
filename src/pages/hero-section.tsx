@@ -187,7 +187,7 @@ export default function HeroSection() {
                         onClick={() => api?.scrollPrev()}
                         aria-label="Previous"
                         className={cn(
-                            "absolute left-4 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full",
+                            "cursor-pointer absolute left-4 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full",
                             "bg-white/15 hover:bg-white/30 backdrop-blur border border-white/20",
                             "flex items-center justify-center text-white transition-all",
                             "max-sm:hidden"
@@ -199,7 +199,7 @@ export default function HeroSection() {
                         onClick={() => api?.scrollNext()}
                         aria-label="Next"
                         className={cn(
-                            "absolute right-4 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full",
+                            "cursor-pointer absolute right-4 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full",
                             "bg-white/15 hover:bg-white/30 backdrop-blur border border-white/20",
                             "flex items-center justify-center text-white transition-all",
                             "max-sm:hidden"

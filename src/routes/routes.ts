@@ -96,5 +96,5 @@ export const routes = createRouteGroup('', {
     research: '/our-research',
     projects: '/our-projects',
     events: '/events',
-    // contact: '/contact'
+    contact: '/contact',
 })

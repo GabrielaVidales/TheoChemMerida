@@ -12,28 +12,28 @@ import { Item, ItemContent, ItemTitle, } from "@/components/ui/item"
 const navLinks: { label: string, url: string }[] = [
     {
         label: 'Home',
-        url: routes.index
+        url: routes.index,
     },
     {
         label: 'People',
-        url: routes.people.index
+        url: routes.people.index,
     },
     {
         label: 'Publications',
-        url: routes.research
+        url: routes.research,
     },
     {
         label: 'Software',
-        url: routes.projects
+        url: routes.projects,
     },
     {
         label: 'Events',
-        url: routes.events
+        url: routes.events,
     },
-    // {
-    //     label: 'Contact Us',
-    //     url: '/contact'
-    // },
+    {
+        label: 'Contact Us',
+        url: routes.contact,
+    },
 ]
 
 
