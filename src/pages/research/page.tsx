@@ -7,6 +7,7 @@ import { YearPageSection } from './year-page-section';
 import { YearSelector } from './year-selector';
 import { formatAuthors, getParsedData } from '@/lib/bibparser'
 import PageTitle from '@/components/ui/page-title';
+import { Helmet } from 'react-helmet-async';
 
 
 export default function ResearchPage() {
@@ -15,20 +16,16 @@ export default function ResearchPage() {
     useEffect(() => {
 
         const data = getParsedData()
-        // const sorted = sortByYear(data)
-        // const grouped = groupByYears(sorted)
 
-        // console.log(sorted.map(item => item.issued['date-parts'][0]));
-        // const puta = Object.entries(data.years).filter(([y]) => Number(y) >= 2020)
-        console.log(data.years[new Date().getFullYear()]);
+        if (import.meta.env.DEV) {
+            console.log(data.years[new Date().getFullYear()]);
+            console.log(data.years[2026][0]);
+        }
 
-        console.log(data.years[2026][0]);
-        
         const authors = formatAuthors(data.years[2026][0])
-        console.log(authors);
-        
-
-
+        if (import.meta.env.DEV) {
+            console.log(authors);
+        }
     }, [])
 
     // const entriesByYear = Object.entries(publications).sort(([a], [b]) => Number(b) - Number(a))
@@ -37,7 +34,13 @@ export default function ResearchPage() {
 
 
     return (
-        <div className="min-h-screen">
+        <>
+            <Helmet>
+                <title>Publications</title>
+                <meta name="description" content="Peer-reviewed research in theoretical chemistry, molecular design, and electron delocalization." />
+                <link rel="canonical" href="https://www.theochemmerida.org/" />
+            </Helmet>
+
             <section className="relative min-h-60 w-full overflow-hidden bg-slate-900 text-white">
                 <div
                     className="absolute inset-0 pointer-events-none opacity-[0.04]"
@@ -96,11 +99,11 @@ export default function ResearchPage() {
                     <div className="flex-1 lg:flex-2 min-w-0 w-full">
                         {selectedYear !== null ? (
                             <>
-                            <YearPageSection
-                                year={`${selectedYear}`}
-                                itemsPerPage={5}
-                                papers={entriesByYear.years[selectedYear]}
-                            />
+                                <YearPageSection
+                                    year={`${selectedYear}`}
+                                    itemsPerPage={5}
+                                    papers={entriesByYear.years[selectedYear]}
+                                />
                             </>
                         ) : (
                             <EmptyYearSelection />
@@ -108,7 +111,7 @@ export default function ResearchPage() {
                     </div>
                 </div>
             </section>
-        </div>
+        </>
     )
 }
 

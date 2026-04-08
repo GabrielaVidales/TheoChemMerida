@@ -4,24 +4,22 @@ import { Button } from "@/components/ui/button"
 import { Separator } from '@/components/ui/separator'
 import { softwareProjects } from '@/data/projects'
 import { Link } from 'react-router'
-import {
-    Card,
-    CardAction,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-} from "@/components/ui/card"
+import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, } from "@/components/ui/card"
 import { cn } from '@/lib/utils'
-import { useIsMobile } from '@/hooks/use-mobile'
 import PaperSection from '@/components/paper-section'
 import PageTitle from '@/components/ui/page-title'
+import { Helmet } from 'react-helmet-async'
 
 
 function ProjectsPage() {
     return (
         <>
+            <Helmet>
+                <title>Software | TheoChemMerida Research Group</title>
+                <meta name="description" content="Specialized tools are developed and maintained to address complex problems in chemical kinetics, potential energy surfaces, and materials science." />
+                <link rel="canonical" href="https://www.theochemmerida.org/" />
+            </Helmet>
+
             <PaperSection
                 className='px-6 md:px-12 py-14'
                 containerCN='shadow-md'

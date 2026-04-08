@@ -5,6 +5,7 @@ import { routes } from '@/routes/routes'
 import { User2 } from 'lucide-react'
 import PageTitle from '@/components/ui/page-title'
 import PaperSection from '@/components/paper-section'
+import { Helmet } from 'react-helmet-async'
 
 const SECTIONS = [
     { key: 'leader', label: 'Principal Investigators', accent: '#0ea5e9' },
@@ -17,7 +18,12 @@ const SECTIONS = [
 
 function PeoplePage() {
     return (
-        <div>
+        <>
+            <Helmet>
+                <title>People | TheoChemMerida Research Group</title>
+                <meta name="description" content="Meet the researchers, students, and collaborators who contribute to our work in chemical kinetics, materials science, and computational modeling." />
+                <link rel="canonical" href="https://www.theochemmerida.org/" />
+            </Helmet>
 
             <PaperSection
                 className='px-6 md:px-12 py-14'
@@ -73,7 +79,7 @@ function PeoplePage() {
                     )
                 })}
             </div>
-        </div>
+        </>
     )
 }
 

@@ -17,7 +17,7 @@ function HomePage() {
             <div>
                 <HeroSection />
 
-                <div className="max-w-5xl mx-auto py-14 space-y-3">
+                <div className="px-6 md:px-12 py-14">
                     <PageTitle
                         className='max-w-5xl mx-auto'
                         title='Research Lines'

@@ -1,7 +1,7 @@
 type RouteTree<T> = {
     [K in keyof T]:
     T[K] extends { build: (...args: any) => any } // 👈 CLAVE
-    ? T[K] 
+    ? T[K]
     : T[K] extends string
     ? string
     : T[K] extends object
@@ -19,7 +19,9 @@ type RouteParams<T extends string> =
 function createRouteGroup<T extends Record<string, any>>(
     base: string,
     routes: T
-): RouteTree<T> {
+): RouteTree<T> & {
+    asValues(): string[]
+} {
     const result: any = {}
 
     for (const key in routes) {
@@ -32,12 +34,24 @@ function createRouteGroup<T extends Record<string, any>>(
                 ...value,
                 url: `${base}${value.url}`,
             }
-        } else if (typeof value === "object") {
+        } else if (value && typeof value === "object") {
             result[key] = createRouteGroup(
                 base + (value.base ?? ""),
                 value.routes ?? value
             )
         }
+    }
+
+    result['asValues'] = () => {
+        return Object.values(result)
+            .flatMap(value => {
+                const hasValues = typeof (value as any)?.asValues === 'function'
+                if (hasValues) {
+                    return (value as any).asValues()
+                }
+                return value
+            })
+            .filter(value => typeof value === 'string' && value !== '/')
     }
 
     return result
@@ -57,6 +71,7 @@ const withBuilder = <T extends string>(url: T) => ({
     },
 })
 
+
 export const routes = createRouteGroup('', {
     index: '/',
     people: createRouteGroup('/people', {
@@ -67,6 +82,4 @@ export const routes = createRouteGroup('', {
     projects: '/software',
     events: '/events',
     contact: '/contact',
-
-    
 })

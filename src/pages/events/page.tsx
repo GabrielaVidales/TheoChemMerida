@@ -5,11 +5,18 @@ import { Button } from '@/components/ui/button'
 import { ExternalLink } from 'lucide-react'
 import PaperSection from '@/components/paper-section'
 import PageTitle from '@/components/ui/page-title'
+import { Helmet } from 'react-helmet-async'
 
 
 function EventsPage() {
     return (
         <>
+            <Helmet>
+                <title>Events</title>
+                <meta name="description" content="A showcase of scientific gatherings and conferences organized by TheoChemMerida Research Group." />
+                <link rel="canonical" href="https://www.theochemmerida.org/" />
+            </Helmet>
+
             <PaperSection
                 className='px-6 md:px-12 py-14'
                 containerCN='shadow-md'

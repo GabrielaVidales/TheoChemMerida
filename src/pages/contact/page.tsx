@@ -2,31 +2,35 @@ import PaperSection from '@/components/paper-section'
 import PageTitle from '@/components/ui/page-title'
 import contactImg from '@/assets/img/contact.jpeg'
 import { MapPin } from 'lucide-react'
-import { useEffect } from 'react'
+import { Helmet } from 'react-helmet-async'
 
 function ContactPage() {
     return (
         <>
+            <Helmet>
+                <title>Contact</title>
+                <meta name="description" content="We welcome collaborations, inquiries, and interest from prospective students and researchers." />
+                <link rel="canonical" href="https://www.theochemmerida.org/" />
+            </Helmet>
+
             <PaperSection
                 className="max-w-5xl mx-auto py-14 space-y-3 max-md:px-5"
                 containerCN='border-b-2 shadow-md'
                 variant='dark'
                 glow
             >
-                <span className="text-sm tracking-[0.25em] font-medium">
+                {/* <p className="text-sm tracking-[0.25em] font-medium">
                     TheoChemMerida • Research Group
-                </span>
+                </p> */}
                 <PageTitle
                     title='Contact Us'
                     subtitle='We welcome collaborations, inquiries, and interest from prospective students and researchers.'
                 />
             </PaperSection>
+
             <section className="relative z-10 max-w-5xl mx-auto py-14">
-
-
                 <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-5 lg:gap-10 items-start">
                     <div className="flex-1 flex flex-col gap-4 bg-background p-3 rounded-md border-2">
-
                         <div className='space-y-2'>
                             <img
                                 src={contactImg}
@@ -34,7 +38,6 @@ function ContactPage() {
                                 className='aspect-video border-4 border-neutral-100 shadow-md outline-1'
                             />
                         </div>
-
                         <div className="flex flex-col gap-2 px-5">
                             <span className="text-xs uppercase font-semibold tracking-[0.25em] text-slate-700">Address</span>
                             <p className="text-base">
