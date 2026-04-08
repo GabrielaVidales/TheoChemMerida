@@ -4,8 +4,8 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger, } from "@/componen
 
 
 export function YearSelector({ entriesByYear, selectedYear, setSelectedYear }) {
-    const recent = entriesByYear.filter(([y]) => Number(y) >= 2020)
-    const older = entriesByYear.filter(([y]) => Number(y) < 2020)
+    const recent = Object.entries(entriesByYear).filter(([y]) => Number(y) >= 2020).sort((a, b) => Number(b[0]) - Number(a[0])) 
+    const older = Object.entries(entriesByYear).filter(([y]) => Number(y) < 2020).sort((a, b) => Number(b[0]) - Number(a[0])) 
 
     const YearButton = ({ year, data }) => {
         const active = selectedYear === Number(year)
@@ -20,21 +20,21 @@ export function YearSelector({ entriesByYear, selectedYear, setSelectedYear }) {
                 `}
             >
                 <span className={`text-sm font-bold ${active ? 'text-indigo-600' : 'text-neutral-700'}`}>
-                    {year === '2006' ? '2006 and before' : year}
+                    {year}
                 </span>
 
                 <span className={`
                     text-xs font-semibold px-2 py-0.5 rounded-full
                     ${active ? 'text-white bg-indigo-600' : 'text-neutral-500 bg-neutral-200'}
                 `}>
-                    {data.journal.length}
+                    {data.length}
                 </span>
             </Button>
         )
     }
 
     return (
-        <aside className="hidden lg:block flex-1 shrink-0">
+        <aside className="w-full lg:block flex-1 shrink-0">
             <div className="overflow-hidden border rounded-xl bg-white shadow-sm">
 
                 <div className="px-4 py-3 border-b text-sm font-semibold text-slate-600">

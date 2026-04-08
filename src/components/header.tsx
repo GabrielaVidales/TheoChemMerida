@@ -59,15 +59,31 @@ export const Header = ({
         )}>
             <div className='max-w-6xl h-24 flex justify-between items-center gap-3 mx-auto p-4'>
                 <div className="flex justify-center absolute left-1/2 -translate-x-1/2 lg:static lg:left-auto lg:translate-x-0">
-                    <Link to={routes.index}>
-                        <img
+                    <Link to={routes.index} className='relative'>
+                        <div
+                            className={cn(
+                                "bg-main h-18 w-55 sm:w-65 md:w-70 transition-all duration-300",
+                                !enableScroll || scroll ? "bg-main" : "bg-white"
+                            )}
+                            style={{
+                                WebkitMaskImage: `url(${theochemlogo})`,
+                                maskImage: `url(${theochemlogo})`,
+                                WebkitMaskSize: 'contain',
+                                maskSize: 'contain',
+                                WebkitMaskRepeat: 'no-repeat',
+                                maskRepeat: 'no-repeat',
+                                WebkitMaskPosition: 'center',
+                                maskPosition: 'center'
+                            }}
+                        />
+                        {/* <img
                             src={theochemlogo}
                             alt="TheoChemMerida"
                             className={cn(
-                                'max-h-15 transition-all duration-300',
+                                'max-h-18 transition-all duration-300',
                                 !enableScroll || scroll ? 'invert' : ''
                             )}
-                        />
+                        /> */}
                     </Link>
                 </div>
 

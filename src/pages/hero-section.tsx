@@ -6,7 +6,7 @@ import { Link } from "react-router";
 import { routes } from "@/routes/routes";
 import group from '@/assets/img/theochemreunited.jpeg'
 import whiteboard from '@/assets/img/slide1.jpg'
-import SLIDE2 from '@/assets/img/slide2.jpg'
+import SLIDE2 from '@/assets/img/large.jpg'
 import { cn } from "@/lib/utils";
 import PaperSection from "@/components/paper-section";
 

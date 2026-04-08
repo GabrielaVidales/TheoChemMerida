@@ -420,7 +420,7 @@ Development of Python tools for automation and parallel computational workflows.
             'Development of the website for the 14th Triennial Congress of the World Association of Theoretical and Computational Chemists (WATOC 2028)',
             'Development and maintenance of the TheoChemMerida research group website',
         ],
-        role: 'social_service_or_internship',
+        role: 'undergraduate_research_intern',
         linkedin: 'https://www.linkedin.com/in/edescal/',
         profilePic: escalante
     },
@@ -476,7 +476,7 @@ Development of Python tools for automation and parallel computational workflows.
         currentProjects: [
             'WATOC 2028 (Developer)',
         ],
-        role: 'social_service_or_internship',
+        role: 'undergraduate_research_intern',
         profilePic: bojorquez
     },
     {
@@ -489,7 +489,7 @@ Development of Python tools for automation and parallel computational workflows.
         currentProjects: [
             'I am currently collaborating on the development of a static website for a group within the Department of Applied Physics, focused on the dissemination of academic and scientific information, where I contributed to both design and development. Although this project is currently paused, I continue working on the development of a bastion host within the CINVESTAV network to reinforce security and controlled access to a supercomputer.'
         ],
-        role: 'social_service_or_internship',
+        role: 'undergraduate_research_intern',
         linkedin: 'https://www.linkedin.com/in/dzul-esquivel-aaron-yosafat-9733a4364/',
         profilePic: aaron
     },
@@ -503,7 +503,7 @@ Development of Python tools for automation and parallel computational workflows.
         currentProjects: [
             "Kinich Bastion Host is a project focused on creating a server that acts as the first line of defense to prevent cyberattacks against the Kukulcán and Itzel HPC systems."
         ],
-        role: 'social_service_or_internship',
+        role: 'undergraduate_research_intern',
         profilePic: dorian
     },
     {
@@ -516,7 +516,7 @@ Development of Python tools for automation and parallel computational workflows.
         currentProjects: [
             'WATOC 2028 (Developer)',
         ],
-        role: 'social_service_or_internship',
+        role: 'undergraduate_research_intern',
         linkedin: 'www.linkedin.com/in/brishel-acosta-75a41a283',
         profilePic: brishel
     },

@@ -23,29 +23,6 @@ export const Footer = () => {
                 }}
             />
 
-            {/* <div className="absolute top-1 left-0 w-full overflow-hidden leading-0 -translate-y-full">
-                <svg
-                    viewBox="0 0 1440 120"
-                    className="w-full h-20 block sm:hidden"
-                    preserveAspectRatio="none"
-                >
-                    <path
-                        d="M0,0 Q720,60 1440,0 L1440,120 L0,120 Z"
-                        fill="#0f172b"
-                    />
-                </svg>
-                <svg
-                    viewBox="0 0 1440 120"
-                    className="w-full h-30 hidden sm:block"
-                    preserveAspectRatio="none"
-                >
-                    <path
-                        d="M0,0 Q720,120 1440,0 L1440,120 L0,120 Z"
-                        fill="#0f172b"
-                    />
-                </svg>
-            </div> */}
-
             <div className="absolute inset-0 pointer-events-none">
                 <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 max-w-6xl h-full rounded-full bg-cyan-500/10 blur-[120px]" />
                 <div className="absolute bottom-0 right-0 w-100 h-full rounded-full bg-indigo-600/10 blur-[100px]" />
@@ -81,7 +58,11 @@ export const Footer = () => {
                                 </div>
 
                                 <a href="mailto:gmerino@cinvestav.mx" className="hover:text-blue-400 transition font-semibold w-fit">gmerino@cinvestav.mx</a>
-                                <a href="mailto:gabriel.merino2@gmail.com" className="hover:text-blue-400 transition font-semibold w-fit">gabriel.merino2@gmail.com</a>
+                                {/* <a href="mailto:gabriel.merino2@gmail.com" className="hover:text-blue-400 transition font-semibold w-fit">gabriel.merino2@gmail.com</a> */}
+
+                                <a href="mailto:filiberto.ortiz@cinvestav.mx" className="hover:text-blue-400 transition font-semibold w-fit">filiberto.ortiz@cinvestav.mx</a>
+                                {/* <a href="mailto:fortiz@conahcyt.mx" className="hover:text-blue-400 transition font-semibold w-fit">fortiz@conahcyt.mx</a> */}
+
                             </div>
                             <div className="flex flex-col space-y-1">
                                 <div className="flex gap-2 items-center">
@@ -117,8 +98,8 @@ export const Footer = () => {
                             <h3 className="text-sm font-bold uppercase tracking-wider text-gray-200">Webmasters</h3>
                             {[
                                 'Eduardo Escalante Pacheco',
-                                'Gabriela Yasmin Vidales Ayala',
                                 'Gerardo Hernández Juárez',
+                                'Gabriela Yasmin Vidales Ayala',
                             ].map((name, index) => (
                                 <p
                                     key={index}

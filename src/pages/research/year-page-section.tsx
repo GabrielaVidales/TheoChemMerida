@@ -2,9 +2,10 @@ import { type Paper } from '@/data/publications'
 import { useState, useEffect } from 'react';
 import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious, } from "@/components/ui/pagination"
 import { ResearchPaperCard } from './research-paper-card';
+import type { CitationEntry } from '@/lib/bibparser';
 
 
-export const YearPageSection = ({ year, itemsPerPage, papers }: { year: string; itemsPerPage: number; papers: Paper[] }) => {
+export const YearPageSection = ({ year, itemsPerPage, papers }: { year: string; itemsPerPage: number; papers: CitationEntry[] }) => {
     const [currentPage, setCurrentPage] = useState(1)
     const totalPages = Math.ceil(papers.length / itemsPerPage)
     const currentArticles = papers.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)

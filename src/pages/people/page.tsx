@@ -2,9 +2,7 @@ import { people, roles, slugify, type People } from '@/data/people'
 import { Link } from 'react-router'
 import { cn } from '@/lib/utils'
 import { routes } from '@/routes/routes'
-import { useIsMobile } from '@/hooks/use-mobile'
 import { User2 } from 'lucide-react'
-import { motion } from 'motion/react'
 import PageTitle from '@/components/ui/page-title'
 import PaperSection from '@/components/paper-section'
 
@@ -22,7 +20,7 @@ function PeoplePage() {
         <div>
 
             <PaperSection
-                className='p-4 sm:p-10 space-y-10'
+                className='px-6 md:px-12 py-14'
                 containerCN='shadow-md'
                 variant='dark'
                 glow
@@ -33,48 +31,6 @@ function PeoplePage() {
                     className='text-neutral-100 max-w-5xl mx-auto'
                 />
             </PaperSection>
-
-
-            {/* 
-            <section className="relative min-h-60 w-full overflow-hidden bg-slate-900 text-white">
-                <div
-                    className="absolute inset-0 pointer-events-none opacity-[0.04]"
-                    style={{
-                        backgroundImage: `linear-gradient(#38bdf8 ${mobile ? 2 : 4}px, transparent ${mobile ? 2 : 4}px), linear-gradient(90deg, #38bdf8 ${mobile ? 2 : 4}px, transparent ${mobile ? 2 : 4}px)`,
-                        backgroundSize: mobile ? "24px 24px" : "48px 48px",
-                        backgroundAttachment: 'fixed',
-                        maskImage: "linear-gradient(to bottom, transparent, black 15%), linear-gradient(to top, transparent, black 20%)",
-                        WebkitMaskImage: "linear-gradient(to bottom, transparent, black 15%), linear-gradient(to top, transparent, black 15%)",
-                        maskComposite: "intersect",
-                        WebkitMaskComposite: "source-in",
-                    }}
-                />
-
-                <div className="max-w-6xl mx-auto px-6 md:px-12 py-14">
-                    <motion.h1
-                        className="text-5xl md:text-6xl font-black tracking-tight  leading-none"
-                        style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-
-                        initial={{ opacity: 0, translateX: -25, }}
-                        animate={{ opacity: 1, translateX: 0, }}
-                        transition={{ duration: 1, delay: 0.05, ease: 'anticipate' }}
-                    >
-                        Group Members
-                    </motion.h1>
-                    <motion.p
-                        className="mt-4 text-lg max-w-2xl leading-relaxed border-l-2 border-indigo-400 pl-4"
-                        initial={{ opacity: 0, translateX: 50, }}
-                        animate={{ opacity: 1, translateX: 0, }}
-                        transition={{ duration: 1, delay: 0.1, ease: 'anticipate' }}
-                    >
-                        Meet the researchers, students, and collaborators who contribute to our work in chemical kinetics, materials science, and computational modeling.
-                    </motion.p>
-                </div>
-
-                <div className="absolute inset-0 pointer-events-none">
-                    <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-175 max-w-6xl h-175 rounded-full bg-cyan-500/10 blur-[120px]" />
-                </div>
-            </section> */}
 
             <div className="max-w-5xl mx-auto px-6 md:px-12 py-16 space-y-24">
                 {SECTIONS.map(({ key, label, accent }) => {

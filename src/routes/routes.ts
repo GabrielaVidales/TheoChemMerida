@@ -57,44 +57,16 @@ const withBuilder = <T extends string>(url: T) => ({
     },
 })
 
-
-export const urls = {
-    home: {
-        index: '/'
-    },
-    auth: createRouteGroup('/auth', {
-        login: '/login',
-        register: '/register',
-    }),
-    users: createRouteGroup('/user', {
-        profile: '/profile',
-        viewAbstracts: '/my-abstracts',
-        editAbstract: withBuilder('/abstract/:id/edit'),
-        previewAbstract: withBuilder('/abstract/:id/preview'),
-        submitAbstract: '/abstract',
-        confirmAssistance: createRouteGroup('/confirm-assistance', {
-            start: '',
-            fee: '/fee',
-            tour: '/tour',
-            payment: '/payment',
-            dinner: '/dinner',
-        }),
-    }),
-    payments: createRouteGroup('/payments', {
-        success: '/success',
-        failed: '/failed',
-    }),
-} as const
-
-
 export const routes = createRouteGroup('', {
     index: '/',
-    people: createRouteGroup('/our-people', {
+    people: createRouteGroup('/people', {
         index: '',
         profile: withBuilder('/profile/:slug')
     }),
     research: '/our-research',
-    projects: '/our-projects',
+    projects: '/software',
     events: '/events',
     contact: '/contact',
+
+    
 })

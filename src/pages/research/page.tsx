@@ -1,18 +1,40 @@
 import { publications } from '@/data/publications'
 import { SearchCode } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { JournalAccordeon } from './journal-accordeon';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { YearPageSection } from './year-page-section';
 import { YearSelector } from './year-selector';
+import { formatAuthors, getParsedData } from '@/lib/bibparser'
 import PageTitle from '@/components/ui/page-title';
 
 
 export default function ResearchPage() {
     const mobile = useIsMobile()
 
-    const entriesByYear = Object.entries(publications).sort(([a], [b]) => Number(b) - Number(a))
+    useEffect(() => {
+
+        const data = getParsedData()
+        // const sorted = sortByYear(data)
+        // const grouped = groupByYears(sorted)
+
+        // console.log(sorted.map(item => item.issued['date-parts'][0]));
+        // const puta = Object.entries(data.years).filter(([y]) => Number(y) >= 2020)
+        console.log(data.years[new Date().getFullYear()]);
+
+        console.log(data.years[2026][0]);
+        
+        const authors = formatAuthors(data.years[2026][0])
+        console.log(authors);
+        
+
+
+    }, [])
+
+    // const entriesByYear = Object.entries(publications).sort(([a], [b]) => Number(b) - Number(a))
+    const entriesByYear = getParsedData()
     const [selectedYear, setSelectedYear] = useState<number | null>(new Date().getFullYear())
+
 
     return (
         <div className="min-h-screen">
@@ -31,7 +53,7 @@ export default function ResearchPage() {
                 />
 
                 <div className="max-w-6xl mx-auto px-6 md:px-12 py-14">
-                    <PageTitle 
+                    <PageTitle
                         title='Publications'
                         subtitle='Peer-reviewed research in theoretical chemistry, molecular design, and electron delocalization.'
                     />
@@ -39,8 +61,8 @@ export default function ResearchPage() {
                     <div className="mt-8 flex flex-wrap gap-6">
                         {[
                             { label: 'Total papers', value: Object.values(publications).reduce((acc, y) => acc + y.journal.length, 0) },
-                            { label: 'Years active', value: `+${entriesByYear.length}` },
-                            { label: 'Most recent', value: entriesByYear[0]?.[0] },
+                            { label: 'Years active', value: `+${entriesByYear.count}` },
+                            { label: 'Most recent', value: new Date().getFullYear() },
                         ].map(s => (
                             <div key={s.label}>
                                 <p className="text-2xl font-black text-slate-300" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{s.value}</p>
@@ -66,18 +88,20 @@ export default function ResearchPage() {
                 <div className="flex flex-col lg:flex-row gap-8 items-start">
 
                     <YearSelector
-                        entriesByYear={entriesByYear}
+                        entriesByYear={entriesByYear.years}
                         selectedYear={selectedYear}
                         setSelectedYear={setSelectedYear}
                     />
 
                     <div className="flex-1 lg:flex-2 min-w-0 w-full">
                         {selectedYear !== null ? (
+                            <>
                             <YearPageSection
                                 year={`${selectedYear}`}
                                 itemsPerPage={5}
-                                papers={entriesByYear.find(e => e[0] === `${selectedYear}`)![1].journal}
+                                papers={entriesByYear.years[selectedYear]}
                             />
+                            </>
                         ) : (
                             <EmptyYearSelection />
                         )}

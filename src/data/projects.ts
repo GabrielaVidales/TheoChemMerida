@@ -14,7 +14,7 @@ type SoftwareProject = {
     projectUrl?: string
     banner?: string
     category?: Category
-    tags?: string[]
+    tags: string[]
 
 }
 
@@ -41,17 +41,17 @@ export const softwareProjects: SoftwareProject[] = [
         projectUrl: 'https://eyringpy.streamlit.app/'
     },
     {
-        name: 'ELAYA SMILES',
-        tags: ['Python',],
-        description: 'ELAYA SMILES is a web-based platform designed for the conversion of linear molecular representations (SMILES) into optimized three-dimensional structures.',
-        banner: elaya,
-        projectUrl: 'https://elaya-smiles.onrender.com/'
-    },
-    {
         name: 'SOLIDS',
         tags: ['Python',],
         description: 'Solids is a robust, open-source Python package for crystal structure prediction. By integrating ASE, PyXtal, and Dscribe, it enables symmetry-based structure generation and advanced morphological analysis. Designed for high-performance computing, it supports VASP and GULP and run seamlessly across UNIX systems, cloud enviroments (Colab, Kaggle).',
         banner: solids,
         projectUrl: 'https://gabrielavidales.github.io/Solids-1.0-Users-Guide/#'
+    },
+    {
+        name: 'ELAYA SMILES',
+        tags: ['Python',],
+        description: 'ELAYA SMILES is a web-based platform designed for the conversion of linear molecular representations (SMILES) into optimized three-dimensional structures.',
+        banner: elaya,
+        projectUrl: 'https://elaya-smiles.onrender.com/'
     },
 ]

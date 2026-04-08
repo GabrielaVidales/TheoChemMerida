@@ -2,7 +2,7 @@ import PaperSection from '@/components/paper-section'
 import PageTitle from '@/components/ui/page-title'
 import contactImg from '@/assets/img/contact.jpeg'
 import { MapPin } from 'lucide-react'
-
+import { useEffect } from 'react'
 
 function ContactPage() {
     return (
@@ -10,6 +10,8 @@ function ContactPage() {
             <PaperSection
                 className="max-w-5xl mx-auto py-14 space-y-3 max-md:px-5"
                 containerCN='border-b-2 shadow-md'
+                variant='dark'
+                glow
             >
                 <span className="text-sm tracking-[0.25em] font-medium">
                     TheoChemMerida • Research Group
