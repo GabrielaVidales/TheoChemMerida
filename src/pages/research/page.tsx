@@ -14,8 +14,10 @@ import {
     InputGroupInput,
 } from "@/components/ui/input-group"
 import { ResearchPaperCard } from './research-paper-card';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 export default function ResearchPage() {
+    const mobile = useIsMobile()
     // useEffect(() => {
 
     //     const data = getParsedData()
@@ -139,7 +141,7 @@ export default function ResearchPage() {
                                     <>
                                         <YearPageSection
                                             year={`${selectedYear}`}
-                                            itemsPerPage={5}
+                                            itemsPerPage={mobile ? 5 : 10}
                                             papers={entriesByYear.years[selectedYear]}
                                         />
                                     </>
