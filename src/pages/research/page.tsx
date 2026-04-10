@@ -69,8 +69,8 @@ export default function ResearchPage() {
 
                     <div className="mt-8 flex flex-wrap gap-6">
                         {[
-                            { label: 'Total papers', value: Object.values(publications).reduce((acc, y) => acc + y.journal.length, 0) },
-                            { label: 'Years active', value: `+${entriesByYear.count}` },
+                            { label: 'Total papers', value: `+${entriesByYear.count}` },
+                            { label: 'Years active', value: `+${new Date().getFullYear() - 1999}` },
                             { label: 'Most recent', value: new Date().getFullYear() },
                         ].map(s => (
                             <div key={s.label}>
@@ -92,7 +92,7 @@ export default function ResearchPage() {
             <section className="max-w-6xl mx-auto px-6 md:px-12 py-12 space-y-12">
                 <div className="flex flex-col lg:flex-row gap-8 items-start">
 
-                    <div className='flex-1 flex flex-col gap-4'>
+                    <div className='flex-1 w-full flex flex-col gap-4'>
                         <div className="overflow-hidden border rounded-xl bg-white shadow-sm">
                             <div className="px-4 py-3 border-b text-sm font-semibold text-slate-600">
                                 Search
@@ -102,6 +102,7 @@ export default function ResearchPage() {
                                     <InputGroupInput
                                         value={searchQuery}
                                         onChange={e => setSearchQuery(e.target.value)}
+                                        className='text-sm'
                                         placeholder="Search by title, author, journal..."
                                     />
                                     <InputGroupAddon>

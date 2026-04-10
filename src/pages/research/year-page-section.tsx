@@ -15,27 +15,27 @@ export const YearPageSection = ({ year, itemsPerPage, papers }: { year: string; 
 
     return (
         <div className="space-y-4">
-            <div className="relative flex items-center gap-5 mb-8 overflow-hidden rounded-xl px-6 py-5 bg-indigo-100">
+            <div className="relative flex items-center gap-5 mb-8 overflow-hidden rounded-xl px-6 py-5 bg-main/10">
                 <span
-                    className="absolute right-4 top-1/2 -translate-y-1/2 text-8xl font-black text-indigo-200 select-none pointer-events-none leading-none"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-5xl sm:text-6xl md:text-8xl font-black text-main/20 select-none pointer-events-none leading-none"
                     style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                 >
                     {year}
                 </span>
 
-                <div className="w-1 h-12 rounded-full bg-indigo-500 shrink-0" />
+                <div className="w-1 h-12 rounded-full bg-main/50 shrink-0" />
 
                 <div className="relative z-10">
-                    <p className="text-xs font-semibold text-indigo-400 uppercase tracking-[0.2em] mb-1">
+                    <p className="text-xs font-semibold text-main uppercase tracking-[0.2em] mb-1">
                         Publications
                     </p>
                     <h2
-                        className="text-4xl font-black text-indigo-900 leading-none"
+                        className="text-4xl font-black text-main leading-none"
                         style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                     >
                         {year}
                     </h2>
-                    <p className="text-sm text-indigo-400 mt-1.5 font-medium">
+                    <p className="text-sm text-main mt-1.5 font-medium">
                         {papers.length} paper{papers.length !== 1 ? 's' : ''} published
                     </p>
                 </div>

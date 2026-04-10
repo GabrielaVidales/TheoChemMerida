@@ -38,12 +38,12 @@ function HomePage() {
                                 'group hover:shadow-accent-foreground/20 transition-shadow',
                                 'hover:-translate-y-1 transition-transform duration-300'
                             )}>
-                                <div className="absolute inset-0 z-30 aspect-video pointer-events-none" />
+                                <div className="absolute inset-0 aspect-video pointer-events-none" />
                                 <img
                                     src={research.img || "https://avatar.vercel.sh/shadcn1"}
                                     alt={research.name}
                                     className={cn(
-                                        'relative z-20 aspect-video w-full object-cover',
+                                        'relative aspect-video w-full object-cover',
                                         'transition-all duration-500 group-hover:scale-105',
                                         'ease-in-out bg-slate-100/10 group-hover:shadow-xl',
                                     )}

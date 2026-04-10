@@ -130,16 +130,28 @@ export const Header = ({
                         <PopoverContent className='p-0 max-w-50'>
                             <PopoverHeader>
                                 {navLinks.map((link, index) =>
-                                    <Item key={index} asChild variant='muted' className='py-3 px-5'>
-                                        <Link
-                                            to={link.url}
-                                            onClick={() => document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }))}
-                                        >
-                                            <ItemContent>
-                                                <ItemTitle className='text-base'>{link.label}</ItemTitle>
-                                            </ItemContent>
-                                        </Link>
-                                    </Item>
+                                    <NavLink
+                                        key={index}
+                                        to={link.url}
+                                        className={({ isActive }) => cn(
+                                            isActive && 'pointer-events-none'
+                                        )}
+                                        onClick={() => document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }))}
+                                    >
+                                        {({ isActive }) => (
+                                            <Item key={index} asChild variant='default' className='py-2 px-5'>
+                                                <ItemContent className={cn(
+                                                    "flex flex-col items-start justify-start w-full",
+                                                    isActive ? 'bg-muted' : 'justify-start text-left w-full'
+                                                )}>
+                                                    <ItemTitle className={cn(
+                                                        'text-sm',
+                                                        isActive ? 'text-muted-foreground' : ''
+                                                    )}>{link.label}</ItemTitle>
+                                                </ItemContent>
+                                            </Item>
+                                        )}
+                                    </NavLink>
                                 )}
                             </PopoverHeader>
                         </PopoverContent>

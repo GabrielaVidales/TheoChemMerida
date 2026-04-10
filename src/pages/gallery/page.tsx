@@ -4,15 +4,6 @@ import aroma2025personas from '@/assets/gallery/gallery_aromaticity_2025_1.jpg'
 import watoc2020 from '@/assets/gallery/gallery_watoc2020.jpg'
 import mainImg from '@/assets/gallery/gallery.jpg'
 import { Helmet } from 'react-helmet-async'
-import {
-    Breadcrumb,
-    BreadcrumbItem,
-    BreadcrumbLink,
-    BreadcrumbList,
-    BreadcrumbPage,
-    BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
-import { routes } from '@/routes/routes'
 import PaperSection from '@/components/paper-section'
 import PageTitle from '@/components/ui/page-title'
 
@@ -45,18 +36,6 @@ function GalleryPage() {
                 <link rel="canonical" href="https://www.theochemmerida.org/" />
             </Helmet>
 
-            <Breadcrumb className='sticky top-24 z-10 border-b-4 bg-main p-2 px-10 shadow-md shadow-accent-foreground/20'>
-                <BreadcrumbList className='text-neutral-100 text-sm md:text-base tracking-wide max-w-5xl mx-auto'>
-                    <BreadcrumbItem>
-                        <BreadcrumbLink href={routes.index}>Home</BreadcrumbLink>
-                    </BreadcrumbItem>
-                    <BreadcrumbSeparator />
-                    <BreadcrumbItem>
-                        <BreadcrumbPage className='text-white font-semibold'>Gallery</BreadcrumbPage>
-                    </BreadcrumbItem>
-                </BreadcrumbList>
-            </Breadcrumb>
-
             <PaperSection
                 variant='dark'
                 className="max-w-5xl mx-auto py-14 space-y-3 max-md:px-5"
@@ -65,7 +44,7 @@ function GalleryPage() {
             >
                 <PageTitle
                     title='Gallery'
-                    subtitle='asd'
+                    subtitle=''
                 />
             </PaperSection>
 

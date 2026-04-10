@@ -28,7 +28,7 @@ function ContactPage() {
                 />
             </PaperSection>
 
-            <section className="relative z-10 max-w-5xl mx-auto py-14">
+            <section className="relative max-w-5xl mx-auto py-14">
                 <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-5 lg:gap-10 items-start">
                     <div className="flex-1 flex flex-col gap-4 bg-background p-3 rounded-md border-2">
                         <div className='space-y-2'>

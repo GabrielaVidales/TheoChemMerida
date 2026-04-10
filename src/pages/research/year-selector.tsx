@@ -16,16 +16,16 @@ export function YearSelector({ entriesByYear, selectedYear, setSelectedYear }) {
                 onClick={() => setSelectedYear(Number(year))}
                 className={`
                     flex items-center justify-between w-full px-3 py-2 rounded-lg text-left transition
-                    ${active ? 'bg-indigo-100' : 'hover:bg-slate-100'}
+                    ${active ? 'bg-main/20' : 'hover:bg-slate-100'}
                 `}
             >
-                <span className={`text-sm font-bold ${active ? 'text-indigo-600' : 'text-neutral-700'}`}>
+                <span className={`text-sm font-bold ${active ? 'text-main' : 'text-neutral-700'}`}>
                     {year}
                 </span>
 
                 <span className={`
                     text-xs font-semibold px-2 py-0.5 rounded-full
-                    ${active ? 'text-white bg-indigo-600' : 'text-neutral-500 bg-neutral-200'}
+                    ${active ? 'text-white bg-main' : 'text-neutral-500 bg-neutral-200'}
                 `}>
                     {data.length}
                 </span>

@@ -6,14 +6,6 @@ import { User2 } from 'lucide-react'
 import PageTitle from '@/components/ui/page-title'
 import PaperSection from '@/components/paper-section'
 import { Helmet } from 'react-helmet-async'
-import {
-    Breadcrumb,
-    BreadcrumbItem,
-    BreadcrumbLink,
-    BreadcrumbList,
-    BreadcrumbPage,
-    BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
 
 const SECTIONS = [
     { key: 'leader', label: 'Principal Investigators' },
@@ -32,18 +24,6 @@ function PeoplePage() {
                 <meta name="description" content="Meet the researchers, students, and collaborators who contribute to our work in chemical kinetics, materials science, and computational modeling." />
                 <link rel="canonical" href="https://www.theochemmerida.org/" />
             </Helmet>
-
-            <Breadcrumb className='sticky top-24 z-10 border-b-2 bg-main p-2 px-10 shadow-md shadow-accent-foreground/20'>
-                <BreadcrumbList className='text-neutral-100 text-sm md:text-base tracking-wide max-w-5xl mx-auto'>
-                    <BreadcrumbItem>
-                        <BreadcrumbLink href={routes.index}>Home</BreadcrumbLink>
-                    </BreadcrumbItem>
-                    <BreadcrumbSeparator />
-                    <BreadcrumbItem>
-                        <BreadcrumbPage className='text-white font-medium'>People</BreadcrumbPage>
-                    </BreadcrumbItem>
-                </BreadcrumbList>
-            </Breadcrumb>
 
             <PaperSection
                 className='px-6 md:px-12 py-14'

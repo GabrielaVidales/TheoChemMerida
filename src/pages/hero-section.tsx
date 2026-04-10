@@ -63,7 +63,7 @@ export default function HeroSection() {
             <div className="absolute bottom-0 right-0 w-80 h-80 rounded-full bg-indigo-100 blur-[100px] pointer-events-none opacity-50" />
 
             <div className={cn(
-                "relative z-10 flex flex-col gap-0",
+                "relative flex flex-col gap-0",
                 'px-0  pt-0 pb-0'
             )}>
 
@@ -93,7 +93,7 @@ export default function HeroSection() {
                         </CarouselContent>
                     </Carousel>
 
-                    <div className="absolute max-w-7xl mx-auto inset-0 z-10 flex flex-col gap-5 justify-center p-6 sm:p-12 pb-10 sm:pb-14 sm:pl-20">
+                    <div className="absolute max-w-7xl mx-auto inset-0 flex flex-col gap-5 justify-center p-6 sm:p-12 pb-10 sm:pb-14 sm:pl-20">
                         <p className={cn(
                             "text-white font-semibold tracking-[0.2em]",
                             'text-xs sm:text-sm md:text-xl',
@@ -147,8 +147,8 @@ export default function HeroSection() {
                         onClick={() => api?.scrollPrev()}
                         aria-label="Previous"
                         className={cn(
-                            "cursor-pointer absolute left-4 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full",
-                            "bg-white/15 hover:bg-white/30 backdrop-blur border border-white/20",
+                            "cursor-pointer absolute left-4 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full",
+                            "bg-white/20 hover:bg-white/30 backdrop-blur border border-white/20",
                             "flex items-center justify-center text-white transition-all",
                             "max-sm:hidden"
                         )}
@@ -159,8 +159,8 @@ export default function HeroSection() {
                         onClick={() => api?.scrollNext()}
                         aria-label="Next"
                         className={cn(
-                            "cursor-pointer absolute right-4 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full",
-                            "bg-white/15 hover:bg-white/30 backdrop-blur border border-white/20",
+                            "cursor-pointer absolute right-4 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full",
+                            "bg-white/20 hover:bg-white/30 backdrop-blur border border-white/20",
                             "flex items-center justify-center text-white transition-all",
                             "max-sm:hidden"
                         )}
@@ -168,7 +168,7 @@ export default function HeroSection() {
                         <ChevronRight size={18} />
                     </button>
 
-                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5">
                         {Array.from({ length: count }).map((_, i) => (
                             <button
                                 key={i}

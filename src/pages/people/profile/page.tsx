@@ -3,11 +3,9 @@ import { Linkedin02Icon } from '@hugeicons/core-free-icons'
 import { HugeiconsIcon } from '@hugeicons/react'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator, } from "@/components/ui/breadcrumb"
 import { GraduationCap, Microscope, Globe, Award, Box, ImageOff, Database, FileText } from 'lucide-react';
 import { Card, CardContent, CardHeader, } from "@/components/ui/card"
 import { PhotoProvider, PhotoView } from 'react-photo-view'
-import { routes } from '@/routes/routes'
 import GabrielMerinoPage from './merino-page'
 import 'react-photo-view/dist/react-photo-view.css';
 
@@ -18,7 +16,6 @@ function ProfilePage() {
 
     useEffect(() => {
         if (slug) {
-            console.log(slug)
             const people = getPeopleFromSlug(slug)
             setPeople(people)
         }
@@ -32,22 +29,6 @@ function ProfilePage() {
 
     return (
         <>
-            <Breadcrumb className='sticky top-24 z-10 border-b-4 bg-main p-2 px-10 shadow-md shadow-accent-foreground/20'>
-                <BreadcrumbList className='text-neutral-100 text-sm md:text-base tracking-wide max-w-5xl mx-auto'>
-                    <BreadcrumbItem>
-                        <BreadcrumbLink href={routes.index} className='hover:text-neutral-50 hover:underline hover:underline-offset-2'>Home</BreadcrumbLink>
-                    </BreadcrumbItem>
-                    <BreadcrumbSeparator />
-                    <BreadcrumbItem>
-                        <BreadcrumbLink href={routes.people.index} className='hover:text-neutral-50 hover:underline hover:underline-offset-2'>People</BreadcrumbLink>
-                    </BreadcrumbItem>
-                    <BreadcrumbSeparator />
-                    <BreadcrumbItem>
-                        <BreadcrumbPage className='text-white font-medium'>{people.name}</BreadcrumbPage>
-                    </BreadcrumbItem>
-                </BreadcrumbList>
-            </Breadcrumb>
-
             {people.name === 'Gabriel Merino' ? (
                 <>
                     <GabrielMerinoPage member={people} />

@@ -101,8 +101,8 @@ function GabrielMerinoPage({ member }: { member: People }) {
                                 ];
                                 return (
                                     <ul className='list-disc'>
-                                        {academicHistory.map(item => (
-                                            <li className="text-base font-light">
+                                        {academicHistory.map((item, i) => (
+                                            <li key={i} className="text-base font-light">
                                                 {item}
                                             </li>
                                         ))}

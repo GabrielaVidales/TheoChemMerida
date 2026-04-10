@@ -17,7 +17,7 @@ function TopButton({ className }: React.HTMLAttributes<HTMLButtonElement>) {
 
     return (
         <div className={cn(
-            "fixed bottom-5 right-5 md:bottom-10 md:right-10 isolate",
+            "fixed bottom-5 right-5 md:bottom-10 md:right-10 isolate z-9999",
             'transition-all duration-300',
             scroll ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none',
         )}>

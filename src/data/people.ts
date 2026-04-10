@@ -1056,7 +1056,7 @@ Development of Python tools for automation and parallel computational workflows.
         ]
     },
     {
-        name: 'Eduardo Escalante Pacheco',
+        name: 'Eduardo Escalante',
         email: [
             'eduardo1582000@gmail.com'
         ],
