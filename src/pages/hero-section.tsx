@@ -6,12 +6,17 @@ import { Link } from "react-router";
 import { routes } from "@/routes/routes";
 import group from '@/assets/img/theochemreunited.jpeg'
 import whiteboard from '@/assets/img/slide1.jpg'
+import cinvestav from '@/assets/img/slide5.jpg'
 import SLIDE2 from '@/assets/img/large.jpg'
 import { cn } from "@/lib/utils";
 import PaperSection from "@/components/paper-section";
 
 
 const slides = [
+    {
+        src: cinvestav,
+        caption: "Electron Delocalization Studies",
+    },
     {
         src: whiteboard,
         caption: "Electron Delocalization Studies",

@@ -54,7 +54,7 @@ function ProjectsPage() {
                                     className={cn(
                                         'relative aspect-video w-full object-contain',
                                         'transition-transform duration-500 group-hover:scale-105',
-                                        'ease-in-out bg-slate-100',
+                                        'ease-in-out bg-white',
                                     )}
                                 />
                             </Link>

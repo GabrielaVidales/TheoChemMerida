@@ -39,7 +39,7 @@ function ContactPage() {
                             />
                         </div>
                         <div className="flex flex-col gap-2 px-5">
-                            <span className="text-xs uppercase font-semibold tracking-[0.25em] text-slate-700">Address</span>
+                            <span className="text-xs uppercase font-semibold tracking-widest text-slate-700">Address</span>
                             <p className="text-base">
                                 Km. 6 Antigua Carretera a Progreso.
                                 Apdo. Postal 73, Cordemex. <br />
@@ -48,19 +48,25 @@ function ContactPage() {
                         </div>
 
                         <div className="flex flex-col gap-2 px-5">
-                            <span className="text-xs uppercase font-semibold tracking-[0.25em] text-slate-700">Email</span>
+                            <span className="text-xs uppercase font-semibold tracking-widest text-slate-700">Email</span>
                             <div className="flex flex-col gap-1 text-base">
-                                <a href="mailto:gmerino@cinvestav.mx" className="hover:text-black transition">
+                                <a href="mailto:gmerino@cinvestav.mx" className="w-fit text-main hover:underline transition">
                                     gmerino@cinvestav.mx
                                 </a>
-                                <a href="mailto:gabriel.merino2@gmail.com" className="hover:text-black transition">
+                                <a href="mailto:gabriel.merino2@gmail.com" className="w-fit text-main hover:underline transition">
                                     gabriel.merino2@gmail.com
+                                </a>
+                                <a href="mailto:filiberto.ortiz@cinvestav.mx" className="w-fit text-main hover:underline transition">
+                                    filiberto.ortiz@cinvestav.mx
+                                </a>
+                                <a href="mailto:fortiz@conahcyt.mx" className="w-fit text-main hover:underline transition">
+                                    fortiz@conahcyt.mx
                                 </a>
                             </div>
                         </div>
 
                         <div className="flex flex-col gap-2 px-5 pb-5">
-                            <span className="text-xs uppercase font-semibold tracking-[0.25em] text-slate-700">Phone</span>
+                            <span className="text-xs uppercase font-semibold tracking-widest text-slate-700">Phone</span>
                             <p className="text-base">
                                 +52 (999) 981-2900 ext. 000
                             </p>

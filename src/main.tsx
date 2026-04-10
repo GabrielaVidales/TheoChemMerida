@@ -8,12 +8,12 @@ import { createRoot } from "react-dom/client"
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <ThemeProvider>
+    {/* <ThemeProvider> */}
       <HelmetProvider>
         <BrowserRouter>
           <App />
         </BrowserRouter>
       </HelmetProvider>
-    </ThemeProvider>
+    {/* </ThemeProvider> */}
   </StrictMode>
 )

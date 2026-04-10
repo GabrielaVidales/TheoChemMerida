@@ -8,6 +8,7 @@ import { YearSelector } from './year-selector';
 import { formatAuthors, getParsedData } from '@/lib/bibparser'
 import PageTitle from '@/components/ui/page-title';
 import { Helmet } from 'react-helmet-async';
+import PaperSection from '@/components/paper-section';
 
 
 export default function ResearchPage() {
@@ -41,20 +42,7 @@ export default function ResearchPage() {
                 <link rel="canonical" href="https://www.theochemmerida.org/" />
             </Helmet>
 
-            <section className="relative min-h-60 w-full overflow-hidden bg-slate-900 text-white">
-                <div
-                    className="absolute inset-0 pointer-events-none opacity-[0.04]"
-                    style={{
-                        backgroundImage: `linear-gradient(#38bdf8 ${mobile ? 2 : 4}px, transparent ${mobile ? 2 : 4}px), linear-gradient(90deg, #38bdf8 ${mobile ? 2 : 4}px, transparent ${mobile ? 2 : 4}px)`,
-                        backgroundSize: mobile ? "24px 24px" : "48px 48px",
-                        backgroundAttachment: 'fixed',
-                        maskImage: "linear-gradient(to bottom, transparent, black 15%), linear-gradient(to top, transparent, black 20%)",
-                        WebkitMaskImage: "linear-gradient(to bottom, transparent, black 15%), linear-gradient(to top, transparent, black 15%)",
-                        maskComposite: "intersect",
-                        WebkitMaskComposite: "source-in",
-                    }}
-                />
-
+            <PaperSection variant='dark' glow >
                 <div className="max-w-6xl mx-auto px-6 md:px-12 py-14">
                     <PageTitle
                         title='Publications'
@@ -81,11 +69,7 @@ export default function ResearchPage() {
                         <JournalAccordeon />
                     </div>
                 </div>
-
-                <div className="absolute inset-0 pointer-events-none">
-                    <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-175 max-w-6xl h-175 rounded-full bg-cyan-500/10 blur-[120px]" />
-                </div>
-            </section>
+            </PaperSection>
 
             <section className="max-w-6xl mx-auto px-6 md:px-12 py-12 space-y-12">
                 <div className="flex flex-col lg:flex-row gap-8 items-start">

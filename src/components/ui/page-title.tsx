@@ -5,18 +5,22 @@ import { motion } from 'motion/react'
 type Props = {
     title: string
     subtitle: string
+    titleClassName?: string
     subtitleClassName?: string
     icon?: ReactNode
 }
 
-function PageTitle({ title, subtitle, className, subtitleClassName }: Props & React.HtmlHTMLAttributes<HTMLDivElement>) {
+function PageTitle({ title, subtitle, className, titleClassName, subtitleClassName }: Props & React.HtmlHTMLAttributes<HTMLDivElement>) {
 
     return (
         <div className={cn(
             className
         )}>
             <motion.h1
-                className="text-4xl md:text-6xl font-bold tracking-tight  leading-none"
+                className={cn(
+                    "text-4xl md:text-6xl font-bold tracking-tight  leading-none",
+                    titleClassName
+                )}
                 style={{ fontFamily: "'Space Grotesk', sans-serif" }}
 
                 initial={{ opacity: 0, translateX: -25, }}

@@ -154,7 +154,7 @@ export const JournalAccordeon = () => {
                                 <div
                                     onMouseEnter={() => setHoveredIndex(index)}
                                     onMouseLeave={() => setHoveredIndex(null)}
-                                    className=" cursor-zoom-in relative h-full transition-all duration-500 ease-in-out overflow-hidden border-r border-white/10 last:border-r-0"
+                                    className=" cursor-pointer relative h-full transition-all duration-500 ease-in-out overflow-hidden border-r border-white/10 last:border-r-0"
                                     style={{
                                         flex: isHovered ? '1 0 0%' : isAnyHovered ? '0.5 1 0%' : '1 1 0%',
                                     }}
@@ -168,10 +168,6 @@ export const JournalAccordeon = () => {
                                             isHovered ? 'scale-110 translate-y-4' : 'scale-100'
                                         )}
                                     />
-                                    <div className={cn(
-                                        'absolute inset-0 bg-black/30 transition-opacity duration-200',
-                                        isHovered ? 'opacity-0' : 'opacity-100',
-                                    )} />
 
                                     <div
                                         className={cn(

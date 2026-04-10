@@ -23,6 +23,10 @@ const navLinks: { label: string, url: string }[] = [
         url: routes.research,
     },
     {
+        label: 'Gallery',
+        url: routes.gallery,
+    },
+    {
         label: 'Software',
         url: routes.projects,
     },
@@ -62,7 +66,7 @@ export const Header = ({
                     <Link to={routes.index} className='relative'>
                         <div
                             className={cn(
-                                "bg-main h-18 w-55 sm:w-65 md:w-70 transition-all duration-300",
+                                "bg-main h-18 w-50 sm:w-60 md:w-65 transition-all duration-300",
                                 !enableScroll || scroll ? "bg-main" : "bg-white"
                             )}
                             style={{
@@ -76,14 +80,6 @@ export const Header = ({
                                 maskPosition: 'center'
                             }}
                         />
-                        {/* <img
-                            src={theochemlogo}
-                            alt="TheoChemMerida"
-                            className={cn(
-                                'max-h-18 transition-all duration-300',
-                                !enableScroll || scroll ? 'invert' : ''
-                            )}
-                        /> */}
                     </Link>
                 </div>
 
@@ -92,7 +88,7 @@ export const Header = ({
                     !enableScroll || scroll ? 'text-black' : 'text-white',
                 )}>
                     {navLinks.map((link, index) => (
-                        <NavLink to={link.url} key={index} className='group text-xl font-medium flex flex-col gap-1 cursor-pointer'>
+                        <NavLink to={link.url} end key={index} className='group text-xl font-medium flex flex-col gap-1 cursor-pointer'>
                             {({ isActive }) => (
                                 <>
                                     <span className={cn(

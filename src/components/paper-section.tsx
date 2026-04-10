@@ -15,7 +15,7 @@ function PaperSection({ className, children, variant = 'light', containerCN, glo
 
     return (
         <section className={cn(
-            "relative min-h-60 w-full overflow-hidden",
+            "relative min-h-10 w-full overflow-hidden",
             bgColor,
             containerCN,
         )}>

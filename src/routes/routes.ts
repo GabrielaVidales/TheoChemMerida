@@ -80,6 +80,7 @@ export const routes = createRouteGroup('', {
     }),
     research: '/our-research',
     projects: '/software',
+    gallery: '/gallery',
     events: '/events',
     contact: '/contact',
 })

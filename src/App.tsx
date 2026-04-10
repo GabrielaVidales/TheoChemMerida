@@ -1,7 +1,8 @@
 import { Route, Routes, useLocation } from "react-router"
-import MainLayout, { AltLayout } from "./pages/layout"
+import MainLayout from "./pages/layout"
 import { routes } from "./routes/routes"
 import { lazy, Suspense, useEffect } from "react"
+import GalleryPage from "./pages/gallery/page"
 
 const HomePage = lazy(() => import("./pages/page"))
 const PeoplePage = lazy(() => import("./pages/people/page"))
@@ -28,14 +29,13 @@ export function App() {
             <Routes>
                 <Route element={<MainLayout />}>
                     <Route path="/" element={<HomePage />} />
-                </Route>
-                <Route element={<AltLayout />}>
                     <Route path={routes.people.index} element={<PeoplePage />} />
                     <Route path={routes.people.profile.url} element={<ProfilePage />} />
                     <Route path={routes.research} element={<ResearchPage />} />
                     <Route path={routes.projects} element={<ProjectsPage />} />
                     <Route path={routes.events} element={<EventsPage />} />
-                    <Route path={'/contact'} element={<ContactPage />} />
+                    <Route path={routes.contact} element={<ContactPage />} />
+                    <Route path={routes.gallery} element={<GalleryPage />} />
                 </Route>
                 <Route path="*" element={<NotFoundPage />} />
             </Routes>

@@ -119,5 +119,5 @@ export function formatJournalData(entry: CitationEntry) {
 }
 
 export function formatCitation(entry: CitationEntry) {
-    return `${formatAuthors(entry)}. ${entry.title}. ${formatJournalData(entry)}. https://doi.org/${entry.DOI}`
+    return `${formatAuthors(entry)}. <i>${entry.title}</i>. ${entry['container-title']}, <b>${entry.issued['date-parts'][0]}</b>, ${entry.volume}(${entry.issue})${entry.page ? `, ${entry.page}` : ''}. https://doi.org/${entry.DOI}`
 }

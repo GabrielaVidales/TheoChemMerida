@@ -31,7 +31,7 @@ export const ResearchPaperCard = ({ paper }: { paper: CitationEntry }) => (
                     {formatAuthors(paper)}
                 </CardDescription>
                 <CardAction>
-                    <CopyButton value={formatCitation(paper)}/>
+                    <CopyButton value={formatCitation(paper)} />
                 </CardAction>
             </CardHeader>
             <CardContent className='bg-indigo-50 border border-indigo-100 p-1 px-3 mx-4 w-fit rounded-full'>
@@ -83,7 +83,15 @@ export function CopyButton({ value, className }: CopyButtonProps) {
 
     const copyToClipboard = React.useCallback(async () => {
         try {
-            await navigator.clipboard.writeText(value)
+            const blobHtml = new Blob([value], { type: "text/html" });
+            const blobText = new Blob([value], { type: "text/plain" });
+            const data = [
+                new ClipboardItem({
+                    "text/html": blobHtml,
+                    "text/plain": blobText,
+                })
+            ]
+            await navigator.clipboard.write(data)
             setHasCopied(true)
         } catch (err) {
             console.error("Copy error", err)

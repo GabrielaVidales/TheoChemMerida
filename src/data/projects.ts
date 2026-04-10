@@ -20,12 +20,12 @@ type SoftwareProject = {
 
 
 export const softwareProjects: SoftwareProject[] = [
-    {
-        name: 'GLOMOS',
-        description: 'GLOMOS, which stands for Global Optimization of Molecular Systems, implements a stochastic search algorithm to find the lowest-energy conformers from a starting structure with torsional degrees of freedom.',
-        banner: glomos,
-        tags: ['Python',]
-    },
+    // {
+    //     name: 'GLOMOS',
+    //     description: 'GLOMOS, which stands for Global Optimization of Molecular Systems, implements a stochastic search algorithm to find the lowest-energy conformers from a starting structure with torsional degrees of freedom.',
+    //     banner: glomos,
+    //     tags: ['Python',]
+    // },
     {
         name: 'SmilX',
         description: 'SmilX is a software to explore the chemical space of isomers with the SMILES language using the grammar constraint.',

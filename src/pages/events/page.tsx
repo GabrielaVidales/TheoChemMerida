@@ -36,7 +36,7 @@ function EventsPage() {
                         'flex flex-col md:flex-row items-center gap-8 border border-border rounded-2xl p-8 bg-background',
                         'transition-all duration-200  hover:shadow-lg group'
                     )}>
-                        <Link to={c.href} className={cn(
+                        <Link to={c.href} target='_blank' rel='noopener noreferrer' className={cn(
                             'box-content aspect-video shrink-0 bg-slate-50 rounded-xl',
                             'flex items-center justify-center overflow-hidden',
                             'flex-1',
@@ -53,7 +53,7 @@ function EventsPage() {
                                 <p key={i} className='text-base text-muted-foreground'>{text}</p>
                             ))}
 
-                            <Link to={c.href} className='mt-auto bottom-0 w-full h-full flex'>
+                            <Link to={c.href} target='_blank' rel='noopener noreferrer' className='mt-auto bottom-0 w-full h-full flex'>
                                 <Button className='w-fit ml-auto right-0'>
                                     <ExternalLink />
                                     More details
