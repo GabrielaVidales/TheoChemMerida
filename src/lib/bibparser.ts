@@ -121,3 +121,15 @@ export function formatJournalData(entry: CitationEntry) {
 export function formatCitation(entry: CitationEntry) {
     return `${formatAuthors(entry)}. <i>${entry.title}</i>. ${entry['container-title']}, <b>${entry.issued['date-parts'][0]}</b>, ${entry.volume}(${entry.issue})${entry.page ? `, ${entry.page}` : ''}. https://doi.org/${entry.DOI}`
 }
+
+export function filterPapers(papers: CitationEntry[], query: string): CitationEntry[] {
+    const q = query.toLowerCase().trim()
+    if (!q) return papers
+    return papers.filter(p => {
+        const title = p.title?.toLowerCase() ?? ''
+        const journal = p['container-title']?.toLowerCase() ?? ''
+        const year = String(p.issued?.['date-parts']?.[0]?.[0] ?? '')
+        const authors = p.author?.map(a => `${a.given} ${a.family}`).join(' ').toLowerCase() ?? ''
+        return title.includes(q) || journal.includes(q) || year.includes(q) || authors.includes(q)
+    })
+}

@@ -1,38 +1,54 @@
 import { publications } from '@/data/publications'
-import { SearchCode } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { Search, SearchCode, X } from 'lucide-react';
+import { useDeferredValue, useEffect, useMemo, useState } from 'react';
 import { JournalAccordeon } from './journal-accordeon';
-import { useIsMobile } from '@/hooks/use-mobile';
 import { YearPageSection } from './year-page-section';
 import { YearSelector } from './year-selector';
-import { formatAuthors, getParsedData } from '@/lib/bibparser'
+import { filterPapers, formatAuthors, getParsedData, type CitationEntry } from '@/lib/bibparser'
 import PageTitle from '@/components/ui/page-title';
 import { Helmet } from 'react-helmet-async';
 import PaperSection from '@/components/paper-section';
-
+import {
+    InputGroup,
+    InputGroupAddon,
+    InputGroupInput,
+} from "@/components/ui/input-group"
+import { ResearchPaperCard } from './research-paper-card';
 
 export default function ResearchPage() {
-    const mobile = useIsMobile()
+    // useEffect(() => {
 
-    useEffect(() => {
+    //     const data = getParsedData()
 
-        const data = getParsedData()
+    //     if (import.meta.env.DEV) {
+    //         console.log(data.years[new Date().getFullYear()]);
+    //         console.log(data.years[2026][0]);
+    //     }
 
-        if (import.meta.env.DEV) {
-            console.log(data.years[new Date().getFullYear()]);
-            console.log(data.years[2026][0]);
-        }
-
-        const authors = formatAuthors(data.years[2026][0])
-        if (import.meta.env.DEV) {
-            console.log(authors);
-        }
-    }, [])
+    //     const authors = formatAuthors(data.years[2026][0])
+    //     if (import.meta.env.DEV) {
+    //         console.log(authors);
+    //     }
+    // }, [])
 
     // const entriesByYear = Object.entries(publications).sort(([a], [b]) => Number(b) - Number(a))
-    const entriesByYear = getParsedData()
+    const entriesByYear = useMemo(() => getParsedData(), [])
     const [selectedYear, setSelectedYear] = useState<number | null>(new Date().getFullYear())
 
+    const [searchQuery, setSearchQuery] = useState('')
+    const deferredQuery = useDeferredValue(searchQuery)
+
+    const allPapers = useMemo(
+        () => Object.values(entriesByYear.years).flat() as CitationEntry[],
+        [entriesByYear]
+    )
+
+    const searchResults = useMemo(
+        () => filterPapers(allPapers, deferredQuery),
+        [allPapers, deferredQuery]
+    )
+
+    const isSearching = searchQuery.trim().length > 0
 
     return (
         <>
@@ -74,23 +90,63 @@ export default function ResearchPage() {
             <section className="max-w-6xl mx-auto px-6 md:px-12 py-12 space-y-12">
                 <div className="flex flex-col lg:flex-row gap-8 items-start">
 
-                    <YearSelector
-                        entriesByYear={entriesByYear.years}
-                        selectedYear={selectedYear}
-                        setSelectedYear={setSelectedYear}
-                    />
+                    <div className='flex-1 flex flex-col gap-4'>
+                        <div className="overflow-hidden border rounded-xl bg-white shadow-sm">
+                            <div className="px-4 py-3 border-b text-sm font-semibold text-slate-600">
+                                Search
+                            </div>
+                            <div className='p-3'>
+                                <InputGroup className="max-w-xs">
+                                    <InputGroupInput
+                                        value={searchQuery}
+                                        onChange={e => setSearchQuery(e.target.value)}
+                                        placeholder="Search by title, author, journal..."
+                                    />
+                                    <InputGroupAddon>
+                                        <Search />
+                                    </InputGroupAddon>
+                                    {isSearching && (
+                                        <button onClick={() => setSearchQuery('')} className="cursor-pointer absolute right-3 top-1/2 -translate-y-1/2">
+                                            <X size={14} />
+                                        </button>
+                                    )}
+                                </InputGroup>
+                            </div>
+                        </div>
+
+                        <YearSelector
+                            entriesByYear={entriesByYear.years}
+                            selectedYear={selectedYear}
+                            setSelectedYear={setSelectedYear}
+                        />
+                    </div>
 
                     <div className="flex-1 lg:flex-2 min-w-0 w-full">
-                        {selectedYear !== null ? (
-                            <>
-                                <YearPageSection
-                                    year={`${selectedYear}`}
-                                    itemsPerPage={5}
-                                    papers={entriesByYear.years[selectedYear]}
-                                />
-                            </>
+                        {isSearching ? (
+                            <div className="space-y-4">
+                                <p className="text-sm text-slate-500">
+                                    {searchResults.length} result{searchResults.length !== 1 ? 's' : ''} for "{searchQuery}"
+                                </p>
+                                {searchResults.length > 0
+                                    ? searchResults.map((pub) => <ResearchPaperCard key={pub.id} paper={pub} />)
+                                    : <EmptyYearSelection />
+                                }
+                            </div>
                         ) : (
-                            <EmptyYearSelection />
+
+                            <>
+                                {selectedYear !== null ? (
+                                    <>
+                                        <YearPageSection
+                                            year={`${selectedYear}`}
+                                            itemsPerPage={5}
+                                            papers={entriesByYear.years[selectedYear]}
+                                        />
+                                    </>
+                                ) : (
+                                    <EmptyYearSelection />
+                                )}
+                            </>
                         )}
                     </div>
                 </div>

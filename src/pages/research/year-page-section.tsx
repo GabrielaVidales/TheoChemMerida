@@ -1,4 +1,3 @@
-import { type Paper } from '@/data/publications'
 import { useState, useEffect } from 'react';
 import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious, } from "@/components/ui/pagination"
 import { ResearchPaperCard } from './research-paper-card';
