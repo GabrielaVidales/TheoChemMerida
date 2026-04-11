@@ -1,4 +1,4 @@
-import { formatAuthors, formatCitation, formatJournalData, type CitationEntry } from '@/lib/bibparser';
+import { formatAuthors, formatCitation, formatHTMLCitation, formatJournalData, type CitationEntry } from '@/lib/bibparser';
 import { ExternalLink } from 'lucide-react';
 import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, } from "@/components/ui/card"
 import { CopyButton } from '@/components/copy-button';
@@ -8,6 +8,7 @@ import { memo, useMemo } from 'react'
 export const ResearchPaperCard = memo(({ paper }: { paper: CitationEntry }) => {
     const authors = useMemo(() => formatAuthors(paper), [paper])
     const citation = useMemo(() => formatCitation(paper), [paper])
+    const richCitation = useMemo(() => formatHTMLCitation(paper), [paper])
     const journalData = useMemo(() => formatJournalData(paper), [paper])
 
     return (
@@ -26,7 +27,10 @@ export const ResearchPaperCard = memo(({ paper }: { paper: CitationEntry }) => {
                     {authors}
                 </CardDescription>
                 <CardAction>
-                    <CopyButton value={citation} />
+                    <CopyButton
+                        value={citation}
+                        htmlValue={richCitation}
+                    />
                 </CardAction>
             </CardHeader>
             <CardContent className='bg-indigo-50 border border-indigo-100 p-1 px-3 mx-4 w-fit rounded-full'>

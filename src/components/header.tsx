@@ -93,13 +93,13 @@ export const Header = ({
                                 <>
                                     <span className={cn(
                                         isActive ?
-                                            'text-indigo-400' :
-                                            'group-hover:text-indigo-400 transition-colors'
+                                            'text-main' :
+                                            'group-hover:text-main transition-colors'
                                     )}>
                                         {link.label}
                                     </span>
                                     <div className={cn(
-                                        'h-1 rounded-full mt-auto bg-indigo-500 origin-center scale-x-0',
+                                        'h-1 rounded-full mt-auto bg-main/80 origin-center scale-x-0',
                                         isActive ?
                                             'scale-x-100' :
                                             'group-hover:scale-x-100 transition-transform',
@@ -127,7 +127,7 @@ export const Header = ({
                                 <Menu className='stroke-3' />
                             </Button>
                         </PopoverTrigger>
-                        <PopoverContent className='p-0 max-w-50'>
+                        <PopoverContent className='p-0 max-w-50 shadow-2xl'>
                             <PopoverHeader>
                                 {navLinks.map((link, index) =>
                                     <NavLink

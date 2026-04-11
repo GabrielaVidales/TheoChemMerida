@@ -10,11 +10,11 @@ import cinvestav from '@/assets/img/slide5.jpg'
 import SLIDE2 from '@/assets/img/large.jpg'
 import { cn } from "@/lib/utils";
 import PaperSection from "@/components/paper-section";
-
+import cinvestavMerida from '@/assets/img/cinvestav-merida.jpg'
 
 const slides = [
     {
-        src: cinvestav,
+        src: cinvestavMerida,
         caption: "Electron Delocalization Studies",
     },
     {

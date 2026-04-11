@@ -1,19 +1,16 @@
 import * as React from "react"
 import { Check, Copy } from "lucide-react"
-import {
-    HoverCard,
-    HoverCardContent,
-    HoverCardTrigger,
-} from "@/components/ui/hover-card"
 import { Button } from "./ui/button"
 import { cn } from "@/lib/utils"
+import { renderToString } from "react-dom/server"
 
 interface CopyButtonProps {
     value: string
+    htmlValue?: React.ReactNode
     className?: string
 }
 
-export function CopyButton({ value, className }: CopyButtonProps) {
+export function CopyButton({ value, htmlValue, className }: CopyButtonProps) {
     const [hasCopied, setHasCopied] = React.useState(false)
 
     React.useEffect(() => {
@@ -25,14 +22,18 @@ export function CopyButton({ value, className }: CopyButtonProps) {
 
     const copyToClipboard = React.useCallback(async () => {
         try {
-            const blobHtml = new Blob([value], { type: "text/html" });
+            const htmlString = htmlValue ? renderToString(htmlValue) : value
+
             const blobText = new Blob([value], { type: "text/plain" });
+            const blobHtml = new Blob([htmlString], { type: "text/html" });
+            
             const data = [
                 new ClipboardItem({
                     "text/html": blobHtml,
                     "text/plain": blobText,
                 })
             ]
+            
             await navigator.clipboard.write(data)
             setHasCopied(true)
         } catch (err) {
