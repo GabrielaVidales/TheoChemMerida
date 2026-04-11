@@ -1,11 +1,12 @@
 import { ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger, } from "@/components/ui/collapsible"
+import { useScroll } from '@/lib/utils';
 
 
 export function YearSelector({ entriesByYear, selectedYear, setSelectedYear }) {
-    const recent = Object.entries(entriesByYear).filter(([y]) => Number(y) >= 2020).sort((a, b) => Number(b[0]) - Number(a[0])) 
-    const older = Object.entries(entriesByYear).filter(([y]) => Number(y) < 2020).sort((a, b) => Number(b[0]) - Number(a[0])) 
+    const recent = Object.entries(entriesByYear).filter(([y]) => Number(y) >= 2020).sort((a, b) => Number(b[0]) - Number(a[0]))
+    const older = Object.entries(entriesByYear).filter(([y]) => Number(y) < 2020).sort((a, b) => Number(b[0]) - Number(a[0]))
 
     const YearButton = ({ year, data }) => {
         const active = selectedYear === Number(year)
@@ -13,7 +14,10 @@ export function YearSelector({ entriesByYear, selectedYear, setSelectedYear }) {
         return (
             <Button
                 variant='ghost'
-                onClick={() => setSelectedYear(Number(year))}
+                onClick={() => {
+                    useScroll('publications-year', 150)
+                    setSelectedYear(Number(year))
+                }}
                 className={`
                     flex items-center justify-between w-full px-3 py-2 rounded-lg text-left transition
                     ${active ? 'bg-main/20' : 'hover:bg-slate-100'}
@@ -34,7 +38,7 @@ export function YearSelector({ entriesByYear, selectedYear, setSelectedYear }) {
     }
 
     return (
-        <aside className="w-full lg:block flex-1 shrink-0">
+        <aside className="w-full lg:block flex-1 shrink-0" id='browse-by-year'>
             <div className="overflow-hidden border rounded-xl bg-white shadow-sm">
 
                 <div className="px-4 py-3 border-b text-sm font-semibold text-slate-600">
@@ -47,7 +51,7 @@ export function YearSelector({ entriesByYear, selectedYear, setSelectedYear }) {
                         <YearButton key={year} year={year} data={data} />
                     ))}
 
-                    <Collapsible className="rounded-md">
+                    <Collapsible className="rounded-md" onOpenChange={(open) => { open ? null : useScroll('browse-by-year', 280) }}>
 
                         <CollapsibleContent className="flex flex-col items-start text-sm">
                             {older.map(([year, data]) => (

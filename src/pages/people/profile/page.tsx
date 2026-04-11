@@ -8,6 +8,7 @@ import { Card, CardContent, CardHeader, } from "@/components/ui/card"
 import { PhotoProvider, PhotoView } from 'react-photo-view'
 import GabrielMerinoPage from './merino-page'
 import 'react-photo-view/dist/react-photo-view.css';
+import ProfileGallery from './gallery'
 
 
 function ProfilePage() {
@@ -71,13 +72,15 @@ const MemberProfile = ({ member }: { member: People }) => {
                             </h2>
                             <div>
                                 {member.email.map((item, index) => (
-                                    <a key={index} href={`mailto:${item}`} className='text-main hover:underline'>{item}</a>
+                                    <p key={index}>
+                                        <a href={`mailto:${item}`} className='text-main hover:underline'>{item}</a>
+                                    </p>
                                 ))}
                             </div>
                         </div>
 
                         <p className=" text-stone-600 font-light max-w-2xl">
-                            {member.description}
+                            {member.bio}
                         </p>
 
                         <div className="flex flex-wrap gap-4 justify-center md:justify-start">
@@ -115,9 +118,9 @@ const MemberProfile = ({ member }: { member: People }) => {
                 <div className="w-full min-h-40 flex flex-col md:flex-row gap-10">
                     <section className='flex-1 space-y-10'>
                         <Card className='pt-0 shadow-xl'>
-                            <CardHeader className='flex items-center gap-2 py-2 px-4 bg-main text-white'>
+                            <CardHeader className='flex items-center gap-2 py-1 px-4 bg-main text-white'>
                                 <Box className='size-5' />
-                                <h2 className='text-lg font-medium'>Projects</h2>
+                                <h2 className='text-base font-medium'>Projects</h2>
                             </CardHeader>
                             <CardContent>
                                 {Array.isArray(member.currentProjects) ? (
@@ -137,13 +140,13 @@ const MemberProfile = ({ member }: { member: People }) => {
                         </Card>
 
                         <Card className='pt-0 shadow-xl'>
-                            <CardHeader className='flex items-center gap-2 py-2 px-4 bg-main text-white'>
+                            <CardHeader className='flex items-center gap-2 py-1 px-4 bg-main text-white'>
                                 <Award className='size-5' />
-                                <h2 className='text-lg font-medium'>Awards, Honors & Achievements</h2>
+                                <h2 className='text-base font-medium'>Awards, Honors & Achievements</h2>
                             </CardHeader>
                             <CardContent>
                                 {!member.awards || member.awards.length === 0 ? (
-                                    <div className="flex flex-col items-center justify-center py-4 text-neutral-500 gap-2">
+                                    <div className="flex flex-col items-center justify-center py-2 text-neutral-400 gap-2">
                                         <Database className="size-10" />
                                         <p className="text-sm">No information available</p>
                                     </div>
@@ -162,37 +165,18 @@ const MemberProfile = ({ member }: { member: People }) => {
                         </Card>
 
                         <Card className='pt-0 shadow-xl'>
-                            <CardHeader className='flex items-center gap-2 py-2 px-4 bg-main text-white'>
+                            <CardHeader className='flex items-center gap-2 py-1 px-4 bg-main text-white'>
                                 <Globe className='size-5' />
-                                <h2 className='text-lg font-medium'>Gallery</h2>
+                                <h2 className='text-base font-medium'>Gallery</h2>
                             </CardHeader>
                             <CardContent>
                                 {!member.gallery || member.gallery.length === 0 ? (
-                                    <div className="flex flex-col items-center justify-center py-4 text-neutral-500 gap-2">
+                                    <div className="flex flex-col items-center justify-center py-2 text-neutral-400 gap-2">
                                         <ImageOff className="size-10" />
                                         <p className="text-sm">No images available</p>
                                     </div>
                                 ) : (
-                                    <PhotoProvider
-                                        speed={() => 300}
-                                        maskOpacity={0.8}
-                                        loadingElement={<div className="animate-pulse bg-neutral-200 w-full h-full" />}
-                                    >
-                                        <div className="grid grid-cols-2 gap-2">
-                                            {member.gallery?.map((data, idx) => (
-                                                <PhotoView key={idx} src={data.img}>
-                                                    <div className="aspect-square w-full overflow-hidden rounded-sm border bg-neutral-100">
-                                                        <img
-                                                            src={data.img}
-                                                            alt={data.caption[0]}
-                                                            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                                            loading="lazy"
-                                                        />
-                                                    </div>
-                                                </PhotoView>
-                                            ))}
-                                        </div>
-                                    </PhotoProvider>
+                                    <ProfileGallery memberName={member.name} gallery={member.gallery} />
                                 )}
 
                             </CardContent>
@@ -200,7 +184,7 @@ const MemberProfile = ({ member }: { member: People }) => {
                     </section>
 
                     <section className='flex-2 space-y-5'>
-                        <Card className='p-5 shadow-xl'>
+                        {/* <Card className='p-5 shadow-xl'>
                             <div className='flex items-center gap-3'>
                                 <div className='bg-main size-10 rounded-full flex items-center justify-center text-white'>
                                     <GraduationCap />
@@ -208,13 +192,18 @@ const MemberProfile = ({ member }: { member: People }) => {
                                 <h2 className='text-main text-xl font-medium'>Biography</h2>
                             </div>
                             <CardContent>
-                                {member.bio && (
+                                {!member.bio || member.bio.length === 0 ? (
+                                    <div className="flex flex-col items-center justify-center py-2 text-neutral-400 gap-2">
+                                        <Database className="size-10" />
+                                        <p className="text-sm">No information available</p>
+                                    </div>
+                                ) : (
                                     <p className="text-stone-600 leading-relaxed text-sm md:text-base">
                                         {member.bio}
                                     </p>
                                 )}
                             </CardContent>
-                        </Card>
+                        </Card> */}
 
                         <Card className='p-5 shadow-xl'>
                             <div className='flex items-center gap-3'>
@@ -248,16 +237,25 @@ const MemberProfile = ({ member }: { member: People }) => {
                                 <h2 className='text-main text-xl font-medium'>Recent Publications</h2>
                             </div>
                             <CardContent>
-                                {member.recentPublications?.map((pub, i) => (
-                                    <div key={i} className="text-stone-600 text-sm md:text-base mb-3 md:mb-5">
-                                        <p>
-                                            {pub.publication}
-                                        </p>
-                                        <span>
-                                            DOI: <a href={pub.doi} target="_blank" rel="noopener noreferrer" className='text-main hover:underline underline-offset-2'>{pub.doi}</a>
-                                        </span>
+                                {!member.recentPublications || member.recentPublications.length === 0 ? (
+                                    <div className="flex flex-col items-center justify-center py-2 text-neutral-400 gap-2">
+                                        <Database className="size-10" />
+                                        <p className="text-sm">No information available</p>
                                     </div>
-                                ))}
+                                ) : (
+                                    <>
+                                        {member.recentPublications?.map((pub, i) => (
+                                            <div key={i} className="text-stone-600 text-sm md:text-base mb-3 md:mb-5">
+                                                <p>
+                                                    {pub.publication}
+                                                </p>
+                                                <span>
+                                                    DOI: <a href={pub.doi} target="_blank" rel="noopener noreferrer" className='text-main hover:underline underline-offset-2'>{pub.doi}</a>
+                                                </span>
+                                            </div>
+                                        ))}
+                                    </>
+                                )}
                             </CardContent>
                         </Card>
                     </section>

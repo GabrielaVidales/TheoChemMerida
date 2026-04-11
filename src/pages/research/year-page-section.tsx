@@ -14,7 +14,7 @@ export const YearPageSection = ({ year, itemsPerPage, papers }: { year: string; 
     if (!papers.length) return null
 
     return (
-        <div className="space-y-4">
+        <div className="space-y-4" id='publications-year'>
             <div className="relative flex items-center gap-5 mb-8 overflow-hidden rounded-xl px-6 py-5 bg-main/10">
                 <span
                     className="absolute right-4 top-1/2 -translate-y-1/2 text-5xl sm:text-6xl md:text-8xl font-black text-main/20 select-none pointer-events-none leading-none"

@@ -31,8 +31,8 @@ export function App() {
                     <Route path="/" element={<HomePage />} />
                     <Route path={routes.people.index} element={<PeoplePage />} />
                     <Route path={routes.people.profile.url} element={<ProfilePage />} />
-                    <Route path={routes.research} element={<ResearchPage />} />
-                    <Route path={routes.projects} element={<ProjectsPage />} />
+                    <Route path={routes.publications} element={<ResearchPage />} />
+                    <Route path={routes.software} element={<ProjectsPage />} />
                     <Route path={routes.events} element={<EventsPage />} />
                     <Route path={routes.contact} element={<ContactPage />} />
                     <Route path={routes.gallery} element={<GalleryPage />} />

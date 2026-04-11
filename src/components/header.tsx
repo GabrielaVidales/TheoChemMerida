@@ -20,7 +20,7 @@ const navLinks: { label: string, url: string }[] = [
     },
     {
         label: 'Publications',
-        url: routes.research,
+        url: routes.publications,
     },
     {
         label: 'Gallery',
@@ -28,7 +28,7 @@ const navLinks: { label: string, url: string }[] = [
     },
     {
         label: 'Software',
-        url: routes.projects,
+        url: routes.software,
     },
     {
         label: 'Events',

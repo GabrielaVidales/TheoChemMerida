@@ -3,9 +3,13 @@ import { ChevronUp } from 'lucide-react'
 import React from 'react'
 import { Button } from './button'
 import { useScroll } from '@/hooks/use-scroll'
+import { useUI } from '@/contexts/use-scroll-button'
+
 
 function TopButton({ className }: React.HTMLAttributes<HTMLButtonElement>) {
     const scroll = useScroll(100)
+    const { isTopButtonDisabled } = useUI()
+    const isVisible = scroll && !isTopButtonDisabled
 
     const handleClick = () => {
         window.scrollTo({
@@ -19,8 +23,9 @@ function TopButton({ className }: React.HTMLAttributes<HTMLButtonElement>) {
         <div className={cn(
             "fixed bottom-5 right-5 md:bottom-10 md:right-10 isolate z-9999",
             'transition-all duration-300',
-            scroll ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none',
+            isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90 pointer-events-none',
         )}>
+
             <Button
                 size='icon-lg'
                 variant='default'

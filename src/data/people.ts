@@ -14,7 +14,6 @@ import aura3 from '@/assets/members/gallery/aura3.jpeg'
 import aura4 from '@/assets/members/gallery/aura4.jpeg'
 import aura5 from '@/assets/members/gallery/aura5.jpeg'
 import aura6 from '@/assets/members/gallery/aura6.jpeg'
-
 import diego from '@/assets/members/Diego Roman.jpg'
 import gerardo from '@/assets/members/gerardo.avif'
 import danielVill from '@/assets/members/Daniel Villanueva_.jpg'
@@ -519,17 +518,17 @@ export const people: People[] = [
             'lis.noriega.santos@gmail.com',
         ],
         description: 'Postdoctoral researcher specializing in computational astrochemistry, focusing on DFT-based spectroscopic analysis and molecular evolution in the interstellar medium.',
-        bio: "Egresada del Programa de Ciencias Químicas en el área de Fisicoquímica de la BUAP. Durante mis estudios de maestría y doctorado, enfoqué mi investigación en la aplicación de la teoría del funcional de la densidad (DFT) para el análisis de propiedades espectroscópicas de sistemas moleculares. Actualmente, realizo una estancia posdoctoral en el Departamento de Física Aplicada del CINVESTAV-Mérida, donde he expandido mi enfoque hacia la astroquímica computacional. Mi investigación se centra en la generación de isómeros y su identificación espectroscópica en el medio interestelar, así como en el estudio de mecanismos de reacción fundamentales para la evolución molecular en el espacio.",
+        bio: "Graduate of the Chemical Sciences Program in the area of Physical Chemistry from BUAP. During my master's and doctoral studies, I focused my research on the application of Density Functional Theory (DFT) for the analysis of spectroscopic properties in molecular systems. Currently, I am conducting a postdoctoral fellowship in the Department of Applied Physics at CINVESTAV-Mérida, where I have expanded my focus toward computational astrochemistry. My research centers on isomer generation and their spectroscopic identification in the interstellar medium, as well as the study of fundamental reaction mechanisms for molecular evolution in space.",
         role: 'postdoctoral_researcher',
         researchLine: [
-            'Astroquímica Computacional',
-            'Generación de Isómeros e Identificación Espectroscópica',
-            'Espectroscopía Rotacional y Vibracional',
+            'Computational Astrochemistry',
+            'Isomer Generation and Spectroscopic Identification',
+            'Rotational and Vibrational Spectroscopy',
         ],
         currentProjects: [
-            'Generación de Isómeros e Identificación Espectroscópica',
-            'Espectroscopía Rotacional y Vibracional',
-            'Mecanismos de reacción de moléculas de interés astroquímico'
+            'Isomer Generation and Spectroscopic Identification',
+            'Rotational and Vibrational Spectroscopy',
+            'Reaction mechanisms of molecules of astrochemical interest'
         ],
         linkedin: 'https://mx.linkedin.com/in/lisset-noriega-7bb9b657',
         orcid: 'https://orcid.org/0000-0002-7783-7920',

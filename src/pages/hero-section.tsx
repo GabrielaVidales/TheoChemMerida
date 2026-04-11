@@ -131,7 +131,7 @@ export default function HeroSection() {
                                     <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
                                 </Button>
                             </Link>
-                            <Link to={routes.research}>
+                            <Link to={routes.publications}>
                                 <Button
                                     size="lg"
                                     variant="secondary"

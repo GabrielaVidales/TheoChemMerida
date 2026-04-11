@@ -76,10 +76,10 @@ export const routes = createRouteGroup('', {
     index: '/',
     people: createRouteGroup('/people', {
         index: '',
-        profile: withBuilder('/profile/:slug')
+        profile: withBuilder('/:slug')
     }),
-    research: '/our-research',
-    projects: '/software',
+    publications: '/publications',
+    software: '/software',
     gallery: '/gallery',
     events: '/events',
     contact: '/contact',

@@ -11,6 +11,7 @@ import 'react-photo-view/dist/react-photo-view.css'
 import { ExternalLink, RotateCcw, RotateCw, ZoomIn, ZoomOut } from 'lucide-react'
 import { Separator } from '@/components/ui/separator'
 import { Link } from 'react-router'
+import { useUI } from '@/contexts/use-scroll-button'
 
 type JournalItem = {
     title: string,
@@ -66,12 +67,16 @@ const researchTopics: JournalItem[] = [
 ];
 
 export const JournalAccordeon = () => {
+    const { setTopButtonDisabled } = useUI()
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
     return (
         <section className="w-full max-w-6xl mx-auto overflow-hidden border shadow-lg shadow-accent-foreground/30">
             <div className="flex gap-1 h-80 w-full bg-white">
                 <PhotoProvider
+                    photoClassName='p-10'
+                    onVisibleChange={setTopButtonDisabled}
+                    maskOpacity={0.8}
                     overlayRender={({ index }) => {
                         const journal = researchTopics[index]
                         return (
@@ -83,8 +88,8 @@ export const JournalAccordeon = () => {
                                 {journal && (
                                     <>
                                         <h3 className={cn(
-                                            "text-lg font-bold",
-                                            'sm:text-2xl',
+                                            "text-base font-bold",
+                                            'sm:text-xl',
                                         )}>
                                             {journal.title}
                                         </h3>
