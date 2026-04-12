@@ -3,12 +3,13 @@ import MainLayout from "./pages/layout"
 import { routes } from "./routes/routes"
 import { lazy, Suspense, useEffect } from "react"
 import GalleryPage from "./pages/gallery/page"
+import EditProfilePage from "./pages/edit/profile-page/page"
 
 const HomePage = lazy(() => import("./pages/page"))
 const PeoplePage = lazy(() => import("./pages/people/page"))
-const ProjectsPage = lazy(() => import("./pages/projects/page"))
+const ProjectsPage = lazy(() => import("./pages/software/page"))
 const ProfilePage = lazy(() => import("./pages/people/profile/page"))
-const ResearchPage = lazy(() => import("./pages/research/page"))
+const ResearchPage = lazy(() => import("./pages/publications/page"))
 const EventsPage = lazy(() => import("./pages/events/page"))
 const ContactPage = lazy(() => import("./pages/contact/page"))
 const NotFoundPage = lazy(() => import("./pages/not-found/page"))
@@ -36,6 +37,10 @@ export function App() {
                     <Route path={routes.events} element={<EventsPage />} />
                     <Route path={routes.contact} element={<ContactPage />} />
                     <Route path={routes.gallery} element={<GalleryPage />} />
+
+                    {import.meta.env.DEV && (
+                        <Route path={'/edit/profile/:slug'} element={<EditProfilePage />} />
+                    )}
                 </Route>
                 <Route path="*" element={<NotFoundPage />} />
             </Routes>

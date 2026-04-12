@@ -2,6 +2,7 @@ import { ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger, } from "@/components/ui/collapsible"
 import { useScroll } from '@/lib/utils';
+import { CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 
 export function YearSelector({ entriesByYear, selectedYear, setSelectedYear }) {
@@ -38,37 +39,34 @@ export function YearSelector({ entriesByYear, selectedYear, setSelectedYear }) {
     }
 
     return (
-        <aside className="w-full lg:block flex-1 shrink-0" id='browse-by-year'>
-            <div className="overflow-hidden border rounded-xl bg-white shadow-sm">
-
-                <div className="px-4 py-3 border-b text-sm font-semibold text-slate-600">
+        <>
+            <CardHeader>
+                <CardTitle>
                     Browse by year
-                </div>
+                </CardTitle>
+            </CardHeader>
+            <CardContent className='px-3'>
+                {recent.map(([year, data]) => (
+                    <YearButton key={year} year={year} data={data} />
+                ))}
 
-                <div className="p-2">
+                <Collapsible className="rounded-md" onOpenChange={(open) => { open ? null : useScroll('browse-by-year', 280) }}>
 
-                    {recent.map(([year, data]) => (
-                        <YearButton key={year} year={year} data={data} />
-                    ))}
+                    <CollapsibleContent className="flex flex-col items-start text-sm">
+                        {older.map(([year, data]) => (
+                            <YearButton key={year} year={year} data={data} />
+                        ))}
+                    </CollapsibleContent>
 
-                    <Collapsible className="rounded-md" onOpenChange={(open) => { open ? null : useScroll('browse-by-year', 280) }}>
-
-                        <CollapsibleContent className="flex flex-col items-start text-sm">
-                            {older.map(([year, data]) => (
-                                <YearButton key={year} year={year} data={data} />
-                            ))}
-                        </CollapsibleContent>
-
-                        <CollapsibleTrigger asChild>
-                            <Button variant="ghost" className="group w-full uppercase tracking-widest text-xs font-semibold text-slate-400! hover:text-slate-600!">
-                                <span className='hidden group-data-[state=open]:block'>Show less</span>
-                                <span className='group-data-[state=open]:hidden'>Show more</span>
-                                <ChevronDown className="ml-auto group-data-[state=open]:rotate-180" />
-                            </Button>
-                        </CollapsibleTrigger>
-                    </Collapsible>
-                </div>
-            </div>
-        </aside>
+                    <CollapsibleTrigger asChild>
+                        <Button variant="ghost" className="group w-full uppercase tracking-widest text-xs font-semibold text-slate-400! hover:text-slate-600!">
+                            <span className='hidden group-data-[state=open]:block'>Show less</span>
+                            <span className='group-data-[state=open]:hidden'>Show more</span>
+                            <ChevronDown className="ml-auto group-data-[state=open]:rotate-180" />
+                        </Button>
+                    </CollapsibleTrigger>
+                </Collapsible>
+            </CardContent>
+        </>
     )
 }

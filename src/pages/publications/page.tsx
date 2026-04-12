@@ -1,5 +1,5 @@
 import { publications } from '@/data/publications'
-import { Search, SearchCode, X } from 'lucide-react';
+import { Download, Search, SearchCode, X } from 'lucide-react';
 import { useDeferredValue, useEffect, useMemo, useState } from 'react';
 import { JournalAccordeon } from './journal-accordeon';
 import { YearPageSection } from './year-page-section';
@@ -15,25 +15,13 @@ import {
 } from "@/components/ui/input-group"
 import { ResearchPaperCard } from './research-paper-card';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { Card, CardAction, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import axios from 'axios';
 
 export default function ResearchPage() {
     const mobile = useIsMobile()
-    // useEffect(() => {
 
-    //     const data = getParsedData()
-
-    //     if (import.meta.env.DEV) {
-    //         console.log(data.years[new Date().getFullYear()]);
-    //         console.log(data.years[2026][0]);
-    //     }
-
-    //     const authors = formatAuthors(data.years[2026][0])
-    //     if (import.meta.env.DEV) {
-    //         console.log(authors);
-    //     }
-    // }, [])
-
-    // const entriesByYear = Object.entries(publications).sort(([a], [b]) => Number(b) - Number(a))
     const entriesByYear = useMemo(() => getParsedData(), [])
     const [selectedYear, setSelectedYear] = useState<number | null>(new Date().getFullYear())
 
@@ -51,6 +39,28 @@ export default function ResearchPage() {
     )
 
     const isSearching = searchQuery.trim().length > 0
+
+    const onDownloadPdf = async () => {
+        try {
+            const url = `${import.meta.env.VITE_BACKEND_URL}/public/download`
+            const response = await axios.get(url, {
+                responseType: 'blob',
+            })
+
+            const blobUrl = window.URL.createObjectURL(new Blob([response.data]));
+
+            const link = document.createElement('a');
+            link.href = blobUrl;
+            link.setAttribute('download', 'publications_catalog.pdf');
+            link.click();
+
+            window.URL.revokeObjectURL(blobUrl);
+        } catch (error) {
+            if (import.meta.env.DEV) {
+                console.log(error);
+            }
+        }
+    }
 
     return (
         <>
@@ -92,12 +102,31 @@ export default function ResearchPage() {
             <section className="max-w-6xl mx-auto px-6 md:px-12 py-12 space-y-12">
                 <div className="flex flex-col lg:flex-row gap-8 items-start">
 
-                    <div className='flex-1 w-full flex flex-col gap-4'>
-                        <div className="overflow-hidden border rounded-xl bg-white shadow-sm">
-                            <div className="px-4 py-3 border-b text-sm font-semibold text-slate-600">
-                                Search
-                            </div>
-                            <div className='p-3'>
+                    <aside className="w-full lg:block flex-1 shrink-0" id='browse-by-year'>
+                        <Card className='gap-3'>
+                            <CardHeader className='pt-0'>
+                                <CardTitle>
+                                    Publications Search Engine
+                                </CardTitle>
+                            </CardHeader>
+                            <CardContent className='mb-3'>
+                                <Button
+                                    onClick={onDownloadPdf}
+                                    className='w-full'
+                                    variant='outline'
+                                    size='sm'
+                                >
+                                    <Download />
+                                    Download All Publications as PDF
+                                </Button>
+                            </CardContent>
+
+                            <CardHeader className='pt-0'>
+                                <CardTitle>
+                                    Search
+                                </CardTitle>
+                            </CardHeader>
+                            <CardContent className='mb-3'>
                                 <InputGroup className="max-w-xs">
                                     <InputGroupInput
                                         value={searchQuery}
@@ -114,15 +143,15 @@ export default function ResearchPage() {
                                         </button>
                                     )}
                                 </InputGroup>
-                            </div>
-                        </div>
+                            </CardContent>
 
-                        <YearSelector
-                            entriesByYear={entriesByYear.years}
-                            selectedYear={selectedYear}
-                            setSelectedYear={setSelectedYear}
-                        />
-                    </div>
+                            <YearSelector
+                                entriesByYear={entriesByYear.years}
+                                selectedYear={selectedYear}
+                                setSelectedYear={setSelectedYear}
+                            />
+                        </Card>
+                    </aside>
 
                     <div className="flex-1 lg:flex-2 min-w-0 w-full">
                         {isSearching ? (
