@@ -67,6 +67,7 @@ import elier2 from '@/assets/members/gallery/elier2.jpg'
 import elier3 from '@/assets/members/gallery/elier3.jpg'
 import elier4 from '@/assets/members/gallery/elier4.jpg'
 
+
 // #region Type definitions
 export const roles = {
     leader: {
@@ -106,12 +107,25 @@ export type RoleId = keyof typeof roles
 export interface People {
     name: string
     email: string[]
-    description: string
-    bio: string
+
+    description?: string
+
+    biography: string | string[]
     role: RoleId
     profilePic?: string
+
+    mainResearchLine?: string
+    mainResearchLineDesc?: string
+    mainResearchLineImage?: string
+
     researchLine?: string | string[]
     currentProjects?: string | string[]
+
+    softwareTools?: {
+        name: string
+        description?: string
+    }[]
+
     linkedin?: string
     researchGate?: string
     orcid?: string
@@ -145,7 +159,7 @@ export const people: People[] = [
             'gabriel.merino2@gmail.com'
         ],
         description: 'Gabriel Merino is a Researcher 3E (SNII III) at Cinvestav Mérida specializing in theoretical physical chemistry, molecular prediction, and chemical bonding, with multiple international awards.',
-        bio: 'Gabriel Merino is a Researcher 3E (SNII III) at Cinvestav Mérida specializing in theoretical physical chemistry. His work focuses on molecular system prediction, chemical bonding, and reaction kinetics, and he has developed computational tools and led projects on advanced materials and potential energy surfaces. He is a recipient of multiple national and international awards for his research contributions.',
+        biography: 'Gabriel Merino is a Researcher 3E (SNII III) at Cinvestav Mérida specializing in theoretical physical chemistry. His work focuses on molecular system prediction, chemical bonding, and reaction kinetics, and he has developed computational tools and led projects on advanced materials and potential energy surfaces. He is a recipient of multiple national and international awards for his research contributions.',
         role: 'leader',
         researchLine: [
             "Theoretical Physical Chemistry",
@@ -239,7 +253,7 @@ export const people: People[] = [
             'fortiz@conahcyt.mx',
         ],
         description: 'Dr. Ortiz-Chi is a researcher at Cinvestav Mérida (SNI II) focused on materials design. He has led research projects, supervised undergraduate and master’s theses, and authored 39 publications with over 800 citations.',
-        bio: 'Dr. Ortiz-Chi is a Researcher (Investigador por México SNI II) assigned to the Department of Applied Physics at Cinvestav Mérida, where he conducts research on the design of materials. He is a Level 2 member of Mexico’s National System of Researchers (SNII). During his previous assignment (DACB-UJAT), he led five research projects and supervised undergraduate (2) and master’s (4) theses. His scholarly output includes 39 articles with more than 800 citations.',
+        biography: 'Dr. Ortiz-Chi is a Researcher (Investigador por México SNI II) assigned to the Department of Applied Physics at Cinvestav Mérida, where he conducts research on the design of materials. He is a Level 2 member of Mexico’s National System of Researchers (SNII). During his previous assignment (DACB-UJAT), he led five research projects and supervised undergraduate (2) and master’s (4) theses. His scholarly output includes 39 articles with more than 800 citations.',
         role: 'leader',
         researchLine: [
             "Computational Materials Design",
@@ -302,7 +316,7 @@ export const people: People[] = [
             'maurizio.pantoja@cinvestav.mx',
         ],
         description: 'Maurizio A. Pantoja Hernández is a chemist specializing in computational chemistry and machine learning, currently a postdoctoral researcher at Cinvestav Mérida.',
-        bio: "My name is Maurizio Alejandro Pantoja Hernández. I completed my undergraduate studies in Chemical Engineering in 2014 at Universidad Veracruzana, Xalapa Campus. The following year, I began my Master's studies in Bioorganic Chemistry, also at Universidad Veracruzana, where I worked on the computational analysis of intermolecular interactions between ionic liquids and phenolic compound extractants, under the supervision of Prof. Myrna Matus. After earning my Master's degree in early 2018, I worked as a research assistant to Prof. Myrna Matus until mid-2019. I began my phD studies in Chemistry in September 2019, at Universidad Autónoma Metropolitana, Iztapalapa Unit, in Mexico City. I worked with Prof. José L. Gázquez on developing chemical reactivity descriptors for interacting species, within the theoretical framework of the Density Functional Theory. I earned my phD degree in December 2023 and began my first postdoctoral fellowship in January 2024 at Universidad Veracruzana. During this fellowship, I studied the oxidative desulfurization of oil using molecular chemical reactivity descriptors. In February 2025, I started my current postdoctoral fellowship at Cinvestav-Mérida, where I am working on developing a machine learning interatomic potential for exploring the potential energy surface of boron clusters.",
+        biography: "My name is Maurizio Alejandro Pantoja Hernández. I completed my undergraduate studies in Chemical Engineering in 2014 at Universidad Veracruzana, Xalapa Campus. The following year, I began my Master's studies in Bioorganic Chemistry, also at Universidad Veracruzana, where I worked on the computational analysis of intermolecular interactions between ionic liquids and phenolic compound extractants, under the supervision of Prof. Myrna Matus. After earning my Master's degree in early 2018, I worked as a research assistant to Prof. Myrna Matus until mid-2019. I began my phD studies in Chemistry in September 2019, at Universidad Autónoma Metropolitana, Iztapalapa Unit, in Mexico City. I worked with Prof. José L. Gázquez on developing chemical reactivity descriptors for interacting species, within the theoretical framework of the Density Functional Theory. I earned my phD degree in December 2023 and began my first postdoctoral fellowship in January 2024 at Universidad Veracruzana. During this fellowship, I studied the oxidative desulfurization of oil using molecular chemical reactivity descriptors. In February 2025, I started my current postdoctoral fellowship at Cinvestav-Mérida, where I am working on developing a machine learning interatomic potential for exploring the potential energy surface of boron clusters.",
         role: 'postdoctoral_researcher',
         researchLine: [
             'Development of machine learning interatomic potentials for exploring the potential energy surface of atomic clusters',
@@ -340,7 +354,7 @@ export const people: People[] = [
         name: 'Jessica Arcudia',
         email: [],
         description: 'Computational materials scientist focused on 2D materials and stacking configurations.',
-        bio: "Jessica Arcudia is a computational materials scientist specializing in electronic structure simulations and the design of two-dimensional materials and their stacking configurations. She obtained her B.Sc. in Engineering Physics from the Universidad Autónoma de Yucatán, followed by her M.Sc. and Ph.D. in Physical Chemistry from Cinvestav Mérida under the supervision of Prof. Gabriel Merino.\n\nHer research focuses on layered materials and their stacking configurations.During her Ph.D., she developed the JAM(Joining and Arrangement of Multilayers) language to systematically represent and generate these structures, for which she received several national awards.\n\nShe worked as a postdoctoral researcher at the University of Texas at Dallas under the supervision of Prof.Andrés Cisneros, where her research involved Covalent Organic Frameworks(COFs) and the improvement of the Gaussian Electrostatic Model(GEM) force field.Jessica is a member of the Mexican National System of Researchers(SNII, Candidate level) and is currently a postdoctoral researcher at Cinvestav Mérida, where she focuses on extending the JAM language to more complex materials, including COFs and MOFs.",
+        biography: "Jessica Arcudia is a computational materials scientist specializing in electronic structure simulations and the design of two-dimensional materials and their stacking configurations. She obtained her B.Sc. in Engineering Physics from the Universidad Autónoma de Yucatán, followed by her M.Sc. and Ph.D. in Physical Chemistry from Cinvestav Mérida under the supervision of Prof. Gabriel Merino.\n\nHer research focuses on layered materials and their stacking configurations.During her Ph.D., she developed the JAM(Joining and Arrangement of Multilayers) language to systematically represent and generate these structures, for which she received several national awards.\n\nShe worked as a postdoctoral researcher at the University of Texas at Dallas under the supervision of Prof.Andrés Cisneros, where her research involved Covalent Organic Frameworks(COFs) and the improvement of the Gaussian Electrostatic Model(GEM) force field.Jessica is a member of the Mexican National System of Researchers(SNII, Candidate level) and is currently a postdoctoral researcher at Cinvestav Mérida, where she focuses on extending the JAM language to more complex materials, including COFs and MOFs.",
         role: 'postdoctoral_researcher',
         researchLine: [
             'Computational modeling and design of two-dimensional materials and their stacking configurations.',
@@ -414,7 +428,7 @@ export const people: People[] = [
         email: [],
         description: 'Ph.D. student in computational chemistry focused on electronic structure and novel bonding motifs.',
         role: 'postdoctoral_researcher',
-        bio: "Gabriela Castillo Toraya is a Ph.D. student at the Center for Research and Advanced Studies of the National Polytechnic Institute (Cinvestav). Her research focuses on computational chemistry and electronic structure, particularly in the study of unconventional bonding and planar hypercoordinate atoms.",
+        biography: "Gabriela Castillo Toraya is a Ph.D. student at the Center for Research and Advanced Studies of the National Polytechnic Institute (Cinvestav). Her research focuses on computational chemistry and electronic structure, particularly in the study of unconventional bonding and planar hypercoordinate atoms.",
         researchLine: [
             'Computational investigation of planar hypercoordinate atoms and novel bonding patterns using high-level ab initio methods.'
         ],
@@ -431,7 +445,7 @@ export const people: People[] = [
             'fermurilloc@gmail.com',
         ],
         description: 'Postdoctoral researcher specializing in computational and theoretical chemistry, with a focus on reaction mechanisms, boron chemistry, and CO₂ capture.',
-        bio: "In 2020, Fernando Murillo received his PhD in Material Sciences from Universidad Juárez Autónoma de Tabasco in Mexico, working on reaction mechanisms involved in carbon dioxide capture. Currently, he is a postdoctoral researcher at Cinvestav Mérida under the supervision of Gabriel Merino. His research interests include boron chemistry, gold catalysis in organic reactions, and aromaticity.",
+        biography: "In 2020, Fernando Murillo received his PhD in Material Sciences from Universidad Juárez Autónoma de Tabasco in Mexico, working on reaction mechanisms involved in carbon dioxide capture. Currently, he is a postdoctoral researcher at Cinvestav Mérida under the supervision of Gabriel Merino. His research interests include boron chemistry, gold catalysis in organic reactions, and aromaticity.",
         role: 'postdoctoral_researcher',
         researchLine: [
             'Reaction Mechanisms',
@@ -470,19 +484,39 @@ export const people: People[] = [
     },
     {
         name: 'Alan Quintal',
-        email: [],
+        email: ['alan.quintal@cinvestav.mx'],
         description: 'Postdoc at Cinvestav and researcher in Computational Chemical Kinetics. Lead developer of Eyringpy and SurfinPES.',
-        bio: "Dr. Alan Quintal, a specialist in Computational Chemical Kinetics, is a co-author of the Eyringpy program and the lead author of SurfinPES. He is currently a postdoctoral researcher at Cinvestav Mérida, where he integrates scientific research with programming to develop computational tools for the scientific community.",
+        biography: [
+            'Alan Quintal is a researcher specializing in Theoretical Chemical Kinetics. He earned a B.S. in Industrial Chemical Engineering (2017) from Universidad Autónoma de Yucatán (UADY) and both his M.S. (2020) and Ph.D. (2025) in Physical Chemistry from Cinvestav Mérida, Mexico.',
+            'He is currently involved in mentoring undergraduate students through the Programa de Estancias Cortas de Investigación (PECI) at UADY. He was awarded the Dr. Alonso Fernández González Prize for the best Master’s thesis in 2021. He is also actively engaged in science communication, focusing on the creation, development, and editing of audiovisual content for scientific outreach. He has been recognized multiple times with the PosterPitch Award at the Royal Society of Chemistry (RSC) Online Poster Conference.',
+
+        ],
         role: 'postdoctoral_researcher',
+
+        mainResearchLine: 'Theoretical Chemical Kinetics',
+        mainResearchLineDesc: 'Theoretical chemical kinetics studies how fast chemical reactions occur using computational methods. It focuses on describing reaction mechanisms, calculating rate constants, and incorporating quantum effects to predict chemical reactivity under different conditions.',
+        mainResearchLineImage: '',
+
         researchLine: [
-            'Computational Chemical Kinetics and Quantum Tunneling',
+            'Alan Quintal’s research focuses on Theoretical Chemical Kinetics, with an emphasis on quantum tunneling.',
+            'He is one of the developers of Eyringpy, a platform for advanced kinetic calculations. His work has included the implementation of methods such as ZCT and SCT within Eyringpy, as well as the development of SurfinPES’ for reaction mechanism analysis.',
+            'His current work is focused on the implementation of robust multidimensional tunneling models, including QRST, LCT, and µOMT, along with the development of the graphical user interface (GUI) of Eyringpy.',
         ],
         currentProjects: [
-            'Automation and implementation of multidimensional tunneling models in Eyringpy.',
-            'GUI development for SurfinPES and Eyringpy.',
+            'Eyringpy: Coordination of GUI development. Implementation of multidimensional tunneling models.',
+            'SurfinPES: GUI development.'
         ],
+
+        softwareTools: [
+            {
+                name: 'Eyringpy',
+                description: 'Eyringpy is a computational program designed to calculate rate constants using Transition State Theory (TST) and Canonical Variational Transition State Theory (CVT) for both gas-phase and solution-phase reactions. It also implements RRKM theory for microcanonical rate constants, as well as one-dimensional (Wigner and Eckart) and multidimensional tunneling corrections (ZCT and SCT), which can be computed using reduced reaction path data via the Reaction Force Model. For solution-phase reactions, it incorporates Collins–Kimball theory for diffusion effects, Marcus theory for electron transfer, and molar fraction approaches to evaluate pH-dependent behavior.'
+            }
+        ],
+
         linkedin: 'https://www.linkedin.com/in/alan-q-673b07143/',
         profilePic: alanQuintal,
+
         recentPublications: [
             {
                 publication: 'Quintal, A.; Dzib, E.; Murillo, F.; Ortíz‐Chi, F.; Fernández, I.; Merino, G. SurfinPES: Performing Automated Analysis of Activation Strain, Energy Decomposition, and Reaction Force. International Journal of Quantum Chemistry 2023, 124 (1).',
@@ -491,17 +525,23 @@ export const people: People[] = [
         ],
         awards: [
             {
-                name: "Dr. Alonso Fernández González Prize for Best Graduate Thesis",
+                name: "Emerging Leaders in the Americas Program (ELAP) scholarship",
+                description: "Scholarship for a research stay at the Department of Chemistry & Chemical Biology",
+                instituteWithYear: "McMaster University, 2021"
+            },
+            {
+                name: "Best Master’s Thesis Award “Dr. Alonso Fernández González”",
                 instituteWithYear: "Cinvestav Mérida, 2021"
             },
             {
-                name: "Emerging Leaders in the Americas Program (ELAP) Fellow",
-                instituteWithYear: "Government of Canada, 2021"
+                name: "Mérito Universitario NFU",
+                instituteWithYear: "Universidad Autónoma de Yucatán, 2017"
             },
             {
-                name: "National Research Stay Scholarship",
-                instituteWithYear: "SECIHTI, 2025"
-            }
+                name: "Proyecta 100,000 scholarship",
+                description: "Scholarship for an English language study stay",
+                instituteWithYear: "University of Utah, 2016"
+            },
         ],
         gallery: [
             {
@@ -518,7 +558,7 @@ export const people: People[] = [
             'lis.noriega.santos@gmail.com',
         ],
         description: 'Postdoctoral researcher specializing in computational astrochemistry, focusing on DFT-based spectroscopic analysis and molecular evolution in the interstellar medium.',
-        bio: "Graduate of the Chemical Sciences Program in the area of Physical Chemistry from BUAP. During my master's and doctoral studies, I focused my research on the application of Density Functional Theory (DFT) for the analysis of spectroscopic properties in molecular systems. Currently, I am conducting a postdoctoral fellowship in the Department of Applied Physics at CINVESTAV-Mérida, where I have expanded my focus toward computational astrochemistry. My research centers on isomer generation and their spectroscopic identification in the interstellar medium, as well as the study of fundamental reaction mechanisms for molecular evolution in space.",
+        biography: "Graduate of the Chemical Sciences Program in the area of Physical Chemistry from BUAP. During my master's and doctoral studies, I focused my research on the application of Density Functional Theory (DFT) for the analysis of spectroscopic properties in molecular systems. Currently, I am conducting a postdoctoral fellowship in the Department of Applied Physics at CINVESTAV-Mérida, where I have expanded my focus toward computational astrochemistry. My research centers on isomer generation and their spectroscopic identification in the interstellar medium, as well as the study of fundamental reaction mechanisms for molecular evolution in space.",
         role: 'postdoctoral_researcher',
         researchLine: [
             'Computational Astrochemistry',
@@ -558,12 +598,26 @@ export const people: People[] = [
         ]
     },
     {
-        name: 'Fernando José Martínez Villarino',
-        email: [],
-        description: 'PhD student focused on the study of aromaticity and the development of computational methods and software to analyze electronic delocalization in molecular systems.',
-        bio: "I am a researcher in training with experience in the field of computational and theoretical chemistry, currently pursuing graduate studies. My academic work focuses on the development and application of computational tools for analyzing the electronic and magnetic properties of cyclic molecular systems, with the aim of exploring aromaticity indicators based on magnetic, geometric, and electric criteria.\nThe central premise of my doctoral thesis is to develop a Python-based code capable of extracting comprehensive information on the electronic delocalization of cyclic systems from a simple molecular file coordinates.\nIn addition, I serve as the high-performance computing (HPC) server administrator at Cinvestav - Mérida, where my responsibilities include installing and compiling complex scientific packages, optimizing large-scale calculations in Linux-based systems, and performing preventive maintenance on the cluster's hardware.",
-        researchLine: "Aromaticity is a fundamental concept in theoretical and computational chemistry that describes the stability and electronic properties of conjugated cyclic systems. It is reflected in magnetic, geometric and electronic characteristics that distinguish these compounds from non-aromatic analogues. The study of aromaticity using geometric, magnetic and electronic criteria provides insight into electronic delocalization, helps interpret spectroscopic properties, and establishes quantitative criteria.",
-        currentProjects: "I am currently working on projects focused on the study of aromaticity in cyclic molecular systems through computational chemistry methods. My main role involves developing Python-based tools that automate the analysis of electronic and magnetic properties from molecular coordinate files.",
+        name: 'Fernando Martínez-Villarino',
+        email: ['fernando.martinezv@cinvestav.mx'],
+        biography: [
+            'Fernando Martinez-Villarino is an engineer who graduated from the Autonomous University of Campeche, where he earned his degree with a thesis focused on the synthesis of metal oxide semiconductors. He subsequently pursued a Master’s degree in Physical Chemistry at Cinvestav-Merida, conducting research in the area of Theoretical Chemical Kinetics. He is currently a Ph.D. student in Physical Chemistry at the same institution, where he is conducting research in the field of aromaticity.',
+            'Additionally, he maintains a personal interest in world history and geography.',
+        ],
+
+        mainResearchLine: 'Aromaticity',
+        mainResearchLineDesc: 'Aromaticity remains an active area of research in theoretical and computational chemistry, focused on clarifying its still not fully defined nature and its relationship to molecular stability, optoelectronic properties, and reactivity. Over the past two centuries, aromatic systems have been studied extensively, serving as fundamental models for the development of theoretical methods and for the design of functional compounds in modern chemistry.',
+        researchLine: [
+            'Aromaticity',
+            'Theoretical Chemical Kinetics',
+        ],
+        currentProjects: [
+            'Study of the magnetic and geometric response of N-infinites',
+            'Aromaticity and Antiaromaticity in Pericondensed Conjugated Hydrocarbons',
+            'Programming for Aromaticity',
+            'Orca interface in Eyringpy for solution-phase reactions to calculate rate constants using the TST',
+        ],
+
         role: 'phd_student_cinvestav',
         linkedin: 'https://www.linkedin.com/in/fernando-jos%C3%A9-mart%C3%ADnez-villarino-2922b7163/',
         orcid: 'https://orcid.org/0009-0008-7178-3651',
@@ -584,14 +638,30 @@ export const people: People[] = [
         ]
     },
     {
-        name: 'Elier Enrique Abreu Martínez',
-        email: [
-            'elier961209@gmail.com',
+        name: 'Elier E. Abreu-Martínez',
+        email: ['elier.abreu@cinvestav.mx'],
+        biography: "He holds a Bachelor’s degree in Chemistry from the Universidad Central “Marta Abreu” de Las Villas (Cuba), where he conducted research in the fields of biotechnology and computational chemistry. He participated in protein purification and the production of monoclonal antibodies for therapeutic purposes. His undergraduate thesis focused on developing computational models to predict compounds with antimalarial potential. Subsequently, he earned a Master’s degree in Physical Chemistry from Cinvestav Unidad Mérida, focusing on the elucidation of reaction mechanisms using DFT methods. Currently, he is a PhD student developing automated workflows in KNIME for computational Structure-Activity and Structure-Property relationship studies (QSAR/QSPR).",
+
+
+        mainResearchLine: 'Desarrollo de modelos QSAR/QSPR',
+        mainResearchLineDesc: 'Esta línea se centra en la aplicación de metodologías computacionales para la predicción de propiedades fisicoquímicas y actividad biológica de compuestos. Incluye la implementación y automatización de flujos de trabajo en KNIME, con el objetivo de facilitar el análisis de datos y mejorar la eficiencia en la generación de modelos predictivos que apoyen el diseño racional de nuevas moléculas.',
+        mainResearchLineImage: '',
+
+        researchLine: [
+            'Elucidación de mecanismos de reacción y estudios de superficies de energía potencial mediante DFT.',
+            'Desarrollo de flujos automatizados en KNIME.',
+            'Predicción computacional de propiedades fisicoquímicas y actividad biológica de nuevas moléculas mediante estudios QSAR/QSPR.',
         ],
-        description: 'PhD student in physical chemistry specializing in QSAR/QSPR modeling and automated workflows for predictive analysis.',
-        bio: "I’m a PhD student in Physical Chemistry. I like to think of myself as a curious, observant and calm person — a bit reserved at first, but genuine and talkative once there’s trust. Outside of work I enjoy relaxed plans: a good coffee, a day by the sea, or a bike ride. I value authentic collaboration, everyday humor, and science driven by purpose.",
-        researchLine: "Development of automated KNIME workflows for building and validating QSAR/QSPR predictive models.",
-        currentProjects: "My main project focuses on developing an automated KNIME workflow for building and validating QSAR/QSPR models, including deep neural network-based modeling methods. So far, we have completed the workflow for qualitative SAR/SPR analysis, with the implementation of predictive models still pending.\nIn addition, I have contributed with this workflow to a project creating a database of biased agonists for the mu-opioid receptor. At the same time, we are working on developing new metrics to detect non-structural factors causing bi-activity disruptions, which helps improve the understanding and robustness of predictive models.",
+
+        currentProjects: "Desarrollo e implementación de flujos de trabajo automatizados en KNIME para el análisis de datos químicos, enfocándome en la integración, ejecución y validación de cada etapa del proceso.",
+
+        softwareTools: [
+            {
+                name: 'SPARFlow',
+                description: 'SPARFlow, es un flujo de trabajo desarrollado para el análisis cualitativo de las relaciones estructura-actividad (SAR) y estructura-propiedad (SPR) en una base de datos químicos. Está organizado en siete secciones principales: entrada y validación de datos, curación química mediante el flujo QSAR-ready, generación de redes de similitud (NSG), búsqueda de MCS por clúster, descomposición de R-grupos y conversión en descriptores de fragmento, detección de activity cliffs y cálculo de métricas de modelabilidad (SARI y MODI* o RMODI). El flujo de trabajo está disponible para su descarga en GitHub (https://github.com/GMerinoQSAR/SPARFlow.git) y en KNIME Community Hub, para su ejecución en equipos de escritorio locales.'
+            }
+        ],
+
         linkedin: 'https://www.linkedin.com/in/elier-enrique-abreu-martinez-a92229187',
         researchGate: 'https://www.researchgate.net/profile/Elier-Abreu?ev=hdr_xprf',
         orcid: 'https://orcid.org/0000-0003-3855-030X',
@@ -631,14 +701,29 @@ export const people: People[] = [
         ]
     },
     {
-        name: 'Rafael Flores Larrañaga',
-        email: [
-            'ralf.flores95@gmail.com',
-        ],
+        name: 'Rafael Flores-Larrañaga',
+        email: ['rafael.floreslarranaga@viep.com.mx'],
         description: 'PhD student in physical chemistry specializing in computational astrochemistry, focused on sulfur-containing molecules and their structural, electronic, and spectroscopic properties.',
-        bio: "Rafael Flores Larrañaga is a biologist and theoretical–computational chemist from the Benemérita Universidad Autónoma de Puebla (BUAP), where he earned his Bachelor’s degree in Biology and his Master’s degree in Chemical Sciences (Physical Chemistry). He is currently pursuing his Ph.D. in Physical Chemistry at BUAP, focusing on the study of sulfur-containing molecules with astrochemical relevance. His research explores the structural, electronic, and spectroscopic properties of sulfur compounds (such as dithiols and disulfides) using ab initio methods. Through this work, he investigates their conformational flexibility, bonding characteristics, and potential role in interstellar environments, aiming to provide accurate molecular data to support future astronomical detections.",
-        researchLine: "My research focuses on the theoretical and computational study of sulfur-containing molecules with astrochemical relevance. Using ab initio and density functional theory methods, I investigate their structure, stability, conformational behavior, bonding properties, and spectroscopic characteristics to understand their formation and role in interstellar environments.",
-        currentProjects: "My research focuses on the theoretical and computational study of sulfur-containing molecules with astrochemical relevance. I am currently investigating CH4S2 and C2H6S2 isomeric families to understand their structure, stability, bonding, and spectroscopic properties using high-level ab initio methods.",
+        biography: "Rafael Flores Larrañaga is a junior researcher with an interdisciplinary background. He holds a Bachelor’s degree in Biology and a Master’s degree in Chemical Sciences, specializing in Physical Chemistry, both earned at the Benemérita Universidad Autónoma de Puebla (BUAP). He is currently pursuing a PhD in Chemical Sciences at the same institution, where he conducts research in theoretical astrochemistry. His work focuses on the study of complex organic molecules containing two sulfur atoms (such as $CH_4S_2$), specifically the characterization of isomers using ab initio methods, composite schemes, and anharmonic calculations to predict relevant spectroscopic properties.",
+
+
+        mainResearchLine: 'Astroquímica teórica de moléculas interestelares ricas en azufre.',
+        mainResearchLineDesc: 'Estudio computacional de moléculas con relevancia astroquímica mediante métodos ab initio, esquemas compuestos y cálculos anharmónicos, enfocado en la caracterización estructural, conformacional y espectroscópica de isómeros y conformeros, con el objetivo de predecir propiedades que faciliten su detección en el medio interestelar.',
+        mainResearchLineImage: '',
+
+        researchLine: [
+            'Astroquímica teórica de moléculas interestelares ricas en azufre.',
+            'Estudio de isomería y análisis conformacional de sistemas con dos átomos de azufre.',
+            'Cálculo de propiedades espectroscópicas (rotacionales y vibracionales) para la detección en el medio interestelar.',
+            'Aplicación de métodos ab initio, DFT y esquemas compuestos de alta precisión.',
+            'Exploración de mecanismos de reacción y estabilidad de especies de relevancia astroquímica.',
+        ],
+
+        currentProjects: [
+            'Estudio teórico de CH4S2: Participa en la caracterización estructural, energética y espectroscópica de isómeros y conformeros mediante métodos ab initio y esquemas compuestos. Su contribución incluye la optimización de geometrías y predicción de propiedades relevantes para su posible detección en el medio interestelar.',
+            'Estudio teórico de C2H6S2: Colabora en la exploración del espacio conformacional y en la determinación de energías relativas de diferentes isómeros. Su rol se enfoca en la implementación de metodologías computacionales, cálculos de alta precisión y análisis de propiedades espectroscópicas y termodinámicas.',
+        ],
+
         linkedin: 'https://www.linkedin.com/in/rafael-flores-larra%C3%B1aga-007525355/',
         orcid: 'https://orcid.org/0000-0003-1084-9748',
         role: 'phd_student_cinvestav',
@@ -660,16 +745,29 @@ export const people: People[] = [
     },
     {
         name: 'Aura Gómez-Heredia',
-        email: [
-            'aura.gomez@cinvestav.mx',
+        email: ['aura.gomez@cinvestav.mx'],
+        biography: "Aura Gómez-Heredia is a computational chemistry researcher specializing in chemical kinetics. She earned a B.S. in Chemistry  from Universidad Distrital Francisco José de Caldas (Colombia, 2016–2022) and an M.S. in Physical Chemistry from CINVESTAV, Mérida (Mexico, 2022–2024). Currently, she is pursuing a Ph.D. in Applied Physics with the TheoChem Mérida group, focusing on chemical kinetics and tunneling effects. A advocate for women in science, she completed leadership programs through +Mujer+Ciencia+Equidad (2022) and Universidad Insurgentes (2024).",
+
+        mainResearchLine: "Chemical Kinetics and Quantum Tunneling Effects",
+        mainResearchLineDesc: "Focuses on the study of microcanonical rate constants using RRKM theory, incorporating tunneling corrections through the Eyringpy program. Her work includes implementing software improvements to enhance the accuracy and analysis of kinetic calculations.",
+
+        researchLine: [
+            "Aura's research focuses on the study of chemical kinetics and quantum tunneling effects. She specializes in applying RRKM theory to determine microcanonical rate constants, incorporating tunneling effect corrections. To achieve this, she uses the Eyringpy program, developed by her research group in 2019, implementing improvements that enhance the analysis and accuracy of kinetic calculations.",
+            'Aura is currently working on projects focused on RRKM theory and incorporating tunneling effect methodologies, such as instanton theory.',
+
         ],
-        description: 'PhD researcher at Cinvestav specializing in chemical kinetics and quantum tunneling. Expert in RRKM theory and developer of the Eyringpy software, focused on optimizing microcanonical rate constants and instanton theory methodologies.',
-        bio: "Aura Gómez-Heredia is a computational chemistry researcher specializing in chemical kinetics. She earned a B.S. in Chemistry  from Universidad Distrital Francisco José de Caldas (Colombia, 2016–2022) and an M.S. in Physical Chemistry from CINVESTAV, Mérida (Mexico, 2022–2024). Currently, she is pursuing a Ph.D. in Applied Physics with the TheoChem Mérida group, focusing on chemical kinetics and tunneling effects. A advocate for women in science, she completed leadership programs through +Mujer+Ciencia+Equidad (2022) and Universidad Insurgentes (2024).",
-        researchLine: "Aura's research focuses on the study of chemical kinetics and quantum tunneling effects. She specializes in applying RRKM theory to determine microcanonical rate constants, incorporating tunneling effect corrections. To achieve this, she uses the Eyringpy program, developed by her research group in 2019, implementing improvements that enhance the analysis and accuracy of kinetic calculations.",
         currentProjects: "Aura is currently working on projects focused on incorporating other tunneling effect methodologies, such as instanton theory.",
         linkedin: 'https://www.linkedin.com/in/aura-gómez-heredia-b272b2390',
         orcid: 'https://orcid.org/my-orcid?orcid=0000-0001-5055-9089',
         role: 'phd_student_cinvestav',
+
+        awards: [
+            {
+                name: "Alonso Fernández González 2025 Award",
+                description: "Best Master's Thesis in Physical Chemistry",
+                instituteWithYear: '2025'
+            }
+        ],
         profilePic: aura,
         gallery: [
             {
@@ -736,7 +834,7 @@ export const people: People[] = [
             'romanmdiego@gmail.com',
         ],
         description: 'PhD student in chemical engineering specializing in computational chemistry, focused on green solvents and planar hypercoordinated systems.',
-        bio: "My name is Diego Román, I am a chemical engineer who recently begun a PhD at CINVESTAV, Mérida. My main area of research has been the study, with computational chemistry methods, of green solvents.",
+        biography: "My name is Diego Román, I am a chemical engineer who recently begun a PhD at CINVESTAV, Mérida. My main area of research has been the study, with computational chemistry methods, of green solvents.",
         researchLine: "Study of planar hypercoordinated systems",
         currentProjects: "Automatic identification of planar pentacoordinated and tetracoordinated systems with a carbon center.",
         orcid: "https://orcid.org/0000-0002-5899-0196",
@@ -750,31 +848,74 @@ export const people: People[] = [
         ]
     },
     {
-        name: 'Gerardo Hernández Juárez',
-        email: [],
-        description: 'Maurizio A. Pantoja Hernández is a chemist specializing in computational chemistry and machine learning, currently a postdoctoral researcher at Cinvestav Mérida.',
-        bio: "My name is Diego Román, I am a chemical engineer who recently begun a PhD at CINVESTAV, Mérida. My main area of research has been the study, with computational chemistry methods, of green solvents.",
-        researchLine: "Study of planar hypercoordinated systems",
-        currentProjects: "Automatic identification of planar pentacoordinated and tetracoordinated systems with a carbon center.",
+        name: 'Gerardo Hernández-Juárez',
+        email: ['gerardo.hernandezj@cinvestav.mx'],
+        biography: "Gerardo Hernández Juárez is a Ph.D. student in Physical Chemistry at Cinvestav, where he also obtained his Master’s degree in the same field. He holds a Bachelor’s degree in Biochemical Engineering from ITESCAM. His academic trajectory has focused on the study of molecular systems using computational chemistry tools, with research centered on the exploration of potential energy surfaces and the analysis of chemical structures.",
+        researchLine: [
+            'Hidruros de boro'
+        ],
+
+        mainResearchLine: 'Análisis de boranos',
+        mainResearchLineDesc: 'Exploración de superficies de energía potencial de sistemas de boro dopados con H o elementos del grupo halógeno, en búsqueda de generalizar las reglas para el conteo de electrones.',
+        mainResearchLineImage: '',
+
+
+
+        currentProjects: [
+            'Halogen Substitution Effects on the Structures of BnX12(n = 8, 10, 12; X = F, Cl, Br, I)'
+        ],
+
+        awards: [
+            {
+                name: 'Premio mejor poster doctorado',
+                instituteWithYear: 'Cinvestav 2025'
+            },
+            {
+                name: 'Premio mejor poster doctorado',
+                instituteWithYear: 'RMTQFT 2024'
+            },
+        ],
+
         orcid: "https://orcid.org/0000-0002-5899-0196",
         role: 'phd_student_cinvestav',
         profilePic: gerardo,
     },
     {
-        name: 'José Daniel Villanueva Hernández',
-        email: [],
-        description: 'Master’s student specializing in computational chemistry and machine learning, focused on computer-assisted structure elucidation and spectroscopic data analysis.'
-        ,
-        bio: "Bachelor degree in Chemical Engineering. He likes organic chemistry, building stuff with Python and eat sunflower seeds.",
+        name: 'Daniel Villanueva',
+        email: ['jose.villanueva@cinvestav.mx'],
+        biography: "Daniel Villanueva is a chemical engineer who graduated from Instituto Tecnológico de Durango. He has an interest in cheminformatics and structural elucidation methods. His training includes the development of machine learning models applied to the analysis of infrared spectra and the computational representation of chemical structures. In his free time, he enjoys playing piano, learning languages, and going for walks. ",
+
         role: 'masters_student_cinvestav',
+
+        mainResearchLine: 'Computer-Assisted Structure Elucidation (CASE)',
+        mainResearchLineDesc: 'Computer-Assisted Structure Elucidation (CASE) is a methodology that uses software to determine the molecular structure of compounds, usually organic molecules, by analyzing spectroscopic data.',
+        mainResearchLineImage: '',
+
         researchLine: [
-            'Computer-assisted structure elucidation (CASE).',
-            'Machine Learning for spectroscopy.',
+            'Computer-Assisted Structure Elucidation (CASE)',
+            'Machine Learning for Spectroscopy',
+            'Chemical Space',
         ],
         currentProjects: [
-            'The primary objective of the project is to develop automated systems for evaluating candidate molecular systems based on spectroscopic data (IR) and molecular formulas, utilizing TokenSMILES grammars and supervised learning algorithms to correlate spectral signals with structural fragments.'
+            'Principal developer of ARCO (Algorithms of Recognition of Chemical Objects).',
+            'Occasional collaborator in the SmilX project.',
         ],
+
+        softwareTools: [{
+            name: 'ARCO (Algorithms of Recognition of Chemical Objects)',
+            description: 'An infrared-driven CASE system that elucidates organic molecules through their infrared spectra and molecular formulas.'
+        }],
+
+        awards: [
+            {
+                name: "Best Master's Poster",
+                description: "Awarded by the Department of Applied Physics at the 3rd Cinvestav Mérida Graduate Student Encounter",
+                instituteWithYear: "Cinvestav Mérida, 2026"
+            }
+        ],
+
         linkedin: 'www.linkedin.com/in/danielvillanuevahdz',
+
         profilePic: danielVill,
         gallery: [
             {
@@ -792,19 +933,36 @@ export const people: People[] = [
         ]
     },
     {
-        name: 'Daniela Alvarado González',
+        name: 'Daniela Alvarado',
         email: [
             'daniela.alvarado@cinvestav.mx',
         ],
         description: 'Master’s student in physical chemistry focused on computational methods, scientific software, and data analysis for chemical problem solving.',
-        bio: "Hi, I'm Daniela Alvarado-González, a chemist and master's student in Physical Chemistry at Cinvestav Mérida. I'm interested in the use of scientific software and data analysis, as well as their application to the interpretation of chemical problems. I'm a curious and enthusiastic person, driven by a passion for discovering nwe knowledge and contributing to a better world",
+        biography: [
+            "Daniela Alvarado holds a B.S. in Chemistry from the Facultad de Estudios Superiores Cuautitlán, UNAM (Mexico, 2019—2025). During her undergraduate studies, she conducted research on the adsorption of emerging contaminants on graphene and boron nitride surfaces. She is currently working in chemical kinetics, focusing on the implementation of kinetic theories and tunneling effects.",
+            "In addition to her scientific work, she has participated in artistic and creative activities, including painting, photography, and poetry."
+        ],
         role: 'masters_student_cinvestav',
+
+        mainResearchLine: 'Chemical kinetics',
+        mainResearchLineDesc: 'Her research focuses on chemical kinetics, particularly on the implementation of variational transition state theory (VTST) for reaction rate calculations.',
+
+
         researchLine: [
-            'EyringPy',
+            'Chemical kinetics and reaction rate theory',
+            'Implementation of variational transition state theory (VTST) in the Eyringpy program',
+            'Development of parsers for processing quantum chemistry output data (e.g., Gaussian and ORCA)',
         ],
         currentProjects: [
-            'EyringPy',
+            'Implementation of variational transition state theory (VTST) in the Eyringpy program, including coding, testing, and validation of kinetic models for reaction rate calculations',
         ],
+
+        softwareTools: [
+            {
+                name: 'Eyringpy'
+            }
+        ],
+
         profilePic: danielaAlv,
         gallery: [
             {
@@ -820,7 +978,7 @@ export const people: People[] = [
             'maxyalo19@gmail.com',
         ],
         description: 'Master’s student specializing in computational materials science, focused on stacking phenomena in two-dimensional materials and ab initio property analysis.',
-        bio: "Materials Chemical Engineer from Universidad Autónoma de Querétaro, currently pursuing a Master's degree in Physical Chemistry at Cinvestav, Mérida.",
+        biography: "Materials Chemical Engineer from Universidad Autónoma de Querétaro, currently pursuing a Master's degree in Physical Chemistry at Cinvestav, Mérida.",
         role: 'masters_student_cinvestav',
         researchLine: [
             'Stacking studies on two-dimensional materials.'
@@ -845,7 +1003,7 @@ export const people: People[] = [
             'jesoberaniscace@gmail.com',
         ],
         description: 'Undergraduate research intern specializing in scientific software development, focused on graphical user interfaces for computational chemistry tools.',
-        bio: `My name is José Emmanuel Soberanis Cáceres, and I'm a Physics Engineering student at the Faculty of Engineering, Universidad Autónoma de Yucatán (UADY). I'm passionate about programming and enjoy learning new tools and concepts related to software development and architecture. I'm motivated by understanding the "why" behind things and analyzing how they work, because this allows me to acquire more solid, rather than superficial, knowledge. This way of learning has greatly helped me in my academic development and in the projects I carry out at Cinvestav.\nI also really enjoy communicating ideas: I like to present and explain complex topics in simple terms and share what I learn. I believe that clarity in conveying knowledge is a powerful way to connect with others and continue learning.`,
+        biography: `My name is José Emmanuel Soberanis Cáceres, and I'm a Physics Engineering student at the Faculty of Engineering, Universidad Autónoma de Yucatán (UADY). I'm passionate about programming and enjoy learning new tools and concepts related to software development and architecture. I'm motivated by understanding the "why" behind things and analyzing how they work, because this allows me to acquire more solid, rather than superficial, knowledge. This way of learning has greatly helped me in my academic development and in the projects I carry out at Cinvestav.\nI also really enjoy communicating ideas: I like to present and explain complex topics in simple terms and share what I learn. I believe that clarity in conveying knowledge is a powerful way to connect with others and continue learning.`,
         researchLine: 'My work focuses on the development and adaptation of graphical user interfaces (GUIs) for scientific software, with the goal of improving their accessibility and ease of use. I collaborate both on the creation of interfaces for tools that originally operate from Command-Line Interface, and on the updating and redesign of applications previously developed in interactive environments. These implementations aim to optimize the user experience and expand the reach of the software developed by the Merino Lab (Theoretical Physical Chemistry Group) at Cinvestav Mérida.',
         currentProjects: [
             "Implementation of a Graphical User Interface (GUI) for the program Eyringpy. My role in the project is to design and implement the graphical interface, ensuring that its structure and functionality make interacting with the program simpler and more intuitive.",
@@ -911,7 +1069,7 @@ export const people: People[] = [
             'A22214865@alumnos.uady.mx',
         ],
         description: 'Undergraduate research intern specializing in scientific programming and computational chemistry, focused on algorithm development and data processing tools.',
-        bio: "My name is Aileen Montserrat García Cano, and I am a Physics Engineering student at the Autonomous University of Yucatán (UADY). I have a deep interest in scientific programming, data analysis, and the experimental exploration of systems in chemistry and physics. I am enthusiastic about theoretical modeling, laboratory research, and the application of computational tools to address complex scientific problems.\nMy perspective is based on recognizing science as a fundamental tool for addressing social challenges, driving meaningful and transformative change through scientific knowledge and innovation. Therefore, I see scientific programming and the development of new materials through computational modeling and calculations as key pathways to expand the boundaries of knowledge and generate innovative solutions.",
+        biography: "My name is Aileen Montserrat García Cano, and I am a Physics Engineering student at the Autonomous University of Yucatán (UADY). I have a deep interest in scientific programming, data analysis, and the experimental exploration of systems in chemistry and physics. I am enthusiastic about theoretical modeling, laboratory research, and the application of computational tools to address complex scientific problems.\nMy perspective is based on recognizing science as a fundamental tool for addressing social challenges, driving meaningful and transformative change through scientific knowledge and innovation. Therefore, I see scientific programming and the development of new materials through computational modeling and calculations as key pathways to expand the boundaries of knowledge and generate innovative solutions.",
         researchLine: 'Participation in the development of a module for the AEGON library, as well as in the update of other existing modules. I collaborate in the development and optimization of algorithms applied to various research areas.\nThis work enables the collection and conversion of data from different computational chemistry programs (including ORCA, Gaussian, GULP, and VASP) into specific formats, as well as the integration of multiple libraries for diverse purposes—all aimed at strengthening and expanding new scientific research.',
         currentProjects: 'Development of crossover-based genetic algorithms for the prediction of new entities.\nThe primary objective of the project is the development and updating of modules for the AEGON library (Python), to which I actively contribute. These modules are aimed at the reading and writing of molecular geometries and trajectories from files generated by various computational chemistry programs, as well as at the implementation of a crossover-based genetic algorithm for the optimization of molecular cluster geometries.\nThese tools enable the extraction and manipulation of critical data for applications in computational physical chemistry, the training of interatomic potentials using machine learning techniques, and, more generally, for research focused on the design and prediction of new molecular entities.',
         linkedin: 'www.linkedin.com/in/aileen-garcía-cano',
@@ -936,7 +1094,7 @@ export const people: People[] = [
         name: 'Gabriela Vidales-Ayala',
         email: [],
         description: 'Physics Engineering Student committed to improving the quality of life through the integration of science, education, and technology.',
-        bio: `Gabriela Vidales-Ayala is a Physics Engineering student at the Autonomous University of Yucatán (UADY). Her work focuses on the development of scientific web platforms, computational tools, and digital infrastructure for computational chemistry applications.
+        biography: `Gabriela Vidales-Ayala is a Physics Engineering student at the Autonomous University of Yucatán (UADY). Her work focuses on the development of scientific web platforms, computational tools, and digital infrastructure for computational chemistry applications.
 
 She has contributed to the development of user-oriented web interfaces, scientific documentation platforms, and digital research environments, enabling accessible interaction with complex computational workflows.
 
@@ -1060,7 +1218,7 @@ Development of Python tools for automation and parallel computational workflows.
             'eduardo1582000@gmail.com'
         ],
         description: 'Computer Systems Engineering student specializing in cybersecurity, with interests in web infrastructure and full-stack development.',
-        bio: "Eduardo Escalante Pacheco (August 2000) is a Computer Systems Engineering student at the Instituto Tecnológico Superior Progreso (TecNM), specializing in Cybersecurity. \n\nHe was selected by the Secretariat of Science, Humanities, Technology and Innovation (SECIHTI) to participate in an international mobility program, completing an academic STEM program at Ontario Tech University in the summer of 2025. A self-taught programmer, he developed an early interest in technology, which evolved into a strong passion for software development. \n\nHis hobbies include independent game development using Unity, 3D modeling with Blender, and the creation of simulations in 3D environments.",
+        biography: "Eduardo Escalante Pacheco (August 2000) is a Computer Systems Engineering student at the Instituto Tecnológico Superior Progreso (TecNM), specializing in Cybersecurity. \n\nHe was selected by the Secretariat of Science, Humanities, Technology and Innovation (SECIHTI) to participate in an international mobility program, completing an academic STEM program at Ontario Tech University in the summer of 2025. A self-taught programmer, he developed an early interest in technology, which evolved into a strong passion for software development. \n\nHis hobbies include independent game development using Unity, 3D modeling with Blender, and the creation of simulations in 3D environments.",
         researchLine: [
             'Configuration and maintenance of servers and web infrastructure',
             'Database administration (SQL/NoSQL) and web server management (Nginx)',
@@ -1069,6 +1227,20 @@ Development of Python tools for automation and parallel computational workflows.
         currentProjects: [
             'Development of the website for the 14th Triennial Congress of the World Association of Theoretical and Computational Chemists (WATOC 2028)',
             'Development and maintenance of the TheoChemMerida research group website',
+        ],
+        softwareTools: [
+            {
+                name: "Frontend Architecture with React (TypeScript)",
+                description: "Single Page Applications (SPAs) developer, using React and TypeScript."
+            },
+            {
+                name: "Backend Systems & APIs with Django (Python)",
+                description: "Designs and deploys robust backend architectures with Django and Python, creating scalable REST APIs."
+            },
+            {
+                name: "Unity Engine (C#) & Blender",
+                description: "He architectures scalable and modular game logic using C#, highlighting systems such as Finite State Machines, Data-Driven Design and Decoupled Modular Systems, applying Object-Oriented Design Patterns. Expert in creating 3D assets in Blender designed for maximum efficiency using techniques like normal maps and shader creation."
+            }
         ],
         role: 'undergraduate_research_intern',
         linkedin: 'https://www.linkedin.com/in/edescal/',
@@ -1080,7 +1252,7 @@ Development of Python tools for automation and parallel computational workflows.
             'tamayoirvin0@gmail.com',
         ],
         description: 'Undergraduate researcher in theoretical physics with a focus on computational chemistry and materials science.',
-        bio: "Irvin de Jesús Tamayo Castillo is an undergraduate student in Engineering Physics at the Universidad Autónoma de Yucatán (UADY). His academic interests focus on theoretical physics, with research experience in computational chemistry and materials science.",
+        biography: "Irvin de Jesús Tamayo Castillo is an undergraduate student in Engineering Physics at the Universidad Autónoma de Yucatán (UADY). His academic interests focus on theoretical physics, with research experience in computational chemistry and materials science.",
         researchLine: [
             'Research on molecular isomers in astrophysical environments, including property identification, optimization, and classification to determine potential candidates for detection using astronomical observations.'
         ],
@@ -1094,7 +1266,7 @@ Development of Python tools for automation and parallel computational workflows.
         name: 'Sebastian Hernández Gutiérrez',
         email: [],
         description: 'Undergraduate researcher in theoretical physics with a focus on computational chemistry and materials science.',
-        bio: "Sebastian Hernández Gutiérrez is a residency student in Cinvestav Mérida. His current work focuses on scientific programming in areas such as molecular symmetry analysis and molecular reaction mapping.",
+        biography: "Sebastian Hernández Gutiérrez is a residency student in Cinvestav Mérida. His current work focuses on scientific programming in areas such as molecular symmetry analysis and molecular reaction mapping.",
         researchLine: [
             'Molecular symmetry analysis',
             'Molecular reaction mapping',
@@ -1112,7 +1284,7 @@ Development of Python tools for automation and parallel computational workflows.
             'a21215646@alumnos.uady.mx',
         ],
         description: 'Undergraduate researcher focused on computational physics and machine learning for materials modeling.',
-        bio: "Bachelor’s student in Engineering Physics at UADY. Currently undertaking a research stay at CINVESTAV Mérida under the supervision of Dr. Maurizio Alejandro Pantoja Hernández and Dr. Filiberto Ortiz Chi. Interested in theoretical physics and computational physics.",
+        biography: "Bachelor’s student in Engineering Physics at UADY. Currently undertaking a research stay at CINVESTAV Mérida under the supervision of Dr. Maurizio Alejandro Pantoja Hernández and Dr. Filiberto Ortiz Chi. Interested in theoretical physics and computational physics.",
         researchLine: [
             'Computational physics, with a focus on training machine-learning interatomic potentials for boron clusters.'
         ],
@@ -1135,7 +1307,7 @@ Development of Python tools for automation and parallel computational workflows.
         name: 'Carlos Eduardo Bojórquez Ruiz',
         email: [],
         description: 'Computer Systems Engineering student focused on full-stack web development and cybersecurity.',
-        bio: "I am currently a Computer Systems Engineering student at Instituto Tecnológico Superior Campus Progreso, primarily focused on full-stack web development. I am interested in understanding how systems work at a deeper level, which has also led me to develop a strong interest in cybersecurity. I enjoy self-directed learning, experimenting, and solving problems in a practical way. I consider myself curious, analytical, and persistent when facing challenges. I aim to continue developing my technical skills while contributing to projects that allow me to grow and refine my knowledge.",
+        biography: "I am currently a Computer Systems Engineering student at Instituto Tecnológico Superior Campus Progreso, primarily focused on full-stack web development. I am interested in understanding how systems work at a deeper level, which has also led me to develop a strong interest in cybersecurity. I enjoy self-directed learning, experimenting, and solving problems in a practical way. I consider myself curious, analytical, and persistent when facing challenges. I aim to continue developing my technical skills while contributing to projects that allow me to grow and refine my knowledge.",
         researchLine: [
             'Applied Physics Area - WATOC 2028',
         ],
@@ -1151,7 +1323,7 @@ Development of Python tools for automation and parallel computational workflows.
             'aaron.dzul.esquivel@gmail.com',
         ],
         description: 'Systems Engineering student with experience in web development, database management, and technology infrastructure solutions.',
-        bio: "I am a Systems Engineering student currently completing my social service at CINVESTAV. I have skills in web development using technologies such as Python, JavaScript, CSS, HTML, and Shopify, as well as experience managing databases such as PostgreSQL and MariaDB. Additionally, I have worked with frameworks and tools such as Tailwind, Bootstrap, and Flask. I am particularly interested in web development, where I developed a Shopify website for Grupo AEMA, strengthening my experience through real-world projects.",
+        biography: "I am a Systems Engineering student currently completing my social service at CINVESTAV. I have skills in web development using technologies such as Python, JavaScript, CSS, HTML, and Shopify, as well as experience managing databases such as PostgreSQL and MariaDB. Additionally, I have worked with frameworks and tools such as Tailwind, Bootstrap, and Flask. I am particularly interested in web development, where I developed a Shopify website for Grupo AEMA, strengthening my experience through real-world projects.",
         researchLine: [
             'My current work focuses on technological support applied to the Applied Physics area, including web development, database administration, and the implementation of infrastructure and cybersecurity solutions. One of my main contributions is the development of a bastion host within the CINVESTAV network, aimed at strengthening security and access control to critical infrastructure such as a supercomputer.'
         ],
@@ -1168,7 +1340,7 @@ Development of Python tools for automation and parallel computational workflows.
             'leohedgwolf@gmail.com',
         ],
         description: 'Computer Systems Engineering student focused on cybersecurity and infrastructure, with experience in bastion host implementation.',
-        bio: "Computer Systems Engineering student who has participated in several recognized projects within his institution and is currently responsible for developing a bastion host to protect the HPC systems at CINVESTAV.",
+        biography: "Computer Systems Engineering student who has participated in several recognized projects within his institution and is currently responsible for developing a bastion host to protect the HPC systems at CINVESTAV.",
         researchLine: [
             "I am currently working on the development of a bastion host to protect the Kukulcán and Itzel HPC systems at CINVESTAV Mérida, while continuously learning about information security and networking throughout the process."
         ],
@@ -1184,7 +1356,7 @@ Development of Python tools for automation and parallel computational workflows.
             'brishel_acosta@hotmail.com',
         ],
         description: 'Maurizio A. Pantoja Hernández is a chemist specializing in computational chemistry and machine learning, currently a postdoctoral researcher at Cinvestav Mérida.',
-        bio: "3 years of experience in software development, specializing in cybersecurity. I enjoy finding solutions to complex problems through innovation. I stand out for my ability to work under pressure and optimize processes, focusing on results and continuous learning.",
+        biography: "3 years of experience in software development, specializing in cybersecurity. I enjoy finding solutions to complex problems through innovation. I stand out for my ability to work under pressure and optimize processes, focusing on results and continuous learning.",
         researchLine: [
             'Developing augmented reality software solutions while strengthening cybersecurity protocols.',
         ],
@@ -1196,6 +1368,7 @@ Development of Python tools for automation and parallel computational workflows.
         profilePic: brishel
     },
 ]
+
 
 export function slugify(text: string): string {
     return text

@@ -1,9 +1,7 @@
-import { Separator } from '@/components/ui/separator'
 import { useUI } from '@/contexts/use-scroll-button'
 import type { People } from '@/data/people'
 import { cn } from '@/lib/utils'
 import { Image } from 'lucide-react'
-import React from 'react'
 import { PhotoProvider, PhotoView } from 'react-photo-view'
 
 type ProfileGalleryProps = {

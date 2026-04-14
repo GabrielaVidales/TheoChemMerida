@@ -19,7 +19,6 @@ const achievement = z.object({
 
 const galleryItem = z.object({
     image: z.instanceof(File),
-    title: z.string().min(1).max(30),
     caption: z.string().min(1).max(100),
 })
 

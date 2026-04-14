@@ -15,18 +15,12 @@ export const Footer = () => {
                     backgroundImage: `linear-gradient(#38bdf8 ${mobile ? 2 : 4}px, transparent ${mobile ? 2 : 4}px), linear-gradient(90deg, #38bdf8 ${mobile ? 2 : 4}px, transparent ${mobile ? 2 : 4}px)`,
                     backgroundSize: mobile ? "24px 24px" : "48px 48px",
                     backgroundAttachment: 'fixed',
-
                     maskImage: "linear-gradient(to bottom, transparent, black 15%), linear-gradient(to top, transparent, black 20%)",
                     WebkitMaskImage: "linear-gradient(to bottom, transparent, black 15%), linear-gradient(to top, transparent, black 15%)",
                     maskComposite: "intersect",
                     WebkitMaskComposite: "source-in",
                 }}
             />
-
-            <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 max-w-6xl h-full rounded-full bg-cyan-500/10 blur-[120px]" />
-                <div className="absolute bottom-0 right-0 w-100 h-full rounded-full bg-indigo-600/10 blur-[100px]" />
-            </div>
 
             <div className="relative z-10 max-w-5xl mx-auto px-6 pt-8">
                 <img
