@@ -311,19 +311,21 @@ export const people: People[] = [
         ]
     },
     {
-        name: 'Maurizio Alejandro Pantoja Hernández',
+        name: 'Maurizio A. Pantoja-Hernández',
         email: [
             'maurizio.pantoja@cinvestav.mx',
         ],
-        description: 'Maurizio A. Pantoja Hernández is a chemist specializing in computational chemistry and machine learning, currently a postdoctoral researcher at Cinvestav Mérida.',
-        biography: "My name is Maurizio Alejandro Pantoja Hernández. I completed my undergraduate studies in Chemical Engineering in 2014 at Universidad Veracruzana, Xalapa Campus. The following year, I began my Master's studies in Bioorganic Chemistry, also at Universidad Veracruzana, where I worked on the computational analysis of intermolecular interactions between ionic liquids and phenolic compound extractants, under the supervision of Prof. Myrna Matus. After earning my Master's degree in early 2018, I worked as a research assistant to Prof. Myrna Matus until mid-2019. I began my phD studies in Chemistry in September 2019, at Universidad Autónoma Metropolitana, Iztapalapa Unit, in Mexico City. I worked with Prof. José L. Gázquez on developing chemical reactivity descriptors for interacting species, within the theoretical framework of the Density Functional Theory. I earned my phD degree in December 2023 and began my first postdoctoral fellowship in January 2024 at Universidad Veracruzana. During this fellowship, I studied the oxidative desulfurization of oil using molecular chemical reactivity descriptors. In February 2025, I started my current postdoctoral fellowship at Cinvestav-Mérida, where I am working on developing a machine learning interatomic potential for exploring the potential energy surface of boron clusters.",
+        biography: "Maurizio Alejandro Pantoja Hernández completed his undergraduate studies in Chemical Engineering in 2014 at Universidad Veracruzana, Xalapa Campus. The following year, he began his Master's studies in Bioorganic Chemistry at the same university. After earning his Master's degree in early 2018, he worked as a research assistant to Prof. Myrna Matus until August 2019. The following month, he began his doctoral studies in Chemistry at Universidad Autónoma Metropolitana, Iztapalapa Unit, in Mexico City, and obtained his PhD degree in December 2023. To date, he has held two postdoctoral positions related to the computational study of chemical systems.",
         role: 'postdoctoral_researcher',
+        mainResearchLine: 'Development of machine learning interatomic potentials for exploring the potential energy surface of atomic clusters',
+        mainResearchLineDesc: 'This research line aims to accelerate the exploration of the potential energy surface of atomic clusters by utilizing machine learning interatomic potentials based on neural networks, coupled with global optimization algorithms. These potentials optimize geometries and calculate energies of chemical systems accurately and at a much lower computational cost than first-principles methods. The potentials are trained iteratively through active learning procedures, employing datasets derived from density functional theory calculations.',
         researchLine: [
-            'Development of machine learning interatomic potentials for exploring the potential energy surface of atomic clusters',
+            'Investigation of the electronic structure of pure and doped boron clusters.',
+            'Development of automated workflows implementing machine learning methods for the exploration of atomic clusters.',
         ],
         currentProjects: [
-            'Development of a neural network potential for boron clusters',
-            'Analysis of the electronic structure of boron clusters doped with beryllium.',
+            'Development of neural network interatomic potentials for the structural exploration of boron clusters: My role involves generating training data through DFT calculations by utilizing sampling methods such as ab initio molecular dynamics and normal modes sampling, as well as performing active learning procedures to generate accurate trained potentials.',
+            'Analysis of the electronic structure of boron clusters doped with beryllium: My role is to perform DFT calculations on distinct configurations of beryllium-doped boron clusters, in order to determine their most stable structures, as well as to analyze their bonding schemes through methods such as NBO (Natural bonding orbitals) and AdNDP (Adaptive natural density partitioning).',
         ],
         researchGate: 'https://www.researchgate.net/profile/Maurizio-Pantoja-Hernandez',
         profilePic: maurizio,
@@ -352,12 +354,21 @@ export const people: People[] = [
     },
     {
         name: 'Jessica Arcudia',
-        email: [],
-        description: 'Computational materials scientist focused on 2D materials and stacking configurations.',
-        biography: "Jessica Arcudia is a computational materials scientist specializing in electronic structure simulations and the design of two-dimensional materials and their stacking configurations. She obtained her B.Sc. in Engineering Physics from the Universidad Autónoma de Yucatán, followed by her M.Sc. and Ph.D. in Physical Chemistry from Cinvestav Mérida under the supervision of Prof. Gabriel Merino.\n\nHer research focuses on layered materials and their stacking configurations.During her Ph.D., she developed the JAM(Joining and Arrangement of Multilayers) language to systematically represent and generate these structures, for which she received several national awards.\n\nShe worked as a postdoctoral researcher at the University of Texas at Dallas under the supervision of Prof.Andrés Cisneros, where her research involved Covalent Organic Frameworks(COFs) and the improvement of the Gaussian Electrostatic Model(GEM) force field.Jessica is a member of the Mexican National System of Researchers(SNII, Candidate level) and is currently a postdoctoral researcher at Cinvestav Mérida, where she focuses on extending the JAM language to more complex materials, including COFs and MOFs.",
+        email: ['jessica.arcudia@cinvestav.mx'],
+        biography: "Jessica Arcudia is a computational materials scientist specializing in electronic structure simulations and the design of low-dimensional materials. She obtained her B.Sc. in Engineering Physics from the Universidad Autónoma de Yucatán and her M.Sc. and Ph.D. in Physical Chemistry from Cinvestav Mérida. During her Ph.D., she developed the JAM (Joining and Arrangement of Multilayers) language, a framework to systematically represent multilayer structures, earning several national awards. She was selected to participate in the 2024 Lindau Nobel Laureate Meeting in Physics, where she engaged with Nobel Laureates and outstanding young scientists from around the world. Outside of her academic work, she enjoys sports, going to the gym, and watching anime.",
         role: 'postdoctoral_researcher',
+        mainResearchLine: 'Computational materials science of layered materials',
+        mainResearchLineDesc: 'This research line focuses on understanding and predicting the structural, electronic, and energetic properties of materials, including low-dimensional systems, as well as extended frameworks such as COFs and MOFs. It includes the study of stacking configurations and their influence on material properties, with a particular emphasis on the development of representation languages to systematically describe and generate complex structures.',
+        softwareTools: [
+            {
+                name: 'JAM algorithm',
+                description: 'The JAM algorithm generates all possible stacking configurations for hexagonal layered materials and represents them using a compact linear notation. It also produces the corresponding POSCAR files, enabling direct use in electronic structure calculations.',
+            }
+        ],
         researchLine: [
-            'Computational modeling and design of two-dimensional materials and their stacking configurations.',
+            "Computational materials science of layered materials",
+            "Adsorption properties in Covalent Organic Frameworks (COFs) and Metal–Organic Frameworks (MOFs)",
+            "Automated generation and representation of stacking configurations in layered materials"
         ],
         currentProjects: [
             'Computational design of two-dimensional materials and their stacking configurations using the JAM language',
@@ -393,19 +404,27 @@ export const people: People[] = [
         awards: [
             {
                 name: "Weizmann Prize",
+                description: 'Best Ph.D. thesis in Exact Sciences in Mexico',
                 instituteWithYear: "Mexican Academy of Sciences"
             },
             {
                 name: "Arturo Rosenblueth Award",
+                description: 'Best Ph.D. thesis of Cinvestav in Exact and Natural Sciences',
                 instituteWithYear: "Cinvestav"
             },
             {
                 name: "Alonso Fernández Award",
+                description: 'Best Ph.D. thesis of the Department of Applied Physics of Cinvestav-Merida',
                 instituteWithYear: "Cinvestav"
             },
             {
-                name: "Lindau Nobel Laureate Meeting Participant",
-                instituteWithYear: "Lindau Alumni"
+                name: "Lindau Alumni",
+                description: "Selected candidate to attend the 73rd Lindau Nobel Laureate Meeting (Physics) 2024.",
+                instituteWithYear: 'Lindau, Germany.',
+            },
+            {
+                name: 'National Researcher Level Candidate',
+                instituteWithYear: 'Sistema Nacional de Investigadores e Investigadoras',
             }
         ],
         gallery: [
@@ -424,17 +443,19 @@ export const people: People[] = [
         ]
     },
     {
-        name: 'Gabriela Castillo Toraya',
-        email: [],
-        description: 'Ph.D. student in computational chemistry focused on electronic structure and novel bonding motifs.',
+        name: 'Gabriela Castillo-Toraya',
+        email: ['gabriela.castillo@cinvestav.mx'],
+        biography: 'Gabriela Castillo is a computational chemist specializing in the chemistry of hypercoordinate systems. She received her B.Sc. in Engineering Physics from the Universidad Autónoma de Yucatán and completed her M.Sc. and Ph.D. in Physical Chemistry at Cinvestav Mérida under the supervision of Prof. Gabriel Merino. Her research focuses on designing and understanding planar hypercoordinate species through computational methods. During her graduate studies, she explored the potential energy surfaces of boron clusters and later investigated planar tetracoordinate systems of fluorine and oxygen. Her work led to the identification of new ptF and ptO compounds and the development of an efficient strategy for exploring hypercoordinate structures based on electron-counting rules. She employs a combination of quantum chemical methods, including DFT, MP2, and CCSD(T), along with global optimization techniques such as genetic algorithms. Currently, she is pursuing postdoctoral research aimed at bridging molecular hypercoordination and materials science, using planar hypercoordinate clusters as building blocks for the design of novel two-dimensional materials.',
         role: 'postdoctoral_researcher',
-        biography: "Gabriela Castillo Toraya is a Ph.D. student at the Center for Research and Advanced Studies of the National Polytechnic Institute (Cinvestav). Her research focuses on computational chemistry and electronic structure, particularly in the study of unconventional bonding and planar hypercoordinate atoms.",
+        mainResearchLine: 'Computational studies of planar hypercoordinate systems.',
+        mainResearchLineDesc: 'Design and identification of stable planar hypercoordinate species through systematic PES exploration under electron-counting rules.',
         researchLine: [
-            'Computational investigation of planar hypercoordinate atoms and novel bonding patterns using high-level ab initio methods.'
+            'Planar Hypercoordinate Atoms',
+            'Boron Clusters',
         ],
         currentProjects: [
-            'Study of planar tetracoordinate oxygen and fluorine systems, including stability, electronic structure, and bonding analysis.',
-            'Exploration of planar hypercoordinate motifs in main-group elements through computational design and analysis.'
+            'Planar Tetracoordinate Nitrogen Atoms. Computational exploration, structure optimization, and electronic/bonding analysis; development of an efficient exploration methodology.',
+            '2D Materials Based on Planar Hypercoordinate Units. Designed and evaluated candidate monolayers using hypercoordinate building blocks; carried out structural optimization and electronic property analysis.',
         ],
         researchGate: 'https://www.researchgate.net/profile/Gabriela-Castillo-Toraya',
         profilePic: gabyCastillo
@@ -553,22 +574,21 @@ export const people: People[] = [
         ]
     },
     {
-        name: 'Lisset Noriega de los Santos',
+        name: 'Lisset Noriega',
         email: [
             'lis.noriega.santos@gmail.com',
         ],
-        description: 'Postdoctoral researcher specializing in computational astrochemistry, focusing on DFT-based spectroscopic analysis and molecular evolution in the interstellar medium.',
         biography: "Graduate of the Chemical Sciences Program in the area of Physical Chemistry from BUAP. During my master's and doctoral studies, I focused my research on the application of Density Functional Theory (DFT) for the analysis of spectroscopic properties in molecular systems. Currently, I am conducting a postdoctoral fellowship in the Department of Applied Physics at CINVESTAV-Mérida, where I have expanded my focus toward computational astrochemistry. My research centers on isomer generation and their spectroscopic identification in the interstellar medium, as well as the study of fundamental reaction mechanisms for molecular evolution in space.",
+
+        mainResearchLine: 'Astroquímica teórica y exploración computacional del espacio químico',
+        mainResearchLineDesc: 'Astroquímica teórica enfocada en la exploración computacional del espacio químico de moléculas de interés astroquímico, incluyendo la generación de isómeros y la predicción de propiedades espectroscópicas para su detección en el medio interestelar.',
+
         role: 'postdoctoral_researcher',
         researchLine: [
+            '',
             'Computational Astrochemistry',
             'Isomer Generation and Spectroscopic Identification',
             'Rotational and Vibrational Spectroscopy',
-        ],
-        currentProjects: [
-            'Isomer Generation and Spectroscopic Identification',
-            'Rotational and Vibrational Spectroscopy',
-            'Reaction mechanisms of molecules of astrochemical interest'
         ],
         linkedin: 'https://mx.linkedin.com/in/lisset-noriega-7bb9b657',
         orcid: 'https://orcid.org/0000-0002-7783-7920',
@@ -829,14 +849,23 @@ export const people: People[] = [
         ]
     },
     {
-        name: 'Diego Román Montalvo',
+        name: 'Diego Román-Montalvo',
         email: [
-            'romanmdiego@gmail.com',
+            'diego.roman@cinvestav.mx',
         ],
-        description: 'PhD student in chemical engineering specializing in computational chemistry, focused on green solvents and planar hypercoordinated systems.',
-        biography: "My name is Diego Román, I am a chemical engineer who recently begun a PhD at CINVESTAV, Mérida. My main area of research has been the study, with computational chemistry methods, of green solvents.",
-        researchLine: "Study of planar hypercoordinated systems",
-        currentProjects: "Automatic identification of planar pentacoordinated and tetracoordinated systems with a carbon center.",
+        biography: 'Diego Román M. is a chemical engineer from Universidad Veracruzana (Mexico, 2018), with a Master’s degree in Bioorganic Chemistry (2023) and currently a Ph.D. student in Physical Chemistry at CINVESTAV. His research focuses on hypercoordinated systems, particularly the computational exploration of planar tetracoordinate and pentacoordinate compounds. He develops automated workflows for large-scale molecular screening and analysis. His interests include scientific computing, workflow optimization, and the integration of digital tools to improve research efficiency.',
+        mainResearchLine: 'Automated discovery of planar tetracoordinate and pentacoordinate molecular systems.',
+        mainResearchLineDesc: 'This research focuses on the systematic and automated identification of planar tetracoordinate and pentacoordinate compounds through computational methods. It involves the development of workflows for generating candidate structures, performing quantum chemical calculations, and analyzing geometric and electronic features to assess stability and viability.',
+        researchLine: [
+            "Automated discovery and screening of planar tetracoordinate and pentacoordinate compounds",
+            "Development of command-line tools for molecular symmetry analysis."
+        ],
+        currentProjects: [
+            "Automated search of planar tetracoordinate and pentacoordinate compounds",
+            "Development of computational tools, execution of high-throughput calculations, and analysis of structural and energetic data to enable systematic exploration of candidate systems.",
+            "Command-line molecular symmetrizer.",
+            "Construction of a molecular dataset and implementation of validation tests to calibrate and evaluate symmetry detection and enforcement algorithms."
+        ],
         orcid: "https://orcid.org/0000-0002-5899-0196",
         role: 'phd_student_cinvestav',
         profilePic: diego,
@@ -972,19 +1001,22 @@ export const people: People[] = [
         ]
     },
     {
-        name: 'Maximiliano Yáñez López',
+        name: 'M Yáñez López',
         email: [
-            'yalop19@outlook.com',
-            'maxyalo19@gmail.com',
+            'maximiliano.yanez@cinvestav.mx',
         ],
-        description: 'Master’s student specializing in computational materials science, focused on stacking phenomena in two-dimensional materials and ab initio property analysis.',
-        biography: "Materials Chemical Engineer from Universidad Autónoma de Querétaro, currently pursuing a Master's degree in Physical Chemistry at Cinvestav, Mérida.",
+        biography: "Maximiliano Yáñez López holds a Bachelor´s degree on Materials Chemical Engineering from Universidad Autónoma de Querétaro (2021-2025). He has special interests in solid state chemistry and physics, alongside general curiosity in diverse knowledge fields. In his free time he enjoys to read history, literature and watch anime.",
         role: 'masters_student_cinvestav',
+        mainResearchLine: 'Computational modeling of low-dimensional materials',
+        mainResearchLineDesc: 'Study of electronic properties in two dimensional materials. Exploration of possible stacking configurations, stability and characteristics.',
         researchLine: [
-            'Stacking studies on two-dimensional materials.'
+            "Computational studies of two dimensional materials",
+            "Stacking effects on layered materials",
+            "Expansion of JAM language to non-hexagonal symmetries"
         ],
         currentProjects: [
-            'Computational studies of bilayer stacking in hexagonal and rectangular two-dimensional materials.'
+            'Computational study of bilayer stacking plumbene and bismuthene',
+            'Expansion of JAM language to materials with rectangular symmetries',
         ],
         linkedin: 'www.linkedin.com/in/maximiliano-yañez-lopez-563696291',
         profilePic: maxi,
