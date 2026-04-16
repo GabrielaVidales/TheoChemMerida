@@ -10,6 +10,7 @@ import GabrielMerinoPage from './merino-page'
 import 'react-photo-view/dist/react-photo-view.css';
 import ProfileGallery from './gallery'
 import { Separator } from '@/components/ui/separator'
+import { cn } from '@/lib/utils'
 
 
 function ProfilePage() {
@@ -57,7 +58,7 @@ const MemberProfile = ({ member }: { member: People }) => {
                         <div className='border-main border-4 max-w-xs md:max-w-sm cursor-pointer shadow-xl shadow-accent-foreground/20 hover:opacity-90 transition-opacity'>
                             <img
                                 src={member.profilePic}
-                                alt="Professor Gabriel Merino"
+                                alt={member.name}
                                 className='object-cover aspect-square'
                             />
                         </div>
@@ -80,32 +81,15 @@ const MemberProfile = ({ member }: { member: People }) => {
                             </div>
                         </div>
 
-                        {Array.isArray(member.biography) ? (
-                            <div className='space-y-3'>
-                                {member.biography.map((research, index) => (
-                                    <p key={index} className="text-stone-700 font-light max-w-2xl">
-                                        {research}
-                                    </p>
-                                ))}
-                            </div>
-                        ) : (
-                            <p className=" text-stone-700 font-light max-w-2xl">
-                                {member.biography}
-                            </p>
-                        )}
-
                         <div className="flex flex-wrap gap-4 justify-center md:justify-start">
-                            {member.linkedin && (
-                                <a href={member.linkedin} target="_blank" className="flex items-center gap-2 text-sm text-stone-700 hover:text-blue-600 transition-colors">
-                                    <HugeiconsIcon
-                                        icon={Linkedin02Icon}
-                                        size={20}
-                                        className="group-hover/link:scale-110 transition-transform"
-                                    />LinkedIn
+                            {member.orcid && (
+                                <a href={member.orcid} target="_blank" className="flex items-center gap-2 text-sm text-main hover:text-blue-600 transition-colors">
+                                    <div className="size-4 bg-[#A6CE39] rounded-full flex items-center justify-center text-[10px] text-white font-bold">iD</div>
+                                    ORCID
                                 </a>
                             )}
                             {member.researchGate && (
-                                <a href={member.researchGate} target="_blank" className="flex items-center gap-2 text-sm text-stone-700 hover:text-green-600 transition-colors">
+                                <a href={member.researchGate} target="_blank" className="flex items-center gap-1 text-sm text-main hover:text-blue-600 transition-colors">
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
                                         <circle cx="12" cy="12" r="10" fill="#00A0E3" />
                                         <path d="M6 12c0-3.31 2.69-6 6-6s6 2.69 6 6-2.69 6-6 6" stroke="white" strokeWidth="1.6" strokeLinecap="round" />
@@ -114,13 +98,52 @@ const MemberProfile = ({ member }: { member: People }) => {
                                     Research Gate
                                 </a>
                             )}
-                            {member.orcid && (
-                                <a href={member.orcid} target="_blank" className="flex items-center gap-2 text-sm text-stone-700 hover:text-green-600 transition-colors">
-                                    <div className="size-4 bg-[#A6CE39] rounded-full flex items-center justify-center text-[8px] text-white font-bold">iD</div>
-                                    ORCID
+                            {member.scholarGoogle && (
+                                <a href={member.scholarGoogle} target="_blank" className="flex items-center gap-1 text-sm text-main hover:text-blue-600 transition-colors">
+                                    <svg className='size-4' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="#4285f4" d="M256 411.12L0 202.667 256 0z" /><path fill="#356ac3" d="M256 411.12l256-208.453L256 0z" /><circle fill="#a0c3ff" cx="256" cy="362.667" r="149.333" /><path fill="#76a7fa" d="M121.037 298.667c23.968-50.453 75.392-85.334 134.963-85.334s110.995 34.881 134.963 85.334H121.037z" /></svg>
+                                    Scholar Google
+                                </a>
+                            )}
+                            {member.linkedin && (
+                                <a href={member.linkedin} target="_blank" className="flex items-center gap-1 text-sm text-main hover:text-blue-600 transition-colors">
+                                    <svg className='size-4' version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 382 382" >
+                                        <path fill="#0077B7" d="M347.445,0H34.555C15.471,0,0,15.471,0,34.555v312.889C0,366.529,15.471,382,34.555,382h312.889
+                                            C366.529,382,382,366.529,382,347.444V34.555C382,15.471,366.529,0,347.445,0z M118.207,329.844c0,5.554-4.502,10.056-10.056,10.056
+                                            H65.345c-5.554,0-10.056-4.502-10.056-10.056V150.403c0-5.554,4.502-10.056,10.056-10.056h42.806
+                                            c5.554,0,10.056,4.502,10.056,10.056V329.844z M86.748,123.432c-22.459,0-40.666-18.207-40.666-40.666S64.289,42.1,86.748,42.1
+                                            s40.666,18.207,40.666,40.666S109.208,123.432,86.748,123.432z M341.91,330.654c0,5.106-4.14,9.246-9.246,9.246H286.73
+                                            c-5.106,0-9.246-4.14-9.246-9.246v-84.168c0-12.556,3.683-55.021-32.813-55.021c-28.309,0-34.051,29.066-35.204,42.11v97.079
+                                            c0,5.106-4.139,9.246-9.246,9.246h-44.426c-5.106,0-9.246-4.14-9.246-9.246V149.593c0-5.106,4.14-9.246,9.246-9.246h44.426
+                                            c5.106,0,9.246,4.14,9.246,9.246v15.655c10.497-15.753,26.097-27.912,59.312-27.912c73.552,0,73.131,68.716,73.131,106.472
+                                            L341.91,330.654L341.91,330.654z"
+                                        />
+                                    </svg>
+                                    LinkedIn
                                 </a>
                             )}
                         </div>
+
+                        {Array.isArray(member.biography) ? (
+                            <div className='space-y-4'>
+                                {member.biography.map((research, index) => (
+                                    <p
+                                        key={index}
+                                        className={cn(
+                                            'text-stone-900 font-normal max-w-2xl leading-relaxed',
+                                            index === 0
+                                                ? 'text-base md:text-lg' : 'text-sm md:text-base leading-relaxed',
+                                        )}
+                                    >
+                                        {research}
+                                    </p>
+                                ))}
+                            </div>
+                        ) : (
+                            <p className="text-stone-900 font-normal leading-relaxed text-lg">
+                                {member.biography}
+                            </p>
+                        )}
                     </div>
                 </article>
             </section>
@@ -129,47 +152,53 @@ const MemberProfile = ({ member }: { member: People }) => {
                 <div className="max-w-6xl mx-auto p-3 py-10 space-y-12 min-h-screen">
                     <div className="w-full min-h-40 flex flex-col md:flex-row gap-10">
                         <section className='flex-2 space-y-10'>
-                            <Card className='py-0 gap-0 shadow-lg rounded-sm'>
-                                <CardHeader className='flex items-center gap-2 py-1 px-4 bg-main text-white rounded-none'>
-                                    <Box className='size-5' />
-                                    <h2 className='text-base font-medium'>Projects</h2>
+                            <Card className='py-0 gap-0 shadow-none rounded-sm border border-stone-200/60'>
+                                <CardHeader className='flex items-center gap-2 py-3 px-4 bg-stone-50 text-stone-500 rounded-none border-b-2 border-stone-200/60'>
+                                    <Box className='size-4' />
+                                    <h2 className='text-sm font-medium'>Projects</h2>
                                 </CardHeader>
                                 <CardContent className='py-4'>
                                     {Array.isArray(member.currentProjects) ? (
                                         <ul className='list-disc ml-4'>
                                             {member.currentProjects.map((research, index) => (
-                                                <li key={index} className="text-stone-700 tracking-wide mb-2">
+                                                <li key={index} className="text-stone-600 tracking-wide mb-2 text-sm">
                                                     {research}
                                                 </li>
                                             ))}
                                         </ul>
                                     ) : (
-                                        <p className="leading-relaxed">
+                                        <p className="leading-relaxed text-stone-600 text-sm">
                                             {member.currentProjects}
                                         </p>
+                                    )}
+                                    {(!member.currentProjects || member.currentProjects.length === 0) && (
+                                        <div className="flex flex-col items-center justify-center py-2 text-neutral-300 gap-2">
+                                            <Database className="size-8" />
+                                            <p className="text-xs">No information available</p>
+                                        </div>
                                     )}
                                 </CardContent>
                             </Card>
 
 
-                            <Card className='py-0 gap-0 shadow-lg rounded-sm'>
-                                <CardHeader className='flex items-center gap-2 py-1 px-4 bg-main text-white rounded-none'>
-                                    <Award className='size-5' />
-                                    <h2 className='text-base font-medium'>Awards, Honors & Achievements</h2>
+                            <Card className='py-0 gap-0 shadow-none rounded-sm border border-stone-200/60'>
+                                <CardHeader className='flex items-center gap-2 py-3 px-4 bg-stone-50 text-stone-500 rounded-none border-b-2 border-stone-200/60'>
+                                    <Award className='size-4' />
+                                    <h2 className='text-sm font-medium'>Awards, Honors & Achievements</h2>
                                 </CardHeader>
                                 <CardContent className='py-4'>
                                     {!member.awards || member.awards.length === 0 ? (
-                                        <div className="flex flex-col items-center justify-center py-2 text-neutral-400 gap-2">
-                                            <Database className="size-10" />
-                                            <p className="text-sm">No information available</p>
+                                        <div className="flex flex-col items-center justify-center py-2 text-neutral-300 gap-2">
+                                            <Database className="size-8" />
+                                            <p className="text-xs">No information available</p>
                                         </div>
                                     ) : (
                                         <>
                                             {member.awards.map((award, index) => (
                                                 <div key={index} className='mb-4'>
-                                                    <p className='text-stone-800 font-semibold tracking-wide'>{award.name}</p>
-                                                    <p className='text-stone-700 tracking-wide'>{award.description}</p>
-                                                    <p className='text-stone-700 tracking-wide italic'>{award.instituteWithYear}</p>
+                                                    <p className='text-stone-600 font-semibold tracking-wide text-sm'>{award.name}</p>
+                                                    <p className='text-stone-500 tracking-wide text-sm'>{award.description}</p>
+                                                    <p className='text-stone-500 tracking-wide italic text-sm'>{award.instituteWithYear}</p>
                                                 </div>
                                             ))}
                                         </>
@@ -178,16 +207,16 @@ const MemberProfile = ({ member }: { member: People }) => {
                             </Card>
 
 
-                            <Card className='py-0 gap-0 shadow-lg rounded-sm'>
-                                <CardHeader className='flex items-center gap-2 py-1 px-4 bg-main text-white rounded-none'>
-                                    <Globe className='size-5' />
-                                    <h2 className='text-base font-medium'>Gallery</h2>
+                            <Card className='py-0 gap-0 shadow-none rounded-sm border border-stone-200/60'>
+                                <CardHeader className='flex items-center gap-2 py-3 px-4 bg-stone-50 text-stone-500 rounded-none border-b-2 border-stone-200/60'>
+                                    <Globe className='size-4' />
+                                    <h2 className='text-sm font-medium'>Gallery</h2>
                                 </CardHeader>
                                 <CardContent className='py-4'>
                                     {!member.gallery || member.gallery.length === 0 ? (
-                                        <div className="flex flex-col items-center justify-center py-2 text-neutral-400 gap-2">
-                                            <ImageOff className="size-10" />
-                                            <p className="text-sm">No images available</p>
+                                        <div className="flex flex-col items-center justify-center py-2 text-neutral-300 gap-2">
+                                            <ImageOff className="size-8" />
+                                            <p className="text-xs">No images available</p>
                                         </div>
                                     ) : (
                                         <ProfileGallery memberName={member.name} gallery={member.gallery} />
@@ -323,4 +352,3 @@ const MemberProfile = ({ member }: { member: People }) => {
         </>
     );
 };
-

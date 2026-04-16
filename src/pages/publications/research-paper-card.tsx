@@ -16,7 +16,7 @@ export const ResearchPaperCard = memo(({ paper }: { paper: CitationEntry }) => {
             <CardHeader>
                 <CardTitle className='text-lg font-bold text-slate-900 leading-snug hover:text-indigo-700 transition-colors duration-200'>
                     <a
-                        href={paper.DOI}
+                        href={`https://doi.org/${paper.DOI}`}
                         target="_blank"
                         rel="noopener noreferrer"
                     >

@@ -26,7 +26,7 @@ export const Footer = () => {
                 <img
                     src={logo}
                     alt="TheoChemMerida"
-                    className="h-20 mb-8"
+                    className="mb-8 max-w-xs"
                 />
                 <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
 

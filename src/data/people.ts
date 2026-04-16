@@ -7,7 +7,7 @@ import lissNoriega from '@/assets/members/liss Noriega_.jpg'
 import fernandoVill from '@/assets/members/Fer Villarino_.jpg'
 import elier from '@/assets/members/Elier Abreu.jpg'
 import rafael from '@/assets/members/Rafa Flores.jpg'
-import aura from '@/assets/members/Aura.jpg'
+import aura from '@/assets/members/perfil - aura ximena gomez heredia.jpeg'
 import aura1 from '@/assets/members/gallery/aura1.jpeg'
 import aura2 from '@/assets/members/gallery/aura2.jpeg'
 import aura3 from '@/assets/members/gallery/aura3.jpeg'
@@ -17,7 +17,7 @@ import aura6 from '@/assets/members/gallery/aura6.jpeg'
 import diego from '@/assets/members/Diego Roman.jpg'
 import gerardo from '@/assets/members/gerardo.avif'
 import danielVill from '@/assets/members/Daniel Villanueva_.jpg'
-import danielaAlv from '@/assets/members/Daniela Alvarado_.jpg'
+import danielaAlv from '@/assets/members/Daniela Alvarado_.jpeg'
 import maxi from '@/assets/members/Maximiliano Yañez_.jpg'
 import emma from '@/assets/members/Emmanuel Soberanis.jpg'
 import aileen from '@/assets/members/Aileen.jpg'
@@ -36,6 +36,13 @@ import daniAlvarado from '@/assets/members/gallery/RMFQT 2023 - Daniela Alvarado
 import aileen1 from '@/assets/members/gallery/aileen1.jpeg'
 import aileen2 from '@/assets/members/gallery/aileen2.jpeg'
 import alan1 from '@/assets/members/gallery/alan1.jpeg'
+import alan2 from '@/assets/members/Alan_Quintal_Defensa Tesis Doctorado Jessica - Alan QF.jpg'
+import alan3 from '@/assets/members/Alan Quintal_Cumpleaños 2023 - Alan QF.jpg'
+import alan4 from '@/assets/members/Alan_Quintal_Posada2022 - Alan QF.jpg'
+import alan5 from '@/assets/members/Alan_Quintal_RMFQT2109 - Alan QF.jpg'
+import alan6 from '@/assets/members/Alan_Quintal_UltimaSalidaPrePandemia - Alan QF.jpg'
+
+
 import miguel1 from '@/assets/members/gallery/foto3 - Miguel Fernández-Montilla Molina.jpeg'
 import rafa1 from '@/assets/members/gallery/Rafael Flores Larrañaga.jpg'
 import lisset1 from '@/assets/members/gallery/IMG_0829 - Lisset Noriega.jpeg'
@@ -66,6 +73,8 @@ import elier1 from '@/assets/members/gallery/elier1.jpg'
 import elier2 from '@/assets/members/gallery/elier2.jpg'
 import elier3 from '@/assets/members/gallery/elier3.jpg'
 import elier4 from '@/assets/members/gallery/elier4.jpg'
+
+
 
 
 // #region Type definitions
@@ -126,6 +135,7 @@ export interface People {
         description?: string
     }[]
 
+    scholarGoogle?: string
     linkedin?: string
     researchGate?: string
     orcid?: string
@@ -570,7 +580,37 @@ export const people: People[] = [
                 caption: [
                     'Reunión Mexicana de Fisicoquímica Teórica 2019',
                 ]
-            }
+            },
+            {
+                img: alan2,
+                caption: [
+                    'Defensa de Tesis Doctorado Jessica',
+                ]
+            },
+            {
+                img: alan3,
+                caption: [
+                    'Cumpleaños 2023',
+                ]
+            },
+            {
+                img: alan4,
+                caption: [
+                    'Posada 2022',
+                ]
+            },
+            {
+                img: alan5,
+                caption: [
+                    'RMFQT 2019',
+                ]
+            },
+            {
+                img: alan6,
+                caption: [
+                    'Ultima Salida Pre-Pandemia',
+                ]
+            },
         ]
     },
     {
@@ -766,7 +806,10 @@ export const people: People[] = [
     {
         name: 'Aura Gómez-Heredia',
         email: ['aura.gomez@cinvestav.mx'],
-        biography: "Aura Gómez-Heredia is a computational chemistry researcher specializing in chemical kinetics. She earned a B.S. in Chemistry  from Universidad Distrital Francisco José de Caldas (Colombia, 2016–2022) and an M.S. in Physical Chemistry from CINVESTAV, Mérida (Mexico, 2022–2024). Currently, she is pursuing a Ph.D. in Applied Physics with the TheoChem Mérida group, focusing on chemical kinetics and tunneling effects. A advocate for women in science, she completed leadership programs through +Mujer+Ciencia+Equidad (2022) and Universidad Insurgentes (2024).",
+        biography: [
+            "Aura Gómez-Heredia is a computational chemistry researcher specializing in chemical kinetics. She earned a B.S. in Chemistry  from Universidad Distrital Francisco José de Caldas (Colombia, 2016–2022) and an M.S. in Physical Chemistry from CINVESTAV, Mérida (Mexico, 2022–2024).",
+            "Currently, she is pursuing a Ph.D. in Applied Physics with the TheoChem Mérida group, focusing on chemical kinetics and tunneling effects. A advocate for women in science, she completed leadership programs through +Mujer+Ciencia+Equidad (2022) and Universidad Insurgentes (2024)."
+        ],
 
         mainResearchLine: "Chemical Kinetics and Quantum Tunneling Effects",
         mainResearchLineDesc: "Focuses on the study of microcanonical rate constants using RRKM theory, incorporating tunneling corrections through the Eyringpy program. Her work includes implementing software improvements to enhance the accuracy and analysis of kinetic calculations.",
@@ -777,7 +820,8 @@ export const people: People[] = [
 
         ],
         currentProjects: "Aura is currently working on projects focused on incorporating other tunneling effect methodologies, such as instanton theory.",
-        linkedin: 'https://www.linkedin.com/in/aura-gómez-heredia-b272b2390',
+        linkedin: 'https://www.linkedin.com/in/aura-g%C3%B3mez-heredia-b70979207/',
+        scholarGoogle: 'https://scholar.google.com/citations?hl=es&user=ETUTCm8AAAAJ',
         orcid: 'https://orcid.org/my-orcid?orcid=0000-0001-5055-9089',
         role: 'phd_student_cinvestav',
 
@@ -867,6 +911,7 @@ export const people: People[] = [
             "Construction of a molecular dataset and implementation of validation tests to calibrate and evaluate symmetry detection and enforcement algorithms."
         ],
         orcid: "https://orcid.org/0000-0002-5899-0196",
+        scholarGoogle: 'https://scholar.google.com/citations?hl=en&user=VI24F64AAAAJ&view_op=list_works&gmla=AEk_c1vhNtCEer-q0J2eh--udzeJY9elBPj6fG6Im9GSXA1V02dx71-tWR9EirWdN-r2vt9Ga589LMDdt1yhDfAa',
         role: 'phd_student_cinvestav',
         profilePic: diego,
         recentPublications: [
@@ -1001,7 +1046,7 @@ export const people: People[] = [
         ]
     },
     {
-        name: 'M Yáñez López',
+        name: 'Maximiliano Yáñez López',
         email: [
             'maximiliano.yanez@cinvestav.mx',
         ],
