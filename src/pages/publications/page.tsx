@@ -77,7 +77,6 @@ export default function ResearchPage() {
                         {[
                             { label: 'Total papers', value: `+${entriesByYear.count}` },
                             { label: 'Years active', value: `+${new Date().getFullYear() - 1999}` },
-                            { label: 'Most recent', value: new Date().getFullYear() },
                         ].map(s => (
                             <div key={s.label}>
                                 <p className="text-2xl font-black text-slate-300" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{s.value}</p>
