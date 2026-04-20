@@ -59,7 +59,8 @@ export function getParsedData(input: string = bibtex) {
 }
 
 function getDateObject(a: CitationEntry): { year: number, month: number, day: number } {
-    const dateA = a.issued?.['date-parts']?.[0]?.[0] || 'n.d.'
+    const dateA = a.issued?.['date-parts']?.[0] || []
+    
     return {
         year: dateA[0] || 0,
         month: dateA[1] || 0,
@@ -114,7 +115,25 @@ export function formatAuthors(entry: CitationEntry) {
 }
 
 export function formatJournalData(entry: CitationEntry) {
-    return `${entry['container-title']}, ${entry.issued['date-parts'][0]}, ${entry.volume}(${entry.issue})${entry.page ? `, ${entry.page}` : ''}`
+    let data = `${entry['container-title']}`
+    const year = entry.issued['date-parts'][0]
+    if (year)
+        data += ` ${year}`
+
+    if (entry.volume || entry.issue || entry.page) {
+        data += ', '
+
+        if (entry.volume)
+            data += entry.volume
+
+        if (entry.issue){
+            data += `(${entry.issue})`
+        }
+        if (entry.page) {
+            data += `, ${entry.page}`
+        }
+    }
+    return data
 }
 
 export function formatCitation(entry: CitationEntry) {

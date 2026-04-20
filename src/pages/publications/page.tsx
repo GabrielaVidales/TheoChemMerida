@@ -1,21 +1,16 @@
-import { publications } from '@/data/publications'
 import { Download, Search, SearchCode, X } from 'lucide-react';
-import { useDeferredValue, useEffect, useMemo, useState } from 'react';
+import { useDeferredValue, useMemo, useState } from 'react';
 import { JournalAccordeon } from './journal-accordeon';
 import { YearPageSection } from './year-page-section';
 import { YearSelector } from './year-selector';
-import { filterPapers, formatAuthors, getParsedData, type CitationEntry } from '@/lib/bibparser'
+import { filterPapers, getParsedData, type CitationEntry } from '@/lib/bibparser'
 import PageTitle from '@/components/ui/page-title';
 import { Helmet } from 'react-helmet-async';
 import PaperSection from '@/components/paper-section';
-import {
-    InputGroup,
-    InputGroupAddon,
-    InputGroupInput,
-} from "@/components/ui/input-group"
+import { InputGroup, InputGroupAddon, InputGroupInput, } from "@/components/ui/input-group"
 import { ResearchPaperCard } from './research-paper-card';
 import { useIsMobile } from '@/hooks/use-mobile';
-import { Card, CardAction, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import axios from 'axios';
 
@@ -23,6 +18,7 @@ export default function ResearchPage() {
     const mobile = useIsMobile()
 
     const entriesByYear = useMemo(() => getParsedData(), [])
+
     const [selectedYear, setSelectedYear] = useState<number | null>(new Date().getFullYear())
 
     const [searchQuery, setSearchQuery] = useState('')
