@@ -21,15 +21,17 @@ function ProjectsPage() {
             </Helmet>
 
             <PaperSection
-                className='px-6 md:px-12 py-14'
+                className='px-6 md:px-8 py-10'
                 containerCN='shadow-md'
-                variant='dark'
-                glow
             >
                 <PageTitle
                     title='Software'
-                    subtitle='Specialized tools are developed and maintained to address complex problems in chemical kinetics, potential energy surfaces, and materials science.'
-                    className='text-neutral-100 max-w-5xl mx-auto'
+                    className='text-main max-w-5xl mx-auto font-medium'
+                    subtitle={(
+                        <span className='text-main-foreground '>
+                            Specialized tools are developed and maintained to address complex problems in chemical kinetics, potential energy surfaces, and materials science.
+                        </span>
+                    )}
                 />
             </PaperSection>
 

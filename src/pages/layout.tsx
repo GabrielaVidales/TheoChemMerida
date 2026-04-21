@@ -37,7 +37,7 @@ function BreadCrumb() {
 
 
     return (
-        <Breadcrumb className='sticky top-24 z-10 bg-main p-2 px-5 shadow-md shadow-accent-foreground/20'>
+        <Breadcrumb className='sticky top-24 z-10 bg-main p-2 px-5 shadow-md shadow-accent-foreground/10'>
             <BreadcrumbList className='text-neutral-100 text-sm md:text-base tracking-wide max-w-5xl mx-auto'>
                 <BreadcrumbItem>
                     <BreadcrumbLink asChild>

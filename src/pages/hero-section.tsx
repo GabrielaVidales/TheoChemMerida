@@ -116,7 +116,7 @@ export default function HeroSection() {
                             </span>
                         </h1>
 
-                        <p className="text-slate-200 text-base md:text-lg max-w-lg leading-relaxed">
+                        <p className="text-slate-200 text-base font-medium md:text-lg max-w-lg leading-relaxed">
                             Research focused on understanding structure, bonding,
                             and electron delocalization in complex molecular systems.
                         </p>
@@ -125,7 +125,12 @@ export default function HeroSection() {
                             <Link to={routes.people.index}>
                                 <Button
                                     size="lg"
-                                    className="text-white font-semibold rounded-full transition-all duration-300 group shadow-md"
+                                    variant="ghost"
+                                    className={cn(
+                                        "font-semibold rounded-full transition-all duration-300 group shadow-md",
+                                        "bg-main hover:bg-main hover:scale-105 active:bg-main/80",
+                                        "text-white hover:text-white"
+                                    )}
                                 >
                                     Our Members
                                     <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
@@ -134,8 +139,12 @@ export default function HeroSection() {
                             <Link to={routes.publications}>
                                 <Button
                                     size="lg"
-                                    variant="secondary"
-                                    className="border-slate-300 text-slate-600 hover:border-indigo-500 hover:text-indigo-500 rounded-full transition-all duration-300"
+                                    variant="ghost"
+                                    className={cn(
+                                        "rounded-full transition-all duration-300 bg-white",
+                                        "border-slate-300 hover:border-main hover:text-main",
+                                        "text-muted-foreground hover:text-main hover:scale-105",
+                                    )}
                                 >
                                     Publications
                                 </Button>

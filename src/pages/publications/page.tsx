@@ -38,7 +38,7 @@ export default function ResearchPage() {
 
     const onDownloadPdf = async () => {
         try {
-            const url = `${import.meta.env.VITE_BACKEND_URL}/public/download`
+            const url = `${import.meta.env.VITE_BACKEND_URL}/public/download?v=1`
             const response = await axios.get(url, {
                 responseType: 'blob',
             })
@@ -66,27 +66,32 @@ export default function ResearchPage() {
                 <link rel="canonical" href="https://www.theochemmerida.org/" />
             </Helmet>
 
-            <PaperSection variant='dark' glow >
+            <PaperSection containerCN='shadow-sm'>
                 <div className="max-w-6xl mx-auto px-6 md:px-12 py-14">
                     <PageTitle
                         title='Publications'
-                        subtitle='Peer-reviewed research in theoretical chemistry, molecular design, and electron delocalization.'
+                        className='text-main max-w-5xl mx-auto font-medium'
+                        subtitle={(
+                            <span className='text-main-foreground'>
+                                Peer-reviewed research in theoretical chemistry, molecular design, and electron delocalization.
+                            </span>
+                        )}
                     />
 
                     <div className="mt-8 flex flex-wrap gap-6">
                         {[
-                            { label: 'Total papers', value: `+${entriesByYear.count}` },
+                            { label: 'Total papers', value: `${entriesByYear.count}` },
                             { label: 'Years active', value: `+${new Date().getFullYear() - 1999}` },
                         ].map(s => (
                             <div key={s.label}>
-                                <p className="text-2xl font-black text-slate-300" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{s.value}</p>
-                                <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest mt-0.5">{s.label}</p>
+                                <p className="text-2xl font-black text-main" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{s.value}</p>
+                                <p className="text-xs font-semibold text-main-foreground uppercase tracking-widest mt-0.5">{s.label}</p>
                             </div>
                         ))}
                     </div>
 
                     <div className="space-y-4 mt-6 border-slate-200">
-                        <h1 className="text-2xl font-black text-slate-300">
+                        <h1 className="text-2xl font-bold text-main">
                             Featured Publications
                         </h1>
                         <JournalAccordeon />

@@ -76,18 +76,6 @@ function GalleryPage() {
                 <link rel="canonical" href="https://www.theochemmerida.org/" />
             </Helmet>
 
-            <PaperSection
-                variant='dark'
-                className="max-w-5xl mx-auto text-center py-14 space-y-3 max-md:px-5"
-                containerCN='shadow-md'
-                glow
-            >
-                <PageTitle
-                    title='Gallery'
-                    subtitle=''
-                />
-            </PaperSection>
-
             <article className='relative mx-auto max-w-4xl py-10 px-4 sm:px-6 space-y-10'>
                 <div className='space-y-3 text-center'>
                     <h2 className={cn(
@@ -106,7 +94,7 @@ function GalleryPage() {
                     <div className='mx-auto h-1 w-20 rounded-full bg-main' />
                 </div>
 
-                <div className='relative flex items-center justify-center overflow-hidden'>
+                <div className='relative flex items-center justify-center'>
                     <div className={cn('absolute rounded-full blur-2xl', 'w-[80%] h-[80%]', 'bg-main/15q')} />
                     <Carousel3D
                         items={encuentroPosgradosFebrero}

@@ -4,7 +4,7 @@ import { motion } from 'motion/react'
 
 type Props = {
     title: string
-    subtitle?: string
+    subtitle?: string | ReactNode
     titleClassName?: string
     subtitleClassName?: string
     icon?: ReactNode
@@ -18,7 +18,7 @@ function PageTitle({ title, subtitle, className, titleClassName, subtitleClassNa
         )}>
             <motion.h1
                 className={cn(
-                    "text-4xl md:text-6xl font-bold tracking-tight  leading-none",
+                    "text-4xl md:text-5xl font-bold tracking-tight  leading-none",
                     titleClassName
                 )}
                 style={{ fontFamily: "'Space Grotesk', sans-serif" }}
@@ -32,7 +32,7 @@ function PageTitle({ title, subtitle, className, titleClassName, subtitleClassNa
             {subtitle && (
                 <motion.p
                     className={cn(
-                        "mt-4 text-base md:text-lg leading-relaxed border-l-3 border-indigo-400 pl-4 ",
+                        "mt-4 text-base md:text-lg leading-relaxed border-l-3 border-main pl-4 ",
                         subtitleClassName
                     )}
                     initial={{ opacity: 0, translateX: 50, }}

@@ -18,15 +18,17 @@ function EventsPage() {
             </Helmet>
 
             <PaperSection
-                className='px-6 md:px-12 py-14'
+                className='px-6 md:px-8 py-10'
                 containerCN='shadow-md'
-                variant='dark'
-                glow
             >
                 <PageTitle
                     title='Events'
-                    subtitle='A showcase of scientific gatherings and conferences organized by TheoChemMerida Research Group.'
-                    className='text-neutral-100 max-w-5xl mx-auto'
+                    subtitle={(
+                        <span className='text-main-foreground'>
+                            A showcase of scientific gatherings and conferences organized by TheoChemMerida Research Group.
+                        </span>
+                    )}
+                    className='text-main max-w-5xl mx-auto font-medium'
                 />
             </PaperSection>
 

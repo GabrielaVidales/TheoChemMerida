@@ -11,7 +11,7 @@ function GabrielMerinoPage({ member }: { member: People }) {
 
     return (
         <>
-            <section className='bg-white w-full border-b-2 '>
+            <section className='bg-main/10 w-full border-b-2 '>
                 <article className="max-w-5xl mx-auto py-10 px-5 relative grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
                     <div className="flex flex-col items-center gap-8 justify-center">
                         <div className='border-main border-4 max-w-xs md:max-w-sm cursor-pointer shadow-xl shadow-accent-foreground/20 hover:opacity-90 transition-opacity'>

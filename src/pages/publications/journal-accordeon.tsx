@@ -71,7 +71,7 @@ export const JournalAccordeon = () => {
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
     return (
-        <section className="w-full max-w-6xl mx-auto overflow-hidden border shadow-lg shadow-accent-foreground/30">
+        <section className="w-full max-w-6xl mx-auto overflow-hidden border ring-1 ring-input shadow-lg shadow-accent-foreground/20">
             <div className="flex gap-1 h-80 w-full bg-white">
                 <PhotoProvider
                     photoClassName='p-10'

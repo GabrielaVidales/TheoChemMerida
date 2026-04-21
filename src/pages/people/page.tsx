@@ -28,13 +28,15 @@ function PeoplePage() {
             <PaperSection
                 className='px-6 md:px-12 py-14'
                 containerCN='shadow-md'
-                variant='dark'
-                glow
             >
                 <PageTitle
                     title='Group Members'
-                    subtitle='Meet the researchers, students, and collaborators who contribute to our work in chemical kinetics, materials science, and computational modeling.'
-                    className='text-neutral-100 max-w-5xl mx-auto'
+                    subtitle={(
+                        <span className='text-main-foreground'>
+                            Meet the researchers, students, and collaborators who contribute to our work in chemical kinetics, materials science, and computational modeling.
+                        </span>
+                    )}
+                    className='text-main max-w-5xl mx-auto font-medium'
                 />
             </PaperSection>
 

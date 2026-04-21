@@ -10,8 +10,8 @@ type PaperSectionProps = {
 function PaperSection({ className, children, variant = 'light', containerCN, glow = false }: PaperSectionProps & React.HTMLProps<HTMLDivElement>) {
     const mobile = useIsMobile()
 
-    const bgColor = variant === 'light' ? 'bg-white' : 'bg-slate-900 text-white'
-    const patternColor = variant === 'light' ? '#e2e8f0' : '#222244'
+    const bgColor = variant === 'light' ? 'bg-main/15' : 'bg-slate-900 text-white'
+    const patternColor = variant === 'light' ? 'transparent' : '#222244'
 
     return (
         <section className={cn(

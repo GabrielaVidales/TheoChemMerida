@@ -38,7 +38,6 @@ export function Carousel3D({
     const goTo = (i: number) => {
         const diff = i - active;
 
-        // normalizar a rango corto (-n/2, +n/2)
         let shortest = diff;
         if (Math.abs(diff) > total / 2) {
             shortest = diff > 0 ? diff - total : diff + total;
@@ -53,7 +52,7 @@ export function Carousel3D({
             <div
                 className="
                     relative transition-transform duration-700
-                    w-40 h-55
+                    w-35 h-55
                     sm:w-50 sm:h-68
                     md:w-55 md:h-75
                     lg:w-60 lg:h-82

@@ -14,17 +14,17 @@ function ContactPage() {
             </Helmet>
 
             <PaperSection
-                className="max-w-5xl mx-auto py-14 space-y-3 max-md:px-5"
-                containerCN='border-b-2 shadow-md'
-                variant='dark'
-                glow
+                className='px-6 md:px-8 py-10'
+                containerCN='shadow-md'
             >
-                {/* <p className="text-sm tracking-[0.25em] font-medium">
-                    TheoChemMerida • Research Group
-                </p> */}
                 <PageTitle
                     title='Contact Us'
-                    subtitle='We welcome collaborations, inquiries, and interest from prospective students and researchers.'
+                    subtitle={(
+                        <span className='text-main-foreground'>
+                            We welcome collaborations, inquiries, and interest from prospective students and researchers.
+                        </span>
+                    )}
+                    className='text-main max-w-5xl mx-auto font-medium'
                 />
             </PaperSection>
 
