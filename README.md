@@ -30,6 +30,29 @@ The platform is built as a modern single-page application (SPA) with React 19 + 
 
 ---
 
+## Screenshots
+
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <img src="./screen_home.png" alt="Home — Hero & Research Lines" width="100%"/>
+      <br/><sub><b>Home — Hero & Research Lines</b></sub>
+    </td>
+    <td align="center" width="50%">
+      <img src="./screen_publications.png" alt="Publications — BibTeX engine with 296 papers" width="100%"/>
+      <br/><sub><b>Publications — BibTeX engine · 296 papers</b></sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" colspan="2">
+      <img src="./screen_software.png" alt="Software — Open-source tools showcase" width="50%"/>
+      <br/><sub><b>Software — Open-source tools showcase</b></sub>
+    </td>
+  </tr>
+</table>
+
+---
+
 ## Features
 
 - **Research areas showcase** — Aromaticity, boron clusters, computational chemistry, automated workflows, materials, and chemistry under extreme conditions
@@ -184,13 +207,16 @@ Edit `src/data/events.ts` and add an event banner to `src/assets/events/`.
 
 ---
 
-## Webmaster Team
+## Team
 
 | Role | Name | GitHub |
 |------|------|--------|
+| Principal Investigator | Dr. Gabriel Merino | — |
+| Co-PI | Dr. Filiberto Ortiz Chi | — |
 | Lead Developer | Eduardo Escalante Pacheco | [@edescal](https://github.com/edescal) |
-| Webmaster | Gerardo Hernández Juárez | — |
-| Webmaster Lead | Gabriela Vidales Ayala | [@GabrielaVidales](https://github.com/GabrielaVidales) |
+| Webmaster | Gabriela Vidales Ayala | [@GabrielaVidales](https://github.com/GabrielaVidales) |
+| Developer | Brishel Acosta | [@br3shel](https://github.com/br3shel) |
+| Developer | Carlos Eduardo Bojórquez Ruiz | [@cebojorquez](https://github.com/cebojorquez) |
 
 ---
 
