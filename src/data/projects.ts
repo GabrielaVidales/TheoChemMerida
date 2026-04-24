@@ -1,7 +1,7 @@
 import smilesLogo from '@/assets/smilx.png'
 import eyringpy from '@/assets/eyringpy.png'
 import elaya from '@/assets/elayalogo.jpg'
-import glomos from '@/assets/glomos.png'
+import minimalSym from '@/assets/minimalSym.png'
 import solids from '@/assets/solids.png'
 
 
@@ -15,7 +15,6 @@ type SoftwareProject = {
     banner?: string
     category?: Category
     tags: string[]
-
 }
 
 
@@ -53,5 +52,12 @@ export const softwareProjects: SoftwareProject[] = [
         description: 'ELAYA SMILES is a web-based platform designed for the conversion of linear molecular representations (SMILES) into optimized three-dimensional structures.',
         banner: elaya,
         projectUrl: 'https://elaya-smiles.onrender.com/'
+    },
+    {
+        name: 'MinimalSym',
+        tags: ['Python',],
+        description: 'MinimalSym is a Python package for molecular symmetry analysis in Atomic Simulation Environment (ASE) Atoms objects, including structure symmetrization.',
+        banner: minimalSym,
+        projectUrl: 'https://minimalsym.theochemmerida.org/'
     },
 ]
