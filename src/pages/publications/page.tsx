@@ -38,7 +38,7 @@ export default function ResearchPage() {
 
     const onDownloadPdf = async () => {
         try {
-            const url = `${import.meta.env.VITE_BACKEND_URL}/public/download?v=1`
+            const url = `${import.meta.env.VITE_BACKEND_URL}/public/download`
             const response = await axios.get(url, {
                 responseType: 'blob',
             })
@@ -47,7 +47,7 @@ export default function ResearchPage() {
 
             const link = document.createElement('a');
             link.href = blobUrl;
-            link.setAttribute('download', 'publications_catalog.pdf');
+            link.setAttribute('download', 'Merino, Gabriel.pdf');
             link.click();
 
             window.URL.revokeObjectURL(blobUrl);
