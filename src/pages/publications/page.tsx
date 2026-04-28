@@ -10,7 +10,7 @@ import PaperSection from '@/components/paper-section';
 import { InputGroup, InputGroupAddon, InputGroupInput, } from "@/components/ui/input-group"
 import { ResearchPaperCard } from './research-paper-card';
 import { useIsMobile } from '@/hooks/use-mobile';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import axios from 'axios';
 
@@ -108,6 +108,9 @@ export default function ResearchPage() {
                                 <CardTitle>
                                     Publications Search Engine
                                 </CardTitle>
+                                <CardDescription>
+                                    Download all bibliographic references in PDF format, listed from most recent to oldest.
+                                </CardDescription>
                             </CardHeader>
                             <CardContent className='mb-3'>
                                 <Button
@@ -117,7 +120,7 @@ export default function ResearchPage() {
                                     size='sm'
                                 >
                                     <Download />
-                                    Download All Publications as PDF
+                                    Download PDF
                                 </Button>
                             </CardContent>
 

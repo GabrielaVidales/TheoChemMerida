@@ -34,10 +34,14 @@ export interface CitationEntry {
     issued?: Issued
 
     note?: string
+    
+    globalIndex?: number;
 }
 // #endregion
 
 export function getParsedData(input: string = bibtex) {
+
+
     const cleanBib = input.replace(
         /@(\w+)\{([^,]+),/g,
         (_, type, key) => {
@@ -51,7 +55,14 @@ export function getParsedData(input: string = bibtex) {
     const data = cite.get() as CitationEntry[]
 
     const sorted = sortByYear(data)
-    const grouped = groupByYears(sorted)
+
+    const total = sorted.length;
+    const dataWithIndex = sorted.map((entry, i) => ({
+        ...entry,
+        globalIndex: total - i
+    }));
+
+    const grouped = groupByYears(dataWithIndex)
     return {
         count: data.length,
         years: grouped

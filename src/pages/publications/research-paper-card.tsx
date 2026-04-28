@@ -12,7 +12,7 @@ export const ResearchPaperCard = memo(({ paper }: { paper: CitationEntry }) => {
     const journalData = useMemo(() => formatJournalData(paper), [paper])
 
     return (
-        <Card className='gap-3 border border-transparent hover:border-indigo-300 hover:shadow-md transition-all duration-200'>
+        <Card className='gap-2 pb-2 border border-transparent hover:border-indigo-300 hover:shadow-md transition-all duration-200'>
             <CardHeader>
                 <CardTitle className='text-lg font-bold text-slate-900 leading-snug hover:text-indigo-700 transition-colors duration-200'>
                     <a
@@ -51,6 +51,11 @@ export const ResearchPaperCard = memo(({ paper }: { paper: CitationEntry }) => {
                     </a>
                 )}
             </CardFooter>
+             <CardHeader>
+                <CardAction>
+                {paper.globalIndex}.
+                </CardAction>
+            </CardHeader>
         </Card>
     )
 }

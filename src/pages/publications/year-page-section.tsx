@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Fragment } from 'react';
 import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious, } from "@/components/ui/pagination"
 import { ResearchPaperCard } from './research-paper-card';
 import type { CitationEntry } from '@/lib/bibparser';
@@ -42,7 +42,9 @@ export const YearPageSection = ({ year, itemsPerPage, papers }: { year: string; 
             </div>
 
             {currentArticles.map((pub, idx) => (
-                <ResearchPaperCard key={idx} paper={pub} />
+                <Fragment key={pub.id || idx}>
+                    <ResearchPaperCard paper={pub} />
+                </Fragment>
             ))}
 
             {totalPages > 1 && (
