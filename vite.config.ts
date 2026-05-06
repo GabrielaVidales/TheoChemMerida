@@ -10,7 +10,7 @@ export default defineConfig({
     react(), 
     tailwindcss(),
     Sitemap({
-      hostname: 'https://www.theochemmerida.org/',
+      hostname: 'https://theochemmerida.org',
       dynamicRoutes: routes.asValues()
     })
   ],

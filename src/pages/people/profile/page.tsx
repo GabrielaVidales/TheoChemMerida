@@ -31,8 +31,6 @@ function ProfilePage() {
     const { data } = useQuery({
         queryKey: ['profile', slug, people?.scopusId],
         queryFn: async () => {
-            console.log('QUE??');
-
             if (!slug) return null
             if (!people?.scopusId) return null
 
