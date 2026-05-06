@@ -135,6 +135,7 @@ export interface People {
         description?: string
     }[]
 
+    scopusId?: string
     scholarGoogle?: string
     linkedin?: string
     researchGate?: string
@@ -185,6 +186,7 @@ export const people: People[] = [
             "Eyringpy: A Program for Calculating Rate Constants",
             "Study of Magnetic Descriptors for Diagnosing Aromaticity"
         ],
+        scopusId: '56000743500',
         linkedin: 'https://www.linkedin.com/in/gabriel-merino-5653b22b8/',
         researchGate: 'https://www.researchgate.net/profile/Gabriel-Merino-2',
         orcid: 'https://orcid.org/0000-0003-1961-8321',
@@ -276,6 +278,7 @@ export const people: People[] = [
             "Search for Mixed Titania, Alumina, and Zirconia Clusters",
             "Global Optimization for Cluster and Molecular Prediction"
         ],
+        scopusId: '55519741800',
         researchGate: 'https://www.researchgate.net/profile/Filiberto-Ortiz-Chi-2',
         linkedin: 'https://www.linkedin.com/in/filiberto-ortiz-chi-41747588/',
         orcid: 'http://orcid.org/0000-0002-2859-7633',
@@ -381,6 +384,7 @@ export const people: People[] = [
                 description: 'The JAM algorithm generates all possible stacking configurations for hexagonal layered materials and represents them using a compact linear notation. It also produces the corresponding POSCAR files, enabling direct use in electronic structure calculations.',
             }
         ],
+        scopusId: '57218443425',
         researchLine: [
             "Computational materials science of layered materials",
             "Adsorption properties in Covalent Organic Frameworks (COFs) and Metal–Organic Frameworks (MOFs)",
@@ -497,6 +501,7 @@ export const people: People[] = [
             'Aromaticity and Antiaromaticity in Pericondensed Conjugated Hydrocarbons',
             'Regiodivergent Gold(I)-Catalysed Rearrangements in Indole Synthesis',
         ],
+        scopusId: '57194977187',
         linkedin: 'https://www.linkedin.com/in/fernando-murillo-438011112/',
         orcid: 'https://orcid.org/my-orcid?orcid=0000-0002-1688-6008',
         profilePic: fernandoMur,
@@ -548,6 +553,7 @@ export const people: People[] = [
             'SurfinPES: GUI development.'
         ],
 
+        scopusId:'57223337398',
         softwareTools: [
             {
                 name: 'Eyringpy',
@@ -640,6 +646,7 @@ export const people: People[] = [
             'Isomer Generation and Spectroscopic Identification',
             'Rotational and Vibrational Spectroscopy',
         ],
+        scopusId:'57205405396',
         linkedin: 'https://mx.linkedin.com/in/lisset-noriega-7bb9b657',
         orcid: 'https://orcid.org/0000-0002-7783-7920',
         profilePic: lissNoriega,
@@ -689,6 +696,7 @@ export const people: People[] = [
         ],
 
         role: 'phd_student_cinvestav',
+        scopusId:'60247151000',
         linkedin: 'https://www.linkedin.com/in/fernando-jos%C3%A9-mart%C3%ADnez-villarino-2922b7163/',
         orcid: 'https://orcid.org/0009-0008-7178-3651',
         profilePic: fernandoVill,
@@ -950,7 +958,7 @@ export const people: People[] = [
         mainResearchLineImage: '',
 
 
-
+        scopusId: '57201877089',
         currentProjects: [
             'Halogen Substitution Effects on the Structures of BnX12(n = 8, 10, 12; X = F, Cl, Br, I)'
         ],
@@ -1106,6 +1114,7 @@ export const people: People[] = [
             "Implementation of a Graphical User Interface (GUI) for the program SurfinPES. My role in the project is to design and implement the graphical interface, ensuring that its structure and functionality make interacting with the program simpler and more intuitive.",
             "Adapting the new version of the scientific software SmilX to a graphical user interface (GUI). My role in the project involves participating in the redesign and implementation of this new version of the program SmilX, contributing to optimizing its functionality and user experience.",
         ],
+        scopusId:'60214591700',
         linkedin: 'www.linkedin.com/in/e-soberanis',
         role: 'undergraduate_research_intern',
         profilePic: emma,
@@ -1224,6 +1233,7 @@ Webmaster Team Leader, coordinating the development and deployment of the offici
             `HPC Python Tools
 Development of Python tools for automation and parallel computational workflows.`
         ],
+        scopusId:'60214164700',
         linkedin: 'https://www.linkedin.com/in/gabriela-vidales/',
         role: 'undergraduate_research_intern',
         profilePic: gabriela,

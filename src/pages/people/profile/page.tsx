@@ -1,34 +1,47 @@
 import { getPeopleFromSlug, roles, type People } from '@/data/people'
-import { Linkedin02Icon } from '@hugeicons/core-free-icons'
-import { HugeiconsIcon } from '@hugeicons/react'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useParams } from 'react-router'
-import { GraduationCap, Microscope, Globe, Award, Box, ImageOff, Database, FileText, CodeXml, ChevronDown, SeparatorHorizontal } from 'lucide-react';
+import { Microscope, Globe, Award, Box, ImageOff, Database, FileText, CodeXml, ChevronDown } from 'lucide-react';
 import { Card, CardContent, CardHeader, } from "@/components/ui/card"
-import { PhotoProvider, PhotoView } from 'react-photo-view'
 import GabrielMerinoPage from './merino-page'
 import 'react-photo-view/dist/react-photo-view.css';
 import ProfileGallery from './gallery'
-import { Separator } from '@/components/ui/separator'
 import { cn } from '@/lib/utils'
+import { useQuery } from "@tanstack/react-query"
+import axios from 'axios';
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 
+
+export type Publication = {
+    id: string
+    authors: string
+    title: string
+    year: number
+    journal: string
+    doi: string
+    volume: string
+    number: string
+    pages: string
+}
 
 function ProfilePage() {
     const { slug } = useParams()
-    const [people, setPeople] = useState<People>(null)
+    const people = slug ? getPeopleFromSlug(slug) : null
 
-    useEffect(() => {
-        if (slug) {
-            const people = getPeopleFromSlug(slug)
-            setPeople(people)
-        }
-    }, [slug])
+    const { data } = useQuery({
+        queryKey: ['profile', slug, people?.scopusId],
+        queryFn: async () => {
+            console.log('QUE??');
 
-    if (!people) {
-        return (
-            <h1>Loading...</h1>
-        )
-    }
+            if (!slug) return null
+            if (!people?.scopusId) return null
+
+            const url = import.meta.env.VITE_BACKEND_URL
+            const res = await axios.get(`${url}/public/files/publications/${people.scopusId}/`)
+            return res.data
+        },
+        enabled: !!people?.scopusId,
+    })
 
     return (
         <>
@@ -38,7 +51,7 @@ function ProfilePage() {
                 </>
             ) : (
                 <>
-                    <MemberProfile member={people} />
+                    <MemberProfile member={people} publications={data} />
                 </>
             )}
 
@@ -48,8 +61,10 @@ function ProfilePage() {
 
 export default ProfilePage
 
-
-const MemberProfile = ({ member }: { member: People }) => {
+const MemberProfile = ({ member, publications }: { member: People, publications?: Publication[] }) => {
+    const [open, setOpen] = useState(false)
+    const firstThree = publications?.slice(0, 3) ?? []
+    const rest = publications?.slice(3) ?? []
     return (
         <>
             <section className='bg-main/10 w-full border-b-2 '>
@@ -153,7 +168,7 @@ const MemberProfile = ({ member }: { member: People }) => {
                     <div className="w-full min-h-40 flex flex-col md:flex-row gap-10">
                         <section className='flex-2 space-y-10'>
                             <Card className='py-0 gap-0 shadow-none rounded-sm border border-stone-200/60'>
-                                <CardHeader className='flex items-center gap-2 py-3 px-4 bg-stone-50 text-stone-500 rounded-none border-b-2 border-stone-200/60'>
+                                <CardHeader className='flex items-center gap-2 py-3 px-4 bg-stone-50 text-stone-900 rounded-none border-b-2 border-stone-200/60'>
                                     <Box className='size-4' />
                                     <h2 className='text-sm font-medium'>Projects</h2>
                                 </CardHeader>
@@ -161,18 +176,18 @@ const MemberProfile = ({ member }: { member: People }) => {
                                     {Array.isArray(member.currentProjects) ? (
                                         <ul className='list-disc ml-4'>
                                             {member.currentProjects.map((research, index) => (
-                                                <li key={index} className="text-stone-600 tracking-wide mb-2 text-sm">
+                                                <li key={index} className="text-stone-900 tracking-wide mb-2 text-sm">
                                                     {research}
                                                 </li>
                                             ))}
                                         </ul>
                                     ) : (
-                                        <p className="leading-relaxed text-stone-600 text-sm">
+                                        <p className="leading-relaxed text-stone-900 text-sm">
                                             {member.currentProjects}
                                         </p>
                                     )}
                                     {(!member.currentProjects || member.currentProjects.length === 0) && (
-                                        <div className="flex flex-col items-center justify-center py-2 text-neutral-300 gap-2">
+                                        <div className="flex flex-col items-center justify-center py-2 text-stone-400 gap-2">
                                             <Database className="size-8" />
                                             <p className="text-xs">No information available</p>
                                         </div>
@@ -180,15 +195,14 @@ const MemberProfile = ({ member }: { member: People }) => {
                                 </CardContent>
                             </Card>
 
-
                             <Card className='py-0 gap-0 shadow-none rounded-sm border border-stone-200/60'>
-                                <CardHeader className='flex items-center gap-2 py-3 px-4 bg-stone-50 text-stone-500 rounded-none border-b-2 border-stone-200/60'>
+                                <CardHeader className='flex items-center gap-2 py-3 px-4 bg-stone-50 text-stone-900 rounded-none border-b-2 border-stone-200/60'>
                                     <Award className='size-4' />
                                     <h2 className='text-sm font-medium'>Awards, Honors & Achievements</h2>
                                 </CardHeader>
                                 <CardContent className='py-4'>
                                     {!member.awards || member.awards.length === 0 ? (
-                                        <div className="flex flex-col items-center justify-center py-2 text-neutral-300 gap-2">
+                                        <div className="flex flex-col items-center justify-center py-2 text-stone-400 gap-2">
                                             <Database className="size-8" />
                                             <p className="text-xs">No information available</p>
                                         </div>
@@ -196,9 +210,9 @@ const MemberProfile = ({ member }: { member: People }) => {
                                         <>
                                             {member.awards.map((award, index) => (
                                                 <div key={index} className='mb-4'>
-                                                    <p className='text-stone-600 font-semibold tracking-wide text-sm'>{award.name}</p>
-                                                    <p className='text-stone-500 tracking-wide text-sm'>{award.description}</p>
-                                                    <p className='text-stone-500 tracking-wide italic text-sm'>{award.instituteWithYear}</p>
+                                                    <p className='text-stone-900 font-semibold tracking-wide text-sm'>{award.name}</p>
+                                                    <p className='text-stone-900 tracking-wide text-sm'>{award.description}</p>
+                                                    <p className='text-stone-900 tracking-wide italic text-sm'>{award.instituteWithYear}</p>
                                                 </div>
                                             ))}
                                         </>
@@ -206,15 +220,14 @@ const MemberProfile = ({ member }: { member: People }) => {
                                 </CardContent>
                             </Card>
 
-
                             <Card className='py-0 gap-0 shadow-none rounded-sm border border-stone-200/60'>
-                                <CardHeader className='flex items-center gap-2 py-3 px-4 bg-stone-50 text-stone-500 rounded-none border-b-2 border-stone-200/60'>
+                                <CardHeader className='flex items-center gap-2 py-3 px-4 bg-stone-50 text-stone-900 rounded-none border-b-2 border-stone-200/60'>
                                     <Globe className='size-4' />
                                     <h2 className='text-sm font-medium'>Gallery</h2>
                                 </CardHeader>
                                 <CardContent className='py-4'>
                                     {!member.gallery || member.gallery.length === 0 ? (
-                                        <div className="flex flex-col items-center justify-center py-2 text-neutral-300 gap-2">
+                                        <div className="flex flex-col items-center justify-center py-2 text-stone-400 gap-2">
                                             <ImageOff className="size-8" />
                                             <p className="text-xs">No images available</p>
                                         </div>
@@ -228,122 +241,170 @@ const MemberProfile = ({ member }: { member: People }) => {
 
                         <section className='flex-5 space-y-12'>
                             {member.mainResearchLine && (
-                                <>
-                                    <div className='space-y-5'>
-                                        <CardHeader className='flex items-center gap-3'>
-                                            <div className='bg-main size-10 rounded-full flex items-center justify-center text-white'>
-                                                <Microscope />
+                                <div className='space-y-5'>
+                                    <CardHeader className='flex items-center gap-3'>
+                                        <div className='bg-main size-10 rounded-full flex items-center justify-center text-white'>
+                                            <Microscope />
+                                        </div>
+                                        <h2 className='text-2xl font-medium'>Research Line</h2>
+                                    </CardHeader>
+                                    <CardContent className='flex flex-col md:flex-row gap-5'>
+                                        {member.mainResearchLineImage && (
+                                            <div className='flex-1 md:flex-2 w-full overflow-hidden rounded-lg aspect-video md:aspect-square self-start'>
+                                                <img
+                                                    src={member.mainResearchLineImage || 'https://picsum.photos/seed/member/600/600'}
+                                                    alt={member.mainResearchLine}
+                                                    className="w-full h-full object-cover"
+                                                />
                                             </div>
-                                            <h2 className='text-2xl font-medium'>Research Line</h2>
-                                        </CardHeader>
-                                        <CardContent className='flex flex-col md:flex-row gap-5'>
-                                            {member.mainResearchLineImage && (
-                                                <div className='flex-1 md:flex-2 w-full overflow-hidden rounded-lg aspect-video md:aspect-square self-start'>
-                                                    <img
-                                                        src={member.mainResearchLineImage || 'https://picsum.photos/seed/member/600/600'}
-                                                        alt={member.mainResearchLine}
-                                                        className="w-full h-full object-cover"
-                                                    />
-                                                </div>
-                                            )}
-                                            <div className='flex-1 md:flex-5'>
-                                                <p className="text-stone-700 font-semibold leading-relaxed text-base md:text-lg">
-                                                    {member.mainResearchLine}
-                                                </p>
-                                                <p className="text-stone-700 leading-relaxed md:text-base">
-                                                    {member.mainResearchLineDesc}
-                                                </p>
-                                            </div>
-                                        </CardContent>
-                                    </div>
-                                </>
+                                        )}
+                                        <div className='flex-1 md:flex-5'>
+                                            <p className="text-stone-800 font-semibold leading-relaxed text-base md:text-lg">
+                                                {member.mainResearchLine}
+                                            </p>
+                                            <p className="text-stone-800 leading-relaxed md:text-base">
+                                                {member.mainResearchLineDesc}
+                                            </p>
+                                        </div>
+                                    </CardContent>
+                                </div>
                             )}
 
                             {member.researchLine && (
-                                <>
-                                    <div className='space-y-5'>
-                                        <CardHeader className='flex items-center gap-3'>
-                                            <div className='bg-main size-10 rounded-full flex items-center justify-center text-white'>
-                                                {member.mainResearchLine ? <ChevronDown /> : <Microscope />}
-                                            </div>
-                                            <h2 className='text-2xl font-medium'> {member.mainResearchLine ? 'Other Research Lines' : 'Research Lines'} </h2>
-                                        </CardHeader>
-                                        <CardContent>
-                                            {Array.isArray(member.researchLine) ? (
-                                                <ul className='list-disc ml-4'>
-                                                    {member.researchLine.map((research, index) => (
-                                                        <li key={index} className="text-stone-700 leading-relaxed text-sm md:text-base">
-                                                            {research}
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                            ) : (
-                                                <p className="text-stone-700 leading-relaxed text-sm md:text-base">
-                                                    {member.researchLine}
-                                                </p>
-                                            )}
-                                        </CardContent>
-                                    </div>
-                                </>
+                                <div className='space-y-5'>
+                                    <CardHeader className='flex items-center gap-3'>
+                                        <div className='bg-main size-10 rounded-full flex items-center justify-center text-white'>
+                                            {member.mainResearchLine ? <ChevronDown /> : <Microscope />}
+                                        </div>
+                                        <h2 className='text-2xl font-medium'> {member.mainResearchLine ? 'Other Research Lines' : 'Research Lines'} </h2>
+                                    </CardHeader>
+                                    <CardContent>
+                                        {Array.isArray(member.researchLine) ? (
+                                            <ul className='list-disc ml-4'>
+                                                {member.researchLine.map((research, index) => (
+                                                    <li key={index} className="text-stone-800 leading-relaxed text-sm md:text-base">
+                                                        {research}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        ) : (
+                                            <p className="text-stone-800 leading-relaxed text-sm md:text-base">
+                                                {member.researchLine}
+                                            </p>
+                                        )}
+                                    </CardContent>
+                                </div>
                             )}
 
                             {member.softwareTools && (
-                                <>
-                                    <div className='space-y-5'>
-                                        <CardHeader className='flex items-center gap-3'>
-                                            <div className='bg-main size-10 rounded-full flex items-center justify-center text-white'>
-                                                <CodeXml />
+                                <div className='space-y-5'>
+                                    <CardHeader className='flex items-center gap-3'>
+                                        <div className='bg-main size-10 rounded-full flex items-center justify-center text-white'>
+                                            <CodeXml />
+                                        </div>
+                                        <h2 className='text-2xl font-medium'>Software Tools</h2>
+                                    </CardHeader>
+                                    <CardContent className=''>
+                                        {member.softwareTools.map((value, index) => (
+                                            <div key={index} className='mb-5'>
+                                                <p className="text-stone-800 font-semibold leading-relaxed md:text-base">
+                                                    {value.name}
+                                                </p>
+                                                <p className="text-stone-800 leading-relaxed md:text-base">
+                                                    {value.description}
+                                                </p>
                                             </div>
-                                            <h2 className='text-2xl font-medium'>Software Tools</h2>
-                                        </CardHeader>
-                                        <CardContent className=''>
-                                            {member.softwareTools.map((value, index) => (
-                                                <div key={index} className='mb-5'>
-                                                    <p className="text-stone-700 font-semibold leading-relaxed md:text-base">
-                                                        {value.name}
-                                                    </p>
-                                                    <p className="text-stone-700 leading-relaxed md:text-base">
-                                                        {value.description}
-                                                    </p>
-                                                </div>
-                                            ))}
-                                        </CardContent>
-                                    </div>
-                                </>
+                                        ))}
+                                    </CardContent>
+                                </div>
                             )}
 
-                            {member.recentPublications && (
-                                <>
-                                    <div className='space-y-5'>
-                                        <CardHeader className='flex items-center gap-3'>
-                                            <div className='bg-main size-10 rounded-full flex items-center justify-center text-white'>
-                                                <FileText />
+                            {publications ? (
+                                <div className='space-y-5'>
+                                    <CardHeader className='flex items-center gap-3'>
+                                        <div className='bg-main size-10 rounded-full flex items-center justify-center text-white'>
+                                            <FileText />
+                                        </div>
+                                        <h2 className='text-2xl font-medium'>Publications</h2>
+                                    </CardHeader>
+                                    <CardContent>
+                                        <Collapsible open={open} onOpenChange={setOpen}>
+                                            <div className="text-stone-800">
+                                                {(firstThree ?? []).map((p, i) => (
+                                                    <PublicationItem
+                                                        key={p.id ?? i}
+                                                        publication={p}
+                                                        index={i}
+                                                        total={publications?.length ?? 0}
+                                                    />
+                                                ))}
                                             </div>
-                                            <h2 className='text-2xl font-medium'>Recent Publications</h2>
-                                        </CardHeader>
-                                        <CardContent>
-                                            {!member.recentPublications || member.recentPublications.length === 0 ? (
-                                                <div className="flex flex-col items-center justify-center py-2 text-neutral-400 gap-2">
-                                                    <Database className="size-10" />
-                                                    <p className="text-sm">No information available</p>
-                                                </div>
-                                            ) : (
-                                                <>
-                                                    {member.recentPublications?.map((pub, i) => (
-                                                        <div key={i} className="text-stone-700 text-sm md:text-base mb-3 md:mb-5">
-                                                            <p>
-                                                                {pub.publication}
-                                                            </p>
-                                                            <span>
-                                                                DOI: <a href={pub.doi} target="_blank" rel="noopener noreferrer" className='text-main hover:underline underline-offset-2'>{pub.doi}</a>
-                                                            </span>
-                                                        </div>
-                                                    ))}
-                                                </>
+
+                                            <CollapsibleContent className="text-stone-800">
+                                                {(rest ?? []).map((p, i) => (
+                                                    <PublicationItem
+                                                        key={p.id ?? i}
+                                                        publication={p}
+                                                        index={i}
+                                                        total={publications?.length ?? 0}
+                                                    />
+                                                ))}
+                                            </CollapsibleContent>
+
+                                            {rest.length > 0 && (
+                                                <CollapsibleTrigger
+                                                    className={cn(
+                                                        "group ml-auto flex items-center",
+                                                        "text-main font-medium gap-2 mt-3",
+                                                        "hover:text-main/80 transition-colors",
+                                                        "cursor-pointer select-none"
+                                                    )}
+                                                >
+                                                    <span>
+                                                        {open ? "Show less" : `Show more (${rest.length})`}
+                                                    </span>
+
+                                                    <ChevronDown
+                                                        className={cn(
+                                                            "h-4 w-4 transition-transform duration-300",
+                                                            open && "rotate-180"
+                                                        )}
+                                                    />
+                                                </CollapsibleTrigger>
                                             )}
-                                        </CardContent>
-                                    </div>
-                                </>
+                                        </Collapsible>
+                                    </CardContent>
+                                </div>
+                            ) : member.recentPublications && (
+                                <div className='space-y-5'>
+                                    <CardHeader className='flex items-center gap-3'>
+                                        <div className='bg-main size-10 rounded-full flex items-center justify-center text-white'>
+                                            <FileText />
+                                        </div>
+                                        <h2 className='text-2xl font-medium'>Publications</h2>
+                                    </CardHeader>
+                                    <CardContent>
+                                        {!member.recentPublications || member.recentPublications.length === 0 ? (
+                                            <div className="flex flex-col items-center justify-center py-2 text-neutral-400 gap-2">
+                                                <Database className="size-10" />
+                                                <p className="text-sm">No information available</p>
+                                            </div>
+                                        ) : (
+                                            <>
+                                                {member.recentPublications?.map((pub, i) => (
+                                                    <div key={i} className="text-stone-800 text-sm md:text-base mb-3 md:mb-5">
+                                                        <p>
+                                                            {pub.publication}
+                                                        </p>
+                                                        <span>
+                                                            DOI: <a href={pub.doi} target="_blank" rel="noopener noreferrer" className='text-main hover:underline underline-offset-2'>{pub.doi}</a>
+                                                        </span>
+                                                    </div>
+                                                ))}
+                                            </>
+                                        )}
+                                    </CardContent>
+                                </div>
                             )}
                         </section>
                     </div>
@@ -352,3 +413,49 @@ const MemberProfile = ({ member }: { member: People }) => {
         </>
     );
 };
+
+
+type Props = {
+    publication: Publication
+    index: number
+    total: number
+}
+
+export function PublicationItem({ publication, index, total }: Props) {
+    return (
+        <div className="flex gap-3 mb-5">
+            <div className="font-medium">
+                {total - index}.
+            </div>
+
+            <div className="inline">
+                {publication.authors} <i className="font-light">{publication.title}</i>. {publication.journal}.{" "}
+
+                {publication.year && <span className="font-semibold">{publication.year}</span>}
+
+                {(publication.volume || publication.number || publication.pages) && (
+                    <>
+                        {", "}
+                        {publication.volume && ` ${publication.volume}`}
+                        {publication.number && `(${publication.number})`}
+                        {publication.pages && `, ${publication.pages}`}
+                    </>
+                )}
+
+                {publication.doi && (
+                    <>
+                        {". DOI: "}
+                        <a
+                            href={`https://doi.org/${publication.doi}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-main hover:underline"
+                        >
+                            https://doi.org/{publication.doi}
+                        </a>
+                    </>
+                )}
+            </div>
+        </div>
+    )
+}

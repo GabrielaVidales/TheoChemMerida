@@ -39,6 +39,7 @@ export default function ResearchPage() {
     const onDownloadPdf = async () => {
         try {
             const url = `${import.meta.env.VITE_BACKEND_URL}/public/download`
+            window.open(url, "_blank");
             const response = await axios.get(url, {
                 responseType: 'blob',
             })
