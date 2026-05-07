@@ -41,6 +41,9 @@ function ProfilePage() {
         enabled: !!people?.scopusId,
     })
 
+    console.log(data);
+    
+
     return (
         <>
             {people.name === 'Gabriel Merino' ? (
@@ -343,7 +346,7 @@ const MemberProfile = ({ member, publications }: { member: People, publications?
                                                     <PublicationItem
                                                         key={p.id ?? i}
                                                         publication={p}
-                                                        index={i}
+                                                        index={i+3}
                                                         total={publications?.length ?? 0}
                                                     />
                                                 ))}
