@@ -1,14 +1,39 @@
-import { type People } from '@/data/people'
-import { Linkedin02Icon } from '@hugeicons/core-free-icons'
-import { HugeiconsIcon } from '@hugeicons/react'
-import { Mail, Award, BookOpen } from 'lucide-react';
+import { getPeopleFromSlug, type People } from '@/data/people'
+import { Mail, Award, BookOpen, FileText, ChevronDown } from 'lucide-react';
 import { Card, } from "@/components/ui/card"
 import 'react-photo-view/dist/react-photo-view.css';
-import { Separator } from '@/components/ui/separator';
+import { useQuery } from '@tanstack/react-query';
+import { useParams } from 'react-router';
+import axios from 'axios';
+import { useState } from 'react';
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
+import { PublicationItem } from './page';
+import { cn } from '@/lib/utils';
+import scopusLogo from '@/assets/scopus.png'
 
 
 function GabrielMerinoPage({ member }: { member: People }) {
+    const { slug } = useParams()
+    const people = slug ? getPeopleFromSlug(slug) : null
+    const { data, } = useQuery({
+        queryKey: ['profile', slug, people?.scopusId],
+        queryFn: async () => {
+            if (!slug) return null
+            if (!people?.scopusId) return null
 
+            const url = import.meta.env.VITE_BACKEND_URL
+            const res = await axios.get(`${url}/public/files/publications/${people.scopusId}/`)
+            return res.data
+        },
+        enabled: !!people?.scopusId,
+    })
+
+    const OFFSET = 10
+    const [open, setOpen] = useState(false)
+    const [citationStyle, setCitationStyle] = useState<"ACS" | "APS">('ACS')
+    const firstThree = data?.slice(0, OFFSET) ?? []
+    const rest = data?.slice(OFFSET) ?? []
     return (
         <>
             <section className='bg-main/10 w-full border-b-2 '>
@@ -37,17 +62,14 @@ function GabrielMerinoPage({ member }: { member: People }) {
                         </div>
 
                         <div className="flex flex-wrap gap-4 justify-center md:justify-start">
-                            {member.linkedin && (
-                                <a href={member.linkedin} target="_blank" className="flex items-center gap-2 text-sm hover:text-main transition-colors">
-                                    <HugeiconsIcon
-                                        icon={Linkedin02Icon}
-                                        size={20}
-                                        className="group-hover/link:scale-110 transition-transform"
-                                    />LinkedIn
+                            {member.orcid && (
+                                <a href={member.orcid} target="_blank" className="flex items-center gap-2 text-sm text-main hover:text-blue-600 transition-colors">
+                                    <div className="size-4 bg-[#A6CE39] rounded-full flex items-center justify-center text-[10px] text-white font-bold">iD</div>
+                                    ORCID
                                 </a>
                             )}
                             {member.researchGate && (
-                                <a href={member.researchGate} target="_blank" className="flex items-center gap-2 text-sm hover:text-main transition-colors">
+                                <a href={member.researchGate} target="_blank" className="flex items-center gap-1 text-sm text-main hover:text-blue-600 transition-colors">
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
                                         <circle cx="12" cy="12" r="10" fill="#00A0E3" />
                                         <path d="M6 12c0-3.31 2.69-6 6-6s6 2.69 6 6-2.69 6-6 6" stroke="white" strokeWidth="1.6" strokeLinecap="round" />
@@ -56,15 +78,41 @@ function GabrielMerinoPage({ member }: { member: People }) {
                                     Research Gate
                                 </a>
                             )}
-                            {member.orcid && (
-                                <a href={member.orcid} target="_blank" className="flex items-center gap-2 text-sm hover:text-main transition-colors">
-                                    <div className="size-4 bg-[#A6CE39] rounded-full flex items-center justify-center text-[8px] text-white font-bold">iD</div>
-                                    ORCID
+                            {member.scholarGoogle && (
+                                <a href={member.scholarGoogle} target="_blank" className="flex items-center gap-1 text-sm text-main hover:text-blue-600 transition-colors">
+                                    <svg className='size-4' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="#4285f4" d="M256 411.12L0 202.667 256 0z" /><path fill="#356ac3" d="M256 411.12l256-208.453L256 0z" /><circle fill="#a0c3ff" cx="256" cy="362.667" r="149.333" /><path fill="#76a7fa" d="M121.037 298.667c23.968-50.453 75.392-85.334 134.963-85.334s110.995 34.881 134.963 85.334H121.037z" /></svg>
+                                    Scholar Google
+                                </a>
+                            )}
+                            {member.linkedin && (
+                                <a href={member.linkedin} target="_blank" className="flex items-center gap-1 text-sm text-main hover:text-blue-600 transition-colors">
+                                    <svg className='size-4' version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 382 382" >
+                                        <path fill="#0077B7" d="M347.445,0H34.555C15.471,0,0,15.471,0,34.555v312.889C0,366.529,15.471,382,34.555,382h312.889
+                                            C366.529,382,382,366.529,382,347.444V34.555C382,15.471,366.529,0,347.445,0z M118.207,329.844c0,5.554-4.502,10.056-10.056,10.056
+                                            H65.345c-5.554,0-10.056-4.502-10.056-10.056V150.403c0-5.554,4.502-10.056,10.056-10.056h42.806
+                                            c5.554,0,10.056,4.502,10.056,10.056V329.844z M86.748,123.432c-22.459,0-40.666-18.207-40.666-40.666S64.289,42.1,86.748,42.1
+                                            s40.666,18.207,40.666,40.666S109.208,123.432,86.748,123.432z M341.91,330.654c0,5.106-4.14,9.246-9.246,9.246H286.73
+                                            c-5.106,0-9.246-4.14-9.246-9.246v-84.168c0-12.556,3.683-55.021-32.813-55.021c-28.309,0-34.051,29.066-35.204,42.11v97.079
+                                            c0,5.106-4.139,9.246-9.246,9.246h-44.426c-5.106,0-9.246-4.14-9.246-9.246V149.593c0-5.106,4.14-9.246,9.246-9.246h44.426
+                                            c5.106,0,9.246,4.14,9.246,9.246v15.655c10.497-15.753,26.097-27.912,59.312-27.912c73.552,0,73.131,68.716,73.131,106.472
+                                            L341.91,330.654L341.91,330.654z"
+                                        />
+                                    </svg>
+                                    LinkedIn
+                                </a>
+                            )}
+                            {member.scopusId && (
+                                <a href={`https://www.scopus.com/authid/detail.uri?authorId=${member.scopusId}&origin=AuthorProfile`} target="_blank" className="flex items-center gap-1 text-sm text-main hover:text-blue-600 transition-colors">
+                                    <img
+                                        src={scopusLogo}
+                                        alt="Scopus"
+                                        className='size-4 rounded-sm'
+                                    />
+                                    Scopus
                                 </a>
                             )}
                         </div>
-
-                        <Separator />
 
                         <p className='text-base font-light mb-3'>
                             Departamento de Fisica Aplicada <br />
@@ -113,44 +161,112 @@ function GabrielMerinoPage({ member }: { member: People }) {
                     </div>
                 </article>
             </section>
-
-            <div className="max-w-5xl mx-auto p-5 space-y-12">
+            <div className="max-w-5xl mx-auto p-5 space-y-4">
                 {(member.awards || member.editorialActivities) && (
-                    <section className='grid grid-cols-1 lg:grid-cols-2 gap-8'>
-                        <Card className='max-w-lg p-5'>
-                            <div className='flex items-center gap-3'>
-                                <div className='bg-main size-10 rounded-full flex items-center justify-center text-white'>
-                                    <Award />
+                    <section className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                        <Card className="p-5">
+                            <div className="flex items-center gap-3 pb-3 mb-3 border-b border-border">
+                                <div className="bg-main size-9 rounded-full flex items-center justify-center text-white shrink-0">
+                                    <Award size={16} />
                                 </div>
-                                <h2 className='text-main text-xl font-medium'>Awards & Honors</h2>
+                                <h2 className="text-main text-xl font-medium">Awards & Honors</h2>
                             </div>
-
-                            {member.awards?.map((award, index) => (
-                                <div key={index} className='gap-2 px-3'>
-                                    <p className='text-base font-semibold tracking-wide'>{award.name}</p>
-                                    <p className='tracking-wide'>{award.description}</p>
-                                    <p className='tracking-wide'>{award.instituteWithYear}</p>
-                                </div>
-                            ))}
+                            <div className="divide-y divide-border">
+                                {member.awards?.map((award, index) => (
+                                    <div key={index} className="py-2 first:pt-0 last:pb-0">
+                                        <p className="text-sm font-semibold">{award.name}</p>
+                                        <p className="text-sm text-muted-foreground">{award.description}</p>
+                                        <p className="text-xs text-muted-foreground/70">{award.instituteWithYear}</p>
+                                    </div>
+                                ))}
+                            </div>
                         </Card>
 
-                        <Card className='max-w-lg p-5'>
-                            <div className='flex items-center gap-3'>
-                                <div className='bg-main size-10 rounded-full flex items-center justify-center text-white'>
-                                    <BookOpen />
+                        <Card className="p-5">
+                            <div className="flex items-center gap-3 pb-3 mb-3 border-b border-border">
+                                <div className="bg-main size-9 rounded-full flex items-center justify-center text-white shrink-0">
+                                    <BookOpen size={16} />
                                 </div>
-                                <h2 className='text-main text-xl font-medium'>Editorial Activities</h2>
+                                <h2 className="text-main text-xl font-medium">Editorial Activities</h2>
                             </div>
-
-                            {member.editorialActivities?.map((activity, index) => (
-                                <div key={index} className='gap-2 px-3'>
-                                    <p className='text-base font-semibold tracking-wide'>{activity.name}</p>
-                                    <p className='tracking-wide'>{activity.description}</p>
-                                    <p className='tracking-wide'>{activity.instituteWithYear}</p>
-                                </div>
-                            ))}
+                            <div className="divide-y divide-border">
+                                {member.editorialActivities?.map((activity, index) => (
+                                    <div key={index} className="py-2 first:pt-0 last:pb-0">
+                                        <p className="text-sm font-semibold">{activity.name}</p>
+                                        <p className="text-sm text-muted-foreground">{activity.description}</p>
+                                        <p className="text-xs text-muted-foreground/70">{activity.instituteWithYear}</p>
+                                    </div>
+                                ))}
+                            </div>
                         </Card>
                     </section>
+                )}
+
+                {data?.length > 0 && (
+                    <Card className="p-5">
+                        <div className="flex items-center gap-3 pb-3 mb-3 border-b border-border">
+                            <div className="bg-main size-9 rounded-full flex items-center justify-center text-white shrink-0">
+                                <FileText size={16} />
+                            </div>
+                            <h2 className="text-xl font-medium">Publications</h2>
+                            <span className="text-xs text-muted-foreground bg-muted rounded-full px-2 py-0.5">
+                                {data.length}
+                            </span>
+                            <div className="ml-auto">
+                                <ToggleGroup
+                                    type="single"
+                                    value={citationStyle}
+                                    variant="outline"
+                                    size="sm"
+                                    onValueChange={(value) => {
+                                        if (value) {
+                                            setCitationStyle(value as "ACS" | "APS");
+                                        }
+                                    }}
+                                >
+                                    <ToggleGroupItem value="ACS" className="rounded-lg text-xs font-semibold">ACS</ToggleGroupItem>
+                                    <ToggleGroupItem value="APS" className="rounded-lg text-xs font-semibold">APS</ToggleGroupItem>
+                                </ToggleGroup>
+                            </div>
+                        </div>
+
+                        <Collapsible open={open} onOpenChange={setOpen}>
+                            <div className="text-base text-stone-800">
+                                {(firstThree ?? []).map((p, i) => (
+                                    <PublicationItem
+                                        key={p.id ?? i}
+                                        publication={p}
+                                        index={i}
+                                        total={data?.length ?? 0}
+                                        citationStyle={citationStyle}
+                                    />
+                                ))}
+                            </div>
+
+                            <CollapsibleContent className="text-base text-stone-800">
+                                {(rest ?? []).map((p, i) => (
+                                    <PublicationItem
+                                        key={p.id ?? i}
+                                        publication={p}
+                                        index={i + OFFSET}
+                                        total={data?.length ?? 0}
+                                        citationStyle={citationStyle}
+                                    />
+                                ))}
+                            </CollapsibleContent>
+
+                            {rest.length > 0 && (
+                                <CollapsibleTrigger className={cn(
+                                    "group flex items-center gap-1.5 mt-3 ml-auto",
+                                    "text-sm text-main font-medium",
+                                    "hover:text-main/80 transition-colors cursor-pointer select-none"
+                                )}>
+                                    <span>{open ? "Show less" : `Show more (${rest.length})`}</span>
+                                    <ChevronDown className={cn("h-4 w-4 transition-transform duration-300", open && "rotate-180")} />
+                                </CollapsibleTrigger>
+                            )}
+                        </Collapsible>
+                    </Card>
                 )}
             </div>
         </>

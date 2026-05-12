@@ -10,19 +10,10 @@ import { cn } from '@/lib/utils'
 import { useQuery } from "@tanstack/react-query"
 import axios from 'axios';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
+import scopusLogo from '@/assets/scopus.png'
+import type { Author, Publication } from '@/data/publications-data';
 
-
-export type Publication = {
-    id: string
-    authors: string
-    title: string
-    year: number
-    journal: string
-    doi: string
-    volume: string
-    number: string
-    pages: string
-}
 
 function ProfilePage() {
     const { slug } = useParams()
@@ -40,9 +31,6 @@ function ProfilePage() {
         },
         enabled: !!people?.scopusId,
     })
-
-    console.log(data);
-    
 
     return (
         <>
@@ -64,6 +52,7 @@ export default ProfilePage
 
 const MemberProfile = ({ member, publications }: { member: People, publications?: Publication[] }) => {
     const [open, setOpen] = useState(false)
+    const [citationStyle, setCitationStyle] = useState<"ACS" | "APS">('ACS')
     const firstThree = publications?.slice(0, 3) ?? []
     const rest = publications?.slice(3) ?? []
     return (
@@ -136,6 +125,16 @@ const MemberProfile = ({ member, publications }: { member: People, publications?
                                         />
                                     </svg>
                                     LinkedIn
+                                </a>
+                            )}
+                            {member.scopusId && (
+                                <a href={`https://www.scopus.com/authid/detail.uri?authorId=${member.scopusId}&origin=AuthorProfile`} target="_blank" className="flex items-center gap-1 text-sm text-main hover:text-blue-600 transition-colors">
+                                    <img
+                                        src={scopusLogo}
+                                        alt="Scopus"
+                                        className='size-4 rounded-sm'
+                                    />
+                                    Scopus
                                 </a>
                             )}
                         </div>
@@ -320,13 +319,32 @@ const MemberProfile = ({ member, publications }: { member: People, publications?
                                 </div>
                             )}
 
-                            {publications ? (
+                            {publications?.length > 0 ? (
                                 <div className='space-y-5'>
-                                    <CardHeader className='flex items-center gap-3'>
+                                    <CardHeader className="flex items-center gap-3 pb-3 mb-3 border-b border-border">
                                         <div className='bg-main size-10 rounded-full flex items-center justify-center text-white'>
                                             <FileText />
                                         </div>
-                                        <h2 className='text-2xl font-medium'>Publications</h2>
+                                        <h2 className="text-2xl font-medium">Publications</h2>
+                                        <span className="text-xs text-muted-foreground bg-muted rounded-full px-2 py-0.5">
+                                            {publications.length}
+                                        </span>
+                                        <div className="ml-auto">
+                                            <ToggleGroup
+                                                type="single"
+                                                value={citationStyle}
+                                                variant="outline"
+                                                size="sm"
+                                                onValueChange={(value) => {
+                                                    if (value) {
+                                                        setCitationStyle(value as "ACS" | "APS");
+                                                    }
+                                                }}
+                                            >
+                                                <ToggleGroupItem value="ACS" className="rounded-lg text-xs font-semibold">ACS</ToggleGroupItem>
+                                                <ToggleGroupItem value="APS" className="rounded-lg text-xs font-semibold">APS</ToggleGroupItem>
+                                            </ToggleGroup>
+                                        </div>
                                     </CardHeader>
                                     <CardContent>
                                         <Collapsible open={open} onOpenChange={setOpen}>
@@ -337,6 +355,7 @@ const MemberProfile = ({ member, publications }: { member: People, publications?
                                                         publication={p}
                                                         index={i}
                                                         total={publications?.length ?? 0}
+                                                        citationStyle={citationStyle}
                                                     />
                                                 ))}
                                             </div>
@@ -346,8 +365,9 @@ const MemberProfile = ({ member, publications }: { member: People, publications?
                                                     <PublicationItem
                                                         key={p.id ?? i}
                                                         publication={p}
-                                                        index={i+3}
+                                                        index={i + 3}
                                                         total={publications?.length ?? 0}
+                                                        citationStyle={citationStyle}
                                                     />
                                                 ))}
                                             </CollapsibleContent>
@@ -420,43 +440,115 @@ type Props = {
     publication: Publication
     index: number
     total: number
+    citationStyle: 'ACS' | 'APS'
 }
 
-export function PublicationItem({ publication, index, total }: Props) {
+export function PublicationItem({ publication, index, total, citationStyle }: Props) {
+    function formatACS(authors: Author[]): string {
+        return authors
+            .map(author => {
+                const initials = author.names
+                    .split(/\s+/)
+                    .map(name => {
+                        // Mantiene iniciales tipo "A."
+                        if (name.endsWith(".")) return name;
+
+                        return name.charAt(0) + ".";
+                    })
+                    .join(" ");
+
+                return `${author.family}, ${initials}`;
+            })
+            .join("; ");
+    }
+
+    function formatAPS(authors: Author[]): string {
+        return authors
+            .map(author => {
+                const initials = author.names
+                    .split(/\s+/)
+                    .map(name => {
+                        if (name.endsWith(".")) {
+                            return name.charAt(0) + ".";
+                        }
+
+                        return name.charAt(0) + ".";
+                    })
+                    .join(" ");
+
+                return `${initials} ${author.family}`;
+            })
+            .join(", ");
+    }
+
     return (
         <div className="flex gap-3 mb-5">
             <div className="font-medium">
                 {total - index}.
             </div>
 
-            <div className="inline">
-                {publication.authors} <i className="font-light">{publication.title}</i>. {publication.journal}.{" "}
+            {citationStyle === 'ACS' && (
+                <div className="inline">
+                    {formatACS(publication.authors)}
 
-                {publication.year && <span className="font-semibold">{publication.year}</span>}
+                    <i className="font-light">{publication.title}</i>. {publication.journal}.{" "}
 
-                {(publication.volume || publication.number || publication.pages) && (
-                    <>
-                        {", "}
-                        {publication.volume && ` ${publication.volume}`}
-                        {publication.number && `(${publication.number})`}
-                        {publication.pages && `, ${publication.pages}`}
-                    </>
-                )}
+                    {publication.year && <span className="font-semibold">{publication.year}</span>}
 
-                {publication.doi && (
-                    <>
-                        {". DOI: "}
-                        <a
-                            href={`https://doi.org/${publication.doi}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-main hover:underline"
-                        >
-                            https://doi.org/{publication.doi}
-                        </a>
-                    </>
-                )}
-            </div>
-        </div>
+                    {(publication.volume || publication.number || publication.pages) && (
+                        <>
+                            {", "}
+                            {publication.volume && ` ${publication.volume}`}
+                            {publication.number && `(${publication.number})`}
+                            {publication.pages && `, ${publication.pages}`}
+                        </>
+                    )}
+
+                    {publication.doi && (
+                        <>
+                            {". DOI: "}
+                            <a
+                                href={`https://doi.org/${publication.doi}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-main hover:underline"
+                            >
+                                {publication.doi}
+                            </a>
+                        </>
+                    )}
+                </div>
+            )}
+
+            {citationStyle === 'APS' && (
+                <div className="inline">
+                    {formatAPS(publication.authors)},{" "}
+                    <i className="font-light">{publication.title}</i>,{" "}
+                    {publication.journal}{" "}
+
+                    {publication.volume && <span className="font-semibold">{publication.volume}</span>}
+                    {publication.number && `(${publication.number})`}
+                    {publication.pages && `, ${publication.pages}`}
+
+                    {publication.year && <>{" "}({publication.year})</>}
+
+                    {publication.doi && (
+                        <>
+                            {". "}
+                            <a
+                                href={`https://doi.org/${publication.doi}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-main hover:underline"
+                            >
+                                {publication.doi}
+                            </a>
+                        </>
+                    )}
+
+                    .
+                </div>
+            )}
+        </div >
     )
 }
