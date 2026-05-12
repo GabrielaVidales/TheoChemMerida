@@ -32,6 +32,9 @@ function ProfilePage() {
         enabled: !!people?.scopusId,
     })
 
+
+    console.log(data);
+    
     return (
         <>
             {people.name === 'Gabriel Merino' ? (
@@ -491,7 +494,7 @@ export function PublicationItem({ publication, index, total, citationStyle }: Pr
                 <div className="inline">
                     {formatACS(publication.authors)}
 
-                    <i className="font-light">{publication.title}</i>. {publication.journal}.{" "}
+                    <i className="font-light">{publication.title}</i>. {publication.journal_abbrev}.{" "}
 
                     {publication.year && <span className="font-semibold">{publication.year}</span>}
 

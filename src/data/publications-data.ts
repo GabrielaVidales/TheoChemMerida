@@ -9,6 +9,7 @@ export type Publication = {
     title: string
     year: number
     journal: string
+    journal_abbrev: string
     doi: string
     volume: string
     number: string
