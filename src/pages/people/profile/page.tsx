@@ -12,8 +12,8 @@ import axios from 'axios';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import scopusLogo from '@/assets/scopus.png'
+import DOMPurify from 'dompurify'
 import type { Author, Publication } from '@/data/publications-data';
-
 
 function ProfilePage() {
     const { slug } = useParams()
@@ -34,7 +34,7 @@ function ProfilePage() {
 
 
     console.log(data);
-    
+
     return (
         <>
             {people.name === 'Gabriel Merino' ? (
@@ -447,6 +447,10 @@ type Props = {
 }
 
 export function PublicationItem({ publication, index, total, citationStyle }: Props) {
+    const cleanTitle = DOMPurify.sanitize(publication.title)
+    console.log(cleanTitle);
+
+
     function formatACS(authors: Author[]): string {
         return authors
             .map(author => {
@@ -492,9 +496,9 @@ export function PublicationItem({ publication, index, total, citationStyle }: Pr
 
             {citationStyle === 'ACS' && (
                 <div className="inline">
-                    {formatACS(publication.authors)}
+                    {formatACS(publication.authors)}{" "}
 
-                    <i className="font-light">{publication.title}</i>. {publication.journal_abbrev}.{" "}
+                    <i className="font-light" dangerouslySetInnerHTML={{ __html: cleanTitle }} />. {publication.journal_abbrev}.{" "}
 
                     {publication.year && <span className="font-semibold">{publication.year}</span>}
 
