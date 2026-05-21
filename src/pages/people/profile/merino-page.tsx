@@ -230,41 +230,56 @@ function GabrielMerinoPage({ member }: { member: People }) {
                             </div>
                         </div>
 
-                        <Collapsible open={open} onOpenChange={setOpen}>
-                            <div className="text-base text-stone-800">
-                                {(firstThree ?? []).map((p, i) => (
-                                    <PublicationItem
-                                        key={p.id ?? i}
-                                        publication={p}
-                                        index={i}
-                                        total={data?.length ?? 0}
-                                        citationStyle={citationStyle}
-                                    />
-                                ))}
-                            </div>
+                        <Collapsible open={open} onOpenChange={setOpen} className='pl-8'>
+                            <ol reversed className='list-decimal' start={open ? data.length : data.length}>
+                                <div className="text-stone-800">
+                                    {(firstThree ?? []).map((p, i) => (
+                                        <PublicationItem
+                                            key={p.id ?? i}
+                                            publication={p}
+                                            index={i}
+                                            total={data?.length ?? 0}
+                                            citationStyle={citationStyle}
+                                        />
+                                    ))}
+                                </div>
 
-                            <CollapsibleContent className="text-base text-stone-800">
-                                {(rest ?? []).map((p, i) => (
-                                    <PublicationItem
-                                        key={p.id ?? i}
-                                        publication={p}
-                                        index={i + OFFSET}
-                                        total={data?.length ?? 0}
-                                        citationStyle={citationStyle}
-                                    />
-                                ))}
-                            </CollapsibleContent>
+                                <CollapsibleContent asChild>
+                                    <ol reversed className="list-decimal overflow-visible">
+                                        {(rest ?? []).map((p, i) => (
+                                            <PublicationItem
+                                                key={p.id ?? i}
+                                                publication={p}
+                                                index={i + 3}
+                                                total={data?.length ?? 0}
+                                                citationStyle={citationStyle}
+                                            />
+                                        ))}
+                                    </ol>
+                                </CollapsibleContent>
 
-                            {rest.length > 0 && (
-                                <CollapsibleTrigger className={cn(
-                                    "group flex items-center gap-1.5 mt-3 ml-auto",
-                                    "text-sm text-main font-medium",
-                                    "hover:text-main/80 transition-colors cursor-pointer select-none"
-                                )}>
-                                    <span>{open ? "Show less" : `Show more (${rest.length})`}</span>
-                                    <ChevronDown className={cn("h-4 w-4 transition-transform duration-300", open && "rotate-180")} />
-                                </CollapsibleTrigger>
-                            )}
+                                {rest.length > 0 && (
+                                    <CollapsibleTrigger
+                                        className={cn(
+                                            "group ml-auto flex items-center",
+                                            "text-main font-medium gap-2 mt-3",
+                                            "hover:text-main/80 transition-colors",
+                                            "cursor-pointer select-none"
+                                        )}
+                                    >
+                                        <span>
+                                            {open ? "Show less" : `Show more (${rest.length})`}
+                                        </span>
+
+                                        <ChevronDown
+                                            className={cn(
+                                                "h-4 w-4 transition-transform duration-300",
+                                                open && "rotate-180"
+                                            )}
+                                        />
+                                    </CollapsibleTrigger>
+                                )}
+                            </ol>
                         </Collapsible>
                     </Card>
                 )}

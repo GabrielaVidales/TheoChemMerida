@@ -351,51 +351,55 @@ const MemberProfile = ({ member, publications }: { member: People, publications?
                                     </CardHeader>
                                     <CardContent>
                                         <Collapsible open={open} onOpenChange={setOpen}>
-                                            <div className="text-stone-800">
-                                                {(firstThree ?? []).map((p, i) => (
-                                                    <PublicationItem
-                                                        key={p.id ?? i}
-                                                        publication={p}
-                                                        index={i}
-                                                        total={publications?.length ?? 0}
-                                                        citationStyle={citationStyle}
-                                                    />
-                                                ))}
-                                            </div>
+                                            <ol reversed className='list-decimal' start={open ? publications.length : publications.length}>
+                                                <div className="text-stone-800">
+                                                    {(firstThree ?? []).map((p, i) => (
+                                                        <PublicationItem
+                                                            key={p.id ?? i}
+                                                            publication={p}
+                                                            index={i}
+                                                            total={publications?.length ?? 0}
+                                                            citationStyle={citationStyle}
+                                                        />
+                                                    ))}
+                                                </div>
 
-                                            <CollapsibleContent className="text-stone-800">
-                                                {(rest ?? []).map((p, i) => (
-                                                    <PublicationItem
-                                                        key={p.id ?? i}
-                                                        publication={p}
-                                                        index={i + 3}
-                                                        total={publications?.length ?? 0}
-                                                        citationStyle={citationStyle}
-                                                    />
-                                                ))}
-                                            </CollapsibleContent>
+                                                <CollapsibleContent asChild>
+                                                    <ol reversed className="list-decimal overflow-visible">
+                                                        {(rest ?? []).map((p, i) => (
+                                                            <PublicationItem
+                                                                key={p.id ?? i}
+                                                                publication={p}
+                                                                index={i + 3}
+                                                                total={publications?.length ?? 0}
+                                                                citationStyle={citationStyle}
+                                                            />
+                                                        ))}
+                                                    </ol>
+                                                </CollapsibleContent>
 
-                                            {rest.length > 0 && (
-                                                <CollapsibleTrigger
-                                                    className={cn(
-                                                        "group ml-auto flex items-center",
-                                                        "text-main font-medium gap-2 mt-3",
-                                                        "hover:text-main/80 transition-colors",
-                                                        "cursor-pointer select-none"
-                                                    )}
-                                                >
-                                                    <span>
-                                                        {open ? "Show less" : `Show more (${rest.length})`}
-                                                    </span>
-
-                                                    <ChevronDown
+                                                {rest.length > 0 && (
+                                                    <CollapsibleTrigger
                                                         className={cn(
-                                                            "h-4 w-4 transition-transform duration-300",
-                                                            open && "rotate-180"
+                                                            "group ml-auto flex items-center",
+                                                            "text-main font-medium gap-2 mt-3",
+                                                            "hover:text-main/80 transition-colors",
+                                                            "cursor-pointer select-none"
                                                         )}
-                                                    />
-                                                </CollapsibleTrigger>
-                                            )}
+                                                    >
+                                                        <span>
+                                                            {open ? "Show less" : `Show more (${rest.length})`}
+                                                        </span>
+
+                                                        <ChevronDown
+                                                            className={cn(
+                                                                "h-4 w-4 transition-transform duration-300",
+                                                                open && "rotate-180"
+                                                            )}
+                                                        />
+                                                    </CollapsibleTrigger>
+                                                )}
+                                            </ol>
                                         </Collapsible>
                                     </CardContent>
                                 </div>
@@ -489,11 +493,7 @@ export function PublicationItem({ publication, index, total, citationStyle }: Pr
     }
 
     return (
-        <div className="flex gap-3 mb-5">
-            <div className="font-medium">
-                {total - index}.
-            </div>
-
+        <li className="mb-5">
             {citationStyle === 'ACS' && (
                 <div className="inline">
                     {formatACS(publication.authors)}{" "}
@@ -530,8 +530,8 @@ export function PublicationItem({ publication, index, total, citationStyle }: Pr
             {citationStyle === 'APS' && (
                 <div className="inline">
                     {formatAPS(publication.authors)},{" "}
-                    <i className="font-light">{publication.title}</i>,{" "}
-                    {publication.journal}{" "}
+                    <i className="font-light" dangerouslySetInnerHTML={{ __html: cleanTitle }} />,{" "}
+                    {publication.journal_abbrev}{" "}
 
                     {publication.volume && <span className="font-semibold">{publication.volume}</span>}
                     {publication.number && `(${publication.number})`}
@@ -556,6 +556,6 @@ export function PublicationItem({ publication, index, total, citationStyle }: Pr
                     .
                 </div>
             )}
-        </div >
+        </li >
     )
 }
