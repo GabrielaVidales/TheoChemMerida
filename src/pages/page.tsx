@@ -1,8 +1,6 @@
 import PageTitle from '@/components/ui/page-title'
 import { researchAreas } from '@/data/research-areas'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle, } from "@/components/ui/card"
 import { cn } from '@/lib/utils'
-import { Separator } from '@/components/ui/separator'
 import _1 from '@/assets/img/slide1.jpg'
 import _2 from '@/assets/img/slide2.webp'
 import _3 from '@/assets/img/slide3.jpeg'
@@ -17,47 +15,47 @@ function HomePage() {
             <div>
                 <HeroSection />
 
-                <div className="px-6 md:px-12 py-14">
+                <div className="px-6 md:px-12 pt-14">
                     <PageTitle
-                        className='max-w-5xl mx-auto'
-                        title='Research Lines'
-                        subtitle='Our research interests include planar hypercoordinate carbon molecules,
-                            systems containing multiple bonds, endohedral complexes, dimetallocenes,
-                            complex materials, and molecules under extreme conditions such as high pressure.
-                            A central objective of our work is to gain fundamental insight into the
-                            structure, bonding, and electron delocalization of these systems.'
+                        className='max-w-6xl mx-auto'
+                        title='Research Areas'
+                        subtitle='Our research combines electronic structure theory, quantum chemistry, machine learning, and multiscale modeling to explore chemical bonding, molecular properties, reaction dynamics, spectroscopy, and the behavior of complex molecular systems.'
                         subtitleClassName='text-slate-600'
                     />
                 </div>
 
-                <section className='p-4 sm:p-10 space-y-10'>
-                    <div className='max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-5'>
-                        {researchAreas.map(research => (
-                            <Card key={research.name} className={cn(
-                                'relative mx-auto w-full max-w-sm shadow-lg overflow-hidden pt-0 gap-0',
-                                'group hover:shadow-accent-foreground/20 transition-shadow',
-                                'hover:-translate-y-1 transition-transform duration-300'
-                            )}>
-                                <div className="absolute inset-0 aspect-video pointer-events-none" />
-                                <img
-                                    src={research.img || "https://avatar.vercel.sh/shadcn1"}
-                                    alt={research.name}
-                                    className={cn(
-                                        'relative aspect-video w-full object-cover',
-                                        'transition-all duration-500 group-hover:scale-105',
-                                        'ease-in-out bg-slate-100/10 group-hover:shadow-xl',
-                                    )}
-                                />
-                                <Separator />
-                                <CardHeader className='py-3'>
-                                    <CardTitle className='text-base md:text-xl font-bold'>{research.name}</CardTitle>
-                                </CardHeader>
-                                <CardContent>
-                                    <CardDescription className='text-sm md:text-base'>
+                <section className="p-5 sm:p-10 space-y-10 max-w-350 mx-auto">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+                        {researchAreas.map((research, index) => (
+                            <div
+                                key={index}
+                                className={cn(
+                                    "flex flex-col lg:flex-row min-h-50 overflow-hidden rounded-xl border bg-background shadow-md/10"
+                                )}
+                            >
+                                <div className="shrink-0 w-full lg:w-auto lg:h-full lg:max-w-[50%]">
+                                    <img
+                                        src={research.img}
+                                        alt={research.name}
+                                        className="block w-full h-48 lg:h-full lg:w-auto object-cover"
+                                    />
+                                </div>
+                                <div className="flex-1 min-w-0 p-4 overflow-hidden">
+                                    <div className='flex gap-2 mb-2'>
+                                        <div className='size-7 rounded-full bg-main flex items-center justify-center text-white font-bold shrink-0'>
+                                            {index + 1}
+                                        </div>
+
+                                        <p className='tracking-tight leading-snug font-bold break-normal hyphens-none'>
+                                            {research.name.replace(/-/g, '\u2011')}
+                                        </p>
+                                    </div>
+
+                                    <p className="text-sm">
                                         {research.description}
-                                    </CardDescription>
-                                </CardContent>
-                            </Card>
+                                    </p>
+                                </div>
+                            </div>
                         ))}
                     </div>
                 </section>
