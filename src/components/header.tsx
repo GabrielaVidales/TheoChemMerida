@@ -56,17 +56,17 @@ export const Header = ({
 
     return (
         <header className={cn(
-            'h-24 w-full shadow-lg z-50 fixed top-0',
+            'h-20 w-full shadow-md z-50 fixed top-0',
             'transition-all duration-300',
             !enableScroll || scroll ? 'bg-white' : 'bg-white/5',
             variant,
         )}>
-            <div className='max-w-6xl h-24 flex justify-between items-center gap-3 mx-auto p-4'>
+            <div className='max-w-6xl h-full flex justify-between items-center gap-3 mx-auto p-4'>
                 <div className="flex justify-center absolute left-1/2 -translate-x-1/2 lg:static lg:left-auto lg:translate-x-0">
                     <Link to={routes.index} className='relative'>
                         <div
                             className={cn(
-                                "bg-main h-18 w-50 sm:w-60 md:w-65 transition-all duration-300",
+                                "bg-main h-16 w-50 sm:w-60 md:w-65 transition-all duration-300",
                                 !enableScroll || scroll ? "bg-main" : "bg-white"
                             )}
                             style={{

@@ -1,13 +1,19 @@
 import filiPic from '@/assets/members/Fili.jpg'
 import merinoPic from '@/assets/members/merino.jpg'
 import maurizio from '@/assets/members/Mauricio Pantoja_.jpg'
+import maurizioResearch from '@/assets/members/main_researchs/MLIPs_graphic_2_cut - Maurizio Pantoja.png'
 import fernandoMur from '@/assets/members/Fer Murillo_.jpg'
+import fernandoMurReserach from '@/assets/members/main_researchs/toc-co2-1 - Fernando Murillo.png'
 import alanQuintal from '@/assets/members/Alan Quintal.jpg'
 import lissNoriega from '@/assets/members/liss Noriega_.jpg'
 import fernandoVill from '@/assets/members/Fer Villarino_.jpg'
+import fernandoResearch from '@/assets/members/main_researchs/group - Fernando Martinez Villarino.png'
 import elier from '@/assets/members/Elier Abreu.jpg'
+import elierResearch from '@/assets/members/main_researchs/Imagenproyecto - Elier Enrique Abreu Martinez.png'
+
 import rafael from '@/assets/members/Rafa Flores.jpg'
 import aura from '@/assets/members/perfil - aura ximena gomez heredia.jpeg'
+import auraResearch from '@/assets/members/main_researchs/Abstract_SII - aura ximena gomez heredia.png'
 import aura1 from '@/assets/members/gallery/aura1.jpeg'
 import aura2 from '@/assets/members/gallery/aura2.jpeg'
 import aura3 from '@/assets/members/gallery/aura3.jpeg'
@@ -15,10 +21,14 @@ import aura4 from '@/assets/members/gallery/aura4.jpeg'
 import aura5 from '@/assets/members/gallery/aura5.jpeg'
 import aura6 from '@/assets/members/gallery/aura6.jpeg'
 import diego from '@/assets/members/Diego Roman.jpg'
+import diegoResearch from '@/assets/members/main_researchs/ptC - Diego Román M.png'
 import gerardo from '@/assets/members/gerardo.avif'
+import gerardoResearch from '@/assets/members/main_researchs/anie70078-gra-0001-m - Gerardo Hernandez.png'
+
 import danielVill from '@/assets/members/Daniel Villanueva_.jpg'
 import danielaAlv from '@/assets/members/Daniela Alvarado_.jpeg'
 import maxi from '@/assets/members/Maximiliano Yañez_.jpg'
+import maxiResearch from '@/assets/members/main_researchs/Grafeno apilamiento - Maximiliano Yáñez.jpeg'
 import emma from '@/assets/members/Emmanuel Soberanis.jpg'
 import aileen from '@/assets/members/Aileen.jpg'
 import gabriela from '@/assets/members/gabrielaVid.jpeg'
@@ -28,9 +38,14 @@ import bojorquez from '@/assets/members/Carlos Eduardo Bojórquez Ruiz.jpg'
 import dorian from '@/assets/members/dorian.jpg'
 import brishel from '@/assets/members/brishel acosta.jpeg'
 import jessica from '@/assets/members/Jessica Arcudia.jpg'
+import jessicaResearch from '@/assets/members/main_researchs/fosforeno-metal - Jessica Arcudia.png'
+
 import invin from '@/assets/members/Irvin Tamayo.jpeg'
+import ivingResearch from '@/assets/members/main_researchs/Captura de pantalla 2026-04-24 184718 - Irvin Tamayo.png'
 import miguel from '@/assets/members/Miguel.jpg'
+import miguelResearch from '@/assets/members/main_researchs/Miguel_Fernandez_Montilla_Molina_Representative_Image_Boron_Clusters_NequIP_DFT_Comparison - Miguel Fernández-Montilla Molina.png'
 import gabyCastillo from '@/assets/members/Gaby Castillo_.jpg'
+import gabyCastilloResearch from '@/assets/members/main_researchs/Planar_tetracoordinate_Oxygen_TOC - Gabriela CT_1.jpg'
 import sebastian from '@/assets/members/Sebastian Hernandez.jpg'
 import daniAlvarado from '@/assets/members/gallery/RMFQT 2023 - Daniela Alvarado.jfif'
 import aileen1 from '@/assets/members/gallery/aileen1.jpeg'
@@ -44,8 +59,8 @@ import alan6 from '@/assets/members/Alan_Quintal_UltimaSalidaPrePandemia - Alan 
 
 
 import miguel1 from '@/assets/members/gallery/foto3 - Miguel Fernández-Montilla Molina.jpeg'
-import rafa1 from '@/assets/members/gallery/Rafael Flores Larrañaga.jpg'
 import lisset1 from '@/assets/members/gallery/IMG_0829 - Lisset Noriega.jpeg'
+import lissetResearch from '@/assets/members/main_researchs/TOC_FV - Lisset Noriega.png'
 import maxi1 from '@/assets/members/gallery/Encuentro posgrados - Maximiliano Yáñez.jpeg'
 import maurizio1 from '@/assets/members/gallery/Maurizio Pantoja.jpg'
 import soberanis1 from '@/assets/members/gallery/soberanis1.jpg'
@@ -75,6 +90,12 @@ import elier3 from '@/assets/members/gallery/elier3.jpg'
 import elier4 from '@/assets/members/gallery/elier4.jpg'
 
 
+import researchRafaFlores from '@/assets/members/main_researchs/A5 - Rafael Flores.jpeg'
+import rafa1 from '@/assets/members/gallery/Rafael Flores Larrañaga.jpg'
+import rafaGallery1 from '@/assets/members/main_researchs/A1 - Rafael Flores.jpeg'
+import rafaGallery2 from '@/assets/members/main_researchs/A2 - Rafael Flores.jpg'
+import rafaGallery3 from '@/assets/members/main_researchs/A3 - Rafael Flores.jpg'
+import rafaGallery4 from '@/assets/members/main_researchs/A4 - Rafael Flores.jpg'
 
 
 // #region Type definitions
@@ -335,6 +356,7 @@ export const people: People[] = [
         role: 'postdoctoral_researcher',
         mainResearchLine: 'Development of machine learning interatomic potentials for exploring the potential energy surface of atomic clusters',
         mainResearchLineDesc: 'This research line aims to accelerate the exploration of the potential energy surface of atomic clusters by utilizing machine learning interatomic potentials based on neural networks, coupled with global optimization algorithms. These potentials optimize geometries and calculate energies of chemical systems accurately and at a much lower computational cost than first-principles methods. The potentials are trained iteratively through active learning procedures, employing datasets derived from density functional theory calculations.',
+        mainResearchLineImage: maurizioResearch,
         researchLine: [
             'Investigation of the electronic structure of pure and doped boron clusters.',
             'Development of automated workflows implementing machine learning methods for the exploration of atomic clusters.',
@@ -378,6 +400,8 @@ export const people: People[] = [
         role: 'postdoctoral_researcher',
         mainResearchLine: 'Computational materials science of layered materials',
         mainResearchLineDesc: 'This research line focuses on understanding and predicting the structural, electronic, and energetic properties of materials, including low-dimensional systems, as well as extended frameworks such as COFs and MOFs. It includes the study of stacking configurations and their influence on material properties, with a particular emphasis on the development of representation languages to systematically describe and generate complex structures.',
+        mainResearchLineImage: jessicaResearch,
+
         softwareTools: [
             {
                 name: 'JAM algorithm',
@@ -473,6 +497,7 @@ export const people: People[] = [
         role: 'postdoctoral_researcher',
         mainResearchLine: 'Computational studies of planar hypercoordinate systems.',
         mainResearchLineDesc: 'Design and identification of stable planar hypercoordinate species through systematic PES exploration under electron-counting rules.',
+        mainResearchLineImage: gabyCastilloResearch,
         researchLine: [
             'Planar Hypercoordinate Atoms',
             'Boron Clusters',
@@ -487,15 +512,22 @@ export const people: People[] = [
     {
         name: 'Fernando Murillo Cordova',
         email: [
+            'fernando.murillo@cinvestav.mx',
             'fermurilloc@gmail.com',
         ],
-        description: 'Postdoctoral researcher specializing in computational and theoretical chemistry, with a focus on reaction mechanisms, boron chemistry, and CO₂ capture.',
-        biography: "In 2020, Fernando Murillo received his PhD in Material Sciences from Universidad Juárez Autónoma de Tabasco in Mexico, working on reaction mechanisms involved in carbon dioxide capture. Currently, he is a postdoctoral researcher at Cinvestav Mérida under the supervision of Gabriel Merino. His research interests include boron chemistry, gold catalysis in organic reactions, and aromaticity.",
         role: 'postdoctoral_researcher',
+
+        biography: 'Fernando obtained a B.S. in chemical engineering from ITVH in 2009. Then, in 2016, he received an M.S. in Materials Science from UJAT. In 2020, he earned a Ph.D. in the same field from UJAT, studying the reaction mechanisms involved in carbon dioxide capture. He is currently a postdoctoral researcher at Cinvestav Mérida. His research interests include electronic structure and reaction mechanisms in boron chemistry, gold catalysis in organic reactions, and aromaticity. In his spare time, he enjoys playing soccer and classical guitar.',
+
+        mainResearchLine: 'Elucidation of Reaction Mechanisms of Carbon Dioxide Capture',
+        mainResearchLineDesc: 'His research focuses on the mechanistic elucidation of organic and inorganic reactions involved in CO₂ capture processes using amine-based absorbents, with the aim of establishing quantitative structure–reactivity relationships that enable the rational design of improved capture systems. The approach combines high-level quantum chemical calculations, automated exploration of the potential energy surface (PES), and data-driven modeling.',
+        mainResearchLineImage: fernandoMurReserach,
+
         researchLine: [
-            'Reaction Mechanisms',
             'Boron Chemistry',
             'CO2 Capture',
+            'Hydroboration and Retrohydroboration',
+            'Elucidation of Reaction Mechanisms',
         ],
         currentProjects: [
             'Aromaticity and Antiaromaticity in Pericondensed Conjugated Hydrocarbons',
@@ -553,7 +585,7 @@ export const people: People[] = [
             'SurfinPES: GUI development.'
         ],
 
-        scopusId:'57223337398',
+        scopusId: '57223337398',
         softwareTools: [
             {
                 name: 'Eyringpy',
@@ -637,8 +669,8 @@ export const people: People[] = [
         biography: "Graduate of the Chemical Sciences Program in the area of Physical Chemistry from BUAP. During my master's and doctoral studies, I focused my research on the application of Density Functional Theory (DFT) for the analysis of spectroscopic properties in molecular systems. Currently, I am conducting a postdoctoral fellowship in the Department of Applied Physics at CINVESTAV-Mérida, where I have expanded my focus toward computational astrochemistry. My research centers on isomer generation and their spectroscopic identification in the interstellar medium, as well as the study of fundamental reaction mechanisms for molecular evolution in space.",
 
         mainResearchLine: 'Theoretical Astrochemistry and Computational Exploration of Chemical Space',
-
         mainResearchLineDesc: 'Theoretical astrochemistry focused on the computational exploration of the chemical space of molecules of astrochemical interest, including isomer generation and the prediction of spectroscopic properties for their detection in the interstellar medium.',
+        mainResearchLineImage: lissetResearch,
 
         role: 'postdoctoral_researcher',
         researchLine: [
@@ -646,7 +678,7 @@ export const people: People[] = [
             'Isomer Generation and Spectroscopic Identification',
             'Rotational and Vibrational Spectroscopy',
         ],
-        scopusId:'57205405396',
+        scopusId: '57205405396',
         linkedin: 'https://mx.linkedin.com/in/lisset-noriega-7bb9b657',
         orcid: 'https://orcid.org/0000-0002-7783-7920',
         profilePic: lissNoriega,
@@ -684,6 +716,8 @@ export const people: People[] = [
 
         mainResearchLine: 'Aromaticity',
         mainResearchLineDesc: 'Aromaticity remains an active area of research in theoretical and computational chemistry, focused on clarifying its still not fully defined nature and its relationship to molecular stability, optoelectronic properties, and reactivity. Over the past two centuries, aromatic systems have been studied extensively, serving as fundamental models for the development of theoretical methods and for the design of functional compounds in modern chemistry.',
+        mainResearchLineImage: fernandoResearch,
+
         researchLine: [
             'Aromaticity',
             'Theoretical Chemical Kinetics',
@@ -696,7 +730,7 @@ export const people: People[] = [
         ],
 
         role: 'phd_student_cinvestav',
-        scopusId:'60247151000',
+        scopusId: '60247151000',
         linkedin: 'https://www.linkedin.com/in/fernando-jos%C3%A9-mart%C3%ADnez-villarino-2922b7163/',
         orcid: 'https://orcid.org/0009-0008-7178-3651',
         profilePic: fernandoVill,
@@ -726,7 +760,7 @@ export const people: People[] = [
 
         mainResearchLine: 'Desarrollo de modelos QSAR/QSPR',
         mainResearchLineDesc: 'Esta línea se centra en la aplicación de metodologías computacionales para la predicción de propiedades fisicoquímicas y actividad biológica de compuestos. Incluye la implementación y automatización de flujos de trabajo en KNIME, con el objetivo de facilitar el análisis de datos y mejorar la eficiencia en la generación de modelos predictivos que apoyen el diseño racional de nuevas moléculas.',
-        mainResearchLineImage: '',
+        mainResearchLineImage: elierResearch,
 
         researchLine: [
             'Elucidación de mecanismos de reacción y estudios de superficies de energía potencial mediante DFT.',
@@ -788,21 +822,21 @@ export const people: People[] = [
             "Rafael Flores Larrañaga is a junior researcher with an interdisciplinary background. He holds a Bachelor’s degree in Biology and a Master’s degree in Chemical Sciences, specializing in Physical Chemistry, both earned at the Benemérita Universidad Autónoma de Puebla (BUAP).",
             "He is currently pursuing a PhD in Chemical Sciences at the same institution, where he conducts research in theoretical astrochemistry. His work focuses on the study of complex organic molecules containing two sulfur atoms (such as $CH_4S_2$), specifically the characterization of isomers using ab initio methods, composite schemes, and anharmonic calculations to predict relevant spectroscopic properties.",
         ],
-        mainResearchLine: 'Astroquímica teórica de moléculas interestelares ricas en azufre.',
-        mainResearchLineDesc: 'Estudio computacional de moléculas con relevancia astroquímica mediante métodos ab initio, esquemas compuestos y cálculos anharmónicos, enfocado en la caracterización estructural, conformacional y espectroscópica de isómeros y conformeros, con el objetivo de predecir propiedades que faciliten su detección en el medio interestelar.',
-        mainResearchLineImage: '',
+        mainResearchLine: 'Theoretical astrochemistry of sulfur-rich interstellar molecules.',
+        mainResearchLineDesc: 'Computational study of molecules with astrochemical relevance using ab initio methods, composite schemes, and anharmonic calculations, focused on the structural, conformational, and spectroscopic characterization of isomers and conformers, with the aim of predicting properties that facilitate their detection in the interstellar medium.',
+        mainResearchLineImage: researchRafaFlores,
 
         researchLine: [
-            'Astroquímica teórica de moléculas interestelares ricas en azufre.',
-            'Estudio de isomería y análisis conformacional de sistemas con dos átomos de azufre.',
-            'Cálculo de propiedades espectroscópicas (rotacionales y vibracionales) para la detección en el medio interestelar.',
-            'Aplicación de métodos ab initio, DFT y esquemas compuestos de alta precisión.',
-            'Exploración de mecanismos de reacción y estabilidad de especies de relevancia astroquímica.',
+            'Theoretical astrochemistry of sulfur-rich interstellar molecules.',
+            'Study of isomerism and conformational analysis of systems with two sulfur atoms.',
+            'Calculation of spectroscopic properties (rotational and vibrational) for detection in the interstellar medium.',
+            'Application of ab initio methods, DFT, and high-precision composite schemes.',
+            'Exploration of reaction mechanisms and stability of astrochemically relevant species.',
         ],
 
         currentProjects: [
-            'Estudio teórico de CH4S2: Participa en la caracterización estructural, energética y espectroscópica de isómeros y conformeros mediante métodos ab initio y esquemas compuestos. Su contribución incluye la optimización de geometrías y predicción de propiedades relevantes para su posible detección en el medio interestelar.',
-            'Estudio teórico de C2H6S2: Colabora en la exploración del espacio conformacional y en la determinación de energías relativas de diferentes isómeros. Su rol se enfoca en la implementación de metodologías computacionales, cálculos de alta precisión y análisis de propiedades espectroscópicas y termodinámicas.',
+            'Theoretical study of CH4S2: Participates in the structural, energetic, and spectroscopic characterization of isomers and conformers using ab initio methods and composite schemes. His contribution includes geometry optimization and prediction of relevant properties for potential detection in the interstellar medium.',
+            'Theoretical study of C2H6S2: Collaborates in the exploration of the conformational space and determination of relative energies of different isomers. His role focuses on the implementation of computational methodologies, high-precision calculations, and analysis of spectroscopic and thermodynamic properties.',
         ],
 
         linkedin: 'https://www.linkedin.com/in/rafael-flores-larra%C3%B1aga-007525355/',
@@ -821,7 +855,27 @@ export const people: People[] = [
                 caption: [
                     'Aromaticity 2025 Congress in Mérida, Yucatán.'
                 ]
-            }
+            },
+            {
+                img: rafaGallery1,
+                caption: [
+                ]
+            },
+            {
+                img: rafaGallery2,
+                caption: [
+                ]
+            },
+            {
+                img: rafaGallery3,
+                caption: [
+                ]
+            },
+            {
+                img: rafaGallery4,
+                caption: [
+                ]
+            },
         ]
     },
     {
@@ -834,6 +888,7 @@ export const people: People[] = [
 
         mainResearchLine: "Chemical Kinetics and Quantum Tunneling Effects",
         mainResearchLineDesc: "Focuses on the study of microcanonical rate constants using RRKM theory, incorporating tunneling corrections through the Eyringpy program. Her work includes implementing software improvements to enhance the accuracy and analysis of kinetic calculations.",
+        mainResearchLineImage: auraResearch,
 
         researchLine: [
             "Aura's research focuses on the study of chemical kinetics and quantum tunneling effects. She specializes in applying RRKM theory to determine microcanonical rate constants, incorporating tunneling effect corrections. To achieve this, she uses the Eyringpy program, developed by her research group in 2019, implementing improvements that enhance the analysis and accuracy of kinetic calculations.",
@@ -924,6 +979,7 @@ export const people: People[] = [
         ],
         mainResearchLine: 'Automated discovery of planar tetracoordinate and pentacoordinate molecular systems.',
         mainResearchLineDesc: 'This research focuses on the systematic and automated identification of planar tetracoordinate and pentacoordinate compounds through computational methods. It involves the development of workflows for generating candidate structures, performing quantum chemical calculations, and analyzing geometric and electronic features to assess stability and viability.',
+        mainResearchLineImage: diegoResearch,
         researchLine: [
             "Automated discovery and screening of planar tetracoordinate and pentacoordinate compounds",
             "Development of command-line tools for molecular symmetry analysis."
@@ -955,7 +1011,7 @@ export const people: People[] = [
 
         mainResearchLine: 'Análisis de boranos',
         mainResearchLineDesc: 'Exploración de superficies de energía potencial de sistemas de boro dopados con H o elementos del grupo halógeno, en búsqueda de generalizar las reglas para el conteo de electrones.',
-        mainResearchLineImage: '',
+        mainResearchLineImage: gerardoResearch,
 
 
         scopusId: '57201877089',
@@ -1078,6 +1134,7 @@ export const people: People[] = [
         role: 'masters_student_cinvestav',
         mainResearchLine: 'Computational modeling of low-dimensional materials',
         mainResearchLineDesc: 'Study of electronic properties in two dimensional materials. Exploration of possible stacking configurations, stability and characteristics.',
+        mainResearchLineImage: maxiResearch,
         researchLine: [
             "Computational studies of two dimensional materials",
             "Stacking effects on layered materials",
@@ -1114,7 +1171,7 @@ export const people: People[] = [
             "Implementation of a Graphical User Interface (GUI) for the program SurfinPES. My role in the project is to design and implement the graphical interface, ensuring that its structure and functionality make interacting with the program simpler and more intuitive.",
             "Adapting the new version of the scientific software SmilX to a graphical user interface (GUI). My role in the project involves participating in the redesign and implementation of this new version of the program SmilX, contributing to optimizing its functionality and user experience.",
         ],
-        scopusId:'60214591700',
+        scopusId: '60214591700',
         linkedin: 'www.linkedin.com/in/e-soberanis',
         role: 'undergraduate_research_intern',
         profilePic: emma,
@@ -1233,7 +1290,7 @@ Webmaster Team Leader, coordinating the development and deployment of the offici
             `HPC Python Tools
 Development of Python tools for automation and parallel computational workflows.`
         ],
-        scopusId:'60214164700',
+        scopusId: '60214164700',
         linkedin: 'https://www.linkedin.com/in/gabriela-vidales/',
         role: 'undergraduate_research_intern',
         profilePic: gabriela,
@@ -1362,11 +1419,18 @@ Development of Python tools for automation and parallel computational workflows.
         name: 'Irvin de Jesús Tamayo Castillo',
         email: [
             'tamayoirvin0@gmail.com',
+            'a19201807@alumnos.uady.mx',
         ],
         description: 'Undergraduate researcher in theoretical physics with a focus on computational chemistry and materials science.',
         biography: "Irvin de Jesús Tamayo Castillo is an undergraduate student in Engineering Physics at the Universidad Autónoma de Yucatán (UADY). His academic interests focus on theoretical physics, with research experience in computational chemistry and materials science.",
+
+        mainResearchLine: 'Física Computacional y Modelado Molecular.',
+        mainResearchLineDesc: 'Estudio computacional de isómeros en el universo: Ejecuto el cálculo de energías de configuración, el análisis de estabilidad termodinámica y la extracción de datos teóricos de moléculas prebióticas en el marco de la investigación.',
+        mainResearchLineImage: ivingResearch,
+
+
         researchLine: [
-            'Research on molecular isomers in astrophysical environments, including property identification, optimization, and classification to determine potential candidates for detection using astronomical observations.'
+            'Física Computacional y Modelado Molecular: Estudio de la estabilidad energética de isómeros prebióticos en el universo mediante la Teoría de los Funcionales de la Densidad (DFT).',
         ],
         currentProjects: [
             'Research internship under the supervision of Dr. Lisset Noriega on molecular isomers in the universe, focusing on their characterization, optimization, and identification as potential candidates for detection through professional telescopes.'
@@ -1397,8 +1461,17 @@ Development of Python tools for automation and parallel computational workflows.
         ],
         description: 'Undergraduate researcher focused on computational physics and machine learning for materials modeling.',
         biography: "Bachelor’s student in Engineering Physics at UADY. Currently undertaking a research stay at CINVESTAV Mérida under the supervision of Dr. Maurizio Alejandro Pantoja Hernández and Dr. Filiberto Ortiz Chi. Interested in theoretical physics and computational physics.",
+
+        mainResearchLine: 'Computational physics and machine-learning interatomic potentials for boron clusters',
+        mainResearchLineDesc: 'Computational study of boron clusters using ab initio methods and machine learning. The project focuses on generating datasets of structures, energies, and forces to train interatomic potentials with NequIP that can reproduce the system’s potential energy surface, enabling more efficient analysis of stability, dynamics, and connections between local minima in boron clusters.',
+        mainResearchLineImage: miguelResearch,
+
         researchLine: [
-            'Computational physics, with a focus on training machine-learning interatomic potentials for boron clusters.'
+            'Computational physics',
+            'Computational modeling of boron clusters',
+            'Machine-learning interatomic potentials',
+            'Ab initio electronic-structure methods',
+            'Potential energy surfaces and local minima in atomic clusters',
         ],
         currentProjects: [
             'Training of an interatomic potential for boron clusters using machine learning. Computational study of boron clusters using ab initio methods and machine learning. I generate datasets of structures, energies, and forces to train interatomic potentials with NequIP that can reproduce the system’s potential energy surface, enabling more efficient analysis of stability, dynamics, and connections between minima in boron clusters.',
@@ -1455,7 +1528,6 @@ Development of Python tools for automation and parallel computational workflows.
         email: [
             'leohedgwolf@gmail.com',
         ],
-        description: 'Computer Systems Engineering student focused on cybersecurity and infrastructure, with experience in bastion host implementation.',
         biography: "Computer Systems Engineering student who has participated in several recognized projects within his institution and is currently responsible for developing a bastion host to protect the HPC systems at CINVESTAV.",
         researchLine: [
             "I am currently working on the development of a bastion host to protect the Kukulcán and Itzel HPC systems at CINVESTAV Mérida, while continuously learning about information security and networking throughout the process."
@@ -1471,7 +1543,6 @@ Development of Python tools for automation and parallel computational workflows.
         email: [
             'brishel_acosta@hotmail.com',
         ],
-        description: 'Maurizio A. Pantoja Hernández is a chemist specializing in computational chemistry and machine learning, currently a postdoctoral researcher at Cinvestav Mérida.',
         biography: "3 years of experience in software development, specializing in cybersecurity. I enjoy finding solutions to complex problems through innovation. I stand out for my ability to work under pressure and optimize processes, focusing on results and continuous learning.",
         researchLine: [
             'Developing augmented reality software solutions while strengthening cybersecurity protocols.',

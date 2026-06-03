@@ -29,7 +29,6 @@ function ProfilePage() {
             const res = await axios.get(`${url}/public/files/publications/${people.scopusId}/`)
             return res.data
         },
-        enabled: !!people?.scopusId,
     })
 
 
@@ -253,7 +252,7 @@ const MemberProfile = ({ member, publications }: { member: People, publications?
                                     </CardHeader>
                                     <CardContent className='flex flex-col md:flex-row gap-5'>
                                         {member.mainResearchLineImage && (
-                                            <div className='flex-1 md:flex-2 w-full overflow-hidden rounded-lg aspect-video md:aspect-square self-start'>
+                                            <div className='flex-1 border border-accent-foreground md:flex-2 w-full overflow-hidden rounded-lg aspect-video md:aspect-square self-start'>
                                                 <img
                                                     src={member.mainResearchLineImage || 'https://picsum.photos/seed/member/600/600'}
                                                     alt={member.mainResearchLine}
@@ -261,7 +260,7 @@ const MemberProfile = ({ member, publications }: { member: People, publications?
                                                 />
                                             </div>
                                         )}
-                                        <div className='flex-1 md:flex-5'>
+                                        <div className='flex-1 md:flex-4'>
                                             <p className="text-stone-800 font-semibold leading-relaxed text-base md:text-lg">
                                                 {member.mainResearchLine}
                                             </p>

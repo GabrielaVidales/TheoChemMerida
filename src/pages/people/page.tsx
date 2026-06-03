@@ -2,7 +2,7 @@ import { people, roles, slugify, type People } from '@/data/people'
 import { Link } from 'react-router'
 import { cn } from '@/lib/utils'
 import { routes } from '@/routes/routes'
-import { User2 } from 'lucide-react'
+import { ExternalLink } from 'lucide-react'
 import PageTitle from '@/components/ui/page-title'
 import PaperSection from '@/components/paper-section'
 import { Helmet } from 'react-helmet-async'
@@ -40,7 +40,7 @@ function PeoplePage() {
                 />
             </PaperSection>
 
-            <div className="max-w-5xl mx-auto px-6 md:px-12 py-16 space-y-24">
+            <div className="max-w-6xl mx-auto px-6 md:px-12 py-16 space-y-24">
                 {SECTIONS.map(({ key, label }) => {
                     const members = people.filter(p => p.role === key)
                     if (!members.length) return null
@@ -60,10 +60,10 @@ function PeoplePage() {
                             </div>
 
                             <div className={cn(
-                                'grid gap-5',
+                                'grid gap-3',
                                 key === 'leader'
                                     ? 'grid-cols-2 sm:grid-cols-4'
-                                    : 'grid-cols-2 sm:grid-cols-4 md:grid-cols-5',
+                                    : 'grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6',
                             )}>
                                 {key === 'leader' && <div className="hidden sm:block" />}
                                 {members.map(p => (
@@ -92,7 +92,7 @@ function MemberCard({ member }: MemberCardProps) {
     return (
         <div className='group'>
             <div className={cn(
-                'mb-4 overflow-hidden border-2',
+                'mb-2 overflow-hidden border-2',
                 'transition-all duration-200 group-hover:scale-105 group-hover:shadow-lg',
             )}>
                 <Link to={memberUrl || '#'} className="relative block cursor-pointer">
@@ -101,10 +101,10 @@ function MemberCard({ member }: MemberCardProps) {
                         'opacity-0 hover:opacity-100 transition-opacity duration-300',
                         'group/img'
                     )}>
-                        <p className="text-white text-xs font-bold uppercase tracking-widest translate-y-5 group-hover/img:translate-y-0 transition-transform duration-300">
-                            View Profile
+                        <p className="text-white text-xs font-medium translate-y-5 group-hover/img:translate-y-0 transition-transform duration-300">
+                            More Information
                         </p>
-                        <User2 className='text-white opacity-0 group-hover/img:opacity-100 transition-all duration-600' />
+                        <ExternalLink className='text-white translate-y-5 group-hover/img:translate-y-0 transition-all duration-300' />
                     </div>
                     <img
                         src={member.profilePic || 'https://avatar.vercel.sh/shadcn1'}
@@ -117,7 +117,7 @@ function MemberCard({ member }: MemberCardProps) {
                     />
                 </Link>
             </div>
-            <div className='px-2'>
+            <div>
                 <p className='text-sm sm:text-sm  text-foreground font-semibold items-start'>
                     {member.name}
                 </p>
