@@ -1,6 +1,6 @@
 import { getPeopleFromSlug, type People } from '@/data/people'
-import { Mail, Award, BookOpen, FileText, ChevronDown } from 'lucide-react';
-import { Card, } from "@/components/ui/card"
+import { Mail, Award, BookOpen, FileText, ChevronDown, Download } from 'lucide-react';
+import { Card, CardContent, CardHeader, } from "@/components/ui/card"
 import 'react-photo-view/dist/react-photo-view.css';
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router';
@@ -11,6 +11,10 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/component
 import { PublicationItem } from './page';
 import { cn } from '@/lib/utils';
 import scopusLogo from '@/assets/scopus.png'
+import { Switch } from '@/components/ui/switch';
+import { Label } from '@/components/ui/label';
+import { Button } from '@/components/ui/button';
+import type { Publication } from '@/data/publications-data';
 
 
 function GabrielMerinoPage({ member }: { member: People }) {
@@ -20,11 +24,18 @@ function GabrielMerinoPage({ member }: { member: People }) {
         queryKey: ['profile', slug, people?.scopusId],
         queryFn: async () => {
             if (!slug) return null
-            if (!people?.scopusId) return null
+            if (!people?.backendName) return null
 
-            const url = import.meta.env.VITE_BACKEND_URL
-            const res = await axios.get(`${url}/public/files/members?author-name=merino&format=json`)            
-            return res.data.papers
+            try {
+                const url = import.meta.env.VITE_BACKEND_URL
+                const res = await axios.get(`${url}/public/files/members?author-name=${people.backendName}&extension=json`)
+                if (res.status !== 200) {
+                    return []
+                }
+                return res.data.papers
+            } catch (error) {
+                return []
+            }
         },
         enabled: !!people?.scopusId,
     })
@@ -32,8 +43,33 @@ function GabrielMerinoPage({ member }: { member: People }) {
     const OFFSET = 10
     const [open, setOpen] = useState(false)
     const [citationStyle, setCitationStyle] = useState<"ACS" | "APS">('ACS')
-    const firstThree = data?.slice(0, OFFSET) ?? []
-    const rest = data?.slice(OFFSET) ?? []
+    const [includeCitations, setIncludeCitations] = useState<boolean>(false)
+
+    const firstThree: Publication[] = data?.slice(0, OFFSET) ?? []
+    const rest: Publication[] = data?.slice(OFFSET) ?? []
+
+    const handleDownloadCitations = async () => {
+        try {
+            const url = import.meta.env.VITE_BACKEND_URL;
+            const fullUrl = `${url}/public/files/members/?author-name=${member.backendName}&extension=docx&citedby=${includeCitations}&style=${citationStyle.toLowerCase()}`
+            const res = await axios.get(fullUrl, {
+                responseType: 'blob'
+            });
+            const blobUrl = window.URL.createObjectURL(new Blob([res.data]));
+            const link = document.createElement('a');
+            link.href = blobUrl;
+            link.setAttribute('download', `${member.name} Publications.docx`);
+            link.click();
+
+            window.URL.revokeObjectURL(blobUrl);
+
+        } catch (error) {
+            if (import.meta.env.DEV) {
+                console.log(error.response);
+            }
+        }
+    };
+
     return (
         <>
             <section className='bg-main/10 w-full border-b-2 '>
@@ -203,84 +239,129 @@ function GabrielMerinoPage({ member }: { member: People }) {
                 )}
 
                 {data?.length > 0 && (
-                    <Card className="p-5">
-                        <div className="flex items-center gap-3 pb-3 mb-3 border-b border-border">
-                            <div className="bg-main size-9 rounded-full flex items-center justify-center text-white shrink-0">
-                                <FileText size={16} />
+                    <Card>
+                        <CardHeader className="flex items-center gap-3 pb-3 border-b border-border">
+                            <div className='bg-main size-10 rounded-full flex items-center justify-center text-white'>
+                                <FileText />
                             </div>
-                            <h2 className="text-xl font-medium">Publications</h2>
+
+                            <h2 className="text-2xl font-medium">Publications</h2>
+
                             <span className="text-xs text-muted-foreground bg-muted rounded-full px-2 py-0.5">
                                 {data.length}
                             </span>
-                            <div className="ml-auto">
-                                <ToggleGroup
-                                    type="single"
-                                    value={citationStyle}
-                                    variant="outline"
-                                    size="sm"
-                                    onValueChange={(value) => {
-                                        if (value) {
-                                            setCitationStyle(value as "ACS" | "APS");
-                                        }
-                                    }}
-                                >
-                                    <ToggleGroupItem value="ACS" className="rounded-lg text-xs font-semibold">ACS</ToggleGroupItem>
-                                    <ToggleGroupItem value="APS" className="rounded-lg text-xs font-semibold">APS</ToggleGroupItem>
-                                </ToggleGroup>
-                            </div>
-                        </div>
+                        </CardHeader>
+                        <CardContent>
+                            <div className="flex flex-wrap items-center justify-between gap-3 p-3 rounded-xl border border-border bg-muted/20">
+                                <div className="flex items-center justify-between gap-3">
+                                    <div className="flex flex-col">
+                                        <span className="text-sm font-medium text-muted-foreground">
+                                            Citation style
+                                        </span>
+                                        <span className="text-xs text-muted-foreground">
+                                            Choose formatting standard
+                                        </span>
+                                    </div>
 
-                        <Collapsible open={open} onOpenChange={setOpen} className='pl-8'>
-                            <ol reversed className='list-decimal' start={open ? data.length : data.length}>
-                                <div className="text-stone-800">
-                                    {(firstThree ?? []).map((p, i) => (
-                                        <PublicationItem
-                                            key={p.id ?? i}
-                                            publication={p}
-                                            index={i}
-                                            total={data?.length ?? 0}
-                                            citationStyle={citationStyle}
-                                        />
-                                    ))}
+                                    <div className="flex items-center bg-muted/40 border border-border rounded-xl p-1">
+                                        <button
+                                            onClick={() => setCitationStyle("ACS")}
+                                            className={cn(
+                                                "cursor-pointer px-3 py-1.5 text-xs font-semibold rounded-lg transition",
+                                                citationStyle === "ACS"
+                                                    ? "bg-main text-white shadow-sm"
+                                                    : "text-muted-foreground hover:text-foreground"
+                                            )}
+                                        >
+                                            ACS
+                                        </button>
+                                        <button
+                                            onClick={() => setCitationStyle("APS")}
+                                            className={cn(
+                                                "cursor-pointer px-3 py-1.5 text-xs font-semibold rounded-lg transition",
+                                                citationStyle === "APS"
+                                                    ? "bg-main text-white shadow-sm"
+                                                    : "text-muted-foreground hover:text-foreground"
+                                            )}
+                                        >
+                                            APS
+                                        </button>
+                                    </div>
                                 </div>
 
-                                <CollapsibleContent asChild>
-                                    <ol reversed className="list-decimal overflow-visible">
-                                        {(rest ?? []).map((p, i) => (
+                                <div className="flex flex-col-reverse gap-3 ml-auto">
+                                    <div className="flex items-center gap-2">
+                                        <Switch
+                                            id="citations"
+                                            checked={includeCitations}
+                                            onCheckedChange={setIncludeCitations}
+                                            className="data-[state=checked]:bg-main"
+                                        />
+                                        <Label htmlFor="citations" className="cursor-pointer text-xs text-muted-foreground">
+                                            Include paper citations
+                                        </Label>
+                                    </div>
+                                    <Button
+                                        onClick={handleDownloadCitations}
+                                        variant="outline"
+                                        size="sm"
+                                        className="flex items-center gap-2 border-border hover:bg-muted/50"
+                                    >
+                                        <Download className="h-4 w-4" />
+                                        Download All Publications
+                                    </Button>
+                                </div>
+                            </div>
+                        </CardContent>
+                        <CardContent>
+                            <Collapsible open={open} onOpenChange={setOpen}>
+                                <ol reversed className='list-decimal pl-4 sm:pl-6 md:pl-8' start={open ? data.length : data.length}>
+                                    <div className="text-stone-800">
+                                        {(firstThree ?? []).map((p, i) => (
                                             <PublicationItem
                                                 key={p.id ?? i}
                                                 publication={p}
-                                                index={i + 3}
-                                                total={data?.length ?? 0}
                                                 citationStyle={citationStyle}
                                             />
                                         ))}
-                                    </ol>
-                                </CollapsibleContent>
+                                    </div>
 
-                                {rest.length > 0 && (
-                                    <CollapsibleTrigger
-                                        className={cn(
-                                            "group ml-auto flex items-center",
-                                            "text-main font-medium gap-2 mt-3",
-                                            "hover:text-main/80 transition-colors",
-                                            "cursor-pointer select-none"
-                                        )}
-                                    >
-                                        <span>
-                                            {open ? "Show less" : `Show more (${rest.length})`}
-                                        </span>
+                                    <CollapsibleContent asChild>
+                                        <ol reversed className="list-decimal overflow-visible">
+                                            {(rest ?? []).map((p, i) => (
+                                                <PublicationItem
+                                                    key={p.id ?? i}
+                                                    publication={p}
+                                                    citationStyle={citationStyle}
+                                                />
+                                            ))}
+                                        </ol>
+                                    </CollapsibleContent>
 
-                                        <ChevronDown
+                                    {rest.length > 0 && (
+                                        <CollapsibleTrigger
                                             className={cn(
-                                                "h-4 w-4 transition-transform duration-300",
-                                                open && "rotate-180"
+                                                "group ml-auto flex items-center",
+                                                "text-main font-medium gap-2 mt-3",
+                                                "hover:text-main/80 transition-colors",
+                                                "cursor-pointer select-none"
                                             )}
-                                        />
-                                    </CollapsibleTrigger>
-                                )}
-                            </ol>
-                        </Collapsible>
+                                        >
+                                            <span>
+                                                {open ? "Show less" : `Show more (${rest.length})`}
+                                            </span>
+
+                                            <ChevronDown
+                                                className={cn(
+                                                    "h-4 w-4 transition-transform duration-300",
+                                                    open && "rotate-180"
+                                                )}
+                                            />
+                                        </CollapsibleTrigger>
+                                    )}
+                                </ol>
+                            </Collapsible>
+                        </CardContent>
                     </Card>
                 )}
             </div>

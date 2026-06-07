@@ -24,7 +24,7 @@ function ProfilePage() {
         queryKey: ['profile', slug, people?.scopusId],
         queryFn: async () => {
             if (!slug) return null
-            if (!people?.scopusId) return null
+            if (!people?.backendName) return null
 
             try {
                 const url = import.meta.env.VITE_BACKEND_URL

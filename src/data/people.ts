@@ -191,6 +191,7 @@ export const people: People[] = [
             'gmerino@cinvestav.mx',
             'gabriel.merino2@gmail.com'
         ],
+        backendName: 'merino',
         description: 'Gabriel Merino is a Researcher 3E (SNII III) at Cinvestav Mérida specializing in theoretical physical chemistry, molecular prediction, and chemical bonding, with multiple international awards.',
         biography: 'Gabriel Merino is a Researcher 3E (SNII III) at Cinvestav Mérida specializing in theoretical physical chemistry. His work focuses on molecular system prediction, chemical bonding, and reaction kinetics, and he has developed computational tools and led projects on advanced materials and potential energy surfaces. He is a recipient of multiple national and international awards for his research contributions.',
         role: 'leader',
