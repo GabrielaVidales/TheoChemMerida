@@ -1,10 +1,15 @@
 import { useState, useEffect, Fragment } from 'react';
 import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious, } from "@/components/ui/pagination"
 import { ResearchPaperCard } from './research-paper-card';
-import type { CitationEntry } from '@/lib/bibparser';
+import type { Publication } from '@/data/publications-data';
 
+type Props = {
+    year: string
+    itemsPerPage: number
+    papers: Publication[]
+}
 
-export const YearPageSection = ({ year, itemsPerPage, papers }: { year: string; itemsPerPage: number; papers: CitationEntry[] }) => {
+export const YearPageSection = ({ year, itemsPerPage, papers }: Props) => {
     const [currentPage, setCurrentPage] = useState(1)
     const totalPages = Math.ceil(papers.length / itemsPerPage)
     const currentArticles = papers.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
@@ -41,7 +46,7 @@ export const YearPageSection = ({ year, itemsPerPage, papers }: { year: string; 
                 </div>
             </div>
 
-            {currentArticles.map((pub, idx) => (
+            {currentArticles?.length > 0 && currentArticles.map((pub, idx) => (
                 <Fragment key={pub.id || idx}>
                     <ResearchPaperCard paper={pub} />
                 </Fragment>

@@ -3,7 +3,6 @@ import { useDeferredValue, useMemo, useState } from 'react';
 import { JournalAccordeon } from './journal-accordeon';
 import { YearPageSection } from './year-page-section';
 import { YearSelector } from './year-selector';
-import { filterPapers, getParsedData, type CitationEntry } from '@/lib/bibparser'
 import PageTitle from '@/components/ui/page-title';
 import { Helmet } from 'react-helmet-async';
 import PaperSection from '@/components/paper-section';
@@ -13,34 +12,68 @@ import { useIsMobile } from '@/hooks/use-mobile';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import axios from 'axios';
+import { useQuery } from '@tanstack/react-query';
+import type { Publication } from '@/data/publications-data';
+import { Spinner } from '@/components/ui/spinner';
 
 export default function ResearchPage() {
     const mobile = useIsMobile()
-
-    const entriesByYear = useMemo(() => getParsedData(), [])
 
     const [selectedYear, setSelectedYear] = useState<number | null>(new Date().getFullYear())
 
     const [searchQuery, setSearchQuery] = useState('')
     const deferredQuery = useDeferredValue(searchQuery)
 
-    const allPapers = useMemo(
-        () => Object.values(entriesByYear.years).flat() as CitationEntry[],
-        [entriesByYear]
-    )
+    const { data, isLoading } = useQuery<Publication[]>({
+        queryKey: ['publications'],
+        queryFn: async () => {
+            try {
+                const url = import.meta.env.VITE_BACKEND_URL
+                const res = await axios.get(`${url}/public/files/members?author-name=merino&extension=json`)
+                if (res.status !== 200) {
+                    return []
+                }
+                return res.data.papers
+            } catch (error) {
+                return []
+            }
+        },
+    })
 
-    const searchResults = useMemo(
-        () => filterPapers(allPapers, deferredQuery),
-        [allPapers, deferredQuery]
-    )
+    const papersPerYear = !data ? [] : Object.entries(
+        data.reduce((acc, { year }) => {
+            acc[year] = (acc[year] || 0) + 1;
+            return acc;
+        }, {})
+    ).map(([year, papers]) => ({
+        year: Number(year),
+        papers
+    }));
+
+    function filterPapers(papers: Publication[], query: string): Publication[] {
+        const q = query.toLowerCase().trim()
+        if (!q) return papers
+        return papers.filter(p => {
+            const title = p.title?.toLowerCase() ?? ''
+            const journal = p['container-title']?.toLowerCase() ?? ''
+            const year = `${p.year}`
+            const authors = p.authors.map(a => `${a['given-name']} ${a.surname} ${a.initials}`).join(' ').toLocaleLowerCase()
+            return title.includes(q) || journal.includes(q) || year.includes(q) || authors.includes(q)
+        })
+    }
+
+    const searchResults = useMemo(() => {
+        if (!data) return []
+        return filterPapers(data, deferredQuery)
+    }, [data, deferredQuery])
 
     const isSearching = searchQuery.trim().length > 0
 
-    const onDownloadPdf = async () => {
+    const onDownloadDocx = async () => {
         try {
-            const url = `${import.meta.env.VITE_BACKEND_URL}/public/download`
-            window.open(url, "_blank");
-            const response = await axios.get(url, {
+            const url = import.meta.env.VITE_BACKEND_URL;
+            const fullUrl = `${url}/public/files/members/?author-name=merino&extension=docx&citedby=false&style=aps`
+            const response = await axios.get(fullUrl, {
                 responseType: 'blob',
             })
 
@@ -52,6 +85,8 @@ export default function ResearchPage() {
             link.click();
 
             window.URL.revokeObjectURL(blobUrl);
+            window.open(fullUrl, "_blank");
+
         } catch (error) {
             if (import.meta.env.DEV) {
                 console.log(error);
@@ -81,11 +116,13 @@ export default function ResearchPage() {
 
                     <div className="mt-8 flex flex-wrap gap-6">
                         {[
-                            { label: 'Total papers', value: `${entriesByYear.count}` },
+                            { label: 'Total papers', value: `${data?.length || 0}` },
                             { label: 'Years active', value: `+${new Date().getFullYear() - 1999}` },
                         ].map(s => (
                             <div key={s.label}>
-                                <p className="text-2xl font-black text-main" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{s.value}</p>
+                                <p className="text-2xl font-black text-main" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                                    {isLoading ?<Spinner className='size-8'/> : s.value}
+                                </p>
                                 <p className="text-xs font-semibold text-main-foreground uppercase tracking-widest mt-0.5">{s.label}</p>
                             </div>
                         ))}
@@ -110,18 +147,18 @@ export default function ResearchPage() {
                                     Publications Search Engine
                                 </CardTitle>
                                 <CardDescription>
-                                    Download all bibliographic references in PDF format, listed from most recent to oldest.
+                                    Download all bibliographic references in DOCX format, listed from most recent to oldest.
                                 </CardDescription>
                             </CardHeader>
                             <CardContent className='mb-3'>
                                 <Button
-                                    onClick={onDownloadPdf}
+                                    onClick={onDownloadDocx}
                                     className='w-full'
                                     variant='outline'
                                     size='sm'
                                 >
                                     <Download />
-                                    Download PDF
+                                    Download DOCX
                                 </Button>
                             </CardContent>
 
@@ -150,7 +187,7 @@ export default function ResearchPage() {
                             </CardContent>
 
                             <YearSelector
-                                entriesByYear={entriesByYear.years}
+                                entriesByYear={papersPerYear as { year: number, papers: number }[]}
                                 selectedYear={selectedYear}
                                 setSelectedYear={setSelectedYear}
                             />
@@ -169,14 +206,13 @@ export default function ResearchPage() {
                                 }
                             </div>
                         ) : (
-
                             <>
                                 {selectedYear !== null ? (
                                     <>
                                         <YearPageSection
                                             year={`${selectedYear}`}
                                             itemsPerPage={mobile ? 5 : 10}
-                                            papers={entriesByYear.years[selectedYear]}
+                                            papers={data ? data.filter(p => p.year === selectedYear) : []}
                                         />
                                     </>
                                 ) : (

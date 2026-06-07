@@ -4,12 +4,17 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger, } from "@/componen
 import { useScroll } from '@/lib/utils';
 import { CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
+type Props = {
+    entriesByYear: { year: number, papers: number }[]
+    selectedYear: number,
+    setSelectedYear: (n: number) => void
+}
 
-export function YearSelector({ entriesByYear, selectedYear, setSelectedYear }) {
-    const recent = Object.entries(entriesByYear).filter(([y]) => Number(y) >= 2020).sort((a, b) => Number(b[0]) - Number(a[0]))
-    const older = Object.entries(entriesByYear).filter(([y]) => Number(y) < 2020).sort((a, b) => Number(b[0]) - Number(a[0]))
+export function YearSelector({ entriesByYear, selectedYear, setSelectedYear }: Props) {
+    const recent = entriesByYear.filter(n => n.year >= 2020).sort((a, b) => b.year - a.year)
+    const older = entriesByYear.filter(n => n.year < 2020).sort((a, b) => b.year - a.year)
 
-    const YearButton = ({ year, data }) => {
+    const YearButton = ({ year, papers }: { year: number, papers: number }) => {
         const active = selectedYear === Number(year)
 
         return (
@@ -32,7 +37,7 @@ export function YearSelector({ entriesByYear, selectedYear, setSelectedYear }) {
                     text-xs font-semibold px-2 py-0.5 rounded-full
                     ${active ? 'text-white bg-main' : 'text-neutral-500 bg-neutral-200'}
                 `}>
-                    {data.length}
+                    {papers}
                 </span>
             </Button>
         )
@@ -46,15 +51,15 @@ export function YearSelector({ entriesByYear, selectedYear, setSelectedYear }) {
                 </CardTitle>
             </CardHeader>
             <CardContent className='px-3'>
-                {recent.map(([year, data]) => (
-                    <YearButton key={year} year={year} data={data} />
+                {recent.map((year) => (
+                    <YearButton key={year.year} year={year.year} papers={year.papers} />
                 ))}
 
                 <Collapsible className="rounded-md" onOpenChange={(open) => { open ? null : useScroll('browse-by-year', 280) }}>
 
                     <CollapsibleContent className="flex flex-col items-start text-sm">
-                        {older.map(([year, data]) => (
-                            <YearButton key={year} year={year} data={data} />
+                        {older.map((year) => (
+                            <YearButton key={year.year} year={year.year} papers={year.papers} />
                         ))}
                     </CollapsibleContent>
 
