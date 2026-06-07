@@ -23,8 +23,8 @@ function GabrielMerinoPage({ member }: { member: People }) {
             if (!people?.scopusId) return null
 
             const url = import.meta.env.VITE_BACKEND_URL
-            const res = await axios.get(`${url}/public/files/publications/${people.scopusId}/`)
-            return res.data
+            const res = await axios.get(`${url}/public/files/members?author-name=merino&format=json`)            
+            return res.data.papers
         },
         enabled: !!people?.scopusId,
     })

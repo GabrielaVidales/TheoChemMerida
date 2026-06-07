@@ -1,7 +1,7 @@
 import { getPeopleFromSlug, roles, type People } from '@/data/people'
 import { useState } from 'react'
 import { useParams } from 'react-router'
-import { Microscope, Globe, Award, Box, ImageOff, Database, FileText, CodeXml, ChevronDown } from 'lucide-react';
+import { Microscope, Globe, Award, Box, ImageOff, Database, FileText, CodeXml, ChevronDown, Download } from 'lucide-react';
 import { Card, CardContent, CardHeader, } from "@/components/ui/card"
 import GabrielMerinoPage from './merino-page'
 import 'react-photo-view/dist/react-photo-view.css';
@@ -10,10 +10,11 @@ import { cn } from '@/lib/utils'
 import { useQuery } from "@tanstack/react-query"
 import axios from 'axios';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
-import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import scopusLogo from '@/assets/scopus.png'
-import DOMPurify from 'dompurify'
 import type { Author, Publication } from '@/data/publications-data';
+import { Button } from '@/components/ui/button';
+import { Switch } from '@/components/ui/switch';
+import { Label } from '@/components/ui/label';
 
 function ProfilePage() {
     const { slug } = useParams()
@@ -25,14 +26,18 @@ function ProfilePage() {
             if (!slug) return null
             if (!people?.scopusId) return null
 
-            const url = import.meta.env.VITE_BACKEND_URL
-            const res = await axios.get(`${url}/public/files/publications/${people.scopusId}/`)
-            return res.data
+            try {
+                const url = import.meta.env.VITE_BACKEND_URL
+                const res = await axios.get(`${url}/public/files/members?author-name=${people.backendName}&extension=json`)
+                if (res.status !== 200) {
+                    return []
+                }
+                return res.data.papers
+            } catch (error) {
+                return []
+            }
         },
     })
-
-
-    console.log(data);
 
     return (
         <>
@@ -55,8 +60,33 @@ export default ProfilePage
 const MemberProfile = ({ member, publications }: { member: People, publications?: Publication[] }) => {
     const [open, setOpen] = useState(false)
     const [citationStyle, setCitationStyle] = useState<"ACS" | "APS">('ACS')
-    const firstThree = publications?.slice(0, 3) ?? []
-    const rest = publications?.slice(3) ?? []
+    const [includeCitations, setIncludeCitations] = useState<boolean>(false)
+
+    const firstThree = publications?.slice(0, 5) ?? []
+    const rest = publications?.slice(5) ?? []
+
+    const handleDownloadCitations = async () => {
+        try {
+            const url = import.meta.env.VITE_BACKEND_URL;
+            const fullUrl = `${url}/public/files/members/?author-name=${member.backendName}&extension=docx&citedby=${includeCitations}&style=${citationStyle.toLowerCase()}`
+            const res = await axios.get(fullUrl, {
+                responseType: 'blob'
+            });
+            const blobUrl = window.URL.createObjectURL(new Blob([res.data]));
+            const link = document.createElement('a');
+            link.href = blobUrl;
+            link.setAttribute('download', `${member.name} Publications.docx`);
+            link.click();
+
+            window.URL.revokeObjectURL(blobUrl);
+
+        } catch (error) {
+            if (import.meta.env.DEV) {
+                console.log(error.response);
+            }
+        }
+    };
+
     return (
         <>
             <section className='bg-main/10 w-full border-b-2 '>
@@ -323,31 +353,79 @@ const MemberProfile = ({ member, publications }: { member: People, publications?
 
                             {publications?.length > 0 ? (
                                 <div className='space-y-5'>
-                                    <CardHeader className="flex items-center gap-3 pb-3 mb-3 border-b border-border">
+                                    <CardHeader className="flex items-center gap-3 pb-3 border-b border-border">
                                         <div className='bg-main size-10 rounded-full flex items-center justify-center text-white'>
                                             <FileText />
                                         </div>
+
                                         <h2 className="text-2xl font-medium">Publications</h2>
+
                                         <span className="text-xs text-muted-foreground bg-muted rounded-full px-2 py-0.5">
                                             {publications.length}
                                         </span>
-                                        <div className="ml-auto">
-                                            <ToggleGroup
-                                                type="single"
-                                                value={citationStyle}
-                                                variant="outline"
-                                                size="sm"
-                                                onValueChange={(value) => {
-                                                    if (value) {
-                                                        setCitationStyle(value as "ACS" | "APS");
-                                                    }
-                                                }}
-                                            >
-                                                <ToggleGroupItem value="ACS" className="rounded-lg text-xs font-semibold">ACS</ToggleGroupItem>
-                                                <ToggleGroupItem value="APS" className="rounded-lg text-xs font-semibold">APS</ToggleGroupItem>
-                                            </ToggleGroup>
-                                        </div>
                                     </CardHeader>
+                                    <CardContent>
+                                        <div className="flex flex-wrap items-center justify-between gap-3 p-3 rounded-xl border border-border bg-muted/20">
+                                            <div className="flex items-center justify-between gap-3">
+                                                <div className="flex flex-col">
+                                                    <span className="text-sm font-medium text-muted-foreground">
+                                                        Citation style
+                                                    </span>
+                                                    <span className="text-xs text-muted-foreground">
+                                                        Choose formatting standard
+                                                    </span>
+                                                </div>
+
+                                                <div className="flex items-center bg-muted/40 border border-border rounded-xl p-1">
+                                                    <button
+                                                        onClick={() => setCitationStyle("ACS")}
+                                                        className={cn(
+                                                            "cursor-pointer px-3 py-1.5 text-xs font-semibold rounded-lg transition",
+                                                            citationStyle === "ACS"
+                                                                ? "bg-main text-white shadow-sm"
+                                                                : "text-muted-foreground hover:text-foreground"
+                                                        )}
+                                                    >
+                                                        ACS
+                                                    </button>
+                                                    <button
+                                                        onClick={() => setCitationStyle("APS")}
+                                                        className={cn(
+                                                            "cursor-pointer px-3 py-1.5 text-xs font-semibold rounded-lg transition",
+                                                            citationStyle === "APS"
+                                                                ? "bg-main text-white shadow-sm"
+                                                                : "text-muted-foreground hover:text-foreground"
+                                                        )}
+                                                    >
+                                                        APS
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <div className="flex flex-col-reverse gap-3 ml-auto">
+                                                <div className="flex items-center gap-2">
+                                                    <Switch
+                                                        id="citations"
+                                                        checked={includeCitations}
+                                                        onCheckedChange={setIncludeCitations}
+                                                        className="data-[state=checked]:bg-main"
+                                                    />
+                                                    <Label htmlFor="citations" className="cursor-pointer text-xs text-muted-foreground">
+                                                        Include paper citations
+                                                    </Label>
+                                                </div>
+                                                <Button
+                                                    onClick={handleDownloadCitations}
+                                                    variant="outline"
+                                                    size="sm"
+                                                    className="flex items-center gap-2 border-border hover:bg-muted/50"
+                                                >
+                                                    <Download className="h-4 w-4" />
+                                                    Download All Publications
+                                                </Button>
+                                            </div>
+                                        </div>
+                                    </CardContent>
                                     <CardContent>
                                         <Collapsible open={open} onOpenChange={setOpen}>
                                             <ol reversed className='list-decimal' start={open ? publications.length : publications.length}>
@@ -356,8 +434,6 @@ const MemberProfile = ({ member, publications }: { member: People, publications?
                                                         <PublicationItem
                                                             key={p.id ?? i}
                                                             publication={p}
-                                                            index={i}
-                                                            total={publications?.length ?? 0}
                                                             citationStyle={citationStyle}
                                                         />
                                                     ))}
@@ -369,8 +445,6 @@ const MemberProfile = ({ member, publications }: { member: People, publications?
                                                             <PublicationItem
                                                                 key={p.id ?? i}
                                                                 publication={p}
-                                                                index={i + 3}
-                                                                total={publications?.length ?? 0}
                                                                 citationStyle={citationStyle}
                                                             />
                                                         ))}
@@ -444,60 +518,32 @@ const MemberProfile = ({ member, publications }: { member: People, publications?
 
 type Props = {
     publication: Publication
-    index: number
-    total: number
     citationStyle: 'ACS' | 'APS'
 }
 
-export function PublicationItem({ publication, index, total, citationStyle }: Props) {
-    const cleanTitle = DOMPurify.sanitize(publication.title)
-    console.log(cleanTitle);
-
+export function PublicationItem({ publication, citationStyle }: Props) {
+    const cleanTitle = publication['xml-title'] || publication.title
 
     function formatACS(authors: Author[]): string {
-        return authors
-            .map(author => {
-                const initials = author.names
-                    .split(/\s+/)
-                    .map(name => {
-                        // Mantiene iniciales tipo "A."
-                        if (name.endsWith(".")) return name;
-
-                        return name.charAt(0) + ".";
-                    })
-                    .join(" ");
-
-                return `${author.family}, ${initials}`;
-            })
-            .join("; ");
+        return authors.map(a => `${a.surname}, ${a.initials}`).join('; ')
     }
 
     function formatAPS(authors: Author[]): string {
-        return authors
-            .map(author => {
-                const initials = author.names
-                    .split(/\s+/)
-                    .map(name => {
-                        if (name.endsWith(".")) {
-                            return name.charAt(0) + ".";
-                        }
-
-                        return name.charAt(0) + ".";
-                    })
-                    .join(" ");
-
-                return `${initials} ${author.family}`;
-            })
-            .join(", ");
+        return authors.map((a, index) => {
+            const startStr = (authors.length > 0 && index === authors.length - 1)
+                ? ' and ' : (index > 0)
+                    ? ', ' : ''
+            return `${startStr}${a.initials} ${a.surname}`
+        }).join('')
     }
 
     return (
-        <li className="mb-5">
+        <li className="mb-5 pl-2">
             {citationStyle === 'ACS' && (
                 <div className="inline">
-                    {formatACS(publication.authors)}{" "}
-
-                    <i className="font-light" dangerouslySetInnerHTML={{ __html: cleanTitle }} />. {publication.journal_abbrev}.{" "}
+                    <span className="font-light">{formatACS(publication.authors)}</span>{" "}
+                    <span dangerouslySetInnerHTML={{ __html: cleanTitle }} />.{" "}
+                    <i className="italic">{publication.journal_abbrev}</i>.{" "}
 
                     {publication.year && <span className="font-semibold">{publication.year}</span>}
 
@@ -528,9 +574,9 @@ export function PublicationItem({ publication, index, total, citationStyle }: Pr
 
             {citationStyle === 'APS' && (
                 <div className="inline">
-                    {formatAPS(publication.authors)},{" "}
-                    <i className="font-light" dangerouslySetInnerHTML={{ __html: cleanTitle }} />,{" "}
-                    {publication.journal_abbrev}{" "}
+                    <span className="font-light">{formatAPS(publication.authors)}</span>,{" "}
+                    <span dangerouslySetInnerHTML={{ __html: cleanTitle }} />.{" "}
+                    <i className="italic">{publication.journal_abbrev}</i>.{" "}
 
                     {publication.volume && <span className="font-semibold">{publication.volume}</span>}
                     {publication.number && `(${publication.number})`}

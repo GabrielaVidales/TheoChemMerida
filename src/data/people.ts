@@ -156,6 +156,7 @@ export interface People {
         description?: string
     }[]
 
+    backendName?: string
     scopusId?: string
     scholarGoogle?: string
     linkedin?: string
@@ -280,6 +281,7 @@ export const people: People[] = [
         ],
     },
     {
+        backendName: 'filiberto',
         name: 'Filiberto Ortiz-Chi',
         email: [
             'filiberto.ortiz@cinvestav.mx',
@@ -344,6 +346,7 @@ export const people: People[] = [
         ]
     },
     {
+        backendName: 'maurizio_pantoja',
         name: 'Maurizio A. Pantoja-Hernández',
         email: [
             'maurizio.pantoja@cinvestav.mx',
@@ -391,6 +394,7 @@ export const people: People[] = [
         ]
     },
     {
+        backendName: 'jessica_arcudia',
         name: 'Jessica Arcudia',
         email: ['jessica.arcudia@cinvestav.mx'],
         biography: [
@@ -487,6 +491,7 @@ export const people: People[] = [
         ]
     },
     {
+        backendName:'gabriela_castillo',
         name: 'Gabriela Castillo-Toraya',
         email: ['gabriela.castillo@cinvestav.mx'],
         biography: [
@@ -510,6 +515,7 @@ export const people: People[] = [
         profilePic: gabyCastillo
     },
     {
+        backendName:'fernando_murillo',
         name: 'Fernando Murillo Cordova',
         email: [
             'fernando.murillo@cinvestav.mx',
@@ -561,6 +567,7 @@ export const people: People[] = [
         ]
     },
     {
+        backendName: 'alan_quintal',
         name: 'Alan Quintal',
         email: ['alan.quintal@cinvestav.mx'],
         description: 'Postdoc at Cinvestav and researcher in Computational Chemical Kinetics. Lead developer of Eyringpy and SurfinPES.',
@@ -662,6 +669,7 @@ export const people: People[] = [
         ]
     },
     {
+        backendName: 'lisset_noriega',
         name: 'Lisset Noriega',
         email: [
             'lis.noriega.santos@gmail.com',
@@ -707,6 +715,7 @@ export const people: People[] = [
         ]
     },
     {
+        backendName: 'fernando_villarino',
         name: 'Fernando Martínez-Villarino',
         email: ['fernando.martinezv@cinvestav.mx'],
         biography: [
@@ -750,6 +759,7 @@ export const people: People[] = [
         ]
     },
     {
+        backendName:'elier_abreu',
         name: 'Elier E. Abreu-Martínez',
         email: ['elier.abreu@cinvestav.mx'],
         biography: [
@@ -816,6 +826,7 @@ export const people: People[] = [
         ]
     },
     {
+        backendName: 'rafael_flores',
         name: 'Rafael Flores-Larrañaga',
         email: ['rafael.floreslarranaga@viep.com.mx'],
         biography: [
@@ -879,6 +890,7 @@ export const people: People[] = [
         ]
     },
     {
+        backendName: 'aura_gomez',
         name: 'Aura Gómez-Heredia',
         email: ['aura.gomez@cinvestav.mx'],
         biography: [
@@ -969,6 +981,7 @@ export const people: People[] = [
         ]
     },
     {
+        backendName: 'diego_roman',
         name: 'Diego Román-Montalvo',
         email: [
             'diego.roman@cinvestav.mx',
@@ -1002,6 +1015,7 @@ export const people: People[] = [
         ]
     },
     {
+        backendName: 'gerardo_hernandez',
         name: 'Gerardo Hernández-Juárez',
         email: ['gerardo.hernandezj@cinvestav.mx'],
         biography: "Gerardo Hernández Juárez is a Ph.D. student in Physical Chemistry at Cinvestav, where he also obtained his Master’s degree in the same field. He holds a Bachelor’s degree in Biochemical Engineering from ITESCAM. His academic trajectory has focused on the study of molecular systems using computational chemistry tools, with research centered on the exploration of potential energy surfaces and the analysis of chemical structures.",
@@ -1156,6 +1170,7 @@ export const people: People[] = [
         ]
     },
     {
+        backendName: 'soberanis',
         name: 'José Emmanuel Soberanis Cáceres',
         email: [
             'jesoberaniscace@gmail.com',
@@ -1257,6 +1272,7 @@ export const people: People[] = [
         ]
     },
     {
+        backendName: 'gabriela_vidales',
         name: 'Gabriela Vidales-Ayala',
         email: [],
         description: 'Physics Engineering Student committed to improving the quality of life through the integration of science, education, and technology.',

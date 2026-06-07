@@ -4,20 +4,20 @@ import aroma2025personas from '@/assets/gallery/gallery_aromaticity_2025_1.jpg'
 import watoc2020 from '@/assets/gallery/gallery_watoc2020.jpg'
 import mainImg from '@/assets/members/Alan_Quintal_RMFQT2109 - Alan QF.jpg'
 import { Helmet } from 'react-helmet-async'
-import PaperSection from '@/components/paper-section'
-import PageTitle from '@/components/ui/page-title'
 import encuentro1 from '@/assets/members/Cartel Fernando Martinez Villarino.jpeg'
 import encuentro2 from '@/assets/members/Maximiliano_Yáñez López_Encuentro de posgrados del Cinvestav Mérida_25 de febrero de 2026.jpeg'
 import encuentro3 from '@/assets/members/Maurizio_Alejandro_Pantoja_Hernandez_III-Encuentro-de-Posgrados-del-Cinvestav-Mérida_25-Feb-2026 - Maurizio Pantoja.jpeg'
 import encuentro4 from '@/assets/members/Diego Román M Encuentro de posgrados del Cinvestav Mérida_25 de febrero de 2026.jpeg'
 import encuentro5 from '@/assets/members/Encuentro de posgrados del Cinvestav Mérida_25 de febrero de 2026 Gerardo Hernández-Suárez.jpeg'
 import encuentro6 from '@/assets/members/Aura_Gomez_Encuentro_posgrados_25_febrero - aura ximena gomez heredia.jpeg'
+import encuentro7 from '@/assets/members/villanueva_poster.jpeg'
 import { motion, useInView } from 'motion/react'
 import { cn } from '@/lib/utils'
 import { Carousel3D } from '@/components/3d-gallery'
 import { useRef } from 'react'
 
 import rmfqt2023 from '@/assets/members/Alan_Quintal_RMFQT 2023 - Alan QF.jpg'
+import rmfqt2025 from '@/assets/members/RMFQT 2025.jpeg'
 
 
 const images = [
@@ -63,6 +63,10 @@ const encuentroPosgradosFebrero = [
     {
         image: encuentro6,
         description: 'Aura Gómez-Heredia'
+    },
+    {
+        image: encuentro7,
+        description: 'Daniel Villanueva'
     },
 ]
 
@@ -111,6 +115,48 @@ function GalleryPage() {
             >
                 <div className={cn('space-y-3 text-center')}>
                     <h2 className={'font-bold tracking-wide text-2xl sm:text-3xl md:text-4xl'}>
+                        ❛RMFQT 2025❜
+                    </h2>
+                    <p className={cn(
+                        'text-sm sm:text-base md:text-lg',
+                        'text-muted-foreground tracking-wide'
+                    )}>
+                        November 13, 2025
+                    </p>
+                    <div className={'mx-auto h-1 w-20 rounded-full bg-main'} />
+                </div>
+
+
+                <div
+                    className={cn(
+                        "max-w-2xl mx-auto w-full overflow-hidden border-b",
+                        "bg-neutral-100 shadow-md",
+                    )}
+                >
+                    <img
+                        src={rmfqt2025}
+                        alt="November 13, 2025 group photo"
+                        className={cn(
+                            "w-full h-full object-contain",
+                            "transition-transform duration-500",
+                            "group-hover:scale-105"
+                        )}
+                        loading="lazy"
+                    />
+                    <p className='text-center py-1 font-light text-pretty'>
+                        Left to right: Rafael, Aura, Fernando, Filiberto & Maurizio.
+                    </p>
+                </div>
+            </article>
+
+            <article
+                className={cn(
+                    'relative mx-auto max-w-4xl',
+                    'py-10 px-4 sm:px-6 space-y-10'
+                )}
+            >
+                <div className={cn('space-y-3 text-center')}>
+                    <h2 className={'font-bold tracking-wide text-2xl sm:text-3xl md:text-4xl'}>
                         ❛RMFQT 2023❜
                     </h2>
                     <p className={cn(
@@ -126,7 +172,7 @@ function GalleryPage() {
                 <div
                     className={cn(
                         "max-w-2xl mx-auto w-full overflow-hidden border-b",
-                        "bg-linear-to-br from-neutral-100 to-neutral-200",
+                        "bg-neutral-100 shadow-md",
                     )}
                 >
                     <img
@@ -161,7 +207,7 @@ function GalleryPage() {
                 <div
                     className={cn(
                         "max-w-2xl mx-auto w-full overflow-hidden border-b",
-                        "bg-linear-to-br from-neutral-100 to-neutral-200",
+                        "bg-neutral-100 shadow-md",
                     )}
                 >
                     <img
