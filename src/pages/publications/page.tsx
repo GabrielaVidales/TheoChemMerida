@@ -85,7 +85,6 @@ export default function ResearchPage() {
             link.click();
 
             window.URL.revokeObjectURL(blobUrl);
-            window.open(fullUrl, "_blank");
 
         } catch (error) {
             if (import.meta.env.DEV) {
