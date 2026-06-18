@@ -26,13 +26,6 @@ export const softwareProjects: SoftwareProject[] = [
     //     tags: ['Python',]
     // },
     {
-        name: 'SmilX',
-        description: 'SmilX is a software to explore the chemical space of isomers with the SMILES language using the grammar constraint.',
-        banner: smilesLogo,
-        projectUrl: 'https://smilx-isogenerator.streamlit.app/',
-        tags: ['Python',],
-    },
-    {
         name: 'eyringpy',
         tags: ['Python',],
         description: 'Advanced software for computing rate constants in gas and solution phases. Features tunneling corrections, electron transfer, and seamless Gaussian integration.',
@@ -40,9 +33,16 @@ export const softwareProjects: SoftwareProject[] = [
         projectUrl: 'https://eyringpy.streamlit.app/'
     },
     {
+        name: 'SmilX',
+        description: 'SmilX is a software to explore the chemical space of isomers with the SMILES language using the grammar constraint.',
+        banner: smilesLogo,
+        projectUrl: 'https://smilx-isogenerator.streamlit.app/',
+        tags: ['Python',],
+    },
+    {
         name: 'SOLIDS',
         tags: ['Python',],
-        description: 'Solids is a robust, open-source Python package for crystal structure prediction. By integrating ASE, PyXtal, and Dscribe, it enables symmetry-based structure generation and advanced morphological analysis. Designed for high-performance computing, it supports VASP and GULP and run seamlessly across UNIX systems, cloud enviroments (Colab, Kaggle).',
+        description: 'A robust, open-source Python package for crystal structure prediction. Integrates ASE, PyXtal, Dscribe for symmetry-based structure generation & advanced morphological analysis.',
         banner: solids,
         projectUrl: 'https://gabrielavidales.github.io/Solids-1.0-Users-Guide/#'
     },
